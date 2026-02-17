@@ -8,6 +8,7 @@
         <!-- Fonts (Google Fonts: Outfit / Inter) -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" type="image/svg+xml" href="{{ asset('storage/home-page-logo.svg') }}">
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
         <!-- Styles / Scripts -->
@@ -22,18 +23,17 @@
         <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-3">
             <div class="max-w-7xl mx-auto flex items-center justify-between">
                 <!-- Logo -->
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-brand-teal rounded flex items-center justify-center text-white font-bold">E</div>
-                    <span class="font-bold text-xl tracking-tight">Ejlals Academy</span>
-                </div>
+                <a href="/" class="flex items-center gap-2">
+                    <img src="{{ asset('storage/home-page-logo.svg') }}" alt="Ejlals Logo" class="h-16 w-40 object-contain">
+                </a>
 
                 <!-- Nav Links -->
                 <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                    <a href="/" class="hover:text-brand-teal transition-colors">Home</a>
-                    <a href="#" class="hover:text-brand-teal transition-colors">About Us</a>
-                    <a href="#" class="hover:text-brand-teal transition-colors">Articles</a>
-                    <a href="#" class="hover:text-brand-teal transition-colors">Guides</a>
-                    <a href="#" class="hover:text-brand-teal transition-colors">Resources</a>
+                    <a href="/" class="hover:text-brand-teal transition-colors {{ request()->is('/') ? 'text-brand-teal' : '' }}">Home</a>
+                    <a href="{{ route('courses.index') }}" class="hover:text-brand-teal transition-colors {{ request()->is('courses*') ? 'text-brand-teal' : '' }}">Courses</a>
+                    <a href="{{ route('books.index') }}" class="hover:text-brand-teal transition-colors {{ request()->is('books*') ? 'text-brand-teal' : '' }}">Library</a>
+                    <a href="{{ route('posts.index') }}" class="hover:text-brand-teal transition-colors {{ request()->is('posts*') ? 'text-brand-teal' : '' }}">Articles</a>
+                    <a href="{{ route('about') }}" class="hover:text-brand-teal transition-colors {{ request()->is('about') ? 'text-brand-teal' : '' }}">About Us</a>
                 </div>
 
                 <!-- Action Buttons -->
@@ -71,8 +71,7 @@
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center gap-2 mb-4">
-                        <div class="w-8 h-8 bg-brand-teal rounded flex items-center justify-center text-white font-bold">E</div>
-                        <span class="font-bold text-xl tracking-tight">Ejlals Academy</span>
+                        <img src="{{ asset('storage/home-page-logo.svg') }}" alt="Ejlals Logo" class="h-12 w-30 object-contain">
                     </div>
                     <p class="text-gray-500 text-sm leading-relaxed">
                         An educational platform focused on delivering clear, reliable, and easy-to-understand information.
@@ -82,26 +81,26 @@
                 <div>
                     <h4 class="font-bold text-sm mb-4 uppercase tracking-wider">Quick Links</h4>
                     <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="#" class="hover:text-brand-teal transition-colors">All Courses</a></li>
-                        <li><a href="#" class="hover:text-brand-teal transition-colors">Library</a></li>
-                        <li><a href="#" class="hover:text-brand-teal transition-colors">Blog</a></li>
+                        <li><a href="{{ route('courses.index') }}" class="hover:text-brand-teal transition-colors">All Courses</a></li>
+                        <li><a href="{{ route('books.index') }}" class="hover:text-brand-teal transition-colors">Library</a></li>
+                        <li><a href="{{ route('posts.index') }}" class="hover:text-brand-teal transition-colors">Blog</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="font-bold text-sm mb-4 uppercase tracking-wider">Company</h4>
                     <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="#" class="hover:text-brand-teal transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-brand-teal transition-colors">Contact</a></li>
-                        <li><a href="#" class="hover:text-brand-teal transition-colors">Careers</a></li>
+                        <li><a href="{{ route('about') }}" class="hover:text-brand-teal transition-colors">About Us</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-brand-teal transition-colors">Contact</a></li>
+                        <li><a href="{{ route('careers') }}" class="hover:text-brand-teal transition-colors">Careers</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="font-bold text-sm mb-4 uppercase tracking-wider">Legal</h4>
                     <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="#" class="hover:text-brand-teal transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-brand-teal transition-colors">Terms of Service</a></li>
+                        <li><a href="{{ route('privacy') }}" class="hover:text-brand-teal transition-colors">Privacy Policy</a></li>
+                        <li><a href="{{ route('terms') }}" class="hover:text-brand-teal transition-colors">Terms of Use</a></li>
                     </ul>
                 </div>
             </div>

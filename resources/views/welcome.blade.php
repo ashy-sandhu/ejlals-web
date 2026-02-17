@@ -39,11 +39,11 @@
         </div>
     </div>
     
-    <!-- Hero Illustration Placeholder -->
-    <div class="bg-gray-100 rounded-[2rem] aspect-square flex items-center justify-center relative overflow-hidden">
-        <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5"></div>
-        <div class="absolute inset-12 border-2 border-dashed border-gray-300 rounded-3xl flex items-center justify-center">
-            <span class="text-gray-400 font-medium">Hero Illustration</span>
+    <!-- Hero Illustration -->
+    <div class="relative group">
+        <div class="absolute -inset-4 bg-gradient-to-tr from-brand-teal/20 to-brand-gold/20 rounded-[3rem] blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
+        <div class="relative bg-white rounded-[2.5rem] aspect-square flex items-center justify-center overflow-hidden border border-gray-100 shadow-sm">
+            <img src="{{ asset('storage/hero-illustration.webp') }}" alt="Sacred Spiritual Learning" class="w-full h-full object-cover">
         </div>
     </div>
 </section>
@@ -51,8 +51,8 @@
 <!-- Who We Are Section -->
 <section class="bg-white py-20 px-6 border-y border-gray-50">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <div class="bg-gray-50 rounded-3xl aspect-[1.4/1] flex items-center justify-center border border-gray-100">
-             <span class="text-gray-400 font-medium">About Illustration</span>
+        <div class="relative bg-white rounded-3xl aspect-[1.4/1] flex items-center justify-center overflow-hidden border border-gray-100 shadow-sm">
+             <img src="{{ asset('storage/about-illustration.webp') }}" alt="About Ejlals Academy" class="w-full h-full object-cover">
         </div>
         <div>
             <h2 class="text-4xl font-bold mb-6 text-slate-800 tracking-tight">Who We Are</h2>
@@ -70,25 +70,61 @@
     </div>
 </section>
 
-<!-- What You'll Learn Section -->
-<section class="max-w-7xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold mb-12 text-center text-slate-800">What You'll Learn Here</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        @foreach([
-            ['icon' => 'book-open', 'title' => 'Educational Guides', 'desc' => 'Step-by-step learning material designed for beginners and intermediates.'],
-            ['icon' => 'academic-cap', 'title' => 'Practical Tutorials', 'desc' => 'Simple explanations with real-world examples.'],
-            ['icon' => 'document-text', 'title' => 'In-Depth Articles', 'desc' => 'Well-researched content focusing on clarity and accuracy.'],
-            ['icon' => 'database', 'title' => 'Resources & Tools', 'desc' => 'Helpful materials to support your learning journey.']
-        ] as $card)
-        <div class="p-8 bg-white border border-gray-100 rounded-3xl hover:border-brand-teal/30 hover:shadow-xl transition-all group">
-            <div class="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-brand-teal mb-6 group-hover:bg-brand-teal group-hover:text-white transition-colors">
-                 <!-- Simple Icon Representation -->
-                 <div class="w-6 h-6 border-2 border-current rounded-sm"></div>
-            </div>
-            <h3 class="font-bold text-lg mb-3">{{ $card['title'] }}</h3>
-            <p class="text-slate-500 text-sm leading-relaxed">{{ $card['desc'] }}</p>
+<!-- Featured Courses Section -->
+<section class="max-w-7xl mx-auto px-6 py-24">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+            <span class="text-brand-teal font-bold text-xs uppercase tracking-[0.3em] mb-3 block">Expert-Led Learning</span>
+            <h2 class="text-4xl font-bold text-slate-800 leading-tight">Featured Courses</h2>
         </div>
-        @endforeach
+        <a href="{{ route('courses.index') }}" class="group flex items-center gap-2 text-brand-teal font-bold">
+            Explore All Courses
+            <div class="w-10 h-10 rounded-full border border-brand-teal/20 flex items-center justify-center group-hover:bg-brand-teal group-hover:text-white transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </div>
+        </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        @forelse($featuredCourses as $course)
+        <div class="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
+            <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden">
+                @if($course->image)
+                    <img src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" class="w-full h-full object-cover">
+                @else
+                    <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-brand-teal/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                @endif
+                <div class="absolute top-6 left-6">
+                    <span class="bg-white/95 backdrop-blur-sm text-slate-800 text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm">Popular</span>
+                </div>
+            </div>
+            <div class="p-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 group-hover:text-brand-teal transition-colors line-clamp-1">{{ $course->title }}</h3>
+                <div class="flex items-center gap-4 text-xs text-slate-400 mb-6 pb-6 border-b border-gray-50">
+                    <span class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        12 Lessons
+                    </span>
+                    <span class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        Beginner
+                    </span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-brand-teal font-extrabold text-lg">Free</span>
+                    <a href="#" class="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-brand-gold group-hover:text-white transition-all shadow-inner">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        @empty
+        <div class="col-span-full bg-gray-50 rounded-[2.5rem] py-20 text-center border-2 border-dashed border-gray-200">
+            <p class="text-slate-400 font-medium">Coming Soon: Curated Islamic Education</p>
+        </div>
+        @endforelse
     </div>
 </section>
 
@@ -113,8 +149,8 @@
                 </a>
             </div>
         </div>
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex items-center justify-center aspect-[1.2/1]">
-             <span class="text-gray-400 font-medium">Articles Illustration</span>
+        <div class="bg-white p-4 rounded-3xl shadow-sm border border-gray-100 flex items-center justify-center aspect-[1.2/1] overflow-hidden">
+             <img src="{{ asset('storage/articles-illustration.webp') }}" alt="Islamic Articles" class="w-full h-full object-cover">
         </div>
     </div>
 </section>
