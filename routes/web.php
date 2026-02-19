@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
+Route::get('/courses/{slug}', [CourseController::class, 'show'])->name('courses.show');
 
 Route::get('/books', function () {
     $books = Book::latest()->paginate(12);
