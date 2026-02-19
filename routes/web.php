@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Models\Course;
+use App\Models\Book;
+use App\Models\Post;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 
