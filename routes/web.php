@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     $featuredCourses = Course::where('is_featured', true)->take(3)->get();
@@ -16,13 +17,21 @@ Route::get('/', function () {
     return view('welcome', compact('featuredCourses', 'featuredBooks', 'latestPosts'));
 });
 
-Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
-Route::get('/courses/{slug}', [CourseController::class, 'show'])->name('courses.show');
+// Authentication Routes
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/enroll', [EnrollmentController::class, 'store'])->name('enroll.store');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 
 Route::get('/books', function () {
     $books = Book::latest()->paginate(12);
