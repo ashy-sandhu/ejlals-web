@@ -45,8 +45,11 @@
                     @if (Route::has('login'))
                         <div class="flex items-center gap-2">
                             @auth
-                                <a href="{{ url('/dashboard') }}" class="text-sm font-medium hover:text-brand-teal flex items-center gap-1">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                <a href="{{ route('dashboard') }}" class="text-sm font-medium hover:text-brand-teal flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-teal/10 flex items-center justify-center text-brand-teal">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    </div>
+                                    My Horizon
                                 </a>
                             @else
                                 <a href="{{ route('login') }}" class="text-sm font-medium hover:text-brand-teal">Login</a>

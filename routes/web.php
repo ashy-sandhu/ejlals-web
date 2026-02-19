@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Post;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     $featuredCourses = Course::where('is_featured', true)->take(3)->get();
@@ -19,6 +20,7 @@ Route::get('/courses', [CourseController::class, 'index'])->name('courses.index'
 Route::get('/courses/{slug}', [CourseController::class, 'show'])->name('courses.show');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/enroll', [EnrollmentController::class, 'store'])->name('enroll.store');
 });
 
