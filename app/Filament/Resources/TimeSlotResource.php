@@ -51,13 +51,14 @@ class TimeSlotResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('day_of_week')
+                Tables\Columns\TextColumn::make('course.title')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('day')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('start_time'),
-                Tables\Columns\TextColumn::make('end_time'),
-                Tables\Columns\IconColumn::make('is_available')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('total_seats')
+                Tables\Columns\TextColumn::make('time')
+                    ->time(),
+                Tables\Columns\TextColumn::make('capacity')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
