@@ -1,10 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Models\Course;
-use App\Models\Book;
-use App\Models\Post;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EnrollmentController;
 
 Route::get('/', function () {
     $featuredCourses = Course::where('is_featured', true)->take(3)->get();
@@ -14,10 +11,12 @@ Route::get('/', function () {
     return view('welcome', compact('featuredCourses', 'featuredBooks', 'latestPosts'));
 });
 
-Route::get('/courses', function () {
-    $courses = Course::latest()->paginate(12);
-    return view('courses.index', compact('courses'));
-})->name('courses.index');
+Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
+Route::get('/courses/{slug}', [CourseController::class, 'show'])->name('courses.show');
+
+Route::middleware('auth')->group(function () {
+    Route::post('/enroll', [EnrollmentController::class, 'store'])->name('enroll.store');
+});
 
 Route::get('/books', function () {
     $books = Book::latest()->paginate(12);

@@ -114,7 +114,7 @@
                 </div>
                 <div class="flex items-center justify-between">
                     <span class="text-brand-teal font-extrabold text-lg">Free</span>
-                    <a href="#" class="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-brand-gold group-hover:text-white transition-all shadow-inner">
+                    <a href="{{ route('courses.show', $course->slug) }}" class="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-brand-gold group-hover:text-white transition-all shadow-inner">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
