@@ -172,7 +172,7 @@
                             {{ $mainPost->title }}
                         </h3>
                         <p class="text-slate-500 mb-8 line-clamp-3 leading-relaxed">
-                            {{ Str::limit(strip_tags($mainPost->content), 200) }}
+                            {!! nl2br(e($mainPost->description ?? Str::limit(strip_tags($mainPost->content), 200))) !!}
                         </p>
                         <div class="mt-auto pt-8 border-t border-slate-50 flex items-center justify-between">
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ $mainPost->created_at->format('M d, Y') }}</span>

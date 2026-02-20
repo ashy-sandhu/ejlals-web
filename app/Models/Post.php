@@ -12,6 +12,7 @@ class Post extends Model
         'image',
         'gallery',
         'content',
+        'description',
         'category_id',
         'is_featured',
         'seo_meta'

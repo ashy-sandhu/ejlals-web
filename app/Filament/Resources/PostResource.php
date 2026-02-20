@@ -42,6 +42,12 @@ class PostResource extends Resource
                                             ->required()
                                             ->columnSpanFull()
                                             ->fileAttachmentsDirectory('posts/attachments'),
+                                        Forms\Components\Textarea::make('description')
+                                            ->label('Card Description (Homepage)')
+                                            ->helperText('This text appears on the homepage cards. Supports line breaks.')
+                                            ->rows(3)
+                                            ->maxLength(300)
+                                            ->columnSpanFull(),
                                     ])->columns(2),
 
                                 Forms\Components\Section::make('SEO Analysis')
