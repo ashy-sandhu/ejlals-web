@@ -43,7 +43,7 @@
     <div class="relative group">
         <div class="absolute -inset-4 bg-gradient-to-tr from-brand-teal/20 to-brand-gold/20 rounded-[3rem] blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500"></div>
         <div class="relative bg-white rounded-[2.5rem] aspect-square flex items-center justify-center overflow-hidden border border-gray-100 shadow-sm">
-            <img src="{{ asset('storage/hero-illustration.svg') }}" alt="Sacred Spiritual Learning" class="w-full h-full object-cover">
+            <img src="{{ asset('storage/hero-illustration-v1.jpg') }}" alt="Sacred Spiritual Learning" class="w-full h-full object-cover">
         </div>
     </div>
 </section>
@@ -52,7 +52,7 @@
 <section class="bg-white py-20 px-6 border-y border-gray-50">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div class="relative bg-white rounded-3xl aspect-[1.4/1] flex items-center justify-center overflow-hidden border border-gray-100 shadow-sm">
-             <img src="{{ asset('storage/about-illustration.svg') }}" alt="About Ejlals Academy" class="w-full h-full object-cover">
+             <img src="{{ asset('storage/about-illustration-v1.jpg') }}" alt="About Ejlals Academy" class="w-full h-full object-cover">
         </div>
         <div>
             <h2 class="text-4xl font-bold mb-6 text-slate-800 tracking-tight">Who We Are</h2>

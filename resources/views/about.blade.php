@@ -18,7 +18,7 @@
             </div>
             <div class="relative">
                 <div class="absolute -inset-4 bg-brand-teal/5 rounded-[3rem] blur-2xl"></div>
-                <img src="{{ asset('storage/about-illustration.webp') }}" alt="Ejlals Story" class="relative rounded-[2.5rem] border border-gray-100 shadow-sm w-full h-full object-cover aspect-[4/3]">
+                <img src="{{ asset('storage/about-illustration-v1.jpg') }}" alt="Ejlals Story" class="relative rounded-[2.5rem] border border-gray-100 shadow-sm w-full h-full object-cover aspect-[4/3]">
             </div>
         </div>
 
