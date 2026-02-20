@@ -48,8 +48,8 @@
 
                 <!-- Article Content -->
                 <div class="bg-white rounded-[2.5rem] p-8 md:p-14 shadow-sm border border-slate-100 mb-12">
-                    <article class="prose prose-slate prose-lg max-w-none 
-                        prose-headings:text-slate-900 prose-headings:font-extrabold prose-headings:tracking-tight
+                    <article class="prose prose-slate prose-lg max-w-none font-serif
+                        prose-headings:text-slate-900 prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:font-sans
                         prose-p:text-slate-600 prose-p:leading-[1.9] prose-p:mb-8
                         prose-a:text-brand-teal prose-a:font-bold prose-strong:text-slate-900
                         prose-blockquote:border-l-4 prose-blockquote:border-brand-gold prose-blockquote:bg-slate-50 prose-blockquote:p-8 prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:text-slate-700">
