@@ -23,7 +23,7 @@
         <meta property="twitter:description" content="@yield('meta_description', 'Ejlals Academy: A premium educational platform focused on delivering clear, reliable, and easy-to-understand Islamic knowledge.')">
         <meta property="twitter:image" content="@yield('meta_image', asset('storage/home-page-logo.svg'))">
 
-        <link rel="icon" type="image/svg+xml" href="{{ asset('storage/home-page-logo.svg') }}">
+        <link rel="icon" type="image/svg+xml" href="{{ asset('storage/favicon.svg') }}">
 
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
