@@ -34,7 +34,7 @@
             <div class="max-w-7xl mx-auto flex items-center justify-between">
                 <!-- Logo -->
                 <a href="/" class="flex items-center gap-2">
-                    <img src="{{ asset('storage/home-page-logo.svg') }}" alt="Ejlals Logo" class="h-16 w-40 object-contain">
+                    <img src="{{ asset('storage/home-page-logo.svg') }}" alt="Ejlals Logo" class="h-14 md:h-16 w-auto object-contain">
                 </a>
 
                 <!-- Nav Links -->
@@ -83,7 +83,7 @@
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center gap-2 mb-4">
-                        <img src="{{ asset('storage/home-page-logo.svg') }}" alt="Ejlals Logo" class="h-12 w-30 object-contain">
+                        <img src="{{ asset('storage/home-page-logo.svg') }}" alt="Ejlals Logo" class="h-10 md:h-12 w-auto object-contain">
                     </div>
                     <p class="text-gray-500 text-sm leading-relaxed">
                         An educational platform focused on delivering clear, reliable, and easy-to-understand information.
