@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>@yield('title', config('app.name', 'Ejlals Academy'))</title>
+        
         <!-- Primary Meta Tags -->
         <meta name="title" content="@yield('title', config('app.name', 'Ejlals Academy'))">
         <meta name="description" content="@yield('meta_description', 'Ejlals Academy: A premium educational platform focused on delivering clear, reliable, and easy-to-understand Islamic knowledge.')">
@@ -73,8 +75,7 @@
                         </div>
                     @endif
                     
-                    <!-- Mobile Menu Icon -->
-                    <button class="md:hidden">
+                    <button class="md:hidden" aria-label="Toggle Mobile Menu">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
                 </div>
@@ -98,7 +99,7 @@
                 </div>
                 
                 <div>
-                    <h4 class="font-bold text-sm mb-4 uppercase tracking-wider">Quick Links</h4>
+                    <h3 class="font-bold text-sm mb-4 uppercase tracking-wider">Quick Links</h3>
                     <ul class="text-gray-500 text-sm space-y-2">
                         <li><a href="{{ route('courses.index') }}" class="hover:text-brand-teal transition-colors">All Courses</a></li>
                         <li><a href="{{ route('books.index') }}" class="hover:text-brand-teal transition-colors">Library</a></li>
@@ -107,7 +108,7 @@
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-sm mb-4 uppercase tracking-wider">Company</h4>
+                    <h3 class="font-bold text-sm mb-4 uppercase tracking-wider">Company</h3>
                     <ul class="text-gray-500 text-sm space-y-2">
                         <li><a href="{{ route('about') }}" class="hover:text-brand-teal transition-colors">About Us</a></li>
                         <li><a href="{{ route('contact') }}" class="hover:text-brand-teal transition-colors">Contact</a></li>
@@ -116,7 +117,7 @@
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-sm mb-4 uppercase tracking-wider">Legal</h4>
+                    <h3 class="font-bold text-sm mb-4 uppercase tracking-wider">Legal</h3>
                     <ul class="text-gray-500 text-sm space-y-2">
                         <li><a href="{{ route('privacy') }}" class="hover:text-brand-teal transition-colors">Privacy Policy</a></li>
                         <li><a href="{{ route('terms') }}" class="hover:text-brand-teal transition-colors">Terms of Use</a></li>
