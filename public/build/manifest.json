@@ -1,6 +1,26 @@
 {
+  "public/fonts/outfit/outfit-300.ttf": {
+    "file": "assets/outfit-300-ajyk65IQ.ttf",
+    "src": "public/fonts/outfit/outfit-300.ttf"
+  },
+  "public/fonts/outfit/outfit-400.ttf": {
+    "file": "assets/outfit-400-D5nSJVYk.ttf",
+    "src": "public/fonts/outfit/outfit-400.ttf"
+  },
+  "public/fonts/outfit/outfit-500.ttf": {
+    "file": "assets/outfit-500-Bi1G6hPu.ttf",
+    "src": "public/fonts/outfit/outfit-500.ttf"
+  },
+  "public/fonts/outfit/outfit-600.ttf": {
+    "file": "assets/outfit-600-vtIXyqOw.ttf",
+    "src": "public/fonts/outfit/outfit-600.ttf"
+  },
+  "public/fonts/outfit/outfit-700.ttf": {
+    "file": "assets/outfit-700-CRvqtRCq.ttf",
+    "src": "public/fonts/outfit/outfit-700.ttf"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-1QvNgxTP.css",
+    "file": "assets/app-hmW2FxGo.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
