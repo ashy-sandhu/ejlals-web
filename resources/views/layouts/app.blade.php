@@ -14,14 +14,14 @@
         <meta property="og:url" content="{{ url()->current() }}">
         <meta property="og:title" content="@yield('title', config('app.name', 'Ejlals Academy'))">
         <meta property="og:description" content="@yield('meta_description', 'Ejlals Academy: A premium educational platform focused on delivering clear, reliable, and easy-to-understand Islamic knowledge.')">
-        <meta property="og:image" content="@yield('meta_image', asset('storage/home-page-logo.svg'))">
+        <meta property="og:image" content="@yield('meta_image', asset('storage/ejlals-horizontal-v1.svg'))">
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="{{ url()->current() }}">
         <meta property="twitter:title" content="@yield('title', config('app.name', 'Ejlals Academy'))">
         <meta property="twitter:description" content="@yield('meta_description', 'Ejlals Academy: A premium educational platform focused on delivering clear, reliable, and easy-to-understand Islamic knowledge.')">
-        <meta property="twitter:image" content="@yield('meta_image', asset('storage/home-page-logo.svg'))">
+        <meta property="twitter:image" content="@yield('meta_image', asset('storage/ejlals-horizontal-v1.svg'))">
 
         <link rel="icon" type="image/svg+xml" href="{{ asset('storage/favicon.svg') }}">
 
@@ -34,7 +34,7 @@
             <div class="max-w-7xl mx-auto flex items-center justify-between">
                 <!-- Logo -->
                 <a href="/" class="flex items-center gap-2">
-                    <img src="{{ asset('storage/home-page-logo.svg') }}" alt="Ejlals Logo" class="h-12 md:h-14 w-auto min-h-[48px] object-contain">
+                    <img src="{{ asset('storage/ejlals-horizontal-v1.svg') }}" alt="Ejlals Logo" class="h-12 md:h-14 w-auto min-h-[48px] object-contain">
                 </a>
 
                 <!-- Nav Links -->
