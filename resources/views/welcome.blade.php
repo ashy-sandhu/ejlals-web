@@ -129,28 +129,77 @@
 </section>
 
 <!-- Articles Section -->
-<section class="bg-gray-50 py-24 px-6">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-        <div>
-            <h2 class="text-3xl font-bold mb-8 text-slate-800">Popular & Latest Articles</h2>
-            <div class="space-y-6">
-                @forelse($latestPosts as $post)
-                <a href="#" class="block p-4 border-b border-gray-200 hover:text-brand-teal flex items-center justify-between group">
-                    <span class="font-medium">{{ $post->title }}</span>
-                    <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                </a>
+<section class="bg-white py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+                <span class="text-brand-teal font-bold text-xs uppercase tracking-[0.3em] mb-3 block">Library of Wisdom</span>
+                <h2 class="text-4xl font-bold text-slate-800 leading-tight">Featured Articles</h2>
+            </div>
+            <a href="{{ route('posts.index') }}" class="text-brand-teal font-bold hover:gap-2 transition-all flex items-center gap-1">
+                View All Articles
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <!-- Featured Article Column -->
+            <div class="space-y-8">
+                @forelse($featuredPosts as $post)
+                <div class="group cursor-pointer">
+                    <div class="relative aspect-[16/9] rounded-[2.5rem] overflow-hidden bg-slate-100 mb-6 border border-slate-100 shadow-sm">
+                        @if($post->image)
+                            <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        @else
+                            <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5 flex items-center justify-center">
+                                <svg class="w-12 h-12 text-brand-teal/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg>
+                            </div>
+                        @endif
+                        <div class="absolute top-6 left-6">
+                            <span class="bg-brand-gold text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">Featured</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 group-hover:text-brand-teal transition-colors mb-3">{{ $post->title }}</h3>
+                    <p class="text-slate-500 line-clamp-2 leading-relaxed mb-4">{{ Str::limit(strip_tags($post->content), 150) }}</p>
+                    <a href="#" class="text-sm font-bold text-brand-teal flex items-center gap-1">Read Article <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+                </div>
                 @empty
-                <p class="text-gray-400 italic">No articles published yet.</p>
+                <p class="text-slate-400 italic">No featured articles available.</p>
                 @endforelse
             </div>
-            <div class="mt-10">
-                <a href="#" class="bg-brand-teal text-white px-8 py-3 rounded-xl font-bold hover:bg-brand-teal/90 transition-all inline-block">
-                    View All Articles
-                </a>
+
+            <!-- Side column: Latest Articles -->
+            <div>
+                <h4 class="text-lg font-bold text-slate-400 uppercase tracking-widest mb-8 border-b border-slate-100 pb-4">Most Recent</h4>
+                <div class="space-y-10">
+                    @forelse($latestPosts as $post)
+                    <div class="flex gap-6 group cursor-pointer">
+                        <div class="w-24 h-24 shrink-0 rounded-2xl overflow-hidden bg-slate-50 border border-slate-100">
+                             @if($post->image)
+                                <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
+                            @else
+                                <div class="w-full h-full flex items-center justify-center text-slate-200">
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg>
+                                </div>
+                            @endif
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-brand-teal uppercase mb-2">{{ $post->category->name ?? 'Article' }}</p>
+                            <h5 class="text-lg font-bold text-slate-800 group-hover:text-brand-teal transition-colors mb-2 line-clamp-2">{{ $post->title }}</h5>
+                            <span class="text-xs text-slate-400">{{ $post->created_at->format('M d, Y') }}</span>
+                        </div>
+                    </div>
+                    @empty
+                    <p class="text-slate-400 italic">No articles found.</p>
+                    @endforelse
+                </div>
+                
+                <div class="mt-12 p-8 rounded-[2rem] bg-slate-50 border border-slate-100">
+                    <h5 class="font-bold text-slate-800 mb-2">Want to learn more?</h5>
+                    <p class="text-sm text-slate-500 mb-6">Explore our full library of guides, research, and scholarly articles.</p>
+                    <a href="{{ route('posts.index') }}" class="inline-block bg-slate-900 text-white px-6 py-3 rounded-xl font-bold text-sm">Library Overview</a>
+                </div>
             </div>
-        </div>
-        <div class="bg-white p-4 rounded-3xl shadow-sm border border-gray-100 flex items-center justify-center aspect-[1.2/1] overflow-hidden">
-             <img src="{{ asset('storage/articles-illustration.webp') }}" alt="Islamic Articles" class="w-full h-full object-cover">
         </div>
     </div>
 </section>

@@ -12,9 +12,15 @@ use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     $featuredCourses = Course::where('is_featured', true)->take(3)->get();
     $featuredBooks = Book::where('is_featured', true)->take(3)->get();
-    $latestPosts = Post::orderBy('created_at', 'desc')->take(4)->get();
+    
+    // Fetch 3 featured posts specifically
+    $featuredPosts = Post::where('is_featured', true)->latest()->take(3)->get();
+    
+    // Fetch 3 latest posts that ARE NOT in the featured list (to avoid duplicates)
+    $featuredIds = $featuredPosts->pluck('id');
+    $latestPosts = Post::whereNotIn('id', $featuredIds)->latest()->take(3)->get();
 
-    return view('welcome', compact('featuredCourses', 'featuredBooks', 'latestPosts'));
+    return view('welcome', compact('featuredCourses', 'featuredBooks', 'featuredPosts', 'latestPosts'));
 });
 
 // Authentication Routes

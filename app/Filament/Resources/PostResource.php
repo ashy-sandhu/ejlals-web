@@ -23,21 +23,46 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('content')
-                    ->columnSpanFull(),
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name', fn($query) => $query->where('type', 'post'))
-                    ->required()
-                    ->native(false),
-                Forms\Components\Toggle::make('is_featured')
-                    ->label('Featured on Homepage')
-                    ->required(),
+                Forms\Components\Section::make('Content')
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('slug')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\Textarea::make('content')
+                            ->columnSpanFull(),
+                    ])->columns(2),
+
+                Forms\Components\Section::make('Media')
+                    ->description('Upload images for this post')
+                    ->schema([
+                        Forms\Components\FileUpload::make('image')
+                            ->label('Featured Image')
+                            ->image()
+                            ->directory('posts/featured')
+                            ->columnSpanFull(),
+                        Forms\Components\FileUpload::make('gallery')
+                            ->label('Image Gallery')
+                            ->image()
+                            ->multiple()
+                            ->reorderable()
+                            ->directory('posts/gallery')
+                            ->columnSpanFull(),
+                    ])->columns(1),
+
+                Forms\Components\Section::make('Settings')
+                    ->schema([
+                        Forms\Components\Select::make('category_id')
+                            ->relationship('category', 'name', fn($query) => $query->where('type', 'post'))
+                            ->required()
+                            ->native(false),
+                        Forms\Components\Toggle::make('is_featured')
+                            ->label('Featured on Homepage')
+                            ->required(),
+                    ])->columns(2),
+
                 Forms\Components\Section::make('SEO')
                     ->schema([
                         Forms\Components\KeyValue::make('seo_meta')
@@ -50,14 +75,16 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('image')
+                    ->circular(),
                 Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('category_id')
-                    ->numeric()
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('category.name')
+                    ->label('Category')
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_featured')
+                    ->label('Featured')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

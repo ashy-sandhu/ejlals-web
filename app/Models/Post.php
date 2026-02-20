@@ -9,6 +9,8 @@ class Post extends Model
     protected $fillable = [
         'title',
         'slug',
+        'image',
+        'gallery',
         'content',
         'category_id',
         'is_featured',
@@ -17,6 +19,7 @@ class Post extends Model
 
     protected $casts = [
         'is_featured' => 'boolean',
+        'gallery' => 'array',
         'seo_meta' => 'json',
     ];
 
