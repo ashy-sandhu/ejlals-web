@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('title', $post->title . ' - Ejlals Academy')
-
-@extends('layouts.app')
-
 @section('title', $post->title . ' - Academy Press')
 
 @section('content')
