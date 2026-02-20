@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('title', $post->title . ' - Academy Press')
+@section('meta_description', Str::limit(strip_tags($post->content), 160))
+@if($post->image)
+    @section('meta_image', Storage::url($post->image))
+@endif
 
 @section('content')
 <div class="bg-slate-50 min-h-screen">

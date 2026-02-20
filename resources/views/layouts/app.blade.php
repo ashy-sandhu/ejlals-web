@@ -3,7 +3,23 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>@yield('title', config('app.name', 'Ejlals Academy'))</title>
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="@yield('title', config('app.name', 'Ejlals Academy'))">
+        <meta name="description" content="@yield('meta_description', 'Ejlals Academy: A premium educational platform focused on delivering clear, reliable, and easy-to-understand Islamic knowledge.')">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:title" content="@yield('title', config('app.name', 'Ejlals Academy'))">
+        <meta property="og:description" content="@yield('meta_description', 'Ejlals Academy: A premium educational platform focused on delivering clear, reliable, and easy-to-understand Islamic knowledge.')">
+        <meta property="og:image" content="@yield('meta_image', asset('storage/home-page-logo.svg'))">
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="{{ url()->current() }}">
+        <meta property="twitter:title" content="@yield('title', config('app.name', 'Ejlals Academy'))">
+        <meta property="twitter:description" content="@yield('meta_description', 'Ejlals Academy: A premium educational platform focused on delivering clear, reliable, and easy-to-understand Islamic knowledge.')">
+        <meta property="twitter:image" content="@yield('meta_image', asset('storage/home-page-logo.svg'))">
 
         <!-- Fonts (Google Fonts: Outfit / Inter) -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
