@@ -34,7 +34,7 @@
             <div class="max-w-7xl mx-auto flex items-center justify-between">
                 <!-- Logo -->
                 <a href="/" class="flex items-center gap-2">
-                    <img src="{{ asset('storage/home-page-logo.svg') }}" alt="Ejlals Logo" class="h-14 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('storage/home-page-logo.svg') }}" alt="Ejlals Logo" class="h-12 md:h-14 w-auto min-h-[48px] object-contain">
                 </a>
 
                 <!-- Nav Links -->
