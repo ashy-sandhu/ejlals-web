@@ -117,6 +117,13 @@ class PostResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ReplicateAction::make()
+                    ->label('Duplicate')
+                    ->icon('heroicon-o-document-duplicate')
+                    ->before(function (Post $record) {
+                        $record->title = $record->title . ' (Copy)';
+                        $record->slug = $record->slug . '-copy';
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
