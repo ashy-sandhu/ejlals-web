@@ -8,10 +8,14 @@ class Book extends Model
 {
     protected $fillable = [
         'title',
+        'slug',
         'description',
         'category_id',
         'is_featured',
-        'media_path',
+        'image',
+        'download_type',
+        'download_file',
+        'download_link',
         'seo_meta'
     ];
 

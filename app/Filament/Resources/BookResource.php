@@ -23,29 +23,85 @@ class BookResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('description')
-                    ->columnSpanFull(),
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name', fn($query) => $query->where('type', 'book'))
-                    ->required()
-                    ->native(false),
-                Forms\Components\Toggle::make('is_featured')
-                    ->label('Featured on Homepage')
-                    ->required(),
-                Forms\Components\Section::make('SEO')
+                Forms\Components\Grid::make(12)
                     ->schema([
-                        Forms\Components\KeyValue::make('seo_meta')
-                            ->label('Meta Tags'),
-                    ])->collapsible(),
+                        // Left: Main Content (8 Columns)
+                        Forms\Components\Group::make()
+                            ->schema([
+                                Forms\Components\Section::make()
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title')
+                                            ->label('Book Title')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('slug')
+                                            ->label('Permalink')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\Textarea::make('description')
+                                            ->required()
+                                            ->rows(5)
+                                            ->columnSpanFull(),
+                                    ])->columns(2),
 
-                Forms\Components\FileUpload::make('image_path')
-                    ->image(),
+                                Forms\Components\Section::make('Download Options')
+                                    ->description('Configure how students retrieve this book')
+                                    ->schema([
+                                        Forms\Components\Select::make('download_type')
+                                            ->options([
+                                                'file' => 'Upload PDF/File',
+                                                'link' => 'External Link (URL)',
+                                            ])
+                                            ->default('link')
+                                            ->required()
+                                            ->native(false)
+                                            ->live(),
+
+                                        Forms\Components\FileUpload::make('download_file')
+                                            ->label('Select File')
+                                            ->directory('books/files')
+                                            ->visible(fn (Forms\Get $get) => $get('download_type') === 'file')
+                                            ->required(fn (Forms\Get $get) => $get('download_type') === 'file'),
+
+                                        Forms\Components\TextInput::make('download_link')
+                                            ->label('Target URL')
+                                            ->placeholder('https://example.com/book-access')
+                                            ->url()
+                                            ->visible(fn (Forms\Get $get) => $get('download_type') === 'link')
+                                            ->required(fn (Forms\Get $get) => $get('download_type') === 'link'),
+                                    ])->columns(1),
+                            ])->columnSpan(8),
+
+                        // Right: Sidebar (4 Columns)
+                        Forms\Components\Group::make()
+                            ->schema([
+                                Forms\Components\Section::make('Publishing')
+                                    ->schema([
+                                        Forms\Components\Select::make('category_id')
+                                            ->label('Category')
+                                            ->relationship('category', 'name', fn($query) => $query->where('type', 'book'))
+                                            ->required()
+                                            ->native(false),
+                                        Forms\Components\Toggle::make('is_featured')
+                                            ->label('Featured on Homepage')
+                                            ->required(),
+                                    ]),
+
+                                Forms\Components\Section::make('Book Cover')
+                                    ->schema([
+                                        Forms\Components\FileUpload::make('image')
+                                            ->label(false)
+                                            ->image()
+                                            ->directory('books/covers'),
+                                    ]),
+
+                                Forms\Components\Section::make('SEO Analysis')
+                                    ->schema([
+                                        Forms\Components\KeyValue::make('seo_meta')
+                                            ->label('Meta Tags'),
+                                    ])->collapsible()->collapsed(),
+                            ])->columnSpan(4),
+                    ]),
             ]);
     }
 
@@ -62,7 +118,7 @@ class BookResource extends Resource
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_featured')
                     ->boolean(),
-                Tables\Columns\ImageColumn::make('image_path'),
+                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
