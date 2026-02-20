@@ -23,13 +23,12 @@ class PostController extends Controller
     {
         $post = Post::with(['category', 'tags'])->where('slug', $slug)->firstOrFail();
         
-        // Fetch related posts from same category
-        $relatedPosts = Post::where('category_id', $post->category_id)
-            ->where('id', '!=', $post->id)
-            ->latest()
-            ->take(3)
-            ->get();
+        // Fetch categories for sidebar
+        $categories = \App\Models\Category::where('type', 'post')->withCount('posts')->get();
 
-        return view('posts.show', compact('post', 'relatedPosts'));
+        // Fetch recent posts for sidebar
+        $recentPosts = Post::where('id', '!=', $post->id)->latest()->take(5)->get();
+
+        return view('posts.show', compact('post', 'recentPosts', 'categories'));
     }
 }
