@@ -31,8 +31,10 @@ class PostResource extends Resource
                         Forms\Components\TextInput::make('slug')
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\Textarea::make('content')
-                            ->columnSpanFull(),
+                        Forms\Components\RichEditor::make('content')
+                            ->required()
+                            ->columnSpanFull()
+                            ->fileAttachmentsDirectory('posts/attachments'),
                     ])->columns(2),
 
                 Forms\Components\Section::make('Media')
