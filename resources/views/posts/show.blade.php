@@ -31,16 +31,16 @@
         </div>
     </header>
 
-    <!-- 3:1 Grid Layout -->
+    <!-- Corrected 2-Column Grid (3:1 Ratio) -->
     <div class="max-w-7xl mx-auto px-6 py-12">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            <!-- Left: Main Content (3/4 width) -->
-            <div class="lg:col-span-3 space-y-12">
+            <!-- Left: Main Content (Ratio 3/4 -> 9 Columns) -->
+            <div class="lg:col-span-9 space-y-12">
                 <!-- Constrained Image -->
                 @if($post->image)
                 <div class="rounded-[2.5rem] overflow-hidden shadow-sm border border-slate-100 bg-white p-2">
-                    <div class="rounded-[2.2rem] overflow-hidden aspect-[21/9] max-h-[400px]">
+                    <div class="rounded-[2.2rem] overflow-hidden aspect-[21/9] max-h-[450px]">
                         <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -86,11 +86,11 @@
                 </div>
             </div>
 
-            <!-- Right: Sidebar (1/4 width) -->
-            <aside class="lg:col-span-1 space-y-8 lg:sticky lg:top-8">
+            <!-- Right: Sidebar (Ratio 1/4 -> 3 Columns) -->
+            <aside class="lg:col-span-3 space-y-8 lg:sticky lg:top-8">
                 
                 <!-- Compact Search -->
-                <div class="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
+                <div class="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm">
                     <h5 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-6">Library Index</h5>
                     <div class="relative">
                         <input type="text" placeholder="Search..." class="w-full bg-slate-50 border-none rounded-xl py-3 pl-4 pr-10 text-xs focus:ring-1 focus:ring-brand-teal transition-all">
@@ -101,8 +101,8 @@
                 </div>
 
                 <!-- Recent Wisdom -->
-                <div class="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
-                    <h5 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-8">Related</h5>
+                <div class="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm">
+                    <h5 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-8">Related Wisdom</h5>
                     <div class="space-y-8">
                         @foreach($recentPosts as $recent)
                         <a href="{{ route('posts.show', $recent->slug) }}" class="group block">
@@ -114,11 +114,11 @@
                 </div>
 
                 <!-- Categories -->
-                <div class="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
+                <div class="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm">
                     <h5 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-6">Subject Area</h5>
                     <div class="flex flex-col gap-2">
                         @foreach($categories as $category)
-                        <a href="#" class="flex items-center justify-between px-4 py-2 rounded-lg bg-slate-50 hover:bg-brand-teal group transition-all">
+                        <a href="#" class="flex items-center justify-between px-4 py-3 rounded-lg bg-slate-50 hover:bg-brand-teal group transition-all">
                             <span class="text-[11px] font-bold text-slate-500 group-hover:text-white">{{ $category->name }}</span>
                             <span class="text-[9px] font-bold text-slate-300 group-hover:text-white/40">{{ $category->posts_count }}</span>
                         </a>
@@ -127,11 +127,11 @@
                 </div>
 
                 <!-- CTA -->
-                <div class="bg-slate-900 rounded-[2rem] p-8 text-white relative overflow-hidden group">
+                <div class="bg-slate-900 rounded-[2rem] p-10 text-white relative overflow-hidden group">
                     <div class="absolute inset-0 bg-brand-gold/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <h5 class="text-brand-gold font-bold text-[9px] uppercase tracking-[0.3em] mb-4 relative z-10">Academy Admission</h5>
                     <p class="text-xs text-white/70 leading-relaxed mb-6 relative z-10">Expand your knowledge with our verified online courses.</p>
-                    <a href="{{ route('courses.index') }}" class="inline-block px-6 py-3 bg-brand-teal text-white text-[10px] font-bold uppercase rounded-xl tracking-widest relative z-10 hover:bg-white hover:text-slate-900 transition-all">View All</a>
+                    <a href="{{ route('courses.index') }}" class="inline-block px-6 py-3 bg-brand-teal text-white text-[10px] font-bold uppercase rounded-xl tracking-widest relative z-10 hover:bg-white hover:text-slate-900 transition-all">Enroll Now</a>
                 </div>
 
             </aside>
