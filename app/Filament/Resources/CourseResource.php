@@ -85,8 +85,25 @@ class CourseResource extends Resource
                     ->label('Duplicate')
                     ->icon('heroicon-o-document-duplicate')
                     ->before(function (Course $record) {
-                        $record->title = $record->title . ' (Copy)';
-                        $record->slug = $record->slug . '-copy';
+                        $count = 1;
+                        $originalSlug = $record->slug;
+                        $originalTitle = $record->title;
+
+                        // Clean up existing copy suffixes to avoid "-copy-copy"
+                        $cleanSlug = preg_replace('/-copy(-\d+)?$/', '', $originalSlug);
+                        $cleanTitle = preg_replace('/ \(Copy( \d+)?\)$/', '', $originalTitle);
+
+                        $newSlug = $cleanSlug . '-copy';
+                        $newTitle = $cleanTitle . ' (Copy)';
+
+                        while (Course::where('slug', $newSlug)->exists()) {
+                            $count++;
+                            $newSlug = $cleanSlug . "-copy-{$count}";
+                            $newTitle = $cleanTitle . " (Copy {$count})";
+                        }
+
+                        $record->slug = $newSlug;
+                        $record->title = $newTitle;
                     }),
             ])
             ->bulkActions([
