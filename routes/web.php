@@ -8,6 +8,17 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Artisan;
+
+// Temporary Bridge to Sync Database (Will be removed after fix)
+Route::get('/bridge-sync-db-7739', function () {
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+        return "Database Synced Successfully!<br><pre>" . Artisan::output() . "</pre>";
+    } catch (\Exception $e) {
+        return "Sync Failed: " . $e->getMessage();
+    }
+});
 
 Route::get('/', function () {
     $featuredCourses = Course::where('is_featured', true)->take(3)->get();
