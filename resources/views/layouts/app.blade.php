@@ -23,18 +23,10 @@
         <meta property="twitter:description" content="@yield('meta_description', 'Ejlals Academy: A premium educational platform focused on delivering clear, reliable, and easy-to-understand Islamic knowledge.')">
         <meta property="twitter:image" content="@yield('meta_image', asset('storage/home-page-logo.svg'))">
 
-        <!-- Fonts (Google Fonts: Outfit / Inter) -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="icon" type="image/svg+xml" href="{{ asset('storage/home-page-logo.svg') }}">
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        
-        <style>
-            body { font-family: 'Outfit', sans-serif; }
-        </style>
     </head>
     <body class="bg-[#FDFDFC] text-[#1b1b18] antialiased pt-20">
         <!-- Smart "Drawer" Navbar -->
