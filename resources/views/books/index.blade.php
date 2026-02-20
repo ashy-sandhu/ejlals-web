@@ -29,7 +29,7 @@
                     <p class="text-slate-400 text-xs uppercase tracking-widest font-bold mb-4">By Ejlals Academy</p>
                     
                     @if($book->download_type === 'file' && $book->download_file)
-                        <a href="{{ Storage::url($book->download_file) }}" download class="mt-auto bg-brand-teal text-white py-3 rounded-xl text-sm font-bold text-center hover:bg-slate-900 transition-all flex items-center justify-center gap-2">
+                        <a href="{{ Storage::url($book->download_file) }}" download="{{ $book->title }}" class="mt-auto bg-brand-teal text-white py-3 rounded-xl text-sm font-bold text-center hover:bg-slate-900 transition-all flex items-center justify-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                             Download PDF
                         </a>

@@ -61,6 +61,7 @@ class BookResource extends Resource
                                             ->label('Select File')
                                             ->directory('books/files')
                                             ->maxSize(102400)
+                                            ->preserveFilenames()
                                             ->visible(fn (Forms\Get $get) => $get('download_type') === 'file')
                                             ->required(fn (Forms\Get $get) => $get('download_type') === 'file'),
 
