@@ -5,7 +5,7 @@
 @section('content')
 <div class="bg-slate-50 min-h-screen">
     <!-- Sophisticated, Compact Header -->
-    <header class="bg-white border-b border-slate-100 pt-24 pb-12 relative overflow-hidden">
+    <header class="bg-white border-b border-slate-100 pt-6 pb-3 relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="flex items-center gap-3 text-brand-teal font-bold text-[11px] uppercase tracking-[0.4em] mb-6">
@@ -31,7 +31,7 @@
         </div>
     </header>
 
-    <!-- Corrected 2-Column Grid (3:1 Ratio) -->
+    <!-- Strict 2-Column Grid (3:1 Ratio) -->
     <div class="max-w-7xl mx-auto px-6 py-12">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
@@ -48,10 +48,10 @@
 
                 <!-- Article Content -->
                 <div class="bg-white rounded-[2.5rem] p-8 md:p-14 shadow-sm border border-slate-100 mb-12">
-                    <article class="prose prose-slate prose-lg max-w-none font-serif
-                        prose-headings:text-slate-900 prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:font-sans
-                        prose-p:text-slate-600 prose-p:leading-[1.9] prose-p:mb-8
-                        prose-a:text-brand-teal prose-a:font-bold prose-strong:text-slate-900
+                    <article class="prose prose-slate max-w-none font-serif
+                        prose-headings:text-slate-900 prose-headings:font-bold prose-headings:tracking-tight prose-headings:font-sans
+                        prose-p:text-slate-600 prose-p:leading-[1.8] prose-p:mb-6 prose-p:text-[1.05rem]
+                        prose-a:text-brand-teal prose-a:font-bold prose-strong:text-slate-900 prose-strong:font-bold
                         prose-blockquote:border-l-4 prose-blockquote:border-brand-gold prose-blockquote:bg-slate-50 prose-blockquote:p-8 prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:text-slate-700">
                         {!! $post->content !!}
                     </article>
