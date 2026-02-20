@@ -18,9 +18,9 @@
             body { font-family: 'Outfit', sans-serif; }
         </style>
     </head>
-    <body class="bg-[#FDFDFC] text-[#1b1b18] antialiased">
-        <!-- Sticky Navbar -->
-        <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-3">
+    <body class="bg-[#FDFDFC] text-[#1b1b18] antialiased pt-20">
+        <!-- Smart "Drawer" Navbar -->
+        <nav id="main-navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-3 transition-transform duration-500 ease-in-out">
             <div class="max-w-7xl mx-auto flex items-center justify-between">
                 <!-- Logo -->
                 <a href="/" class="flex items-center gap-2">
@@ -112,5 +112,24 @@
                 &copy; {{ date('Y') }} Ejlals Learning Horizon. All rights reserved.
             </div>
         </footer>
+
+        <script>
+            let lastScrollTop = 0;
+            const navbar = document.getElementById('main-navbar');
+            
+            window.addEventListener('scroll', () => {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling down - hide
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up - show
+                    navbar.style.transform = 'translateY(0)';
+                }
+                
+                lastScrollTop = Math.max(0, scrollTop);
+            });
+        </script>
     </body>
 </html>
