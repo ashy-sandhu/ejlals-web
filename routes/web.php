@@ -45,10 +45,10 @@ Route::get('/books', function () {
     return view('books.index', compact('books'));
 })->name('books.index');
 
-Route::get('/posts', function () {
-    $posts = Post::latest()->paginate(10);
-    return view('posts.index', compact('posts'));
-})->name('posts.index');
+use App\Http\Controllers\PostController;
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.show');
 
 Route::get('/about', function () {
     return view('about');
