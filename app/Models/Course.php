@@ -15,11 +15,14 @@ class Course extends Model
         'category_id',
         'is_featured',
         'instructor_name',
+        'image',
+        'gallery',
         'seo_meta'
     ];
 
     protected $casts = [
         'is_featured' => 'boolean',
+        'gallery' => 'array',
         'seo_meta' => 'json',
     ];
 

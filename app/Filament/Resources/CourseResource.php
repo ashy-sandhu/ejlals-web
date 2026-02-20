@@ -23,28 +23,76 @@ class CourseResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('description')
-                    ->columnSpanFull(),
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name')
-                    ->required()
-                    ->native(false),
-                Forms\Components\Toggle::make('is_featured')
-                    ->label('Featured on Homepage')
-                    ->required(),
-                Forms\Components\TextInput::make('instructor_name')
-                    ->maxLength(255),
-                Forms\Components\Section::make('SEO')
+                Forms\Components\Grid::make(12)
                     ->schema([
-                        Forms\Components\KeyValue::make('seo_meta')
-                            ->label('Meta Tags'),
-                    ])->collapsible(),
+                        // Left: Main Content (8 Columns)
+                        Forms\Components\Group::make()
+                            ->schema([
+                                Forms\Components\Section::make()
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title')
+                                            ->label('Course Title')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('slug')
+                                            ->label('Permalink')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\RichEditor::make('description')
+                                            ->required()
+                                            ->columnSpanFull()
+                                            ->fileAttachmentsDirectory('courses/attachments'),
+                                    ])->columns(2),
+
+                                Forms\Components\Section::make('Instruction & Details')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('instructor_name')
+                                            ->label('Instructor/Scholar Name')
+                                            ->placeholder('e.g. Sheikh Abu Bakr')
+                                            ->maxLength(255),
+                                    ]),
+                            ])->columnSpan(8),
+
+                        // Right: Sidebar (4 Columns)
+                        Forms\Components\Group::make()
+                            ->schema([
+                                Forms\Components\Section::make('Publishing')
+                                    ->schema([
+                                        Forms\Components\Select::make('category_id')
+                                            ->label('Category')
+                                            ->relationship('category', 'name', fn($query) => $query->where('type', 'course'))
+                                            ->required()
+                                            ->native(false),
+                                        Forms\Components\Toggle::make('is_featured')
+                                            ->label('Featured on Homepage')
+                                            ->required(),
+                                    ]),
+
+                                Forms\Components\Section::make('Course Cover')
+                                    ->schema([
+                                        Forms\Components\FileUpload::make('image')
+                                            ->label(false)
+                                            ->image()
+                                            ->directory('courses/covers'),
+                                    ]),
+
+                                Forms\Components\Section::make('Gallery/Assets')
+                                    ->schema([
+                                        Forms\Components\FileUpload::make('gallery')
+                                            ->label(false)
+                                            ->image()
+                                            ->multiple()
+                                            ->reorderable()
+                                            ->directory('courses/gallery'),
+                                    ]),
+
+                                Forms\Components\Section::make('SEO Analysis')
+                                    ->schema([
+                                        Forms\Components\KeyValue::make('seo_meta')
+                                            ->label('Meta Tags'),
+                                    ])->collapsible()->collapsed(),
+                            ])->columnSpan(4),
+                    ]),
             ]);
     }
 
