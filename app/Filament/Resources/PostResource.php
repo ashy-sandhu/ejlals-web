@@ -23,53 +23,68 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Content')
+                Forms\Components\Grid::make(12)
                     ->schema([
-                        Forms\Components\TextInput::make('title')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('slug')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\RichEditor::make('content')
-                            ->required()
-                            ->columnSpanFull()
-                            ->fileAttachmentsDirectory('posts/attachments'),
-                    ])->columns(2),
+                        // Left: Main Content (8 Columns)
+                        Forms\Components\Group::make()
+                            ->schema([
+                                Forms\Components\Section::make()
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title')
+                                            ->label('Headline')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('slug')
+                                            ->label('Permalink')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\RichEditor::make('content')
+                                            ->required()
+                                            ->columnSpanFull()
+                                            ->fileAttachmentsDirectory('posts/attachments'),
+                                    ])->columns(2),
 
-                Forms\Components\Section::make('Media')
-                    ->description('Upload images for this post')
-                    ->schema([
-                        Forms\Components\FileUpload::make('image')
-                            ->label('Featured Image')
-                            ->image()
-                            ->directory('posts/featured')
-                            ->columnSpanFull(),
-                        Forms\Components\FileUpload::make('gallery')
-                            ->label('Image Gallery')
-                            ->image()
-                            ->multiple()
-                            ->reorderable()
-                            ->directory('posts/gallery')
-                            ->columnSpanFull(),
-                    ])->columns(1),
+                                Forms\Components\Section::make('SEO Analysis')
+                                    ->schema([
+                                        Forms\Components\KeyValue::make('seo_meta')
+                                            ->label('Meta Tags'),
+                                    ])->collapsible()->collapsed(),
+                            ])->columnSpan(8),
 
-                Forms\Components\Section::make('Settings')
-                    ->schema([
-                        Forms\Components\Select::make('category_id')
-                            ->relationship('category', 'name', fn($query) => $query->where('type', 'post'))
-                            ->required()
-                            ->native(false),
-                        Forms\Components\Toggle::make('is_featured')
-                            ->label('Featured on Homepage')
-                            ->required(),
-                    ])->columns(2),
+                        // Right: Sidebar (4 Columns)
+                        Forms\Components\Group::make()
+                            ->schema([
+                                Forms\Components\Section::make('Publishing')
+                                    ->schema([
+                                        Forms\Components\Select::make('category_id')
+                                            ->label('Category')
+                                            ->relationship('category', 'name', fn($query) => $query->where('type', 'post'))
+                                            ->required()
+                                            ->native(false),
+                                        Forms\Components\Toggle::make('is_featured')
+                                            ->label('Featured on Homepage')
+                                            ->required(),
+                                    ]),
 
-                Forms\Components\Section::make('SEO')
-                    ->schema([
-                        Forms\Components\KeyValue::make('seo_meta')
-                            ->label('Meta Tags'),
-                    ])->collapsible(),
+                                Forms\Components\Section::make('Featured Image')
+                                    ->schema([
+                                        Forms\Components\FileUpload::make('image')
+                                            ->label(false)
+                                            ->image()
+                                            ->directory('posts/featured'),
+                                    ]),
+
+                                Forms\Components\Section::make('Gallery')
+                                    ->schema([
+                                        Forms\Components\FileUpload::make('gallery')
+                                            ->label(false)
+                                            ->image()
+                                            ->multiple()
+                                            ->reorderable()
+                                            ->directory('posts/gallery'),
+                                    ]),
+                            ])->columnSpan(4),
+                    ]),
             ]);
     }
 
