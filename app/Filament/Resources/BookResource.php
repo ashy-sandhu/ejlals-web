@@ -60,6 +60,7 @@ class BookResource extends Resource
                                         Forms\Components\FileUpload::make('download_file')
                                             ->label('Select File')
                                             ->directory('books/files')
+                                            ->maxSize(102400)
                                             ->visible(fn (Forms\Get $get) => $get('download_type') === 'file')
                                             ->required(fn (Forms\Get $get) => $get('download_type') === 'file'),
 
