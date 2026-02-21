@@ -4,15 +4,32 @@
 
 @section('content')
 <div class="bg-slate-50 min-h-screen">
-    <!-- Sophisticated Header -->
-    <div class="bg-slate-900 pt-32 pb-48 px-6 relative overflow-hidden text-center">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-        <div class="max-w-7xl mx-auto relative z-10">
-            <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.5em] mb-6 block">Documenting the Journey</span>
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight">The Library</h1>
-            <p class="text-white/50 max-w-2xl mx-auto text-lg leading-relaxed">Reflections, research, and scholarly guides curated by the Ejlals Board.</p>
+<section class="relative bg-slate-900 overflow-hidden pt-32 pb-48 px-6 border-b border-white/5">
+    <!-- Mesh Gradient Layer -->
+    <div class="absolute inset-0 pointer-events-none opacity-50">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,#2C8793_0%,transparent_70%),radial-gradient(circle_at_70%_80%,#1a2e35_0%,transparent_80%)]"></div>
+    </div>
+    
+    <!-- Manuscript Grid Accents -->
+    <div class="absolute inset-0 pointer-events-none opacity-10">
+        <div class="absolute inset-0" style="background-image: linear-gradient(to right, #2C8793 1px, transparent 1px), linear-gradient(to bottom, #2C8793 1px, transparent 1px); background-size: 80px 80px;"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-transparent to-slate-900"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto text-center">
+        <div class="max-w-2xl mx-auto">
+            <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full border border-brand-teal/30 bg-brand-teal/5">
+                <span class="text-brand-teal text-[10px] font-bold uppercase tracking-[0.4em]">Wisdom Repository</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-[1.1] tracking-tight">
+                Academy <span class="text-brand-teal">Press</span>
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl leading-relaxed font-medium opacity-90">
+                Explore a distinguished collection of reflections, research, and scholarly guides curated by the Ejlals Board for the contemporary seeker.
+            </p>
         </div>
     </div>
+</section>
 
     <!-- Articles Grid -->
     <div class="max-w-7xl mx-auto px-6 -mt-24 pb-32">
