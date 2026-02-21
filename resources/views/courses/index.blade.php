@@ -3,13 +3,18 @@
 @section('title', 'All Courses - Ejlals Academy')
 
 @section('content')
-<section class="relative bg-slate-900 overflow-hidden pt-32 pb-24 px-6 border-b border-white/5">
+<section class="relative bg-slate-900 overflow-hidden pt-24 pb-24 px-6 border-b border-white/5">
     <!-- Mesh Gradient Layer -->
     <div class="absolute inset-0 pointer-events-none opacity-40">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,#EA7F26_0%,transparent_60%),radial-gradient(circle_at_10%_80%,#1a2e35_0%,transparent_70%)]"></div>
     </div>
     
-    <!-- Organic Knowledge Blobs -->
+    <!-- Manuscript Grid Accents (Structural Unity) -->
+    <div class="absolute inset-0 pointer-events-none opacity-[0.05]">
+        <div class="absolute inset-0" style="background-image: linear-gradient(to right, #2C8793 1px, transparent 1px), linear-gradient(to bottom, #2C8793 1px, transparent 1px); background-size: 80px 80px;"></div>
+    </div>
+    
+    <!-- Organic Knowledge Blobs (Unique Artistic Layer) -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="absolute top-[10%] right-[15%] w-96 h-96 bg-brand-gold/[0.05] rounded-full blur-[120px] animate-pulse"></div>
         <div class="absolute bottom-[20%] left-[10%] w-80 h-80 bg-brand-teal/[0.08] rounded-full blur-[100px]"></div>

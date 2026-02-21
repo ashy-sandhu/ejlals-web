@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="bg-slate-50 min-h-screen">
-<section class="relative bg-slate-900 overflow-hidden pt-32 pb-48 px-6 border-b border-white/5">
+<section class="relative bg-slate-900 overflow-hidden pt-24 pb-24 px-6 border-b border-white/5">
     <!-- Mesh Gradient Layer -->
     <div class="absolute inset-0 pointer-events-none opacity-50">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,#2C8793_0%,transparent_70%),radial-gradient(circle_at_70%_80%,#1a2e35_0%,transparent_80%)]"></div>
@@ -32,7 +32,7 @@
 </section>
 
     <!-- Articles Grid -->
-    <div class="max-w-7xl mx-auto px-6 -mt-24 pb-32">
+    <div class="max-w-7xl mx-auto px-6 py-20 pb-32">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             @forelse($posts as $post)
             <div class="group bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-700 overflow-hidden flex flex-col h-full bg-slate-50/30">
