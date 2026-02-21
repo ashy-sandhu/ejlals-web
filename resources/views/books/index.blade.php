@@ -3,11 +3,41 @@
 @section('title', 'Library - Ejlals Academy')
 
 @section('content')
-<section class="bg-white py-16 px-6">
+<section class="relative bg-slate-900 overflow-hidden pt-32 pb-24 px-6 border-b border-white/5">
+    <!-- Mesh Gradient Layer -->
+    <div class="absolute inset-0 pointer-events-none opacity-50">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,#2C8793_0%,transparent_70%),radial-gradient(circle_at_80%_70%,#EA7F26_0%,transparent_70%),radial-gradient(circle_at_50%_0%,#1a2e35_0%,transparent_100%)]"></div>
+    </div>
+    
+    <!-- Diagonal Glass Overlays -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none select-none">
+        <div class="absolute -top-1/4 -right-1/4 w-3/4 h-full bg-white/[0.03] backdrop-blur-3xl rotate-12" style="clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);"></div>
+        <div class="absolute -bottom-1/4 -left-1/4 w-2/3 h-full bg-brand-teal/[0.04] backdrop-blur-2xl -rotate-6" style="clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto">
+        <div class="max-w-3xl">
+            <div class="flex items-center gap-3 mb-8">
+                <span class="h-[1px] w-12 bg-brand-gold/50"></span>
+                <span class="text-brand-gold text-[10px] font-bold uppercase tracking-[0.4em]">Academic Repository</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-[1.1] tracking-tight">
+                Library <span class="text-brand-gold italic">Archives</span>
+            </h1>
+            <p class="text-slate-300 text-lg md:text-xl leading-relaxed font-medium max-w-2xl saturate-150 opacity-90">
+                Access a distinguished collection of digital manuscripts, curated guides, and scholarly resources designed to support profound learning and methodical research.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white py-20 px-6">
     <div class="max-w-7xl mx-auto">
-        <div class="mb-12">
-            <h1 class="text-4xl font-bold text-slate-800 mb-4">Library & Guides</h1>
-            <p class="text-slate-500 max-w-2xl">Access our collection of digital books and guides designed for deep learning and quick reference.</p>
+        <div class="flex items-center justify-between mb-16 pb-8 border-b border-gray-100">
+            <div>
+                <h2 class="text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Available Collections</h2>
+                <div class="h-1.5 w-8 bg-brand-teal rounded-full"></div>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
