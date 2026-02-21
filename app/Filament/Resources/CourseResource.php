@@ -42,6 +42,12 @@ class CourseResource extends Resource
                                             ->required()
                                             ->columnSpanFull()
                                             ->fileAttachmentsDirectory('courses/attachments'),
+                                        Forms\Components\Textarea::make('summary')
+                                            ->label('Card Summary (Grid/Homepage)')
+                                            ->helperText('Brief intro shown on course cards. Supports line breaks. Leave blank to auto-generate.')
+                                            ->rows(3)
+                                            ->maxLength(300)
+                                            ->columnSpanFull(),
                                     ])->columns(2),
 
                                 Forms\Components\Section::make('Instruction & Details')

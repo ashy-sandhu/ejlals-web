@@ -27,7 +27,7 @@
                             <span class="bg-brand-teal/10 text-brand-teal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Educational</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-brand-teal transition-colors">{{ $course->title }}</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">{{ $course->description }}</p>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">{!! nl2br(e($course->summary ?? Str::limit(strip_tags($course->description), 150))) !!}</p>
                         
                         <div class="flex items-center justify-between pt-6 border-t border-gray-50">
                             <span class="text-brand-gold font-bold">Free</span>

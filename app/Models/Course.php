@@ -12,6 +12,7 @@ class Course extends Model
         'title',
         'slug',
         'description',
+        'summary',
         'category_id',
         'is_featured',
         'instructor_name',

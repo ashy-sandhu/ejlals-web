@@ -48,11 +48,9 @@
                     </div>
                 </div>
 
-                <div class="prose prose-slate max-w-none mb-12">
+                <div class="prose prose-slate prose-lg max-w-none mb-12">
                     <h3 class="text-2xl font-bold text-slate-800 mb-4">About the Course</h3>
-                    <p class="text-slate-600 leading-relaxed text-lg">
-                        {{ $course->description }}
-                    </p>
+                    {!! $course->description !!}
                 </div>
 
                 @if($course->tags->count() > 0)
