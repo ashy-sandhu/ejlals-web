@@ -3,15 +3,16 @@
 @section('title', 'Library - Ejlals Academy')
 
 @section('content')
-<section class="relative bg-slate-900 overflow-hidden pt-24 pb-24 px-6 border-b border-white/5">
+<section class="relative bg-slate-900 overflow-hidden pt-32 pb-24 px-6 border-b border-white/5">
     <!-- Mesh Gradient Layer -->
     <div class="absolute inset-0 pointer-events-none opacity-50">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,#2C8793_0%,transparent_70%),radial-gradient(circle_at_80%_70%,#EA7F26_0%,transparent_70%),radial-gradient(circle_at_50%_0%,#1a2e35_0%,transparent_100%)]"></div>
     </div>
     
     <!-- Manuscript Grid Accents (Structural Unity) -->
-    <div class="absolute inset-0 pointer-events-none opacity-[0.05]">
+    <div class="absolute inset-0 pointer-events-none opacity-[0.08]">
         <div class="absolute inset-0" style="background-image: linear-gradient(to right, #2C8793 1px, transparent 1px), linear-gradient(to bottom, #2C8793 1px, transparent 1px); background-size: 80px 80px;"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-transparent to-slate-900"></div>
     </div>
     
     <!-- Diagonal Glass Overlays (Unique Artistic Layer) -->
