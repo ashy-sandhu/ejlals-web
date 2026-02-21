@@ -4,9 +4,10 @@
 
 @section('content')
 <section class="relative bg-slate-900 overflow-hidden pt-32 pb-24 px-6 border-b border-white/5">
-    <!-- Mesh Gradient Layer -->
-    <div class="absolute inset-0 pointer-events-none opacity-40">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,#EA7F26_0%,transparent_60%),radial-gradient(circle_at_10%_80%,#1a2e35_0%,transparent_70%)]"></div>
+    <!-- Cinematic Background Image -->
+    <div class="absolute inset-0 pointer-events-none">
+        <img src="https://images.unsplash.com/photo-1544648156-53884518894c?auto=format&fit=crop&q=80&w=2000" alt="Courses Background" class="w-full h-full object-cover opacity-20 contrast-125">
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/70 to-transparent"></div>
     </div>
     
     <!-- Manuscript Grid Accents (Structural Unity) -->
@@ -17,8 +18,8 @@
     
     <!-- Organic Knowledge Blobs (Unique Artistic Layer) -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute top-[10%] right-[15%] w-96 h-96 bg-brand-gold/[0.05] rounded-full blur-[120px] animate-pulse"></div>
-        <div class="absolute bottom-[20%] left-[10%] w-80 h-80 bg-brand-teal/[0.08] rounded-full blur-[100px]"></div>
+        <div class="absolute top-[10%] right-[15%] w-96 h-96 bg-brand-gold/[0.08] rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-[20%] left-[10%] w-80 h-80 bg-brand-teal/[0.06] rounded-full blur-[100px]"></div>
     </div>
 
     <div class="relative max-w-7xl mx-auto">

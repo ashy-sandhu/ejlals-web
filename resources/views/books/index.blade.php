@@ -4,9 +4,10 @@
 
 @section('content')
 <section class="relative bg-slate-900 overflow-hidden pt-32 pb-24 px-6 border-b border-white/5">
-    <!-- Mesh Gradient Layer -->
-    <div class="absolute inset-0 pointer-events-none opacity-50">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,#2C8793_0%,transparent_70%),radial-gradient(circle_at_80%_70%,#EA7F26_0%,transparent_70%),radial-gradient(circle_at_50%_0%,#1a2e35_0%,transparent_100%)]"></div>
+    <!-- Cinematic Background Image -->
+    <div class="absolute inset-0 pointer-events-none">
+        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=2000" alt="Library Background" class="w-full h-full object-cover opacity-30 mix-blend-luminosity">
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
     </div>
     
     <!-- Manuscript Grid Accents (Structural Unity) -->
@@ -17,7 +18,7 @@
     
     <!-- Diagonal Glass Overlays (Unique Artistic Layer) -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none select-none">
-        <div class="absolute -top-1/4 -right-1/4 w-3/4 h-full bg-white/[0.03] backdrop-blur-3xl rotate-12" style="clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);"></div>
+        <div class="absolute -top-1/4 -right-1/4 w-3/4 h-full bg-white/[0.03] backdrop-blur-3xl rotate-12 saturate-150" style="clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);"></div>
         <div class="absolute -bottom-1/4 -left-1/4 w-2/3 h-full bg-brand-teal/[0.04] backdrop-blur-2xl -rotate-6" style="clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);"></div>
     </div>
 
