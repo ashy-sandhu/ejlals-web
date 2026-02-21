@@ -11,7 +11,7 @@
     </div>
     
     <!-- Manuscript Grid Accents -->
-    <div class="absolute inset-0 pointer-events-none opacity-[0.08]">
+    <div class="absolute inset-0 pointer-events-none opacity-[0.03]">
         <div class="absolute inset-0" style="background-image: linear-gradient(to right, #2C8793 1px, transparent 1px), linear-gradient(to bottom, #2C8793 1px, transparent 1px); background-size: 80px 80px;"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-transparent to-slate-900"></div>
     </div>
