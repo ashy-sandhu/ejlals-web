@@ -17,15 +17,22 @@
         <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-transparent to-slate-900"></div>
     </div>
 
-    <div class="relative max-w-7xl mx-auto text-center">
-        <div class="max-w-2xl mx-auto">
-            <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full border border-brand-teal/30 bg-brand-teal/5">
+    <!-- Diagonal Glass Overlays (Structural Unity) -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none select-none">
+        <div class="absolute -top-1/4 -right-1/4 w-3/4 h-full bg-white/[0.03] backdrop-blur-3xl rotate-12 saturate-150" style="clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);"></div>
+        <div class="absolute -bottom-1/4 -left-1/4 w-2/3 h-full bg-brand-teal/[0.04] backdrop-blur-2xl -rotate-6" style="clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto">
+        <div class="max-w-3xl">
+            <div class="flex items-center gap-3 mb-8">
+                <span class="h-[1px] w-12 bg-brand-teal/50"></span>
                 <span class="text-brand-teal text-[10px] font-bold uppercase tracking-[0.4em]">Wisdom Repository</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-[1.1] tracking-tight">
-                Academy <span class="text-brand-teal">Press</span>
+                Academy <span class="text-brand-teal italic">Press</span>
             </h1>
-            <p class="text-slate-400 text-lg md:text-xl leading-relaxed font-medium opacity-90">
+            <p class="text-slate-300 text-lg md:text-xl leading-relaxed font-medium max-w-2xl opacity-90">
                 Explore a distinguished collection of reflections, research, and scholarly guides curated by the Ejlals Board for the contemporary seeker.
             </p>
         </div>
