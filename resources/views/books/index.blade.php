@@ -48,7 +48,7 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            @forelse($books as $book)
+            @forelse ($books as $book)
                 <div class="flex flex-col group">
                     <div class="aspect-[3/4] bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm transition-all hover:-translate-y-2 hover:shadow-xl relative mb-6">
                         @if($book->image)
