@@ -80,13 +80,6 @@
             @yield('content')
         </main>
 
-        <!-- Hero Illustration (Interactive Lottie) -->
-        <div class="lg:col-span-5 relative group hidden lg:block">
-            <div class="absolute -inset-4 bg-gradient-to-tr from-brand-teal/20 to-brand-gold/20 rounded-[3rem] blur-3xl opacity-60"></div>
-            <div class="relative bg-transparent aspect-square w-full max-w-[500px] flex items-center justify-center overflow-visible drop-shadow-2xl hover:scale-105 hover:-rotate-2 transition-transform duration-700">
-                <dotlottie-player src="{{ asset('animations/hero.lottie') }}" background="transparent" speed="1" style="width: 130%; height: 130%;" loop autoplay></dotlottie-player>
-            </div>
-        </div>
 
         <!-- Footer -->
         <footer class="bg-gray-50 border-t border-gray-100 pt-16 pb-8 px-6 mt-12">
