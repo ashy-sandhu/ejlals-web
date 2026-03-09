@@ -29,11 +29,11 @@ Guiding your heart and mind toward meaningful spiritual growth, one step at a ti
             </div>
         </div>
         
-        <!-- Hero Illustration (Slightly smaller for compactness) -->
+        <!-- Hero Illustration (Interactive Lottie) -->
         <div class="lg:col-span-5 relative group hidden lg:block">
-            <div class="absolute -inset-4 bg-gradient-to-tr from-brand-teal/10 to-brand-gold/10 rounded-[3rem] blur-2xl opacity-50"></div>
-            <div class="relative bg-white rounded-[2.5rem] aspect-[4/3] flex items-center justify-center overflow-hidden border border-gray-100 shadow-sm max-w-sm ml-auto">
-                <img src="{{ asset('storage/hero-illustration-v1.jpg') }}" alt="Sacred Spiritual Learning" class="w-full h-full object-cover">
+            <div class="absolute -inset-4 bg-gradient-to-tr from-brand-teal/20 to-brand-gold/20 rounded-[3rem] blur-3xl opacity-60"></div>
+            <div class="relative bg-transparent aspect-square w-full ml-auto max-w-[500px] flex items-center justify-center overflow-visible drop-shadow-2xl hover:scale-110 transition-transform duration-700">
+                <dotlottie-player src="{{ asset('animations/hero.lottie') }}" background="transparent" speed="1" style="width: 130%; height: 130%;" loop autoplay></dotlottie-player>
             </div>
         </div>
     </section>
