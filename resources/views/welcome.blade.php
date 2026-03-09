@@ -139,68 +139,77 @@ Guiding your heart and mind toward meaningful spiritual growth, one step at a ti
     </div>
 </section>
 
-<!-- Featured Courses Section -->
-<section class="max-w-7xl mx-auto px-6 py-24">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div>
-            <span class="text-brand-teal font-bold text-xs uppercase tracking-[0.3em] mb-3 block">Expert-Led Learning</span>
-            <h2 class="text-4xl font-bold text-slate-800 leading-tight">Featured Courses</h2>
-        </div>
-        <!-- Desktop Link -->
-        <a href="{{ route('courses.index') }}" class="hidden md:flex group items-center gap-2 text-brand-teal font-bold">
-            Explore All Courses
-            <div class="w-10 h-10 rounded-full border border-brand-teal/20 flex items-center justify-center group-hover:bg-brand-teal group-hover:text-white transition-all">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-            </div>
-        </a>
+<!-- Featured Courses Section (Procreate Style) -->
+<section class="max-w-7xl mx-auto px-6 py-28" x-data="{ activeCategory: 'all' }">
+    <div class="text-center mb-16">
+        <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-4 block">Ready to begin?</span>
+        <h2 class="text-5xl font-extrabold text-slate-900 tracking-tight">Lesson ideas.</h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Category Filters -->
+    <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-16">
+        <button 
+            @click="activeCategory = 'all'"
+            :class="activeCategory === 'all' ? 'bg-slate-900 text-white shadow-lg' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
+            class="px-6 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300">
+            See All
+        </button>
+        @foreach($featuredCategories as $category)
+            <button 
+                @click="activeCategory = '{{ $category->id }}'"
+                :class="activeCategory === '{{ $category->id }}' ? 'bg-slate-900 text-white shadow-lg' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
+                class="px-6 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300">
+                {{ $category->name }}
+            </button>
+        @endforeach
+    </div>
+
+    <!-- Courses Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
         @forelse($featuredCourses as $course)
-        <div class="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
-            <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden">
-                @if($course->image)
-                    <img src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" class="w-full h-full object-cover">
-                @else
-                    <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5 flex items-center justify-center">
-                        <svg class="w-12 h-12 text-brand-teal/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            <div 
+                x-show="activeCategory === 'all' || activeCategory === '{{ $course->category_id }}'"
+                x-transition:enter="transition ease-out duration-500"
+                x-transition:enter-start="opacity-0 scale-95 translate-y-4"
+                x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                class="group cursor-pointer">
+                <a href="{{ route('courses.show', $course->slug) }}" class="block">
+                    <!-- Card Image -->
+                    <div class="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-slate-100 mb-6 border border-slate-100 shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2">
+                        @if($course->image)
+                            <img src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        @else
+                            <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5 flex items-center justify-center p-12">
+                                <svg class="w-16 h-16 text-brand-teal/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            </div>
+                        @endif
                     </div>
-                @endif
-                <div class="absolute top-6 left-6">
-                    <span class="bg-white/95 backdrop-blur-sm text-slate-800 text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm">Popular</span>
-                </div>
+                    
+                    <!-- Card Info -->
+                    <div class="px-4">
+                        <div class="flex items-center justify-between group/title">
+                            <h3 class="text-sm md:text-md uppercase font-black text-slate-800 tracking-tighter transition-colors group-hover:text-brand-teal">
+                                {{ $course->title }}
+                            </h3>
+                            <span class="text-slate-300 group-hover:text-brand-teal group-hover:translate-x-1 transition-all">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+                            </span>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="p-8">
-                <h3 class="text-xl font-bold text-slate-800 mb-4 group-hover:text-brand-teal transition-colors line-clamp-1">{{ $course->title }}</h3>
-                <div class="flex items-center gap-4 text-xs text-slate-400 mb-6 pb-6 border-b border-gray-50">
-                    <span class="flex items-center gap-1">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        12 Lessons
-                    </span>
-                    <span class="flex items-center gap-1">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                        Beginner
-                    </span>
-                </div>
-                <div class="flex items-center justify-between">
-                    <span class="text-brand-teal font-extrabold text-lg">Free</span>
-                    <a href="{{ route('courses.show', $course->slug) }}" class="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-brand-gold group-hover:text-white transition-all shadow-inner" aria-label="View Course Details: {{ $course->title }}">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
         @empty
-        <div class="col-span-full bg-gray-50 rounded-[2.5rem] py-20 text-center border-2 border-dashed border-gray-200">
-            <p class="text-slate-400 font-medium">Coming Soon: Curated Islamic Education</p>
-        </div>
+            <div class="col-span-full py-20 text-center bg-slate-50 rounded-[3rem] border border-dashed border-slate-200">
+                <p class="text-slate-400 font-medium">Coming Soon: Curated Islamic Education</p>
+            </div>
         @endforelse
     </div>
 
-    <!-- Mobile Button (Centered & Wide) -->
-    <div class="mt-12 flex justify-center md:hidden">
-        <a href="{{ route('courses.index') }}" class="w-full bg-brand-teal text-white py-4 rounded-xl font-bold text-center shadow-md active:scale-95 transition-all">
-            Explore All Courses
+    <!-- Explore More Button -->
+    <div class="mt-20 flex justify-center">
+        <a href="{{ route('courses.index') }}" class="group inline-flex items-center gap-3 bg-brand-teal text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-brand-teal/20 hover:-translate-y-1 active:scale-95">
+            Explore more courses
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </a>
     </div>
 </section>
