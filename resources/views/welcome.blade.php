@@ -8,16 +8,15 @@
     <!-- Hero Section -->
     <section class="flex-1 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-7 max-w-4xl">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 leading-[1.3] mb-6 tracking-tight">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-800 leading-tight mb-6 tracking-tight">
                 Empowering Modern Minds with Timeless Islamic 
                 <span class="text-brand-teal italic inline-flex items-center whitespace-nowrap min-h-[1.3em] align-middle">
                     <span id="typewriter-text"></span><span id="cursor" class="inline-block w-0.5 h-[0.9em] bg-brand-gold ml-1.5 animate-pulse"></span>
                 </span>
             </h1>
-            <p class="text-slate-500 text-base md:text-lg mb-10 leading-relaxed max-w-xl opacity-90">
-            Interactive one on one sessions thoughtfully designed around your busy life, so learning never feels overwhelming.
-A nurturing space where knowledge of Deen is delivered with clarity, patience, and sincere care.
-Guiding your heart and mind toward meaningful spiritual growth, one step at a time.
+            <p class="text-slate-500 text-sm md:text-base mb-8 leading-relaxed max-w-xl opacity-90">
+            Interactive one on one sessions thoughtfully designed around your busy life. 
+            A nurturing space where knowledge of Deen is delivered with clarity and care.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="#" class="bg-brand-gold hover:bg-brand-gold/90 text-white px-7 py-3.5 rounded-xl font-bold transition-all shadow-md hover:shadow-xl hover:-translate-y-1 active:scale-95 text-sm">
@@ -118,14 +117,14 @@ Guiding your heart and mind toward meaningful spiritual growth, one step at a ti
 
     document.addEventListener('DOMContentLoaded', type);
 </script>
-<section class="bg-white py-20 px-6 border-y border-gray-50">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<section class="bg-white py-14 px-6 border-y border-gray-50">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div class="relative bg-white rounded-3xl aspect-[1.4/1] flex items-center justify-center overflow-hidden border border-gray-100 shadow-sm">
              <img src="{{ asset('storage/about-illustration-v1.jpg') }}" alt="About Ejlals Academy" class="w-full h-full object-cover">
         </div>
         <div>
-            <h2 class="text-4xl font-bold mb-6 text-slate-800 tracking-tight">Who We Are</h2>
-            <p class="text-slate-500 mb-6 leading-relaxed">
+            <h2 class="text-3xl font-bold mb-4 text-slate-800 tracking-tight">Who We Are</h2>
+            <p class="text-slate-500 text-sm mb-4 leading-relaxed">
                 We are an educational platform focused on delivering clear, reliable, and easy-to-understand information. Our mission is to simplify learning by providing structured guides, explanations, and resources that anyone can apply in real life.
             </p>
             <p class="text-slate-500 mb-8 leading-relaxed">
@@ -140,10 +139,10 @@ Guiding your heart and mind toward meaningful spiritual growth, one step at a ti
 </section>
 
 <!-- Featured Courses Section (Procreate Style) -->
-<section class="max-w-7xl mx-auto px-6 py-28" x-data="{ activeCategory: 'all' }">
-    <div class="text-center mb-16">
-        <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-4 block">Ready to begin?</span>
-        <h2 class="text-5xl font-extrabold text-slate-900 tracking-tight">Lesson ideas.</h2>
+<section class="max-w-7xl mx-auto px-6 py-16" x-data="{ activeCategory: 'all' }">
+    <div class="text-center mb-12">
+        <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-2 block">Ready to begin?</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Lesson ideas.</h2>
     </div>
 
     <!-- Category Filters -->
@@ -165,7 +164,7 @@ Guiding your heart and mind toward meaningful spiritual growth, one step at a ti
     </div>
 
     <!-- Courses Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
         @forelse($featuredCourses as $course)
             <div 
                 x-show="activeCategory === 'all' || activeCategory === '{{ $course->category_id }}'"
@@ -215,12 +214,12 @@ Guiding your heart and mind toward meaningful spiritual growth, one step at a ti
 </section>
 
 <!-- Digital Library Preview -->
-<section class="bg-white py-24 px-6">
+<section class="bg-white py-16 px-6">
     <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div class="max-w-xl">
-                <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-3 block">Scholarly Resources</span>
-                <h2 class="text-4xl font-bold text-slate-800 leading-tight">Digital Library</h2>
+                <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-2 block">Scholarly Resources</span>
+                <h2 class="text-3xl font-bold text-slate-800 tracking-tight">Digital Library</h2>
             </div>
             <a href="{{ route('books.index') }}" class="group inline-flex items-center gap-4 bg-slate-50 border border-slate-100 px-8 py-4 rounded-2xl text-slate-600 font-bold hover:bg-brand-gold hover:text-white hover:border-brand-gold transition-all shadow-sm">
                 Visit Archives
@@ -267,15 +266,15 @@ Guiding your heart and mind toward meaningful spiritual growth, one step at a ti
 </section>
 
 <!-- Articles Section -->
-<section class="bg-[#FDFDFC] py-28 px-6 overflow-hidden">
+<section class="bg-[#FDFDFC] py-16 px-6 overflow-hidden">
     <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div class="max-w-xl">
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="w-12 h-[2px] bg-brand-gold rounded-full"></span>
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="w-10 h-[2px] bg-brand-gold rounded-full"></span>
                     <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em]">The Academy Press</span>
                 </div>
-                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">Scholarly Insights</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight tracking-tight">Scholarly Insights</h2>
             </div>
             <a href="{{ route('posts.index') }}" class="group inline-flex items-center gap-4 bg-white border border-slate-100 px-8 py-4 rounded-2xl text-slate-600 font-bold hover:bg-brand-teal hover:text-white hover:border-brand-teal transition-all shadow-sm">
                 Explore Full Library
@@ -290,31 +289,31 @@ Guiding your heart and mind toward meaningful spiritual growth, one step at a ti
             <div class="lg:col-span-7 group">
                 @if($featuredPosts->count() > 0)
                 @php $mainPost = $featuredPosts->first(); @endphp
-                <div class="relative bg-white rounded-[3rem] border border-slate-100 p-4 shadow-sm hover:shadow-xl transition-all duration-700 h-full flex flex-col">
-                    <div class="relative aspect-[16/10] rounded-[2.2rem] overflow-hidden bg-slate-100 mb-8">
+                <div class="relative bg-white rounded-[2.5rem] border border-slate-100 p-3 shadow-sm hover:shadow-xl transition-all duration-700 h-full flex flex-col">
+                    <div class="relative aspect-video rounded-[2rem] overflow-hidden bg-slate-100 mb-6">
                         @if($mainPost->image)
                             <img src="{{ Storage::url($mainPost->image) }}" alt="{{ $mainPost->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
                         @else
                             <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5 flex items-center justify-center">
-                                <svg class="w-16 h-16 text-brand-teal/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg>
+                                <svg class="w-12 h-12 text-brand-teal/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg>
                             </div>
                         @endif
-                        <div class="absolute top-8 left-8">
-                            <span class="bg-white/95 backdrop-blur-md text-brand-teal text-[10px] font-bold uppercase tracking-widest px-5 py-2 rounded-full shadow-sm border border-slate-100">
+                        <div class="absolute top-6 left-6">
+                            <span class="bg-white/95 backdrop-blur-md text-brand-teal text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm border border-slate-100">
                                 {{ $mainPost->category->name ?? 'Featured' }}
                             </span>
                         </div>
                     </div>
-                    <div class="px-6 pb-6 flex-1 flex flex-col">
-                        <h3 class="text-3xl font-extrabold text-slate-900 group-hover:text-brand-teal transition-colors mb-5 leading-tight line-clamp-2">
+                    <div class="px-4 pb-4 flex-1 flex flex-col">
+                        <h3 class="text-2xl font-bold text-slate-900 group-hover:text-brand-teal transition-colors mb-4 leading-tight line-clamp-2">
                             {{ $mainPost->title }}
                         </h3>
-                        <p class="text-slate-500 mb-8 line-clamp-3 leading-relaxed">
-                            {!! nl2br(e($mainPost->description ?? Str::limit(strip_tags($mainPost->content), 200))) !!}
+                        <p class="text-slate-500 text-sm mb-6 line-clamp-2 leading-relaxed">
+                            {!! nl2br(e($mainPost->description ?? Str::limit(strip_tags($mainPost->content), 150))) !!}
                         </p>
-                        <div class="mt-auto pt-8 border-t border-slate-50 flex items-center justify-between">
+                        <div class="mt-auto pt-6 border-t border-slate-50 flex items-center justify-between">
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ $mainPost->created_at->format('M d, Y') }}</span>
-                            <a href="{{ route('posts.show', $mainPost->slug) }}" class="flex items-center gap-2 text-brand-teal font-extrabold text-sm group/btn">
+                            <a href="{{ route('posts.show', $mainPost->slug) }}" class="flex items-center gap-2 text-brand-teal font-bold text-sm group/btn">
                                 Read Full Article
                                 <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </a>
@@ -332,17 +331,17 @@ Guiding your heart and mind toward meaningful spiritual growth, one step at a ti
             <div class="lg:col-span-5 flex flex-col gap-6">
                 <!-- Secondary Featured -->
                 @forelse($featuredPosts->skip(1) as $post)
-                <a href="{{ route('posts.show', $post->slug) }}" class="group bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 flex items-center gap-6">
-                    <div class="w-32 h-32 shrink-0 rounded-2xl overflow-hidden bg-slate-100">
+                <a href="{{ route('posts.show', $post->slug) }}" class="group bg-white rounded-3xl p-3 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 flex items-center gap-5">
+                    <div class="w-24 h-24 shrink-0 rounded-xl overflow-hidden bg-slate-100">
                         @if($post->image)
                             <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         @else
-                           <div class="w-full h-full flex items-center justify-center text-brand-teal/10"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg></div>
+                           <div class="w-full h-full flex items-center justify-center text-brand-teal/10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg></div>
                         @endif
                     </div>
-                    <div class="flex-1 pr-4">
-                        <span class="text-brand-teal font-bold text-[10px] uppercase tracking-widest mb-2 block">{{ $post->category->name ?? 'Article' }}</span>
-                        <h4 class="text-lg font-bold text-slate-900 group-hover:text-brand-teal transition-colors line-clamp-2 leading-snug">
+                    <div class="flex-1 pr-2">
+                        <span class="text-brand-teal font-bold text-[9px] uppercase tracking-widest mb-1.5 block">{{ $post->category->name ?? 'Article' }}</span>
+                        <h4 class="text-md font-bold text-slate-900 group-hover:text-brand-teal transition-colors line-clamp-2 leading-snug">
                             {{ $post->title }}
                         </h4>
                     </div>
@@ -351,9 +350,9 @@ Guiding your heart and mind toward meaningful spiritual growth, one step at a ti
                 @endforelse
 
                 <!-- Latest Text List -->
-                <div class="mt-4 p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100">
-                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-8 pb-4 border-b border-slate-200/50">Recent Updates</h4>
-                    <div class="space-y-8">
+                <div class="mt-4 p-6 bg-slate-50 rounded-3xl border border-slate-100">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-6 pb-3 border-b border-slate-200/50">Recent Updates</h4>
+                    <div class="space-y-6">
                         @forelse($latestPosts as $post)
                         <div class="group">
                             <a href="{{ route('posts.show', $post->slug) }}" class="block">
@@ -376,53 +375,53 @@ Guiding your heart and mind toward meaningful spiritual growth, one step at a ti
 </section>
 
 <!-- Success Stories -->
-<section class="bg-white py-24 px-6 overflow-hidden">
+<section class="bg-white py-16 px-6 overflow-hidden">
     <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-3 block">Social Proof</span>
-            <h2 class="text-4xl font-bold text-slate-800 leading-tight">Student & Parent Reviews</h2>
+        <div class="text-center mb-12">
+            <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-2 block">Social Proof</span>
+            <h2 class="text-3xl font-bold text-slate-800 tracking-tight">Student & Parent Reviews</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Review 1 -->
-            <div class="bg-gray-50 p-10 rounded-[2.5rem] relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
-                <div class="flex gap-1 mb-6">
-                    @for($i=0; $i<5; $i++) <svg class="w-4 h-4 text-brand-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
+            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
+                <div class="flex gap-1 mb-5 text-xs">
+                    @for($i=0; $i<5; $i++) <svg class="w-3.5 h-3.5 text-brand-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
                 </div>
-                <p class="text-slate-600 italic leading-relaxed mb-8">"The 1-on-1 sessions have completely changed how my kids learn. The teachers are incredibly patient and the schedule is super flexible."</p>
+                <p class="text-slate-600 text-sm italic leading-relaxed mb-6">"The 1-on-1 sessions have completely changed how my kids learn. The teachers are incredibly patient and the schedule is super flexible."</p>
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center font-bold text-brand-teal">SA</div>
+                    <div class="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center font-bold text-brand-teal text-xs">SA</div>
                     <div>
                         <h4 class="font-bold text-slate-800 text-sm">Sarah Ahmed</h4>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Parent</p>
+                        <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Parent</p>
                     </div>
                 </div>
             </div>
             <!-- Review 2 -->
-            <div class="bg-gray-50 p-10 rounded-[2.5rem] relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
-                <div class="flex gap-1 mb-6">
-                    @for($i=0; $i<5; $i++) <svg class="w-4 h-4 text-brand-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
+            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
+                <div class="flex gap-1 mb-5 text-xs">
+                    @for($i=0; $i<5; $i++) <svg class="w-3.5 h-3.5 text-brand-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
                 </div>
-                <p class="text-slate-600 italic leading-relaxed mb-8">"I was looking for a authentic Tajweed course and Ejlals Academy delivered exactly what I needed. Highly professional scholars."</p>
+                <p class="text-slate-600 text-sm italic leading-relaxed mb-6">"I was looking for a authentic Tajweed course and Ejlals Academy delivered exactly what I needed. Highly professional scholars."</p>
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-brand-gold/10 flex items-center justify-center font-bold text-brand-gold">OM</div>
+                    <div class="w-10 h-10 rounded-full bg-brand-gold/10 flex items-center justify-center font-bold text-brand-gold text-xs">OM</div>
                     <div>
                         <h4 class="font-bold text-slate-800 text-sm">Omar Mansoor</h4>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Student</p>
+                        <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Student</p>
                     </div>
                 </div>
             </div>
             <!-- Review 3 -->
-            <div class="bg-gray-50 p-10 rounded-[2.5rem] relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
-                <div class="flex gap-1 mb-6">
-                    @for($i=0; $i<5; $i++) <svg class="w-4 h-4 text-brand-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
+            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
+                <div class="flex gap-1 mb-5 text-xs">
+                    @for($i=0; $i<5; $i++) <svg class="w-3.5 h-3.5 text-brand-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
                 </div>
-                <p class="text-slate-600 italic leading-relaxed mb-8">"The monthly progress reports are great. They keep me informed about my daughter's growth and what she's learning next."</p>
+                <p class="text-slate-600 text-sm italic leading-relaxed mb-6">"The monthly progress reports are great. They keep me informed about my daughter's growth and what she's learning next."</p>
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center font-bold text-brand-teal">FK</div>
+                    <div class="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center font-bold text-brand-teal text-xs">FK</div>
                     <div>
                         <h4 class="font-bold text-slate-800 text-sm">Fatima Khan</h4>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Parent</p>
+                        <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Parent</p>
                     </div>
                 </div>
             </div>
@@ -431,11 +430,11 @@ Guiding your heart and mind toward meaningful spiritual growth, one step at a ti
 </section>
 
 <!-- FAQ Section -->
-<section class="bg-[#FDFDFC] py-24 px-6">
+<section class="bg-[#FDFDFC] py-16 px-6">
     <div class="max-w-3xl mx-auto">
-        <div class="text-center mb-16">
-            <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-3 block">Clarifications</span>
-            <h2 class="text-4xl font-bold text-slate-800 leading-tight">Frequently Asked Questions</h2>
+        <div class="text-center mb-12">
+            <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-2 block">Clarifications</span>
+            <h2 class="text-3xl font-bold text-slate-800 tracking-tight">Frequently Asked Questions</h2>
         </div>
 
         <div class="space-y-4">
