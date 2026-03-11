@@ -3,103 +3,27 @@
 @section('title', 'Ejlals Academy - Learn, Grow & Build Knowledge')
 
 @section('content')
-<!-- Hero Section & Features Bar Wrapper (Ensures 100vh fit) -->
-<div class="relative bg-white min-h-[calc(100vh-80px)] flex flex-col justify-center overflow-hidden">
-    <!-- Hero Section -->
-    <section class="max-w-7xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-16 md:py-8 flex-1">
-        <div class="lg:col-span-7 max-w-4xl flex flex-col justify-center">
-            <h1 class="text-3xl md:text-5xl font-serif font-bold text-slate-900 leading-[1.1] mb-12 tracking-tighter">
-                Empowering Modern Minds with Timeless Islamic 
-                <span class="text-brand-green italic inline-flex items-center whitespace-nowrap min-h-[1.3em] align-middle">
-                    <span id="typewriter-text"></span><span id="cursor" class="inline-block w-0.5 h-[0.9em] bg-brand-green ml-1.5 animate-pulse"></span>
-                </span>
-            </h1>
-            <p class="text-slate-600 text-sm md:text-base mb-16 leading-relaxed max-w-md opacity-90">
-            Interactive one on one sessions thoughtfully designed around your busy life. 
-            A nurturing space where knowledge of Deen is delivered with clarity and care.
-            </p>
-            <div class="flex flex-wrap gap-6">
-                <a href="#" class="bg-gradient-to-r from-brand-green to-brand-teal text-white px-8 py-3.5 rounded-xl font-medium transition-all shadow-md hover:shadow-lg hover:opacity-95 hover:-translate-y-0.5 active:scale-95 text-sm flex items-center gap-2">
-                    Get Started Free
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </a>
-                <a href="#" class="bg-white hover:bg-slate-50 text-slate-700 px-8 py-3.5 rounded-xl font-medium transition-all ring-1 ring-inset ring-slate-200 hover:ring-brand-green hover:text-brand-green shadow-sm text-sm">
-                    View Programs
-                </a>
-            </div>
-        </div>
-        <div class="lg:col-span-5 relative hidden lg:flex items-center justify-center">
-            <!-- Animation Backglow (Updated to Green/Teal) -->
-            <div class="absolute inset-0 bg-gradient-to-tr from-brand-green/15 via-brand-teal/10 to-transparent rounded-full blur-[120px] scale-110 opacity-70"></div>
-            
-            <div class="relative w-full max-w-[500px]">
-                <dotlottie-player src="{{ asset('animations/hero.lottie') }}" background="transparent" speed="1" style="width: 100%; height: auto;" loop autoplay class="hover:scale-105 transition-transform duration-700"></dotlottie-player>
-            </div>
-            
-            <div class="absolute -bottom-4 -left-4 bg-white p-3 rounded-xl shadow-md border border-slate-100 flex items-center gap-3 animate-bounce-slow">
-                <div class="w-8 h-8 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                </div>
-                <div>
-                    <div class="font-bold text-slate-800 text-[10px]">Top Rated Platform</div>
-                    <div class="text-[8px] text-slate-400 font-medium uppercase tracking-wider">4.9/5 Student Reviews</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Hero Carousel Section (Stitch Integration) -->
+<x-hero-carousel />
 
-    <!-- Features Bar (Integrated into 100vh view) -->
-    <section class="max-w-7xl mx-auto px-6 pb-12 w-full">
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 md:p-8 grid grid-cols-3 lg:grid-cols-6 gap-4 md:gap-8 backdrop-blur-sm bg-white/90">
-            <div class="flex flex-col items-center text-center group">
-                <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-3 group-hover:bg-brand-green group-hover:text-white transition-all">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 1112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                </div>
-                <span class="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-tighter">1-on-1 Learning</span>
-            </div>
-            <div class="flex flex-col items-center text-center group">
-                <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-3 group-hover:bg-brand-green group-hover:text-white transition-all">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                </div>
-                <span class="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-tighter">Verified Scholars</span>
-            </div>
-            <div class="flex flex-col items-center text-center group">
-                <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-3 group-hover:bg-brand-green group-hover:text-white transition-all">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                </div>
-                <span class="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-tighter">Flexible Timings</span>
-            </div>
-            <div class="flex flex-col items-center text-center group">
-                <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-3 group-hover:bg-brand-green group-hover:text-white transition-all">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                </div>
-                <span class="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-tighter">Growth Reports</span>
-            </div>
-            <div class="flex flex-col items-center text-center group">
-                <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-3 group-hover:bg-brand-green group-hover:text-white transition-all">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 00-2-2z"></path></svg>
-                </div>
-                <span class="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-tighter">Free Trial</span>
-            </div>
-            <div class="flex flex-col items-center text-center group">
-                <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-3 group-hover:bg-brand-green group-hover:text-white transition-all">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                </div>
-                <span class="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-tighter">Certifications</span>
-            </div>
-        </div>
-    </section>
-</div>
-
-<!-- Lottie Player & Styles -->
-<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+<!-- Animations & Scripts -->
 <style>
-@keyframes bounce-slow {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
 }
-.animate-bounce-slow {
-    animation: bounce-slow 4s infinite ease-in-out;
+.animate-gradient-shift {
+    animation: gradient-shift 3s linear infinite;
+}
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 </style>
 

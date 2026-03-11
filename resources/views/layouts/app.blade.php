@@ -26,6 +26,10 @@
 
         <link rel="icon" type="image/svg+xml" href="{{ asset('storage/favicon.svg') }}">
 
+        <!-- Google Material Symbols -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
@@ -42,30 +46,30 @@
 
                 <!-- Nav Links -->
                 <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                    <a href="/" class="hover:text-brand-green transition-colors {{ request()->is('/') ? 'text-brand-green' : '' }}">Home</a>
-                    <a href="{{ route('courses.index') }}" class="hover:text-brand-green transition-colors {{ request()->is('courses*') ? 'text-brand-green' : '' }}">Courses</a>
-                    <a href="{{ route('books.index') }}" class="hover:text-brand-green transition-colors {{ request()->is('books*') ? 'text-brand-green' : '' }}">Library</a>
-                    <a href="{{ route('posts.index') }}" class="hover:text-brand-green transition-colors {{ request()->is('posts*') ? 'text-brand-green' : '' }}">Articles</a>
-                    <a href="{{ route('about') }}" class="hover:text-brand-green transition-colors {{ request()->is('about') ? 'text-brand-green' : '' }}">About Us</a>
+                    <a href="/" class="hover:text-brand-teal transition-colors {{ request()->is('/') ? 'text-brand-teal' : '' }}">Home</a>
+                    <a href="{{ route('courses.index') }}" class="hover:text-brand-teal transition-colors {{ request()->is('courses*') ? 'text-brand-teal' : '' }}">Courses</a>
+                    <a href="{{ route('books.index') }}" class="hover:text-brand-teal transition-colors {{ request()->is('books*') ? 'text-brand-teal' : '' }}">Library</a>
+                    <a href="{{ route('posts.index') }}" class="hover:text-brand-teal transition-colors {{ request()->is('posts*') ? 'text-brand-teal' : '' }}">Articles</a>
+                    <a href="{{ route('about') }}" class="hover:text-brand-teal transition-colors {{ request()->is('about') ? 'text-brand-teal' : '' }}">About Us</a>
                 </div>
 
                 <!-- Action Buttons -->
                 <div class="flex items-center gap-4">
-                    <a href="https://store.ejlals.com" class="hidden sm:block bg-brand-green hover:bg-brand-green text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors shadow-sm">
+                    <a href="https://store.ejlals.com" class="hidden sm:block bg-brand-gold hover:bg-brand-gold/90 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors shadow-sm">
                         Visit Our Store
                     </a>
                     
                     @if (Route::has('login'))
                         <div class="flex items-center gap-2">
                             @auth
-                                <a href="{{ route('dashboard') }}" class="text-sm font-medium hover:text-brand-green flex items-center gap-2">
-                                    <div class="w-8 h-8 rounded-lg bg-brand-green/10 flex items-center justify-center text-brand-green">
+                                <a href="{{ route('dashboard') }}" class="text-sm font-medium hover:text-brand-teal flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-brand-teal/10 flex items-center justify-center text-brand-teal">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                                     </div>
                                     My Horizon
                                 </a>
                             @else
-                                <a href="{{ route('login') }}" class="text-sm font-medium hover:text-brand-green">Login</a>
+                                <a href="{{ route('login') }}" class="text-sm font-medium hover:text-brand-teal">Login</a>
                             @endauth
                         </div>
                     @endif
@@ -96,36 +100,36 @@
                 
                 <div>
                     <h3 class="font-bold text-sm mb-4 uppercase tracking-wider flex items-center gap-2 text-slate-800">
-                        <svg class="w-4 h-4 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                        <svg class="w-4 h-4 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
                         Quick Links
                     </h3>
                     <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="{{ route('courses.index') }}" class="hover:text-brand-green transition-colors">All Courses</a></li>
-                        <li><a href="{{ route('books.index') }}" class="hover:text-brand-green transition-colors">Library</a></li>
-                        <li><a href="{{ route('posts.index') }}" class="hover:text-brand-green transition-colors">Blog</a></li>
+                        <li><a href="{{ route('courses.index') }}" class="hover:text-brand-teal transition-colors">All Courses</a></li>
+                        <li><a href="{{ route('books.index') }}" class="hover:text-brand-teal transition-colors">Library</a></li>
+                        <li><a href="{{ route('posts.index') }}" class="hover:text-brand-teal transition-colors">Blog</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h3 class="font-bold text-sm mb-4 uppercase tracking-wider flex items-center gap-2 text-slate-800">
-                        <svg class="w-4 h-4 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        <svg class="w-4 h-4 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                         Company
                     </h3>
                     <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="{{ route('about') }}" class="hover:text-brand-green transition-colors">About Us</a></li>
-                        <li><a href="{{ route('contact') }}" class="hover:text-brand-green transition-colors">Contact</a></li>
-                        <li><a href="{{ route('careers') }}" class="hover:text-brand-green transition-colors">Careers</a></li>
+                        <li><a href="{{ route('about') }}" class="hover:text-brand-teal transition-colors">About Us</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-brand-teal transition-colors">Contact</a></li>
+                        <li><a href="{{ route('careers') }}" class="hover:text-brand-teal transition-colors">Careers</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h3 class="font-bold text-sm mb-4 uppercase tracking-wider flex items-center gap-2 text-slate-800">
-                        <svg class="w-4 h-4 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <svg class="w-4 h-4 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                         Legal
                     </h3>
                     <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="{{ route('privacy') }}" class="hover:text-brand-green transition-colors">Privacy Policy</a></li>
-                        <li><a href="{{ route('terms') }}" class="hover:text-brand-green transition-colors">Terms of Use</a></li>
+                        <li><a href="{{ route('privacy') }}" class="hover:text-brand-teal transition-colors">Privacy Policy</a></li>
+                        <li><a href="{{ route('terms') }}" class="hover:text-brand-teal transition-colors">Terms of Use</a></li>
                     </ul>
                 </div>
             </div>
