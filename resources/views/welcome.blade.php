@@ -162,9 +162,12 @@
 
 <!-- Featured Courses Section (Procreate Style) -->
 <section class="max-w-7xl mx-auto px-6 py-10" x-data="{ activeCategory: 'all' }">
-    <div class="text-center mb-6">
-        <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Ready to begin?</span>
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Lesson ideas.</h2>
+    <div class="text-center mb-8 max-w-2xl mx-auto">
+        <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Ready to begin?</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-4">Lesson ideas.</h2>
+        <p class="text-slate-500 text-sm leading-relaxed px-4">
+            Explore our carefully curated modules tailored for every level of understanding. Whether you are beginning your journey or deepening your knowledge, find the structured guidance you need.
+        </p>
     </div>
 
     <!-- Category Filters -->
@@ -240,8 +243,11 @@
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div class="max-w-xl">
-                <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Scholarly Resources</span>
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Digital Library</h2>
+                <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Scholarly Resources</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight mb-4">Digital Library</h2>
+                <p class="text-slate-500 text-sm leading-relaxed max-w-md">
+                    Access our premium collection of Islamic texts, study guides, and supplementary materials designed to support your lifelong learning.
+                </p>
             </div>
             <a href="{{ route('books.index') }}" class="group inline-flex items-center gap-3 bg-slate-50 border border-slate-100 px-6 py-3 rounded-2xl text-slate-600 font-bold text-xs hover:bg-brand-gold hover:text-white hover:border-brand-gold transition-all shadow-sm">
                 Visit Archives
@@ -251,10 +257,10 @@
             </a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 mt-4">
             @forelse($featuredBooks as $book)
             <div class="flex flex-col group">
-                <div class="aspect-[4/5] bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg relative mb-4">
+                <div class="aspect-[3/4] bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg relative mb-4">
                     @if($book->image)
                         <img src="{{ Storage::url($book->image) }}" alt="{{ $book->title }}" class="w-full h-full object-cover">
                     @else
@@ -263,19 +269,19 @@
                         </div>
                     @endif
                 </div>
-                <h3 class="font-bold text-slate-800 mb-2 truncate group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
-                <p class="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-4">Ejlals Repository</p>
+                <h3 class="font-bold text-slate-800 text-sm mb-1 line-clamp-2 leading-snug group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
+                <p class="text-slate-400 text-[9px] uppercase tracking-widest font-bold mb-3">Ejlals Repository</p>
                 
                 @if($book->download_type === 'file' && $book->download_file)
-                    <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="mt-auto bg-brand-teal text-white py-3 rounded-xl text-sm font-bold text-center hover:bg-slate-900 transition-all flex items-center justify-center gap-2">
+                    <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="mt-auto bg-brand-teal text-white py-2.5 px-3 rounded-xl text-xs font-bold text-center hover:bg-slate-900 transition-all flex items-center justify-center gap-2">
                         View Resource
                     </a>
                 @elseif($book->download_type === 'link' && $book->download_link)
-                    <a href="{{ $book->download_link }}" target="_blank" class="mt-auto bg-gray-100 text-brand-teal py-3 rounded-xl text-sm font-bold text-center hover:bg-brand-teal hover:text-white transition-all flex items-center justify-center gap-2">
+                    <a href="{{ $book->download_link }}" target="_blank" class="mt-auto bg-gray-100 text-brand-teal py-2.5 px-3 rounded-xl text-xs font-bold text-center hover:bg-brand-teal hover:text-white transition-all flex items-center justify-center gap-2">
                         Access Guide
                     </a>
                 @else
-                    <span class="mt-auto bg-gray-50 text-slate-300 py-3 rounded-xl text-sm font-bold text-center cursor-not-allowed">Coming Soon</span>
+                    <span class="mt-auto bg-gray-50 text-slate-300 py-2.5 px-3 rounded-xl text-xs font-bold text-center cursor-not-allowed">Coming Soon</span>
                 @endif
             </div>
             @empty
