@@ -8,10 +8,10 @@
     <!-- Hero Section -->
     <section class="max-w-7xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-16 md:py-8 flex-1">
         <div class="lg:col-span-7 max-w-4xl flex flex-col justify-center">
-            <h1 class="text-3xl md:text-5xl font-bold text-slate-800 leading-[1.1] mb-12 tracking-tighter">
+            <h1 class="text-3xl md:text-5xl font-serif font-bold text-slate-900 leading-[1.1] mb-12 tracking-tighter">
                 Empowering Modern Minds with Timeless Islamic 
-                <span class="text-brand-teal italic inline-flex items-center whitespace-nowrap min-h-[1.3em] align-middle">
-                    <span id="typewriter-text"></span><span id="cursor" class="inline-block w-0.5 h-[0.9em] bg-brand-gold ml-1.5 animate-pulse"></span>
+                <span class="text-brand-green italic inline-flex items-center whitespace-nowrap min-h-[1.3em] align-middle">
+                    <span id="typewriter-text"></span><span id="cursor" class="inline-block w-0.5 h-[0.9em] bg-brand-green ml-1.5 animate-pulse"></span>
                 </span>
             </h1>
             <p class="text-slate-600 text-sm md:text-base mb-16 leading-relaxed max-w-md opacity-90">
@@ -19,29 +19,30 @@
             A nurturing space where knowledge of Deen is delivered with clarity and care.
             </p>
             <div class="flex flex-wrap gap-6">
-                <a href="#" class="bg-brand-gold hover:bg-brand-gold/90 text-white px-8 py-3.5 rounded-2xl font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 text-sm">
+                <a href="#" class="bg-gradient-to-r from-brand-green to-brand-teal text-white px-8 py-3.5 rounded-xl font-medium transition-all shadow-md hover:shadow-lg hover:opacity-95 hover:-translate-y-0.5 active:scale-95 text-sm flex items-center gap-2">
                     Get Started Free
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
-                <a href="#" class="bg-white hover:bg-slate-50 text-slate-700 px-8 py-3.5 rounded-2xl font-bold transition-all ring-1 ring-inset ring-slate-900/5 hover:ring-brand-teal/30 hover:text-brand-teal shadow-sm text-sm">
+                <a href="#" class="bg-white hover:bg-slate-50 text-slate-700 px-8 py-3.5 rounded-xl font-medium transition-all ring-1 ring-inset ring-slate-200 hover:ring-brand-green hover:text-brand-green shadow-sm text-sm">
                     View Programs
                 </a>
             </div>
         </div>
         <div class="lg:col-span-5 relative hidden lg:flex items-center justify-center">
-            <!-- Animation Backglow (Increased scale and opacity) -->
-            <div class="absolute inset-0 bg-gradient-to-tr from-brand-teal/15 via-brand-gold/10 to-transparent rounded-full blur-[120px] scale-110 opacity-70"></div>
+            <!-- Animation Backglow (Updated to Green/Teal) -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-brand-green/15 via-brand-teal/10 to-transparent rounded-full blur-[120px] scale-110 opacity-70"></div>
             
             <div class="relative w-full max-w-[500px]">
                 <dotlottie-player src="{{ asset('animations/hero.lottie') }}" background="transparent" speed="1" style="width: 100%; height: auto;" loop autoplay class="hover:scale-105 transition-transform duration-700"></dotlottie-player>
             </div>
             
-            <div class="absolute -bottom-4 -left-4 bg-white p-3 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 animate-bounce-slow">
-                <div class="w-8 h-8 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold">
+            <div class="absolute -bottom-4 -left-4 bg-white p-3 rounded-xl shadow-md border border-slate-100 flex items-center gap-3 animate-bounce-slow">
+                <div class="w-8 h-8 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
                 </div>
                 <div>
                     <div class="font-bold text-slate-800 text-[10px]">Top Rated Platform</div>
-                    <div class="text-[8px] text-slate-400 font-bold uppercase tracking-wider">4.9/5 Student Reviews</div>
+                    <div class="text-[8px] text-slate-400 font-medium uppercase tracking-wider">4.9/5 Student Reviews</div>
                 </div>
             </div>
         </div>
@@ -49,40 +50,40 @@
 
     <!-- Features Bar (Integrated into 100vh view) -->
     <section class="max-w-7xl mx-auto px-6 pb-12 w-full">
-        <div class="bg-white rounded-[2rem] shadow-lg border border-gray-100 p-6 md:p-8 grid grid-cols-3 lg:grid-cols-6 gap-4 md:gap-8 backdrop-blur-sm bg-white/90">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 md:p-8 grid grid-cols-3 lg:grid-cols-6 gap-4 md:gap-8 backdrop-blur-sm bg-white/90">
             <div class="flex flex-col items-center text-center group">
-                <div class="w-10 h-10 rounded-xl bg-brand-teal/10 flex items-center justify-center text-brand-teal mb-3 group-hover:scale-110 transition-transform">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 1112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-3 group-hover:bg-brand-green group-hover:text-white transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 1112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 </div>
                 <span class="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-tighter">1-on-1 Learning</span>
             </div>
             <div class="flex flex-col items-center text-center group">
-                <div class="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-3 group-hover:scale-110 transition-transform">
+                <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-3 group-hover:bg-brand-green group-hover:text-white transition-all">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                 </div>
                 <span class="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-tighter">Verified Scholars</span>
             </div>
             <div class="flex flex-col items-center text-center group">
-                <div class="w-10 h-10 rounded-xl bg-brand-teal/10 flex items-center justify-center text-brand-teal mb-3 group-hover:scale-110 transition-transform">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-3 group-hover:bg-brand-green group-hover:text-white transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
                 <span class="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-tighter">Flexible Timings</span>
             </div>
             <div class="flex flex-col items-center text-center group">
-                <div class="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-3 group-hover:scale-110 transition-transform">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-3 group-hover:bg-brand-green group-hover:text-white transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 </div>
                 <span class="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-tighter">Growth Reports</span>
             </div>
             <div class="flex flex-col items-center text-center group">
-                <div class="w-10 h-10 rounded-xl bg-brand-teal/10 flex items-center justify-center text-brand-teal mb-3 group-hover:scale-110 transition-transform">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 00-2-2z"></path></svg>
+                <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-3 group-hover:bg-brand-green group-hover:text-white transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 00-2-2z"></path></svg>
                 </div>
                 <span class="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-tighter">Free Trial</span>
             </div>
             <div class="flex flex-col items-center text-center group">
-                <div class="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-3 group-hover:scale-110 transition-transform">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-3 group-hover:bg-brand-green group-hover:text-white transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
                 <span class="text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-tighter">Certifications</span>
             </div>
@@ -145,16 +146,16 @@
              <img src="{{ asset('storage/about-illustration-v1.jpg') }}" alt="About Ejlals Academy" class="w-full h-full object-cover">
         </div>
         <div>
-            <h2 class="text-3xl font-bold mb-4 text-slate-800 tracking-tight">Who We Are</h2>
-            <p class="text-slate-500 text-sm mb-4 leading-relaxed">
+            <h2 class="text-3xl font-serif font-bold mb-5 text-slate-800 tracking-tight">Who We Are</h2>
+            <p class="text-slate-600 text-sm mb-4 leading-relaxed">
                 We are an educational platform focused on delivering clear, reliable, and easy-to-understand information. Our mission is to simplify learning by providing structured guides, explanations, and resources that anyone can apply in real life.
             </p>
-            <p class="text-slate-500 mb-8 leading-relaxed">
+            <p class="text-slate-600 mb-8 text-sm leading-relaxed">
                 We believe education should be accessible, practical, and trustworthy.
             </p>
-            <a href="#" class="inline-flex items-center text-brand-teal font-bold hover:gap-2 transition-all">
+            <a href="#" class="inline-flex items-center text-brand-green font-bold hover:gap-3 transition-all">
                 About Us 
-                <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </a>
         </div>
     </div>
@@ -163,8 +164,8 @@
 <!-- Featured Courses Section (Procreate Style) -->
 <section class="max-w-7xl mx-auto px-6 py-10" x-data="{ activeCategory: 'all' }">
     <div class="text-center mb-8 max-w-2xl mx-auto">
-        <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Ready to begin?</span>
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-4">Lesson ideas.</h2>
+        <span class="text-brand-green font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Ready to begin?</span>
+        <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-900 tracking-tight mb-4">Lesson ideas.</h2>
         <p class="text-slate-500 text-sm leading-relaxed px-4">
             Explore our carefully curated modules tailored for every level of understanding. Whether you are beginning your journey or deepening your knowledge, find the structured guidance you need.
         </p>
@@ -174,14 +175,14 @@
     <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
         <button 
             @click="activeCategory = 'all'"
-            :class="activeCategory === 'all' ? 'bg-slate-900 text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
+            :class="activeCategory === 'all' ? 'bg-brand-green text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
             class="px-5 py-2 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest transition-all duration-300">
             See All
         </button>
         @foreach($featuredCategories as $category)
             <button 
                 @click="activeCategory = '{{ $category->id }}'"
-                :class="activeCategory === '{{ $category->id }}' ? 'bg-slate-900 text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
+                :class="activeCategory === '{{ $category->id }}' ? 'bg-brand-green text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
                 class="px-5 py-2 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest transition-all duration-300">
                 {{ $category->name }}
             </button>
@@ -203,8 +204,8 @@
                         @if($course->image)
                             <img src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         @else
-                            <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5 flex items-center justify-center p-8">
-                                <svg class="w-12 h-12 text-brand-teal/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            <div class="w-full h-full bg-gradient-to-br from-brand-green/5 to-brand-teal/5 flex items-center justify-center p-8">
+                                <svg class="w-12 h-12 text-brand-green/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                             </div>
                         @endif
                     </div>
@@ -212,10 +213,10 @@
                     <!-- Card Info -->
                     <div class="px-2">
                         <div class="flex items-center justify-between group/title">
-                            <h3 class="text-[11px] md:text-xs uppercase font-bold text-slate-800 tracking-tight transition-colors group-hover:text-brand-teal">
+                            <h3 class="text-[11px] md:text-xs uppercase font-bold text-slate-800 tracking-tight transition-colors group-hover:text-brand-green">
                                 {{ $course->title }}
                             </h3>
-                            <span class="text-slate-300 group-hover:text-brand-teal group-hover:translate-x-1 transition-all">
+                            <span class="text-slate-300 group-hover:text-brand-green group-hover:translate-x-1 transition-all">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
                             </span>
                         </div>
@@ -231,9 +232,9 @@
 
     <!-- Explore More Button -->
     <div class="mt-10 flex justify-center">
-        <a href="{{ route('courses.index') }}" class="group inline-flex items-center gap-2 bg-brand-teal text-white px-8 py-3 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-brand-teal/20 hover:-translate-y-1 active:scale-95">
+        <a href="{{ route('courses.index') }}" class="group inline-flex items-center gap-2 bg-gradient-to-r from-brand-green to-brand-teal text-white px-8 py-3.5 rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg hover:opacity-95 hover:-translate-y-0.5 active:scale-95">
             Explore more courses
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
     </div>
 </section>
@@ -243,16 +244,16 @@
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div class="max-w-xl">
-                <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Scholarly Resources</span>
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight mb-4">Digital Library</h2>
+                <span class="text-brand-green font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Scholarly Resources</span>
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight mb-4">Digital Library</h2>
                 <p class="text-slate-500 text-sm leading-relaxed max-w-md">
                     Access our premium collection of Islamic texts, study guides, and supplementary materials designed to support your lifelong learning.
                 </p>
             </div>
-            <a href="{{ route('books.index') }}" class="group inline-flex items-center gap-3 bg-slate-50 border border-slate-100 px-6 py-3 rounded-2xl text-slate-600 font-bold text-xs hover:bg-brand-gold hover:text-white hover:border-brand-gold transition-all shadow-sm">
+            <a href="{{ route('books.index') }}" class="group inline-flex items-center gap-3 bg-white border border-slate-200 px-6 py-3 rounded-xl text-slate-600 font-medium text-xs hover:bg-slate-50 hover:text-brand-green hover:border-brand-green/30 transition-all shadow-sm">
                 Visit Archives
-                <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center group-hover:bg-white/20 transition-colors">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-brand-green/10 group-hover:text-brand-green transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </div>
             </a>
         </div>
@@ -269,15 +270,15 @@
                         </div>
                     @endif
                 </div>
-                <h3 class="font-bold text-slate-800 text-sm mb-1 line-clamp-2 leading-snug group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
+                <h3 class="font-bold text-slate-800 text-sm mb-1 line-clamp-2 leading-snug group-hover:text-brand-green transition-colors">{{ $book->title }}</h3>
                 <p class="text-slate-400 text-[9px] uppercase tracking-widest font-bold mb-3">Ejlals Repository</p>
                 
                 @if($book->download_type === 'file' && $book->download_file)
-                    <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="mt-auto bg-brand-teal text-white py-2.5 px-3 rounded-xl text-xs font-bold text-center hover:bg-slate-900 transition-all flex items-center justify-center gap-2">
+                    <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="mt-auto bg-brand-green text-white py-2.5 px-3 rounded-xl text-xs font-bold text-center hover:bg-brand-green transition-all flex items-center justify-center gap-2">
                         View Resource
                     </a>
                 @elseif($book->download_type === 'link' && $book->download_link)
-                    <a href="{{ $book->download_link }}" target="_blank" class="mt-auto bg-gray-100 text-brand-teal py-2.5 px-3 rounded-xl text-xs font-bold text-center hover:bg-brand-teal hover:text-white transition-all flex items-center justify-center gap-2">
+                    <a href="{{ $book->download_link }}" target="_blank" class="mt-auto bg-slate-50 text-brand-green py-2.5 px-3 rounded-xl text-xs font-bold text-center hover:bg-brand-green hover:text-white transition-all flex items-center justify-center gap-2">
                         Access Guide
                     </a>
                 @else
@@ -299,14 +300,14 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div class="max-w-xl">
                 <div class="flex items-center gap-3 mb-1.5">
-                    <span class="w-8 h-[2px] bg-brand-gold rounded-full"></span>
-                    <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em]">The Academy Press</span>
+                    <span class="w-8 h-[2px] bg-brand-green rounded-full"></span>
+                    <span class="text-brand-green font-bold text-[10px] uppercase tracking-[0.4em]">The Academy Press</span>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 leading-tight tracking-tight">Scholarly Insights</h2>
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-900 leading-tight tracking-tight">Scholarly Insights</h2>
             </div>
-            <a href="{{ route('posts.index') }}" class="group inline-flex items-center gap-3 bg-white border border-slate-100 px-6 py-3 rounded-2xl text-slate-600 font-bold text-xs hover:bg-brand-teal hover:text-white hover:border-brand-teal transition-all shadow-sm">
+            <a href="{{ route('posts.index') }}" class="group inline-flex items-center gap-3 bg-white border border-slate-200 px-6 py-3 rounded-xl text-slate-600 font-medium text-xs hover:bg-slate-50 hover:text-brand-green hover:border-brand-green/30 transition-all shadow-sm">
                 Explore Full Library
-                <div class="w-6 h-6 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-brand-green/10 group-hover:text-brand-green transition-colors">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                 </div>
             </a>
@@ -322,18 +323,18 @@
                         @if($mainPost->image)
                             <img src="{{ Storage::url($mainPost->image) }}" alt="{{ $mainPost->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
                         @else
-                            <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5 flex items-center justify-center">
-                                <svg class="w-12 h-12 text-brand-teal/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg>
+                            <div class="w-full h-full bg-gradient-to-br from-brand-green/5 to-brand-teal/5 flex items-center justify-center">
+                                <svg class="w-12 h-12 text-brand-green/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg>
                             </div>
                         @endif
                         <div class="absolute top-6 left-6">
-                            <span class="bg-white/95 backdrop-blur-md text-brand-teal text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm border border-slate-100">
+                            <span class="bg-white/95 backdrop-blur-md text-brand-green text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm border border-slate-100">
                                 {{ $mainPost->category->name ?? 'Featured' }}
                             </span>
                         </div>
                     </div>
                     <div class="px-4 pb-4 flex-1 flex flex-col">
-                        <h3 class="text-2xl font-bold text-slate-900 group-hover:text-brand-teal transition-colors mb-4 leading-tight line-clamp-2">
+                        <h3 class="text-2xl font-serif font-bold text-slate-900 group-hover:text-brand-green transition-colors mb-4 leading-tight line-clamp-2">
                             {{ $mainPost->title }}
                         </h3>
                         <p class="text-slate-500 text-sm mb-6 line-clamp-2 leading-relaxed">
@@ -341,9 +342,9 @@
                         </p>
                         <div class="mt-auto pt-6 border-t border-slate-50 flex items-center justify-between">
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ $mainPost->created_at->format('M d, Y') }}</span>
-                            <a href="{{ route('posts.show', $mainPost->slug) }}" class="flex items-center gap-2 text-brand-teal font-bold text-sm group/btn">
+                            <a href="{{ route('posts.show', $mainPost->slug) }}" class="flex items-center gap-2 text-brand-green font-bold text-sm group/btn">
                                 Read Full Article
-                                <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </a>
                         </div>
                     </div>
@@ -364,12 +365,12 @@
                         @if($post->image)
                             <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         @else
-                           <div class="w-full h-full flex items-center justify-center text-brand-teal/10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg></div>
+                           <div class="w-full h-full flex items-center justify-center text-brand-green/10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg></div>
                         @endif
                     </div>
                     <div class="flex-1 pr-2">
-                        <span class="text-brand-teal font-bold text-[9px] uppercase tracking-widest mb-1.5 block">{{ $post->category->name ?? 'Article' }}</span>
-                        <h4 class="text-md font-bold text-slate-900 group-hover:text-brand-teal transition-colors line-clamp-2 leading-snug">
+                        <span class="text-brand-green font-bold text-[9px] uppercase tracking-widest mb-1.5 block">{{ $post->category->name ?? 'Article' }}</span>
+                        <h4 class="text-md font-bold text-slate-900 group-hover:text-brand-green transition-colors line-clamp-2 leading-snug">
                             {{ $post->title }}
                         </h4>
                     </div>
@@ -384,7 +385,7 @@
                         @forelse($latestPosts as $post)
                         <div class="group">
                             <a href="{{ route('posts.show', $post->slug) }}" class="block">
-                                <h5 class="font-bold text-slate-800 group-hover:text-brand-teal transition-colors mb-2 line-clamp-1">{{ $post->title }}</h5>
+                                <h5 class="font-bold text-slate-800 group-hover:text-brand-green transition-colors mb-2 line-clamp-1">{{ $post->title }}</h5>
                                 <div class="flex items-center gap-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                                     <span>{{ $post->created_at->format('M d') }}</span>
                                     <span class="w-1 h-1 rounded-full bg-slate-200"></span>
@@ -406,19 +407,19 @@
 <section class="bg-white py-10 px-6 overflow-hidden">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-8">
-            <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Social Proof</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Student & Parent Reviews</h2>
+            <span class="text-brand-green font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Social Proof</span>
+            <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight">Student & Parent Reviews</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Review 1 -->
-            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
+            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-green/20 transition-all shadow-sm">
                 <div class="flex gap-1 mb-5 text-xs">
-                    @for($i=0; $i<5; $i++) <svg class="w-3.5 h-3.5 text-brand-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
+                    @for($i=0; $i<5; $i++) <svg class="w-3.5 h-3.5 text-brand-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
                 </div>
                 <p class="text-slate-600 text-sm italic leading-relaxed mb-6">"The 1-on-1 sessions have completely changed how my kids learn. The teachers are incredibly patient and the schedule is super flexible."</p>
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center font-bold text-brand-teal text-xs">SA</div>
+                    <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center font-bold text-brand-green text-xs">SA</div>
                     <div>
                         <h4 class="font-bold text-slate-800 text-sm">Sarah Ahmed</h4>
                         <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Parent</p>
@@ -426,13 +427,13 @@
                 </div>
             </div>
             <!-- Review 2 -->
-            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
+            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-green/20 transition-all shadow-sm">
                 <div class="flex gap-1 mb-5 text-xs">
-                    @for($i=0; $i<5; $i++) <svg class="w-3.5 h-3.5 text-brand-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
+                    @for($i=0; $i<5; $i++) <svg class="w-3.5 h-3.5 text-brand-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
                 </div>
                 <p class="text-slate-600 text-sm italic leading-relaxed mb-6">"I was looking for a authentic Tajweed course and Ejlals Academy delivered exactly what I needed. Highly professional scholars."</p>
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-full bg-brand-gold/10 flex items-center justify-center font-bold text-brand-gold text-xs">OM</div>
+                    <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center font-bold text-brand-green text-xs">OM</div>
                     <div>
                         <h4 class="font-bold text-slate-800 text-sm">Omar Mansoor</h4>
                         <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Student</p>
@@ -440,13 +441,13 @@
                 </div>
             </div>
             <!-- Review 3 -->
-            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
+            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-green/20 transition-all shadow-sm">
                 <div class="flex gap-1 mb-5 text-xs">
-                    @for($i=0; $i<5; $i++) <svg class="w-3.5 h-3.5 text-brand-gold" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
+                    @for($i=0; $i<5; $i++) <svg class="w-3.5 h-3.5 text-brand-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
                 </div>
                 <p class="text-slate-600 text-sm italic leading-relaxed mb-6">"The monthly progress reports are great. They keep me informed about my daughter's growth and what she's learning next."</p>
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center font-bold text-brand-teal text-xs">FK</div>
+                    <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center font-bold text-brand-green text-xs">FK</div>
                     <div>
                         <h4 class="font-bold text-slate-800 text-sm">Fatima Khan</h4>
                         <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Parent</p>
@@ -461,8 +462,8 @@
 <section class="bg-[#FDFDFC] py-10 px-6">
     <div class="max-w-3xl mx-auto">
         <div class="text-center mb-8">
-            <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Clarifications</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Frequently Asked Questions</h2>
+            <span class="text-brand-green font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Clarifications</span>
+            <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight">Frequently Asked Questions</h2>
         </div>
 
         <div class="space-y-4">
@@ -502,15 +503,15 @@
 <section class="max-w-5xl mx-auto px-6 py-12">
     <div class="bg-gray-50 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left border border-gray-100">
         <div class="flex-1">
-            <h2 class="text-2xl font-bold mb-3 text-slate-800 uppercase tracking-tight">Practical Solutions?</h2>
+            <h2 class="text-2xl font-serif font-bold mb-3 text-slate-800 uppercase tracking-tight">Practical Solutions?</h2>
             <p class="text-slate-500 text-xs leading-relaxed">
                 After learning the concepts, you can explore our carefully selected products and resources designed to support your learning and daily needs.
             </p>
         </div>
         <div class="w-full max-w-sm">
             <form action="#" class="flex gap-2">
-                <input type="email" placeholder="Email Address" class="flex-1 bg-white border border-gray-200 py-2.5 px-4 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal/20 focus:border-brand-teal transition-all">
-                <button class="bg-brand-teal hover:bg-brand-teal/90 text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-md transition-all whitespace-nowrap">
+                <input type="email" placeholder="Email Address" class="flex-1 bg-white border border-gray-200 py-2.5 px-4 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-all">
+                <button class="bg-brand-green hover:bg-brand-green text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-md transition-colors whitespace-nowrap">
                     Subscribe Now
                 </button>
             </form>
