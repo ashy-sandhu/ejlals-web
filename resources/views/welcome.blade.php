@@ -4,32 +4,35 @@
 
 @section('content')
 <!-- Hero Section & Features Bar Wrapper (Ensures 100vh fit) -->
-<div class="relative bg-white min-h-[calc(100vh-80px)] flex flex-col">
+<div class="relative bg-white min-h-[calc(100vh-80px)] flex flex-col justify-center overflow-hidden">
     <!-- Hero Section -->
-    <section class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-8">
-        <div class="lg:col-span-7 max-w-4xl">
-            <h1 class="text-2xl md:text-3xl font-bold text-slate-800 leading-tight mb-4 tracking-tight">
+    <section class="max-w-7xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-16 md:py-8 flex-1">
+        <div class="lg:col-span-7 max-w-4xl flex flex-col justify-center">
+            <h1 class="text-3xl md:text-5xl font-bold text-slate-800 leading-[1.1] mb-12 tracking-tighter">
                 Empowering Modern Minds with Timeless Islamic 
                 <span class="text-brand-teal italic inline-flex items-center whitespace-nowrap min-h-[1.3em] align-middle">
                     <span id="typewriter-text"></span><span id="cursor" class="inline-block w-0.5 h-[0.9em] bg-brand-gold ml-1.5 animate-pulse"></span>
                 </span>
             </h1>
-            <p class="text-slate-500 text-xs md:text-sm mb-6 leading-relaxed max-w-lg opacity-90">
+            <p class="text-slate-600 text-sm md:text-base mb-16 leading-relaxed max-w-md opacity-90">
             Interactive one on one sessions thoughtfully designed around your busy life. 
             A nurturing space where knowledge of Deen is delivered with clarity and care.
             </p>
-            <div class="flex flex-wrap gap-3">
-                <a href="#" class="bg-brand-gold hover:bg-brand-gold/90 text-white px-6 py-2.5 rounded-xl font-bold transition-all shadow-md hover:shadow-xl hover:-translate-y-1 active:scale-95 text-xs">
+            <div class="flex flex-wrap gap-6">
+                <a href="#" class="bg-brand-gold hover:bg-brand-gold/90 text-white px-8 py-3.5 rounded-2xl font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 text-sm">
                     Get Started Free
                 </a>
-                <a href="#" class="border border-slate-200 hover:border-brand-teal hover:text-brand-teal text-slate-600 px-6 py-2.5 rounded-xl font-bold transition-all text-xs">
+                <a href="#" class="bg-white hover:bg-slate-50 text-slate-700 px-8 py-3.5 rounded-2xl font-bold transition-all ring-1 ring-inset ring-slate-900/5 hover:ring-brand-teal/30 hover:text-brand-teal shadow-sm text-sm">
                     View Programs
                 </a>
             </div>
         </div>
-        <div class="lg:col-span-5 relative hidden lg:block">
-            <div class="relative bg-white/50 backdrop-blur-sm rounded-[2rem] p-4 border border-white/20 shadow-2xl">
-                <dotlottie-player src="https://lottie.host/80c43610-d017-4933-9118-2e0f9b6e06b9/Wl6mQJ0M49.lottie" background="transparent" speed="1" style="width: 100%; height: auto;" loop autoplay class="hover:scale-105 transition-transform duration-700"></dotlottie-player>
+        <div class="lg:col-span-5 relative hidden lg:flex items-center justify-center">
+            <!-- Animation Backglow (Increased scale and opacity) -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-brand-teal/15 via-brand-gold/10 to-transparent rounded-full blur-[120px] scale-110 opacity-70"></div>
+            
+            <div class="relative w-full max-w-[500px]">
+                <dotlottie-player src="{{ asset('animations/hero.lottie') }}" background="transparent" speed="1" style="width: 100%; height: auto;" loop autoplay class="hover:scale-105 transition-transform duration-700"></dotlottie-player>
             </div>
             
             <div class="absolute -bottom-4 -left-4 bg-white p-3 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 animate-bounce-slow">
@@ -86,6 +89,18 @@
         </div>
     </section>
 </div>
+
+<!-- Lottie Player & Styles -->
+<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+<style>
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.animate-bounce-slow {
+    animation: bounce-slow 4s infinite ease-in-out;
+}
+</style>
 
 <script>
     const typewriterWords = ["Values", "Education", "Faith", "Ethics"];
