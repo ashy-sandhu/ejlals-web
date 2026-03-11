@@ -6,33 +6,40 @@
 <!-- Hero Section & Features Bar Wrapper (Ensures 100vh fit) -->
 <div class="relative bg-white min-h-[calc(100vh-80px)] flex flex-col">
     <!-- Hero Section -->
-    <section class="flex-1 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-8">
         <div class="lg:col-span-7 max-w-4xl">
-            <h1 class="text-3xl md:text-4xl font-bold text-slate-800 leading-tight mb-6 tracking-tight">
+            <h1 class="text-2xl md:text-3xl font-bold text-slate-800 leading-tight mb-4 tracking-tight">
                 Empowering Modern Minds with Timeless Islamic 
                 <span class="text-brand-teal italic inline-flex items-center whitespace-nowrap min-h-[1.3em] align-middle">
                     <span id="typewriter-text"></span><span id="cursor" class="inline-block w-0.5 h-[0.9em] bg-brand-gold ml-1.5 animate-pulse"></span>
                 </span>
             </h1>
-            <p class="text-slate-500 text-sm md:text-base mb-8 leading-relaxed max-w-xl opacity-90">
+            <p class="text-slate-500 text-xs md:text-sm mb-6 leading-relaxed max-w-lg opacity-90">
             Interactive one on one sessions thoughtfully designed around your busy life. 
             A nurturing space where knowledge of Deen is delivered with clarity and care.
             </p>
-            <div class="flex flex-wrap gap-4">
-                <a href="#" class="bg-brand-gold hover:bg-brand-gold/90 text-white px-7 py-3.5 rounded-xl font-bold transition-all shadow-md hover:shadow-xl hover:-translate-y-1 active:scale-95 text-sm">
-                    Start Free Trial
+            <div class="flex flex-wrap gap-3">
+                <a href="#" class="bg-brand-gold hover:bg-brand-gold/90 text-white px-6 py-2.5 rounded-xl font-bold transition-all shadow-md hover:shadow-xl hover:-translate-y-1 active:scale-95 text-xs">
+                    Get Started Free
                 </a>
-                <a href="{{ route('courses.index') }}" class="bg-brand-teal hover:bg-brand-teal/90 text-white px-7 py-3.5 rounded-xl font-bold transition-all shadow-md hover:shadow-xl hover:-translate-y-1 active:scale-95 text-sm">
-                    Explore Courses
+                <a href="#" class="border border-slate-200 hover:border-brand-teal hover:text-brand-teal text-slate-600 px-6 py-2.5 rounded-xl font-bold transition-all text-xs">
+                    View Programs
                 </a>
             </div>
         </div>
-        
-        <!-- Hero Illustration (Interactive Lottie) -->
-        <div class="lg:col-span-5 relative group hidden lg:block">
-            <div class="absolute -inset-4 bg-gradient-to-tr from-brand-teal/20 to-brand-gold/20 rounded-[3rem] blur-3xl opacity-60"></div>
-            <div class="relative bg-transparent aspect-square w-full ml-auto max-w-[500px] flex items-center justify-center overflow-visible drop-shadow-2xl hover:scale-110 transition-transform duration-700">
-                <dotlottie-player src="{{ asset('animations/hero.lottie') }}" background="transparent" speed="1" style="width: 130%; height: 130%;" loop autoplay></dotlottie-player>
+        <div class="lg:col-span-5 relative hidden lg:block">
+            <div class="relative bg-white/50 backdrop-blur-sm rounded-[2rem] p-4 border border-white/20 shadow-2xl">
+                <dotlottie-player src="https://lottie.host/80c43610-d017-4933-9118-2e0f9b6e06b9/Wl6mQJ0M49.lottie" background="transparent" speed="1" style="width: 100%; height: auto;" loop autoplay class="hover:scale-105 transition-transform duration-700"></dotlottie-player>
+            </div>
+            
+            <div class="absolute -bottom-4 -left-4 bg-white p-3 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 animate-bounce-slow">
+                <div class="w-8 h-8 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                </div>
+                <div>
+                    <div class="font-bold text-slate-800 text-[10px]">Top Rated Platform</div>
+                    <div class="text-[8px] text-slate-400 font-bold uppercase tracking-wider">4.9/5 Student Reviews</div>
+                </div>
             </div>
         </div>
     </section>
@@ -139,32 +146,32 @@
 </section>
 
 <!-- Featured Courses Section (Procreate Style) -->
-<section class="max-w-7xl mx-auto px-6 py-16" x-data="{ activeCategory: 'all' }">
-    <div class="text-center mb-12">
-        <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-2 block">Ready to begin?</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Lesson ideas.</h2>
+<section class="max-w-7xl mx-auto px-6 py-10" x-data="{ activeCategory: 'all' }">
+    <div class="text-center mb-6">
+        <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Ready to begin?</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Lesson ideas.</h2>
     </div>
 
     <!-- Category Filters -->
-    <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-16">
+    <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
         <button 
             @click="activeCategory = 'all'"
-            :class="activeCategory === 'all' ? 'bg-slate-900 text-white shadow-lg' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
-            class="px-6 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300">
+            :class="activeCategory === 'all' ? 'bg-slate-900 text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
+            class="px-5 py-2 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest transition-all duration-300">
             See All
         </button>
         @foreach($featuredCategories as $category)
             <button 
                 @click="activeCategory = '{{ $category->id }}'"
-                :class="activeCategory === '{{ $category->id }}' ? 'bg-slate-900 text-white shadow-lg' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
-                class="px-6 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300">
+                :class="activeCategory === '{{ $category->id }}' ? 'bg-slate-900 text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
+                class="px-5 py-2 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest transition-all duration-300">
                 {{ $category->name }}
             </button>
         @endforeach
     </div>
 
     <!-- Courses Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
         @forelse($featuredCourses as $course)
             <div 
                 x-show="activeCategory === 'all' || activeCategory === '{{ $course->category_id }}'"
@@ -172,56 +179,56 @@
                 x-transition:enter-start="opacity-0 scale-95 translate-y-4"
                 x-transition:enter-end="opacity-100 scale-100 translate-y-0"
                 class="group cursor-pointer">
-                <a href="{{ route('courses.show', $course->slug) }}" class="block">
+                <a href="{{ route('courses.show', $course->slug) }}" class="block p-3 rounded-3xl hover:bg-slate-50/50 transition-colors">
                     <!-- Card Image -->
-                    <div class="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-slate-100 mb-6 border border-slate-100 shadow-sm transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2">
+                    <div class="relative aspect-video rounded-3xl overflow-hidden bg-slate-100 mb-4 border border-slate-100 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-1">
                         @if($course->image)
-                            <img src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <img src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         @else
-                            <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5 flex items-center justify-center p-12">
-                                <svg class="w-16 h-16 text-brand-teal/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5 flex items-center justify-center p-8">
+                                <svg class="w-12 h-12 text-brand-teal/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                             </div>
                         @endif
                     </div>
                     
                     <!-- Card Info -->
-                    <div class="px-4">
+                    <div class="px-2">
                         <div class="flex items-center justify-between group/title">
-                            <h3 class="text-sm md:text-md uppercase font-black text-slate-800 tracking-tighter transition-colors group-hover:text-brand-teal">
+                            <h3 class="text-[11px] md:text-xs uppercase font-bold text-slate-800 tracking-tight transition-colors group-hover:text-brand-teal">
                                 {{ $course->title }}
                             </h3>
                             <span class="text-slate-300 group-hover:text-brand-teal group-hover:translate-x-1 transition-all">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
                             </span>
                         </div>
                     </div>
                 </a>
             </div>
         @empty
-            <div class="col-span-full py-20 text-center bg-slate-50 rounded-[3rem] border border-dashed border-slate-200">
-                <p class="text-slate-400 font-medium">Coming Soon: Curated Islamic Education</p>
+            <div class="col-span-full py-12 text-center bg-slate-50 rounded-3xl border border-dashed border-slate-200">
+                <p class="text-slate-400 font-medium text-sm">Coming Soon: Curated Islamic Education</p>
             </div>
         @endforelse
     </div>
 
     <!-- Explore More Button -->
-    <div class="mt-20 flex justify-center">
-        <a href="{{ route('courses.index') }}" class="group inline-flex items-center gap-3 bg-brand-teal text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-brand-teal/20 hover:-translate-y-1 active:scale-95">
+    <div class="mt-10 flex justify-center">
+        <a href="{{ route('courses.index') }}" class="group inline-flex items-center gap-2 bg-brand-teal text-white px-8 py-3 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-brand-teal/20 hover:-translate-y-1 active:scale-95">
             Explore more courses
-            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </a>
     </div>
 </section>
 
 <!-- Digital Library Preview -->
-<section class="bg-white py-16 px-6">
+<section class="bg-white py-10 px-6">
     <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div class="max-w-xl">
-                <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-2 block">Scholarly Resources</span>
-                <h2 class="text-3xl font-bold text-slate-800 tracking-tight">Digital Library</h2>
+                <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Scholarly Resources</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Digital Library</h2>
             </div>
-            <a href="{{ route('books.index') }}" class="group inline-flex items-center gap-4 bg-slate-50 border border-slate-100 px-8 py-4 rounded-2xl text-slate-600 font-bold hover:bg-brand-gold hover:text-white hover:border-brand-gold transition-all shadow-sm">
+            <a href="{{ route('books.index') }}" class="group inline-flex items-center gap-3 bg-slate-50 border border-slate-100 px-6 py-3 rounded-2xl text-slate-600 font-bold text-xs hover:bg-brand-gold hover:text-white hover:border-brand-gold transition-all shadow-sm">
                 Visit Archives
                 <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center group-hover:bg-white/20 transition-colors">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
@@ -229,10 +236,10 @@
             </a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             @forelse($featuredBooks as $book)
             <div class="flex flex-col group">
-                <div class="aspect-[3/4] bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm transition-all hover:-translate-y-2 hover:shadow-xl relative mb-6">
+                <div class="aspect-[4/5] bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg relative mb-4">
                     @if($book->image)
                         <img src="{{ Storage::url($book->image) }}" alt="{{ $book->title }}" class="w-full h-full object-cover">
                     @else
@@ -266,17 +273,17 @@
 </section>
 
 <!-- Articles Section -->
-<section class="bg-[#FDFDFC] py-16 px-6 overflow-hidden">
+<section class="bg-[#FDFDFC] py-10 px-6 overflow-hidden">
     <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div class="max-w-xl">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="w-10 h-[2px] bg-brand-gold rounded-full"></span>
-                    <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em]">The Academy Press</span>
+                <div class="flex items-center gap-3 mb-1.5">
+                    <span class="w-8 h-[2px] bg-brand-gold rounded-full"></span>
+                    <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em]">The Academy Press</span>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight tracking-tight">Scholarly Insights</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 leading-tight tracking-tight">Scholarly Insights</h2>
             </div>
-            <a href="{{ route('posts.index') }}" class="group inline-flex items-center gap-4 bg-white border border-slate-100 px-8 py-4 rounded-2xl text-slate-600 font-bold hover:bg-brand-teal hover:text-white hover:border-brand-teal transition-all shadow-sm">
+            <a href="{{ route('posts.index') }}" class="group inline-flex items-center gap-3 bg-white border border-slate-100 px-6 py-3 rounded-2xl text-slate-600 font-bold text-xs hover:bg-brand-teal hover:text-white hover:border-brand-teal transition-all shadow-sm">
                 Explore Full Library
                 <div class="w-6 h-6 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-white/20 transition-colors">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
@@ -289,8 +296,8 @@
             <div class="lg:col-span-7 group">
                 @if($featuredPosts->count() > 0)
                 @php $mainPost = $featuredPosts->first(); @endphp
-                <div class="relative bg-white rounded-[2.5rem] border border-slate-100 p-3 shadow-sm hover:shadow-xl transition-all duration-700 h-full flex flex-col">
-                    <div class="relative aspect-video rounded-[2rem] overflow-hidden bg-slate-100 mb-6">
+                <div class="relative bg-white rounded-3xl border border-slate-100 p-2 shadow-sm hover:shadow-xl transition-all duration-700 h-full flex flex-col">
+                    <div class="relative aspect-[2/1] rounded-2xl overflow-hidden bg-slate-100 mb-4">
                         @if($mainPost->image)
                             <img src="{{ Storage::url($mainPost->image) }}" alt="{{ $mainPost->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
                         @else
@@ -375,14 +382,14 @@
 </section>
 
 <!-- Success Stories -->
-<section class="bg-white py-16 px-6 overflow-hidden">
+<section class="bg-white py-10 px-6 overflow-hidden">
     <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-12">
-            <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-2 block">Social Proof</span>
-            <h2 class="text-3xl font-bold text-slate-800 tracking-tight">Student & Parent Reviews</h2>
+        <div class="text-center mb-8">
+            <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Social Proof</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Student & Parent Reviews</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Review 1 -->
             <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
                 <div class="flex gap-1 mb-5 text-xs">
@@ -430,11 +437,11 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="bg-[#FDFDFC] py-16 px-6">
+<section class="bg-[#FDFDFC] py-10 px-6">
     <div class="max-w-3xl mx-auto">
-        <div class="text-center mb-12">
-            <span class="text-brand-gold font-bold text-xs uppercase tracking-[0.4em] mb-2 block">Clarifications</span>
-            <h2 class="text-3xl font-bold text-slate-800 tracking-tight">Frequently Asked Questions</h2>
+        <div class="text-center mb-8">
+            <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Clarifications</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Frequently Asked Questions</h2>
         </div>
 
         <div class="space-y-4">
@@ -471,18 +478,18 @@
         </div>
     </div>
 </section>
-<section class="max-w-5xl mx-auto px-6 py-20">
-    <div class="bg-gray-50 rounded-[2.5rem] p-12 md:p-16 flex flex-col md:flex-row items-center gap-12 text-center md:text-left border border-gray-100">
+<section class="max-w-5xl mx-auto px-6 py-12">
+    <div class="bg-gray-50 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left border border-gray-100">
         <div class="flex-1">
-            <h2 class="text-3xl font-bold mb-4 text-slate-800 uppercase tracking-tight">Looking for Practical Solutions?</h2>
-            <p class="text-slate-500 leading-relaxed">
+            <h2 class="text-2xl font-bold mb-3 text-slate-800 uppercase tracking-tight">Practical Solutions?</h2>
+            <p class="text-slate-500 text-xs leading-relaxed">
                 After learning the concepts, you can explore our carefully selected products and resources designed to support your learning and daily needs.
             </p>
         </div>
-        <div class="w-full max-w-md">
+        <div class="w-full max-w-sm">
             <form action="#" class="flex gap-2">
-                <input type="email" placeholder="Email Address" class="flex-1 bg-white border border-gray-200 py-3.5 px-6 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-teal/20 focus:border-brand-teal transition-all">
-                <button class="bg-brand-teal hover:bg-brand-teal/90 text-white px-6 py-3.5 rounded-2xl font-bold shadow-md transition-all whitespace-nowrap">
+                <input type="email" placeholder="Email Address" class="flex-1 bg-white border border-gray-200 py-2.5 px-4 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal/20 focus:border-brand-teal transition-all">
+                <button class="bg-brand-teal hover:bg-brand-teal/90 text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-md transition-all whitespace-nowrap">
                     Subscribe Now
                 </button>
             </form>
