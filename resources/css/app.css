@@ -54,14 +54,15 @@
     --font-serif: 'Playfair Display', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-sans: 'Inter', 'Outfit', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
 
-    /* Color Palette: Forest (Green) & Deep Teal (Al-Madina Inspiration) */
-    --color-brand-green: #4E9D15;
-    --color-brand-green-light: #5DB51C;
-    --color-brand-green-dark: #3F7A11;
-    
+    /* Dedicated Color Palette: Deep Teal & Desert Gold (Al-Madina Inspiration) */
     --color-brand-teal: #138C90;
     --color-brand-teal-light: #16A8AD;
     --color-brand-teal-dark: #0E686A;
-    /* Keep legacy gold as an accent if needed, but primary is green/teal */
-    --color-brand-gold: #EA7F26; 
+    
+    --color-brand-gold: #EA7F26;
+    --color-brand-gold-light: #F2994A;
+    --color-brand-gold-dark: #C7681C;
+
+    /* Legacy/Fallback Green (Deprioritized) */
+    --color-brand-green: #4E9D15;
 }

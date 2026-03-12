@@ -25,6 +25,13 @@
 .text-shadow-sm {
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
+.islamic-pattern {
+    background-image: radial-gradient(circle at 2px 2px, rgba(19, 140, 144, 0.05) 1px, transparent 0);
+    background-size: 24px 24px;
+}
+.layered-shadow {
+    box-shadow: 0 10px 30px -10px rgba(19, 140, 144, 0.15), 0 4px 10px -5px rgba(234, 127, 38, 0.1);
+}
 </style>
 
 <script>
@@ -64,101 +71,194 @@
 
     document.addEventListener('DOMContentLoaded', type);
 </script>
-<section class="bg-white py-14 px-6 border-y border-gray-50">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div class="relative bg-white rounded-3xl aspect-[1.4/1] flex items-center justify-center overflow-hidden border border-gray-100 shadow-sm">
-             <img src="{{ asset('storage/about-illustration-v1.jpg') }}" alt="About Ejlals Academy" class="w-full h-full object-cover">
-        </div>
-        <div>
-            <h2 class="text-3xl font-serif font-bold mb-5 text-slate-800 tracking-tight">Who We Are</h2>
-            <p class="text-slate-600 text-sm mb-4 leading-relaxed">
-                We are an educational platform focused on delivering clear, reliable, and easy-to-understand information. Our mission is to simplify learning by providing structured guides, explanations, and resources that anyone can apply in real life.
-            </p>
-            <p class="text-slate-600 mb-8 text-sm leading-relaxed">
-                We believe education should be accessible, practical, and trustworthy.
-            </p>
-            <a href="#" class="inline-flex items-center text-brand-green font-bold hover:gap-3 transition-all">
-                About Us 
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-            </a>
+<!-- Refined & Compact Who We Are Section -->
+<section class="relative islamic-pattern py-10 lg:py-12 border-y border-gray-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 lg:items-stretch items-center">
+            <!-- Left Side: Layered Images (Scaled Down) -->
+            <div class="relative max-w-xs lg:max-w-sm mx-auto w-full order-1 lg:order-1 h-fit mb-8 lg:mb-0">
+                <!-- Image Container -->
+                <div class="relative rounded-2xl overflow-hidden layered-shadow aspect-[4/3] lg:aspect-square z-10 w-full bg-slate-100">
+                    <img src="{{ asset('images/ejlals_academy_who_we_are.png') }}" alt="Ejlals Academy Scholars" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-teal/10 to-transparent"></div>
+                </div>
+                
+                <!-- Floating Experience Badge (Moved OUTSIDE overflow-hidden) -->
+                <div class="absolute -bottom-4 -right-4 lg:bottom-4 lg:-right-6 bg-white/95 backdrop-blur-md px-3 py-2.5 rounded-2xl shadow-xl z-20 flex items-center gap-2.5 border border-brand-gold/20">
+                    <div class="size-8 bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold shrink-0">
+                        <span class="material-symbols-outlined text-[16px]">workspace_premium</span>
+                    </div>
+                    <div>
+                        <p class="text-[8px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-0.5">Experience</p>
+                        <p class="text-xs font-black text-slate-800 leading-none">10+ Years</p>
+                    </div>
+                </div>
+
+                <!-- Decorative Layered Elements -->
+                <div class="absolute -bottom-3 -right-3 w-1/2 h-1/2 bg-brand-gold/10 border border-brand-gold/20 rounded-2xl z-0"></div>
+                <div class="absolute -top-3 -left-3 w-1/4 h-1/4 bg-brand-teal/5 rounded-full blur-2xl z-0"></div>
+            </div>
+
+            <!-- Right Side: Content -->
+            <div class="flex flex-col justify-between order-2 lg:order-2 lg:py-2">
+                <!-- Header Component -->
+                <div class="text-center lg:text-left mb-6">
+                    <div class="flex items-center justify-center lg:justify-start gap-3 mb-2">
+                        <span class="w-6 h-[2px] bg-brand-gold rounded-full"></span>
+                        <span class="text-brand-gold font-bold tracking-[0.4em] uppercase text-[9px] md:text-[10px]">Our Legacy</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-slate-900 leading-[1.1] tracking-tight">
+                        Who We Are
+                    </h2>
+                    <p class="mt-4 text-[13px] md:text-sm text-slate-600 leading-relaxed font-medium max-w-xl mx-auto lg:mx-0">
+                        Ejlals Academy is a sanctuary of knowledge where traditional spiritual wisdom meets modern academic rigor. We are dedicated to nurturing a generation of leaders who are intellectually capable, deeply rooted in faith, and prepared to illuminate the global community with purposeful action.
+                    </p>
+                </div>
+
+                <!-- Square Feature Cards Container -->
+                <div class="flex flex-col flex-1 justify-center mb-6 w-full">
+                    <!-- Feature Cards Row -->
+                    <div class="flex flex-row gap-2 lg:gap-3 w-full overflow-x-auto no-scrollbar pb-2 lg:pb-0">
+                        <!-- Card 1 -->
+                        <div class="group flex flex-col items-center justify-center p-2 rounded-2xl bg-white border border-brand-teal/10 hover:border-brand-gold/30 transition-all duration-300 shadow-sm hover:shadow-md text-center flex-1 min-w-[80px] h-24 lg:h-28">
+                            <div class="flex-shrink-0 size-8 rounded-xl bg-brand-teal/5 text-brand-teal flex items-center justify-center group-hover:bg-brand-teal group-hover:text-white transition-all duration-500 mb-1.5 text-sm sm:text-base">
+                                <span class="material-symbols-outlined text-[17px]">menu_book</span>
+                            </div>
+                            <h3 class="text-[10px] font-bold text-slate-800 group-hover:text-brand-teal transition-colors mb-0.5 leading-tight">Authentic</h3>
+                            <p class="text-slate-500 text-[8px] leading-tight px-0.5 sm:px-1 hidden sm:block">Curriculum by experts.</p>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="group flex flex-col items-center justify-center p-2 rounded-2xl bg-white border border-brand-teal/10 hover:border-brand-gold/30 transition-all duration-300 shadow-sm hover:shadow-md text-center flex-1 min-w-[80px] h-24 lg:h-28">
+                            <div class="flex-shrink-0 size-8 rounded-xl bg-brand-gold/5 text-brand-gold flex items-center justify-center group-hover:bg-brand-gold group-hover:text-white transition-all duration-500 mb-1.5 text-sm sm:text-base">
+                                <span class="material-symbols-outlined text-[17px]">temple_hindu</span>
+                            </div>
+                            <h3 class="text-[10px] font-bold text-slate-800 group-hover:text-brand-gold transition-colors mb-0.5 leading-tight">Spiritual</h3>
+                            <p class="text-slate-500 text-[8px] leading-tight px-0.5 sm:px-1 hidden sm:block">Guided soul sessions.</p>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="group flex flex-col items-center justify-center p-2 rounded-2xl bg-white border border-brand-teal/10 hover:border-brand-gold/30 transition-all duration-300 shadow-sm hover:shadow-md text-center flex-1 min-w-[80px] h-24 lg:h-28">
+                            <div class="flex-shrink-0 size-8 rounded-xl bg-brand-teal/5 text-brand-teal flex items-center justify-center group-hover:bg-brand-teal group-hover:text-white transition-all duration-500 mb-1.5 text-sm sm:text-base">
+                                <span class="material-symbols-outlined text-[17px]">groups</span>
+                            </div>
+                            <h3 class="text-[10px] font-bold text-slate-800 group-hover:text-brand-teal transition-colors mb-0.5 leading-tight">Global</h3>
+                            <p class="text-slate-500 text-[8px] leading-tight px-0.5 sm:px-1 hidden sm:block">Worldwide network.</p>
+                        </div>
+                        <!-- Card 4 (Symmetry) -->
+                        <div class="group flex flex-col items-center justify-center p-2 rounded-2xl bg-white border border-brand-teal/10 hover:border-brand-gold/30 transition-all duration-300 shadow-sm hover:shadow-md text-center flex-1 min-w-[80px] h-24 lg:h-28">
+                            <div class="flex-shrink-0 size-8 rounded-xl bg-brand-gold/5 text-brand-gold flex items-center justify-center group-hover:bg-brand-gold group-hover:text-white transition-all duration-500 mb-1.5 text-sm sm:text-base">
+                                <span class="material-symbols-outlined text-[17px]">school</span>
+                            </div>
+                            <h3 class="text-[10px] font-bold text-slate-800 group-hover:text-brand-gold transition-colors mb-0.5 leading-tight">Expert</h3>
+                            <p class="text-slate-500 text-[8px] leading-tight px-0.5 sm:px-1 hidden sm:block">Certified instructors.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Button -->
+                <div class="flex justify-center lg:justify-start">
+                    <a href="#" class="group inline-flex items-center gap-2 bg-brand-teal text-white px-6 py-2.5 rounded-lg font-bold text-xs shadow-lg shadow-brand-teal/20 hover:shadow-brand-teal/30 hover:-translate-y-0.5 transition-all active:scale-[0.98]">
+                        <span>About Us</span>
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">trending_flat</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Featured Courses Section (Procreate Style) -->
-<section class="max-w-7xl mx-auto px-6 py-10" x-data="{ activeCategory: 'all' }">
-    <div class="text-center mb-8 max-w-2xl mx-auto">
-        <span class="text-brand-green font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Ready to begin?</span>
-        <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-900 tracking-tight mb-4">Lesson ideas.</h2>
-        <p class="text-slate-500 text-sm leading-relaxed px-4">
-            Explore our carefully curated modules tailored for every level of understanding. Whether you are beginning your journey or deepening your knowledge, find the structured guidance you need.
+<!-- Featured Courses Section (Modern Design) -->
+<section class="max-w-7xl mx-auto px-4 py-16" x-data="{ activeCategory: 'all' }">
+    <!-- Header Section -->
+    <div class="max-w-4xl mx-auto text-center mb-12">
+        <span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest text-brand-gold uppercase bg-brand-gold/10 rounded-full mb-3">
+            Ready to Begin
+        </span>
+        <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-3 leading-tight tracking-tight">
+            Explore Our <span class="text-brand-teal">Learning Paths</span>
+        </h2>
+        <p class="text-[13px] md:text-sm text-slate-500 mb-8 max-w-2xl mx-auto leading-relaxed">
+            The academy offers structured Islamic courses designed for beginners, intermediate learners, and students seeking deeper knowledge.
         </p>
-    </div>
 
-    <!-- Category Filters -->
-    <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
-        <button 
-            @click="activeCategory = 'all'"
-            :class="activeCategory === 'all' ? 'bg-brand-green text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
-            class="px-5 py-2 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest transition-all duration-300">
-            See All
-        </button>
-        @foreach($featuredCategories as $category)
+        <!-- Horizontal Category List -->
+        <div class="flex flex-wrap md:flex-nowrap md:overflow-x-auto no-scrollbar gap-2 md:gap-3 pb-2 justify-center items-center">
             <button 
-                @click="activeCategory = '{{ $category->id }}'"
-                :class="activeCategory === '{{ $category->id }}' ? 'bg-brand-green text-white shadow-md' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
-                class="px-5 py-2 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest transition-all duration-300">
-                {{ $category->name }}
+                @click="activeCategory = 'all'"
+                :class="activeCategory === 'all' ? 'border-b-2 border-brand-teal bg-brand-teal/10 text-brand-teal font-bold' : 'border-b-2 border-transparent text-slate-500 hover:text-brand-teal hover:bg-brand-teal/5 font-semibold'"
+                class="whitespace-nowrap px-4 py-2 md:px-5 md:py-2.5 rounded-full text-[11px] md:text-xs transition-all duration-300 w-auto flex-shrink-0">
+                All Courses
             </button>
-        @endforeach
+            @foreach($featuredCategories as $category)
+                <button 
+                    @click="activeCategory = '{{ $category->id }}'"
+                    :class="activeCategory === '{{ $category->id }}' ? 'border-b-2 border-brand-teal bg-brand-teal/10 text-brand-teal font-bold' : 'border-b-2 border-transparent text-slate-500 hover:text-brand-teal hover:bg-brand-teal/5 font-semibold'"
+                    class="whitespace-nowrap px-4 py-2 md:px-5 md:py-2.5 rounded-full text-[11px] md:text-xs transition-all duration-300 w-auto flex-shrink-0">
+                    {{ $category->name }}
+                </button>
+            @endforeach
+        </div>
     </div>
 
-    <!-- Courses Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+    <!-- Course Grid Section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse($featuredCourses as $course)
             <div 
                 x-show="activeCategory === 'all' || activeCategory === '{{ $course->category_id }}'"
                 x-transition:enter="transition ease-out duration-500"
                 x-transition:enter-start="opacity-0 scale-95 translate-y-4"
                 x-transition:enter-end="opacity-100 scale-100 translate-y-0"
-                class="group cursor-pointer">
-                <a href="{{ route('courses.show', $course->slug) }}" class="block p-3 rounded-3xl hover:bg-slate-50/50 transition-colors">
-                    <!-- Card Image -->
-                    <div class="relative aspect-video rounded-3xl overflow-hidden bg-slate-100 mb-4 border border-slate-100 shadow-sm transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-1">
+                class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-brand-teal/5 flex flex-col h-full">
+                
+                <a href="{{ route('courses.show', $course->slug) }}" class="flex flex-col h-full">
+                    <!-- Image Container -->
+                    <div class="relative h-44 overflow-hidden bg-slate-100 shrink-0">
                         @if($course->image)
-                            <img src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" />
                         @else
-                            <div class="w-full h-full bg-gradient-to-br from-brand-green/5 to-brand-teal/5 flex items-center justify-center p-8">
-                                <svg class="w-12 h-12 text-brand-green/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-4xl text-brand-teal/20">school</span>
                             </div>
                         @endif
+                        
+                        <!-- Level Badge (Optional fallback if level is null) -->
+                        <div class="absolute top-3 left-3 bg-brand-teal/90 backdrop-blur-sm text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shadow-sm">
+                            {{ $course->level ?? 'All Levels' }}
+                        </div>
                     </div>
-                    
-                    <!-- Card Info -->
-                    <div class="px-2">
-                        <div class="flex items-center justify-between group/title">
-                            <h3 class="text-[11px] md:text-xs uppercase font-bold text-slate-800 tracking-tight transition-colors group-hover:text-brand-green">
-                                {{ $course->title }}
-                            </h3>
-                            <span class="text-slate-300 group-hover:text-brand-green group-hover:translate-x-1 transition-all">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+
+                    <!-- Content Container -->
+                    <div class="p-5 md:p-6 flex flex-col flex-1">
+                        <h3 class="text-[15px] md:text-base font-bold text-slate-800 mb-2 group-hover:text-brand-teal transition-colors leading-snug">
+                            {{ $course->title }}
+                        </h3>
+                        <p class="text-slate-500 text-[11px] md:text-xs leading-relaxed mb-4 line-clamp-2 flex-1">
+                            {{ Str::limit(strip_tags($course->description), 100) ?: 'Begin your journey into authentic Islamic scholarship.' }}
+                        </p>
+                        
+                        <!-- Footer metadata -->
+                        <div class="flex items-center justify-between pt-4 border-t border-brand-teal/5 mt-auto">
+                            <span class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[14px]">view_module</span>
+                                {{ $course->modules_count ?? 0 }} Modules
                             </span>
+                            <span class="material-symbols-outlined text-brand-teal transform group-hover:translate-x-1 transition-transform duration-300 text-lg md:text-xl">arrow_forward</span>
                         </div>
                     </div>
                 </a>
             </div>
         @empty
-            <div class="col-span-full py-12 text-center bg-slate-50 rounded-3xl border border-dashed border-slate-200">
+            <div class="col-span-full py-16 text-center bg-slate-50 rounded-3xl border border-dashed border-slate-200">
+                <span class="material-symbols-outlined text-4xl text-slate-300 mb-3 block">menu_book</span>
                 <p class="text-slate-400 font-medium text-sm">Coming Soon: Curated Islamic Education</p>
             </div>
         @endforelse
     </div>
 
-    <!-- Explore More Button -->
-    <div class="mt-10 flex justify-center">
-        <a href="{{ route('courses.index') }}" class="group inline-flex items-center gap-2 bg-gradient-to-r from-brand-green to-brand-teal text-white px-8 py-3.5 rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg hover:opacity-95 hover:-translate-y-0.5 active:scale-95">
+    <!-- Explore More Button & CTA -->
+    <div class="mt-12 flex justify-center pb-4">
+        <a href="{{ route('courses.index') }}" class="group inline-flex items-center gap-2 bg-brand-gold text-white px-8 py-3.5 rounded-lg text-sm font-bold shadow-lg shadow-brand-gold/20 hover:brightness-110 active:scale-[0.98] transition-all">
             Explore more courses
-            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
         </a>
     </div>
 </section>
@@ -168,15 +268,15 @@
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div class="max-w-xl">
-                <span class="text-brand-green font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Scholarly Resources</span>
+                <span class="text-brand-teal font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Scholarly Resources</span>
                 <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight mb-4">Digital Library</h2>
                 <p class="text-slate-500 text-sm leading-relaxed max-w-md">
                     Access our premium collection of Islamic texts, study guides, and supplementary materials designed to support your lifelong learning.
                 </p>
             </div>
-            <a href="{{ route('books.index') }}" class="group inline-flex items-center gap-3 bg-white border border-slate-200 px-6 py-3 rounded-xl text-slate-600 font-medium text-xs hover:bg-slate-50 hover:text-brand-green hover:border-brand-green/30 transition-all shadow-sm">
+            <a href="{{ route('books.index') }}" class="group inline-flex items-center gap-3 bg-white border border-slate-200 px-6 py-3 rounded-xl text-slate-600 font-medium text-xs hover:bg-slate-50 hover:text-brand-teal hover:border-brand-teal/30 transition-all shadow-sm">
                 Visit Archives
-                <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-brand-green/10 group-hover:text-brand-green transition-colors">
+                <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-brand-teal/10 group-hover:text-brand-teal transition-colors">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </div>
             </a>
@@ -194,15 +294,15 @@
                         </div>
                     @endif
                 </div>
-                <h3 class="font-bold text-slate-800 text-sm mb-1 line-clamp-2 leading-snug group-hover:text-brand-green transition-colors">{{ $book->title }}</h3>
+                <h3 class="font-bold text-slate-800 text-sm mb-1 line-clamp-2 leading-snug group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
                 <p class="text-slate-400 text-[9px] uppercase tracking-widest font-bold mb-3">Ejlals Repository</p>
                 
                 @if($book->download_type === 'file' && $book->download_file)
-                    <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="mt-auto bg-brand-green text-white py-2.5 px-3 rounded-xl text-xs font-bold text-center hover:bg-brand-green transition-all flex items-center justify-center gap-2">
+                    <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="mt-auto bg-brand-teal text-white py-2.5 px-3 rounded-xl text-xs font-bold text-center hover:bg-brand-teal transition-all flex items-center justify-center gap-2">
                         View Resource
                     </a>
                 @elseif($book->download_type === 'link' && $book->download_link)
-                    <a href="{{ $book->download_link }}" target="_blank" class="mt-auto bg-slate-50 text-brand-green py-2.5 px-3 rounded-xl text-xs font-bold text-center hover:bg-brand-green hover:text-white transition-all flex items-center justify-center gap-2">
+                    <a href="{{ $book->download_link }}" target="_blank" class="mt-auto bg-slate-50 text-brand-teal py-2.5 px-3 rounded-xl text-xs font-bold text-center hover:bg-brand-teal hover:text-white transition-all flex items-center justify-center gap-2">
                         Access Guide
                     </a>
                 @else
@@ -224,14 +324,14 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div class="max-w-xl">
                 <div class="flex items-center gap-3 mb-1.5">
-                    <span class="w-8 h-[2px] bg-brand-green rounded-full"></span>
-                    <span class="text-brand-green font-bold text-[10px] uppercase tracking-[0.4em]">The Academy Press</span>
+                    <span class="w-8 h-[2px] bg-brand-teal rounded-full"></span>
+                    <span class="text-brand-teal font-bold text-[10px] uppercase tracking-[0.4em]">The Academy Press</span>
                 </div>
                 <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-900 leading-tight tracking-tight">Scholarly Insights</h2>
             </div>
-            <a href="{{ route('posts.index') }}" class="group inline-flex items-center gap-3 bg-white border border-slate-200 px-6 py-3 rounded-xl text-slate-600 font-medium text-xs hover:bg-slate-50 hover:text-brand-green hover:border-brand-green/30 transition-all shadow-sm">
+            <a href="{{ route('posts.index') }}" class="group inline-flex items-center gap-3 bg-white border border-slate-200 px-6 py-3 rounded-xl text-slate-600 font-medium text-xs hover:bg-slate-50 hover:text-brand-teal hover:border-brand-teal/30 transition-all shadow-sm">
                 Explore Full Library
-                <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-brand-green/10 group-hover:text-brand-green transition-colors">
+                <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-brand-teal/10 group-hover:text-brand-teal transition-colors">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                 </div>
             </a>
@@ -247,18 +347,18 @@
                         @if($mainPost->image)
                             <img src="{{ Storage::url($mainPost->image) }}" alt="{{ $mainPost->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
                         @else
-                            <div class="w-full h-full bg-gradient-to-br from-brand-green/5 to-brand-teal/5 flex items-center justify-center">
-                                <svg class="w-12 h-12 text-brand-green/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg>
+                            <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-teal/5 flex items-center justify-center">
+                                <svg class="w-12 h-12 text-brand-teal/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg>
                             </div>
                         @endif
                         <div class="absolute top-6 left-6">
-                            <span class="bg-white/95 backdrop-blur-md text-brand-green text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm border border-slate-100">
+                            <span class="bg-white/95 backdrop-blur-md text-brand-teal text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm border border-slate-100">
                                 {{ $mainPost->category->name ?? 'Featured' }}
                             </span>
                         </div>
                     </div>
                     <div class="px-4 pb-4 flex-1 flex flex-col">
-                        <h3 class="text-2xl font-serif font-bold text-slate-900 group-hover:text-brand-green transition-colors mb-4 leading-tight line-clamp-2">
+                        <h3 class="text-2xl font-serif font-bold text-slate-900 group-hover:text-brand-teal transition-colors mb-4 leading-tight line-clamp-2">
                             {{ $mainPost->title }}
                         </h3>
                         <p class="text-slate-500 text-sm mb-6 line-clamp-2 leading-relaxed">
@@ -266,7 +366,7 @@
                         </p>
                         <div class="mt-auto pt-6 border-t border-slate-50 flex items-center justify-between">
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ $mainPost->created_at->format('M d, Y') }}</span>
-                            <a href="{{ route('posts.show', $mainPost->slug) }}" class="flex items-center gap-2 text-brand-green font-bold text-sm group/btn">
+                            <a href="{{ route('posts.show', $mainPost->slug) }}" class="flex items-center gap-2 text-brand-teal font-bold text-sm group/btn">
                                 Read Full Article
                                 <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </a>
@@ -289,12 +389,12 @@
                         @if($post->image)
                             <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         @else
-                           <div class="w-full h-full flex items-center justify-center text-brand-green/10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg></div>
+                           <div class="w-full h-full flex items-center justify-center text-brand-teal/10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg></div>
                         @endif
                     </div>
                     <div class="flex-1 pr-2">
-                        <span class="text-brand-green font-bold text-[9px] uppercase tracking-widest mb-1.5 block">{{ $post->category->name ?? 'Article' }}</span>
-                        <h4 class="text-md font-bold text-slate-900 group-hover:text-brand-green transition-colors line-clamp-2 leading-snug">
+                        <span class="text-brand-teal font-bold text-[9px] uppercase tracking-widest mb-1.5 block">{{ $post->category->name ?? 'Article' }}</span>
+                        <h4 class="text-md font-bold text-slate-900 group-hover:text-brand-teal transition-colors line-clamp-2 leading-snug">
                             {{ $post->title }}
                         </h4>
                     </div>
@@ -309,7 +409,7 @@
                         @forelse($latestPosts as $post)
                         <div class="group">
                             <a href="{{ route('posts.show', $post->slug) }}" class="block">
-                                <h5 class="font-bold text-slate-800 group-hover:text-brand-green transition-colors mb-2 line-clamp-1">{{ $post->title }}</h5>
+                                <h5 class="font-bold text-slate-800 group-hover:text-brand-teal transition-colors mb-2 line-clamp-1">{{ $post->title }}</h5>
                                 <div class="flex items-center gap-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                                     <span>{{ $post->created_at->format('M d') }}</span>
                                     <span class="w-1 h-1 rounded-full bg-slate-200"></span>
@@ -331,19 +431,19 @@
 <section class="bg-white py-10 px-6 overflow-hidden">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-8">
-            <span class="text-brand-green font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Social Proof</span>
+            <span class="text-brand-teal font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Social Proof</span>
             <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight">Student & Parent Reviews</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Review 1 -->
-            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-green/20 transition-all shadow-sm">
+            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
                 <div class="flex gap-1 mb-5 text-xs">
                     @for($i=0; $i<5; $i++) <svg class="w-3.5 h-3.5 text-brand-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
                 </div>
                 <p class="text-slate-600 text-sm italic leading-relaxed mb-6">"The 1-on-1 sessions have completely changed how my kids learn. The teachers are incredibly patient and the schedule is super flexible."</p>
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center font-bold text-brand-green text-xs">SA</div>
+                    <div class="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center font-bold text-brand-teal text-xs">SA</div>
                     <div>
                         <h4 class="font-bold text-slate-800 text-sm">Sarah Ahmed</h4>
                         <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Parent</p>
@@ -351,13 +451,13 @@
                 </div>
             </div>
             <!-- Review 2 -->
-            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-green/20 transition-all shadow-sm">
+            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
                 <div class="flex gap-1 mb-5 text-xs">
                     @for($i=0; $i<5; $i++) <svg class="w-3.5 h-3.5 text-brand-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
                 </div>
                 <p class="text-slate-600 text-sm italic leading-relaxed mb-6">"I was looking for a authentic Tajweed course and Ejlals Academy delivered exactly what I needed. Highly professional scholars."</p>
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center font-bold text-brand-green text-xs">OM</div>
+                    <div class="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center font-bold text-brand-teal text-xs">OM</div>
                     <div>
                         <h4 class="font-bold text-slate-800 text-sm">Omar Mansoor</h4>
                         <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Student</p>
@@ -365,13 +465,13 @@
                 </div>
             </div>
             <!-- Review 3 -->
-            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-green/20 transition-all shadow-sm">
+            <div class="bg-gray-50 p-8 rounded-3xl relative group border border-gray-100 hover:border-brand-teal/20 transition-all shadow-sm">
                 <div class="flex gap-1 mb-5 text-xs">
                     @for($i=0; $i<5; $i++) <svg class="w-3.5 h-3.5 text-brand-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> @endfor
                 </div>
                 <p class="text-slate-600 text-sm italic leading-relaxed mb-6">"The monthly progress reports are great. They keep me informed about my daughter's growth and what she's learning next."</p>
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center font-bold text-brand-green text-xs">FK</div>
+                    <div class="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center font-bold text-brand-teal text-xs">FK</div>
                     <div>
                         <h4 class="font-bold text-slate-800 text-sm">Fatima Khan</h4>
                         <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Parent</p>
@@ -386,7 +486,7 @@
 <section class="bg-[#FDFDFC] py-10 px-6">
     <div class="max-w-3xl mx-auto">
         <div class="text-center mb-8">
-            <span class="text-brand-green font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Clarifications</span>
+            <span class="text-brand-teal font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Clarifications</span>
             <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight">Frequently Asked Questions</h2>
         </div>
 
@@ -434,8 +534,8 @@
         </div>
         <div class="w-full max-w-sm">
             <form action="#" class="flex flex-col sm:flex-row gap-2 w-full">
-                <input type="email" placeholder="Email Address" class="flex-1 bg-white border border-gray-200 py-2.5 px-4 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-all w-full">
-                <button class="bg-brand-green hover:bg-brand-green/90 text-white px-6 py-2.5 rounded-xl text-xs font-bold shadow-md transition-all whitespace-nowrap w-full sm:w-auto active:scale-95">
+                <input type="email" placeholder="Email Address" class="flex-1 bg-white border border-gray-200 py-2.5 px-4 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-teal/20 focus:border-brand-teal transition-all w-full">
+                <button class="bg-brand-teal hover:bg-brand-teal/90 text-white px-6 py-2.5 rounded-xl text-xs font-bold shadow-md transition-all whitespace-nowrap w-full sm:w-auto active:scale-95">
                     Subscribe Now
                 </button>
             </form>
