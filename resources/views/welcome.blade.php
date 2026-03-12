@@ -6,6 +6,9 @@
 <!-- Hero Carousel Section (Stitch Integration) -->
 <x-hero-carousel />
 
+<!-- Lottie Player Script -->
+<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+
 <!-- Animations & Scripts -->
 <style>
 @keyframes gradient-shift {
@@ -111,7 +114,7 @@
                         Who We Are
                     </h2>
                     <p class="mt-4 text-[13px] md:text-sm text-slate-600 leading-relaxed font-medium max-w-xl mx-auto lg:mx-0">
-                        Ejlals Academy is a sanctuary of knowledge where traditional spiritual wisdom meets modern academic rigor. We are dedicated to nurturing a generation of leaders who are intellectually capable, deeply rooted in faith, and prepared to illuminate the global community with purposeful action.
+                        <span class="text-brand-teal font-bold">Ejlals Academy</span> is a sanctuary of knowledge where traditional spiritual wisdom meets modern academic rigor. We are dedicated to nurturing a generation of leaders who are intellectually capable, deeply rooted in faith, and prepared to illuminate the global community with purposeful action.
                     </p>
                 </div>
 
@@ -120,36 +123,36 @@
                     <!-- Feature Cards Row -->
                     <div class="flex flex-row gap-2 lg:gap-3 w-full overflow-x-auto no-scrollbar pb-2 lg:pb-0">
                         <!-- Card 1 -->
-                        <div class="group flex flex-col items-center justify-center p-2 rounded-2xl bg-white border border-brand-teal/10 hover:border-brand-gold/30 transition-all duration-300 shadow-sm hover:shadow-md text-center flex-1 min-w-[80px] h-24 lg:h-28">
-                            <div class="flex-shrink-0 size-8 rounded-xl bg-brand-teal/5 text-brand-teal flex items-center justify-center group-hover:bg-brand-teal group-hover:text-white transition-all duration-500 mb-1.5 text-sm sm:text-base">
-                                <span class="material-symbols-outlined text-[17px]">menu_book</span>
+                        <div class="group flex flex-col items-center justify-center p-3 rounded-2xl bg-white border border-brand-teal/10 hover:border-brand-gold/30 transition-all duration-300 shadow-sm hover:shadow-md text-center flex-1 min-w-[90px] md:min-w-[100px] h-28 lg:h-32">
+                            <div class="flex-shrink-0 size-10 md:size-12 rounded-xl bg-brand-teal/5 text-brand-teal flex items-center justify-center group-hover:bg-brand-teal/10 transition-all duration-500 mb-2 overflow-hidden relative">
+                                <dotlottie-player src="{{ asset('animations/authentic.lottie') }}" background="transparent" speed="0.5" style="width: 130%; height: 130%;" loop autoplay></dotlottie-player>
                             </div>
-                            <h3 class="text-[10px] font-bold text-slate-800 group-hover:text-brand-teal transition-colors mb-0.5 leading-tight">Authentic</h3>
-                            <p class="text-slate-500 text-[8px] leading-tight px-0.5 sm:px-1 hidden sm:block">Curriculum by experts.</p>
+                            <h3 class="text-[11px] md:text-xs font-bold text-slate-800 group-hover:text-brand-teal transition-colors mb-0.5 leading-tight">Authentic</h3>
+                            <p class="text-slate-500 text-[9px] md:text-[10px] leading-tight px-0.5 sm:px-1 hidden sm:block">Curriculum by experts.</p>
                         </div>
                         <!-- Card 2 -->
-                        <div class="group flex flex-col items-center justify-center p-2 rounded-2xl bg-white border border-brand-teal/10 hover:border-brand-gold/30 transition-all duration-300 shadow-sm hover:shadow-md text-center flex-1 min-w-[80px] h-24 lg:h-28">
-                            <div class="flex-shrink-0 size-8 rounded-xl bg-brand-gold/5 text-brand-gold flex items-center justify-center group-hover:bg-brand-gold group-hover:text-white transition-all duration-500 mb-1.5 text-sm sm:text-base">
-                                <span class="material-symbols-outlined text-[17px]">temple_hindu</span>
+                        <div class="group flex flex-col items-center justify-center p-3 rounded-2xl bg-white border border-brand-teal/10 hover:border-brand-gold/30 transition-all duration-300 shadow-sm hover:shadow-md text-center flex-1 min-w-[90px] md:min-w-[100px] h-28 lg:h-32">
+                            <div class="flex-shrink-0 size-10 md:size-12 rounded-xl bg-brand-gold/5 text-brand-gold flex items-center justify-center group-hover:bg-brand-gold/10 transition-all duration-500 mb-2 overflow-hidden relative">
+                                <dotlottie-player src="{{ asset('animations/spirtual.lottie') }}" background="transparent" speed="1.0" style="width: 130%; height: 130%;" loop autoplay></dotlottie-player>
                             </div>
-                            <h3 class="text-[10px] font-bold text-slate-800 group-hover:text-brand-gold transition-colors mb-0.5 leading-tight">Spiritual</h3>
-                            <p class="text-slate-500 text-[8px] leading-tight px-0.5 sm:px-1 hidden sm:block">Guided soul sessions.</p>
+                            <h3 class="text-[11px] md:text-xs font-bold text-slate-800 group-hover:text-brand-gold transition-colors mb-0.5 leading-tight">Spiritual</h3>
+                            <p class="text-slate-500 text-[9px] md:text-[10px] leading-tight px-0.5 sm:px-1 hidden sm:block">Guided soul sessions.</p>
                         </div>
                         <!-- Card 3 -->
-                        <div class="group flex flex-col items-center justify-center p-2 rounded-2xl bg-white border border-brand-teal/10 hover:border-brand-gold/30 transition-all duration-300 shadow-sm hover:shadow-md text-center flex-1 min-w-[80px] h-24 lg:h-28">
-                            <div class="flex-shrink-0 size-8 rounded-xl bg-brand-teal/5 text-brand-teal flex items-center justify-center group-hover:bg-brand-teal group-hover:text-white transition-all duration-500 mb-1.5 text-sm sm:text-base">
-                                <span class="material-symbols-outlined text-[17px]">groups</span>
+                        <div class="group flex flex-col items-center justify-center p-3 rounded-2xl bg-white border border-brand-teal/10 hover:border-brand-gold/30 transition-all duration-300 shadow-sm hover:shadow-md text-center flex-1 min-w-[90px] md:min-w-[100px] h-28 lg:h-32">
+                            <div class="flex-shrink-0 size-10 md:size-12 rounded-xl bg-brand-teal/5 text-brand-teal flex items-center justify-center group-hover:bg-brand-teal/10 transition-all duration-500 mb-2 overflow-hidden relative">
+                                <dotlottie-player src="{{ asset('animations/global.lottie') }}" background="transparent" speed="1.0" style="width: 130%; height: 130%;" loop autoplay></dotlottie-player>
                             </div>
-                            <h3 class="text-[10px] font-bold text-slate-800 group-hover:text-brand-teal transition-colors mb-0.5 leading-tight">Global</h3>
-                            <p class="text-slate-500 text-[8px] leading-tight px-0.5 sm:px-1 hidden sm:block">Worldwide network.</p>
+                            <h3 class="text-[11px] md:text-xs font-bold text-slate-800 group-hover:text-brand-teal transition-colors mb-0.5 leading-tight">Global</h3>
+                            <p class="text-slate-500 text-[9px] md:text-[10px] leading-tight px-0.5 sm:px-1 hidden sm:block">Worldwide network.</p>
                         </div>
                         <!-- Card 4 (Symmetry) -->
-                        <div class="group flex flex-col items-center justify-center p-2 rounded-2xl bg-white border border-brand-teal/10 hover:border-brand-gold/30 transition-all duration-300 shadow-sm hover:shadow-md text-center flex-1 min-w-[80px] h-24 lg:h-28">
-                            <div class="flex-shrink-0 size-8 rounded-xl bg-brand-gold/5 text-brand-gold flex items-center justify-center group-hover:bg-brand-gold group-hover:text-white transition-all duration-500 mb-1.5 text-sm sm:text-base">
-                                <span class="material-symbols-outlined text-[17px]">school</span>
+                        <div class="group flex flex-col items-center justify-center p-3 rounded-2xl bg-white border border-brand-teal/10 hover:border-brand-gold/30 transition-all duration-300 shadow-sm hover:shadow-md text-center flex-1 min-w-[90px] md:min-w-[100px] h-28 lg:h-32">
+                            <div class="flex-shrink-0 size-10 md:size-12 rounded-xl bg-brand-gold/5 text-brand-gold flex items-center justify-center group-hover:bg-brand-gold/10 transition-all duration-500 mb-2 overflow-hidden relative">
+                                <dotlottie-player src="{{ asset('animations/expert.lottie') }}" background="transparent" speed="0.5" style="width: 130%; height: 130%;" loop autoplay></dotlottie-player>
                             </div>
-                            <h3 class="text-[10px] font-bold text-slate-800 group-hover:text-brand-gold transition-colors mb-0.5 leading-tight">Expert</h3>
-                            <p class="text-slate-500 text-[8px] leading-tight px-0.5 sm:px-1 hidden sm:block">Certified instructors.</p>
+                            <h3 class="text-[11px] md:text-xs font-bold text-slate-800 group-hover:text-brand-gold transition-colors mb-0.5 leading-tight">Expert</h3>
+                            <p class="text-slate-500 text-[9px] md:text-[10px] leading-tight px-0.5 sm:px-1 hidden sm:block">Certified instructors.</p>
                         </div>
                     </div>
                 </div>
@@ -200,7 +203,7 @@
     </div>
 
     <!-- Course Grid Section -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
         @forelse($featuredCourses as $course)
             <div 
                 x-show="activeCategory === 'all' || activeCategory === '{{ $course->category_id }}'"
@@ -211,7 +214,7 @@
                 
                 <a href="{{ route('courses.show', $course->slug) }}" class="flex flex-col h-full">
                     <!-- Image Container -->
-                    <div class="relative h-56 w-full overflow-hidden bg-slate-100 shrink-0">
+                    <div class="relative h-40 w-full overflow-hidden bg-slate-100 shrink-0">
                         @if($course->image)
                             <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" />
                         @else
@@ -227,21 +230,21 @@
                     </div>
 
                     <!-- Content Container -->
-                    <div class="p-5 md:p-6 flex flex-col flex-1">
-                        <h3 class="text-[15px] md:text-base font-bold text-slate-800 mb-2 group-hover:text-brand-teal transition-colors leading-snug">
+                    <div class="p-4 md:p-5 flex flex-col flex-1 pb-6 md:pb-8">
+                        <h3 class="text-[13px] md:text-[14px] font-bold text-slate-800 mb-2 group-hover:text-brand-teal transition-colors leading-snug">
                             {{ $course->title }}
                         </h3>
-                        <p class="text-slate-500 text-[11px] md:text-xs leading-relaxed mb-4 line-clamp-2 flex-1">
+                        <p class="text-slate-500 text-[11px] leading-relaxed mb-4 line-clamp-2 flex-1">
                             {{ Str::limit(strip_tags($course->description), 100) ?: 'Begin your journey into authentic Islamic scholarship.' }}
                         </p>
                         
                         <!-- Footer metadata -->
                         <div class="flex items-center justify-between pt-4 border-t border-brand-teal/5 mt-auto">
-                            <span class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-[14px]">view_module</span>
+                            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[13px]">view_module</span>
                                 {{ $course->modules_count ?? 0 }} Modules
                             </span>
-                            <span class="material-symbols-outlined text-brand-teal transform group-hover:translate-x-1 transition-transform duration-300 text-lg md:text-xl">arrow_forward</span>
+                            <span class="material-symbols-outlined text-brand-teal transform group-hover:translate-x-1 transition-transform duration-300 text-base md:text-lg">arrow_forward</span>
                         </div>
                     </div>
                 </a>
