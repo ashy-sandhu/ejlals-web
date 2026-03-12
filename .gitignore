@@ -22,3 +22,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+# Temporary/Scratch files
+fix-mobile.py
+*.bak
+
