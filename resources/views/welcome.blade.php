@@ -425,7 +425,7 @@
     </div>
 </section>
 <section class="max-w-5xl mx-auto px-6 py-12">
-    <div class="bg-gray-50 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left border border-gray-100">
+    <div class="bg-gray-50 rounded-[2rem] p-6 md:p-10 flex flex-col md:flex-row items-center gap-6 md:gap-8 text-center md:text-left border border-gray-100 shadow-sm">
         <div class="flex-1">
             <h2 class="text-2xl font-serif font-bold mb-3 text-slate-800 uppercase tracking-tight">Practical Solutions?</h2>
             <p class="text-slate-500 text-xs leading-relaxed">
@@ -433,9 +433,9 @@
             </p>
         </div>
         <div class="w-full max-w-sm">
-            <form action="#" class="flex gap-2">
-                <input type="email" placeholder="Email Address" class="flex-1 bg-white border border-gray-200 py-2.5 px-4 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-all">
-                <button class="bg-brand-green hover:bg-brand-green text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-md transition-colors whitespace-nowrap">
+            <form action="#" class="flex flex-col sm:flex-row gap-2 w-full">
+                <input type="email" placeholder="Email Address" class="flex-1 bg-white border border-gray-200 py-2.5 px-4 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/20 focus:border-brand-green transition-all w-full">
+                <button class="bg-brand-green hover:bg-brand-green/90 text-white px-6 py-2.5 rounded-xl text-xs font-bold shadow-md transition-all whitespace-nowrap w-full sm:w-auto active:scale-95">
                     Subscribe Now
                 </button>
             </form>

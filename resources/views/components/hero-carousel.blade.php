@@ -269,40 +269,40 @@
 
             <!-- Slide 3 Cards -->
             <div class="max-w-7xl mx-auto w-full grid grid-cols-2 lg:grid-cols-4 gap-3 mt-8 lg:mt-2 mb-4">
-                <div class="group px-4 py-3 rounded-xl border border-brand-teal/5 bg-white shadow-sm hover:border-brand-gold/30 hover:shadow-xl transition-all flex items-start gap-4">
-                    <div class="size-10 flex items-center justify-center rounded-lg bg-brand-teal/5 text-brand-teal group-hover:bg-brand-gold group-hover:text-white transition-all shrink-0">
+                <div class="group px-3 py-4 lg:px-4 lg:py-3 rounded-xl border border-brand-teal/5 bg-white shadow-sm hover:border-brand-gold/30 hover:shadow-xl transition-all flex flex-col lg:flex-row items-center lg:items-start text-center lg:text-left gap-3 lg:gap-4">
+                    <div class="size-10 lg:size-10 flex items-center justify-center rounded-lg bg-brand-teal/5 text-brand-teal group-hover:bg-brand-gold group-hover:text-white transition-all shrink-0 mb-1 lg:mb-0">
                         <span class="material-symbols-outlined">menu_book</span>
                     </div>
-                    <div>
-                        <h3 class="text-slate-900 text-sm font-bold leading-tight">Quranic Studies</h3>
-                        <p class="text-slate-500 text-[10px] mt-0.5">Hifz & Tajweed certification.</p>
+                    <div class="flex flex-col items-center lg:items-start w-full">
+                        <h3 class="text-slate-900 text-xs lg:text-sm font-bold leading-tight">Quranic Studies</h3>
+                        <p class="text-slate-500 text-[9px] lg:text-[10px] mt-1 lg:mt-0.5">Hifz & Tajweed certification.</p>
                     </div>
                 </div>
-                <div class="group px-4 py-3 rounded-xl border border-brand-teal/5 bg-white shadow-sm hover:border-brand-gold/30 hover:shadow-xl transition-all flex items-start gap-4">
-                    <div class="size-10 flex items-center justify-center rounded-lg bg-brand-teal/5 text-brand-teal group-hover:bg-brand-gold group-hover:text-white transition-all shrink-0">
+                <div class="group px-3 py-4 lg:px-4 lg:py-3 rounded-xl border border-brand-teal/5 bg-white shadow-sm hover:border-brand-gold/30 hover:shadow-xl transition-all flex flex-col lg:flex-row items-center lg:items-start text-center lg:text-left gap-3 lg:gap-4">
+                    <div class="size-10 lg:size-10 flex items-center justify-center rounded-lg bg-brand-teal/5 text-brand-teal group-hover:bg-brand-gold group-hover:text-white transition-all shrink-0 mb-1 lg:mb-0">
                         <span class="material-symbols-outlined">format_quote</span>
                     </div>
-                    <div>
-                        <h3 class="text-slate-900 text-sm font-bold leading-tight">Hadith & Sunnah</h3>
-                        <p class="text-slate-500 text-[10px] mt-0.5">Authentic narrations and application.</p>
+                    <div class="flex flex-col items-center lg:items-start w-full">
+                        <h3 class="text-slate-900 text-xs lg:text-sm font-bold leading-tight">Hadith & Sunnah</h3>
+                        <p class="text-slate-500 text-[9px] lg:text-[10px] mt-1 lg:mt-0.5">Authentic narrations and application.</p>
                     </div>
                 </div>
-                <div class="group px-4 py-3 rounded-xl border border-brand-teal/5 bg-white shadow-sm hover:border-brand-gold/30 hover:shadow-xl transition-all flex items-start gap-4">
-                    <div class="size-10 flex items-center justify-center rounded-lg bg-brand-teal/5 text-brand-teal group-hover:bg-brand-gold group-hover:text-white transition-all shrink-0">
+                <div class="group px-3 py-4 lg:px-4 lg:py-3 rounded-xl border border-brand-teal/5 bg-white shadow-sm hover:border-brand-gold/30 hover:shadow-xl transition-all flex flex-col lg:flex-row items-center lg:items-start text-center lg:text-left gap-3 lg:gap-4">
+                    <div class="size-10 lg:size-10 flex items-center justify-center rounded-lg bg-brand-teal/5 text-brand-teal group-hover:bg-brand-gold group-hover:text-white transition-all shrink-0 mb-1 lg:mb-0">
                         <span class="material-symbols-outlined">balance</span>
                     </div>
-                    <div>
-                        <h3 class="text-slate-900 text-sm font-bold leading-tight">Fiqh Jurisprudence</h3>
-                        <p class="text-slate-500 text-[10px] mt-0.5">Practical rulings for everyday life.</p>
+                    <div class="flex flex-col items-center lg:items-start w-full">
+                        <h3 class="text-slate-900 text-xs lg:text-sm font-bold leading-tight">Fiqh Jurisprudence</h3>
+                        <p class="text-slate-500 text-[9px] lg:text-[10px] mt-1 lg:mt-0.5">Practical rulings for everyday life.</p>
                     </div>
                 </div>
-                <div class="group px-4 py-3 rounded-xl border border-brand-teal/5 bg-white shadow-sm hover:border-brand-gold/30 hover:shadow-xl transition-all flex items-start gap-4">
-                    <div class="size-10 flex items-center justify-center rounded-lg bg-brand-teal/5 text-brand-teal group-hover:bg-brand-gold group-hover:text-white transition-all shrink-0">
+                <div class="group px-3 py-4 lg:px-4 lg:py-3 rounded-xl border border-brand-teal/5 bg-white shadow-sm hover:border-brand-gold/30 hover:shadow-xl transition-all flex flex-col lg:flex-row items-center lg:items-start text-center lg:text-left gap-3 lg:gap-4">
+                    <div class="size-10 lg:size-10 flex items-center justify-center rounded-lg bg-brand-teal/5 text-brand-teal group-hover:bg-brand-gold group-hover:text-white transition-all shrink-0 mb-1 lg:mb-0">
                         <span class="material-symbols-outlined">history_edu</span>
                     </div>
-                    <div>
-                        <h3 class="text-slate-900 text-sm font-bold leading-tight">Islamic History</h3>
-                        <p class="text-slate-500 text-[10px] mt-0.5">Exploring our rich world heritage.</p>
+                    <div class="flex flex-col items-center lg:items-start w-full">
+                        <h3 class="text-slate-900 text-xs lg:text-sm font-bold leading-tight">Islamic History</h3>
+                        <p class="text-slate-500 text-[9px] lg:text-[10px] mt-1 lg:mt-0.5">Exploring our rich world heritage.</p>
                     </div>
                 </div>
             </div>
