@@ -35,9 +35,9 @@
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
-    <body class="bg-[#FDFDFC] text-[#1b1b18] antialiased pt-20">
-        <!-- Smart "Drawer" Navbar -->
-        <nav id="main-navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-3 transition-transform duration-500 ease-in-out">
+    <body class="bg-[#FDFDFC] text-[#1b1b18] antialiased">
+        <!-- Standard Navbar -->
+        <nav id="main-navbar" class="relative z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-3">
             <div class="max-w-7xl mx-auto flex items-center justify-between">
                 <!-- Logo -->
                 <a href="/" class="flex items-center gap-2">
@@ -139,23 +139,5 @@
             </div>
         </footer>
 
-        <script>
-            let lastScrollTop = 0;
-            const navbar = document.getElementById('main-navbar');
-            
-            window.addEventListener('scroll', () => {
-                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (scrollTop > lastScrollTop && scrollTop > 100) {
-                    // Scrolling down - hide
-                    navbar.style.transform = 'translateY(-100%)';
-                } else {
-                    // Scrolling up - show
-                    navbar.style.transform = 'translateY(0)';
-                }
-                
-                lastScrollTop = Math.max(0, scrollTop);
-            });
-        </script>
     </body>
 </html>
