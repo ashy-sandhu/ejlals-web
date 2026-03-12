@@ -335,10 +335,10 @@
 
     <!-- Unified Global Controls Container -->
     <div class="absolute bottom-2 left-0 right-0 z-40 px-6 pointer-events-none">
-        <div class="max-w-7xl mx-auto flex items-center justify-center pointer-events-auto">
+        <div class="max-w-7xl mx-auto flex items-center justify-center">
             
             <!-- Progress Indicators -->
-            <div class="flex items-center gap-3 bg-white/60 backdrop-blur-md px-4 py-2 rounded-full shadow-sm border border-white/50">
+            <div class="flex items-center gap-3 bg-white/60 backdrop-blur-md px-4 py-2 rounded-full shadow-sm border border-white/50 pointer-events-auto">
                 <template x-for="i in totalSlides" :key="i">
                     <button @click="goToSlide(i)" 
                             class="transition-all duration-300 rounded-full box-border hover:scale-125"
