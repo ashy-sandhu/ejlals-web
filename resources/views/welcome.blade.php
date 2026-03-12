@@ -211,7 +211,7 @@
                 
                 <a href="{{ route('courses.show', $course->slug) }}" class="flex flex-col h-full">
                     <!-- Image Container -->
-                    <div class="relative h-44 overflow-hidden bg-slate-100 shrink-0">
+                    <div class="relative h-56 w-full overflow-hidden bg-slate-100 shrink-0">
                         @if($course->image)
                             <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" />
                         @else
