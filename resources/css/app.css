@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import 'tailwindcss';
 
+@source '../views/**/*.blade.php';
+@source '../js/**/*.js';
+@source '../../app/**/*.php';
+@source '../../routes/**/*.php';
+
 @plugin "@tailwindcss/typography";
 
-/* Local Font: Outfit (Self-Hosted for Performance) - Kept as fallback/alternate */
+/* Local Font: Outfit */
 @font-face {
     font-family: 'Outfit';
     src: url('../../public/fonts/outfit/outfit-300.ttf') format('truetype');
@@ -11,7 +16,6 @@
     font-style: normal;
     font-display: swap;
 }
-
 @font-face {
     font-family: 'Outfit';
     src: url('../../public/fonts/outfit/outfit-400.ttf') format('truetype');
@@ -19,7 +23,6 @@
     font-style: normal;
     font-display: swap;
 }
-
 @font-face {
     font-family: 'Outfit';
     src: url('../../public/fonts/outfit/outfit-500.ttf') format('truetype');
@@ -27,7 +30,6 @@
     font-style: normal;
     font-display: swap;
 }
-
 @font-face {
     font-family: 'Outfit';
     src: url('../../public/fonts/outfit/outfit-600.ttf') format('truetype');
@@ -35,7 +37,6 @@
     font-style: normal;
     font-display: swap;
 }
-
 @font-face {
     font-family: 'Outfit';
     src: url('../../public/fonts/outfit/outfit-700.ttf') format('truetype');
@@ -44,25 +45,14 @@
     font-display: swap;
 }
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
-
 @theme {
-    /* Fonts: Playfair Display for headings (Serif), Inter for body (Sans) */
     --font-serif: 'Playfair Display', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-sans: 'Inter', 'Outfit', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
-
-    /* Dedicated Color Palette: Deep Teal & Desert Gold (Al-Madina Inspiration) */
     --color-brand-teal: #138C90;
     --color-brand-teal-light: #16A8AD;
     --color-brand-teal-dark: #0E686A;
-    
     --color-brand-gold: #EA7F26;
     --color-brand-gold-light: #F2994A;
     --color-brand-gold-dark: #C7681C;
-
-    /* Legacy/Fallback Green (Deprioritized) */
     --color-brand-green: #4E9D15;
 }

@@ -62,22 +62,49 @@
                             <span class="bg-white/90 backdrop-blur-sm text-brand-teal text-[10px] font-bold px-4 py-2 rounded-lg shadow-sm">Ejlals Library</span>
                         </div>
                     </div>
-                    <h3 class="font-bold text-slate-800 mb-2 truncate group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
-                    <p class="text-slate-400 text-xs uppercase tracking-widest font-bold mb-4">By Ejlals Academy</p>
-                    
-                    @if($book->download_type === 'file' && $book->download_file)
-                        <a href="{{ Storage::url($book->download_file) }}" download="{{ $book->title }}" class="mt-auto bg-brand-teal text-white py-3 rounded-xl text-sm font-bold text-center hover:bg-slate-900 transition-all flex items-center justify-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                            Download PDF
-                        </a>
-                    @elseif($book->download_type === 'link' && $book->download_link)
-                        <a href="{{ $book->download_link }}" target="_blank" class="mt-auto bg-gray-100 text-brand-teal py-3 rounded-xl text-sm font-bold text-center hover:bg-brand-teal hover:text-white transition-all flex items-center justify-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                            Access Guide
-                        </a>
-                    @else
-                        <span class="mt-auto bg-gray-50 text-slate-300 py-3 rounded-xl text-sm font-bold text-center cursor-not-allowed">Coming Soon</span>
-                    @endif
+                    <!-- Design Update: Text Content Wrapper -->
+                    <div class="flex flex-col grow px-1">
+                        <!-- Design Update: Repository & Rating -->
+                        <div class="flex items-center justify-between mb-2 mt-1">
+                            <span class="text-brand-teal text-[10px] font-bold tracking-widest uppercase">Ejlals Repository</span>
+                            <div class="flex items-center gap-1">
+                                <span class="material-symbols-outlined text-brand-gold text-[14px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
+                                <span class="text-[10px] font-bold text-slate-400">4.9</span>
+                            </div>
+                        </div>
+
+                        <!-- Design Update: Title -->
+                        <h3 class="font-bold text-slate-800 text-sm mb-1 line-clamp-2 leading-snug group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
+                        
+                        <!-- Design Update: Short Description -->
+                        <p class="text-slate-500 text-[11px] leading-relaxed mb-4 line-clamp-2">
+                            {{ Str::limit(strip_tags($book->description), 80) ?: 'Explore this valuable scholarly resource within our digital library collection.' }}
+                        </p>
+                        
+                        <!-- Design Update: Resource Type & Action -->
+                        <div class="mt-auto pt-3 border-t border-slate-50 flex items-center justify-between">
+                            <div class="flex flex-col">
+                                <span class="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Type</span>
+                                <span class="text-[10px] font-bold text-slate-700">
+                                    {{ $book->download_type === 'file' ? 'PDF eBook' : ($book->download_type === 'link' ? 'Guide' : 'Archive') }}
+                                </span>
+                            </div>
+
+                            @if($book->download_type === 'file' && $book->download_file)
+                                <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="px-3 py-1.5 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] transition-all flex items-center gap-1.5 no-underline">
+                                    Access
+                                    <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                                </a>
+                            @elseif($book->download_type === 'link' && $book->download_link)
+                                <a href="{{ $book->download_link }}" target="_blank" class="px-3 py-1.5 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] transition-all flex items-center gap-1.5 no-underline">
+                                    Access
+                                    <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                                </a>
+                            @else
+                                <span class="px-3 py-1.5 bg-gray-50 text-slate-300 rounded-lg font-bold text-[10px] cursor-not-allowed">Soon</span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             @empty
                 <div class="col-span-full py-20 text-center">
