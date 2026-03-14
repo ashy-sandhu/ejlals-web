@@ -37,7 +37,7 @@
     </head>
     <body class="bg-[#FDFDFC] text-[#1b1b18] antialiased">
         <!-- Standard Navbar -->
-        <nav id="main-navbar" class="relative z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-3">
+        <nav x-data="{ mobileMenuOpen: false }" id="main-navbar" class="relative z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-2">
             <div class="max-w-7xl mx-auto flex items-center justify-between">
                 <!-- Logo -->
                 <a href="/" class="flex items-center gap-2">
@@ -55,12 +55,12 @@
 
                 <!-- Action Buttons -->
                 <div class="flex items-center gap-4">
-                    <a href="https://store.ejlals.com" class="hidden sm:block bg-brand-gold hover:bg-brand-gold/90 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors shadow-sm">
+                    <a href="https://store.ejlals.com" class="hidden md:block bg-brand-gold hover:bg-brand-gold/90 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors shadow-sm">
                         Visit Our Store
                     </a>
                     
                     @if (Route::has('login'))
-                        <div class="flex items-center gap-2">
+                        <div class="hidden sm:flex items-center gap-2">
                             @auth
                                 <a href="{{ route('dashboard') }}" class="text-sm font-medium hover:text-brand-teal flex items-center gap-2">
                                     <div class="w-8 h-8 rounded-lg bg-brand-teal/10 flex items-center justify-center text-brand-teal">
@@ -74,9 +74,87 @@
                         </div>
                     @endif
                     
-                    <button class="md:hidden" aria-label="Toggle Mobile Menu">
+                    <button @click="mobileMenuOpen = true" class="md:hidden p-2 -mr-2 text-slate-600 hover:text-brand-teal hover:bg-slate-50 rounded-lg transition-colors" aria-label="Toggle Mobile Menu">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Drawer (Alpine.js) -->
+            <div x-show="mobileMenuOpen" class="md:hidden" style="display: none;" x-cloak>
+                <!-- Backdrop -->
+                <div x-show="mobileMenuOpen" 
+                    x-transition:enter="transition-opacity ease-linear duration-300" 
+                    x-transition:enter-start="opacity-0" 
+                    x-transition:enter-end="opacity-100" 
+                    x-transition:leave="transition-opacity ease-linear duration-300" 
+                    x-transition:leave-start="opacity-100" 
+                    x-transition:leave-end="opacity-0" 
+                    @click="mobileMenuOpen = false"
+                    class="fixed inset-0 z-[60] bg-slate-900/40 backdrop-blur-sm"></div>
+                
+                <!-- Drawer -->
+                <div x-show="mobileMenuOpen" 
+                    x-transition:enter="transition ease-out duration-300 transform" 
+                    x-transition:enter-start="translate-x-full" 
+                    x-transition:enter-end="translate-x-0" 
+                    x-transition:leave="transition ease-in duration-300 transform" 
+                    x-transition:leave-start="translate-x-0" 
+                    x-transition:leave-end="translate-x-full" 
+                    class="fixed inset-y-0 right-0 z-[70] w-full max-w-[320px] bg-white shadow-2xl flex flex-col sm:ring-1 sm:ring-slate-900/10">
+                    
+                    <!-- Drawer Header -->
+                    <div class="px-6 py-5 flex items-center justify-between border-b border-slate-100">
+                        <img src="{{ asset('storage/ejlals-horizontal-v1.svg') }}" alt="Ejlals Logo" class="h-8 w-auto object-contain">
+                        <button @click="mobileMenuOpen = false" class="p-2 -mr-2 text-slate-400 hover:text-brand-teal hover:bg-brand-teal/5 rounded-full transition-colors bg-slate-50">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                    </div>
+
+                    <!-- Drawer Nav Links -->
+                    <div class="px-6 py-6 overflow-y-auto flex-1">
+                        <div class="flex flex-col space-y-2">
+                            <a href="/" class="px-3 py-3 rounded-xl text-base font-bold transition-colors flex items-center justify-between group {{ request()->is('/') ? 'bg-brand-teal/5 text-brand-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-teal' }}">
+                                Home
+                                <svg class="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                            <a href="{{ route('courses.index') }}" class="px-3 py-3 rounded-xl text-base font-bold transition-colors flex items-center justify-between group {{ request()->is('courses*') ? 'bg-brand-teal/5 text-brand-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-teal' }}">
+                                Courses
+                                <svg class="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                            <a href="{{ route('books.index') }}" class="px-3 py-3 rounded-xl text-base font-bold transition-colors flex items-center justify-between group {{ request()->is('books*') ? 'bg-brand-teal/5 text-brand-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-teal' }}">
+                                Library
+                                <svg class="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                            <a href="{{ route('posts.index') }}" class="px-3 py-3 rounded-xl text-base font-bold transition-colors flex items-center justify-between group {{ request()->is('posts*') ? 'bg-brand-teal/5 text-brand-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-teal' }}">
+                                Articles
+                                <svg class="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                            <a href="{{ route('about') }}" class="px-3 py-3 rounded-xl text-base font-bold transition-colors flex items-center justify-between group {{ request()->is('about') ? 'bg-brand-teal/5 text-brand-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-teal' }}">
+                                About Us
+                                <svg class="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Drawer Footer Actions -->
+                    <div class="p-6 border-t border-slate-100 bg-slate-50/50">
+                        <a href="https://store.ejlals.com" class="block w-full text-center bg-brand-gold hover:bg-brand-gold/90 text-white px-5 py-3.5 rounded-xl text-sm font-bold transition-all shadow-sm mb-3">
+                            Visit Our Store
+                        </a>
+                        
+                        @if (Route::has('login'))
+                            @auth
+                                <a href="{{ route('dashboard') }}" class="block w-full text-center bg-brand-teal hover:bg-brand-teal/90 text-white px-5 py-3.5 rounded-xl text-sm font-bold transition-all shadow-sm">
+                                    My Horizon
+                                </a>
+                            @else
+                                <a href="{{ route('login') }}" class="block w-full text-center border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white px-5 py-3 rounded-xl text-sm font-bold transition-all">
+                                    Login Account
+                                </a>
+                            @endauth
+                        @endif
+                    </div>
                 </div>
             </div>
         </nav>
@@ -86,56 +164,99 @@
         </main>
 
 
-        <!-- Footer -->
-        <footer class="bg-gray-50 border-t border-gray-100 pt-16 pb-8 px-6 mt-12">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center gap-2 mb-4">
-                        <img src="{{ asset('storage/home-page-logo.svg') }}" alt="Ejlals Logo" class="h-10 md:h-12 w-auto object-contain">
+        <!-- Footer (Stitch Design) -->
+        <footer class="bg-[#f0f9f9] dark:bg-[#0a1818] border-t border-brand-teal/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Newsletter Section (Elevated) -->
+                <div class="-mt-12 relative overflow-hidden bg-brand-teal rounded-3xl p-6 md:p-10 mb-12 shadow-xl shadow-brand-teal/20 islamic-pattern z-10">
+                    <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="max-w-xl text-center md:text-left">
+                            <h3 class="text-white text-2xl md:text-3xl font-extrabold mb-2 leading-tight">Enlighten Your Journey With Ejlals Academy</h3>
+                            <p class="text-white/80 text-sm md:text-base">Join our community receiving weekly insights on Islamic studies and spiritual growth.</p>
+                        </div>
+                        <div class="w-full max-w-md">
+                            <form class="flex flex-col sm:flex-row gap-2">
+                                <input class="flex-grow h-12 px-4 rounded-xl border-none bg-white/10 backdrop-blur-md text-white placeholder:text-white/60 focus:ring-2 focus:ring-brand-gold outline-none transition-all text-sm" placeholder="Your email address" type="email"/>
+                                <button class="h-12 px-6 rounded-xl bg-brand-gold text-white font-bold hover:bg-white hover:text-slate-900 transition-all shadow-md whitespace-nowrap text-sm">
+                                    Subscribe
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                    <p class="text-gray-500 text-sm leading-relaxed">
-                        An educational platform focused on delivering clear, reliable, and easy-to-understand information.
+                    <!-- Decorative element -->
+                    <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                    <!-- Brand Section -->
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <img src="{{ asset('storage/ejlals-horizontal-v1.svg') }}" alt="Ejlals Logo" class="h-10 w-auto object-contain">
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
+                            A premier digital sanctuary for Islamic learning, combining traditional wisdom with modern pedagogical excellence for the global Ummah.
+                        </p>
+                        <div class="flex gap-3 mt-2">
+                            <a class="w-8 h-8 rounded-full bg-brand-teal/5 flex items-center justify-center text-brand-teal hover:bg-brand-teal hover:text-white transition-all" href="#">
+                                <span class="material-symbols-outlined text-lg">language</span>
+                            </a>
+                            <a class="w-8 h-8 rounded-full bg-brand-teal/5 flex items-center justify-center text-brand-teal hover:bg-brand-teal hover:text-white transition-all" href="#">
+                                <span class="material-symbols-outlined text-lg">share</span>
+                            </a>
+                            <a class="w-8 h-8 rounded-full bg-brand-teal/5 flex items-center justify-center text-brand-teal hover:bg-brand-teal hover:text-white transition-all" href="mailto:hello@ejlals.com">
+                                <span class="material-symbols-outlined text-lg">mail</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Academic Programs -->
+                    <div>
+                        <h4 class="text-slate-900 dark:text-slate-100 font-bold mb-6 text-base flex items-center gap-2">
+                            <span class="w-4 h-px bg-brand-gold"></span>
+                            Academic Programs
+                        </h4>
+                        <ul class="flex flex-col gap-3">
+                            <li><a class="text-slate-600 dark:text-slate-400 hover:text-brand-gold hover:pl-1 text-sm font-medium transition-all" href="{{ route('courses.index') }}">All Courses</a></li>
+                            <li><a class="text-slate-600 dark:text-slate-400 hover:text-brand-gold hover:pl-1 text-sm font-medium transition-all" href="{{ route('books.index') }}">Library</a></li>
+                            <li><a class="text-slate-600 dark:text-slate-400 hover:text-brand-gold hover:pl-1 text-sm font-medium transition-all" href="{{ route('posts.index') }}">Articles</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company -->
+                    <div>
+                        <h4 class="text-slate-900 dark:text-slate-100 font-bold mb-6 text-base flex items-center gap-2">
+                            <span class="w-4 h-px bg-brand-gold"></span>
+                            Company
+                        </h4>
+                        <ul class="flex flex-col gap-3">
+                            <li><a class="text-slate-600 dark:text-slate-400 hover:text-brand-gold hover:pl-1 text-sm font-medium transition-all" href="{{ route('about') }}">About Us</a></li>
+                            <li><a class="text-slate-600 dark:text-slate-400 hover:text-brand-gold hover:pl-1 text-sm font-medium transition-all" href="{{ route('contact') }}">Contact</a></li>
+                            <li><a class="text-slate-600 dark:text-slate-400 hover:text-brand-gold hover:pl-1 text-sm font-medium transition-all" href="{{ route('careers') }}">Careers</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Legal -->
+                    <div>
+                        <h4 class="text-slate-900 dark:text-slate-100 font-bold mb-6 text-base flex items-center gap-2">
+                            <span class="w-4 h-px bg-brand-gold"></span>
+                            Legal
+                        </h4>
+                        <ul class="flex flex-col gap-3">
+                            <li><a class="text-slate-600 dark:text-slate-400 hover:text-brand-gold hover:pl-1 text-sm font-medium transition-all" href="{{ route('privacy') }}">Privacy Policy</a></li>
+                            <li><a class="text-slate-600 dark:text-slate-400 hover:text-brand-gold hover:pl-1 text-sm font-medium transition-all" href="{{ route('terms') }}">Terms of Use</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-brand-teal/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-slate-500 dark:text-slate-500 text-xs text-center md:text-left">
+                        &copy; {{ date('Y') }} Ejlals Academy. Crafted with purpose and excellence.
                     </p>
+                    <div class="flex items-center justify-center gap-6">
+                        <a class="text-slate-500 hover:text-brand-teal text-[10px] font-semibold uppercase tracking-widest transition-colors" href="{{ route('privacy') }}">Privacy</a>
+                        <a class="text-slate-500 hover:text-brand-teal text-[10px] font-semibold uppercase tracking-widest transition-colors" href="{{ route('terms') }}">Terms</a>
+                    </div>
                 </div>
-                
-                <div>
-                    <h3 class="font-bold text-sm mb-4 uppercase tracking-wider flex items-center gap-2 text-slate-800">
-                        <svg class="w-4 h-4 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-                        Quick Links
-                    </h3>
-                    <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="{{ route('courses.index') }}" class="hover:text-brand-teal transition-colors">All Courses</a></li>
-                        <li><a href="{{ route('books.index') }}" class="hover:text-brand-teal transition-colors">Library</a></li>
-                        <li><a href="{{ route('posts.index') }}" class="hover:text-brand-teal transition-colors">Blog</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="font-bold text-sm mb-4 uppercase tracking-wider flex items-center gap-2 text-slate-800">
-                        <svg class="w-4 h-4 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                        Company
-                    </h3>
-                    <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="{{ route('about') }}" class="hover:text-brand-teal transition-colors">About Us</a></li>
-                        <li><a href="{{ route('contact') }}" class="hover:text-brand-teal transition-colors">Contact</a></li>
-                        <li><a href="{{ route('careers') }}" class="hover:text-brand-teal transition-colors">Careers</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="font-bold text-sm mb-4 uppercase tracking-wider flex items-center gap-2 text-slate-800">
-                        <svg class="w-4 h-4 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                        Legal
-                    </h3>
-                    <ul class="text-gray-500 text-sm space-y-2">
-                        <li><a href="{{ route('privacy') }}" class="hover:text-brand-teal transition-colors">Privacy Policy</a></li>
-                        <li><a href="{{ route('terms') }}" class="hover:text-brand-teal transition-colors">Terms of Use</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="max-w-7xl mx-auto pt-8 border-t border-gray-200 text-center text-gray-400 text-xs">
-                &copy; {{ date('Y') }} Ejlals Learning Horizon. All rights reserved.
             </div>
         </footer>
 
