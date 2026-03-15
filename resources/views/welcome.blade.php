@@ -179,7 +179,7 @@
         <span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest text-brand-gold uppercase bg-brand-gold/10 rounded-full mb-3">
             Ready to Begin
         </span>
-        <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-3 leading-tight tracking-tight">
+        <h2 class="text-2xl md:text-4xl font-black text-slate-900 mb-3 leading-tight tracking-tight">
             Explore Our <span class="text-brand-teal">Learning Paths</span>
         </h2>
         <p class="text-[13px] md:text-sm text-slate-500 mb-4 max-w-2xl mx-auto leading-relaxed">
@@ -206,7 +206,7 @@
     </div>
 
     <!-- Course Grid Section -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-6">
         @forelse($featuredCourses as $course)
             <div 
                 x-show="activeCategory === 'all' || activeCategory === '{{ $course->category_id }}'"
@@ -233,12 +233,12 @@
                     </div>
 
                     <!-- Content Container -->
-                    <div class="p-4 md:p-5 flex flex-col flex-1 pb-6 md:pb-8">
-                        <h3 class="text-[13px] md:text-[14px] font-bold text-slate-800 mb-2 group-hover:text-brand-teal transition-colors leading-snug">
+                    <div class="p-3 md:p-4 md:p-5 flex flex-col flex-1 pb-4 md:pb-6 md:pb-8">
+                        <h3 class="text-[11px] md:text-[14px] font-bold text-slate-800 mb-1 group-hover:text-brand-teal transition-colors leading-snug">
                             {{ $course->title }}
                         </h3>
-                        <p class="text-slate-500 text-[11px] leading-relaxed mb-4 line-clamp-2 flex-1">
-                            {{ Str::limit(strip_tags($course->description), 100) ?: 'Begin your journey into authentic Islamic scholarship.' }}
+                        <p class="text-slate-500 text-[10px] md:text-[11px] leading-relaxed mb-3 line-clamp-2 flex-1">
+                            {{ Str::limit(strip_tags($course->description), 80) ?: 'Begin your journey into authentic Islamic scholarship.' }}
                         </p>
                         
                         <!-- Footer metadata -->
@@ -275,7 +275,7 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div class="max-w-xl">
                 <span class="text-brand-teal font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Scholarly Resources</span>
-                <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight mb-4">Digital Library</h2>
+                <h2 class="text-xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight mb-4">Digital Library</h2>
                 <p class="text-slate-500 text-sm leading-relaxed max-w-md">
                     Access our premium collection of Islamic texts, study guides, and supplementary materials designed to support your lifelong learning.
                 </p>
@@ -288,62 +288,85 @@
             </a>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 mt-4">
-            @forelse($featuredBooks as $book)
-            <div class="flex flex-col group">
-                <div class="aspect-[3/4] bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg relative mb-4">
-                    @if($book->image)
-                        <img src="{{ Storage::url($book->image) }}" alt="{{ $book->title }}" class="w-full h-full object-cover">
-                    @else
-                        <div class="w-full h-full bg-gradient-to-tr from-slate-100 to-slate-200 flex items-center justify-center p-8 text-center">
-                            <span class="text-slate-400 font-bold text-sm uppercase tracking-widest opacity-30">{{ $book->title }}</span>
-                        </div>
-                    @endif
-                </div>
-                <!-- Design Update: Text Content Wrapper -->
-                <div class="flex flex-col grow px-1">
-                    <!-- Design Update: Repository & Rating -->
-                    <div class="flex items-center justify-between mb-2 mt-1">
-                        <span class="text-brand-teal text-[10px] font-bold tracking-widest uppercase">Ejlals Repository</span>
-                        <div class="flex items-center gap-1">
-                            <span class="material-symbols-outlined text-brand-gold text-[14px] fill-current" style="font-variation-settings: 'FILL' 1">star</span>
-                            <span class="text-[10px] font-bold text-slate-400">4.9</span>
-                        </div>
-                    </div>
-
-                    <!-- Design Update: Title -->
-                    <h3 class="font-bold text-slate-800 text-sm mb-1 line-clamp-2 leading-snug group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
-                    
-                    <!-- Design Update: Short Description -->
-                    <p class="text-slate-500 text-[11px] leading-relaxed mb-4 line-clamp-2">
-                        {{ Str::limit(strip_tags($book->description), 80) ?: 'Explore this valuable scholarly resource within our digital library collection.' }}
-                    </p>
-                    
-                    <!-- Design Update: Resource Type & Action -->
-                    <div class="mt-auto pt-3 border-t border-slate-50 flex items-center justify-between">
-                        <div class="flex flex-col">
-                            <span class="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Type</span>
-                            <span class="text-[10px] font-bold text-slate-700">
-                                {{ $book->download_type === 'file' ? 'PDF eBook' : ($book->download_type === 'link' ? 'Guide' : 'Archive') }}
+        <style>
+            .card-hover:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 10px 25px -5px rgba(44, 135, 147, 0.15); /* #2C8793 */
+            }
+            .image-zoom:hover img {
+                transform: scale(1.05);
+            }
+            /* Colors array for dynamic backgrounds if needed, or stick to slate */
+            .book-bg-1 { background-color: #E6DFD3; } /* Beige */
+            .book-bg-2 { background-color: #386A6B; } /* Teal */
+            .book-bg-3 { background-color: #AED5C0; } /* Mint */
+        </style>
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6 mt-4">
+            @forelse($featuredBooks as $index => $book)
+                @php
+                    // Assign a rotating background color class based on the index to mimic the design's colorful canvases
+                    $bgClasses = ['book-bg-1', 'book-bg-2', 'book-bg-3'];
+                    $bgClass = $bgClasses[$index % 3];
+                @endphp
+                <div class="group card-hover transition-all duration-300 bg-white border border-slate-100 rounded-xl overflow-hidden flex flex-col shadow-sm">
+                    <div class="relative aspect-[4/3] overflow-hidden image-zoom {{ $bgClass }} flex items-center justify-center p-4">
+                        @if($book->image)
+                            <!-- Apply a deep drop shadow to the book image to give it the 3D book feel on the canvas -->
+                            <img src="{{ Storage::url($book->image) }}" alt="{{ $book->title }}" class="w-[75%] max-h-full object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.4)] transition-transform duration-500">
+                        @else
+                            <div class="w-[75%] h-full bg-white flex items-center justify-center p-4 text-center drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)] transition-transform duration-500 border border-slate-200">
+                                <span class="text-slate-400 font-bold text-xs uppercase tracking-widest opacity-60">{{ $book->title }}</span>
+                            </div>
+                        @endif
+                        
+                        <!-- Overlay gradient on hover like the design -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
+                            <span class="text-white text-[13px] font-medium flex items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">visibility</span>
+                                Quick Preview
                             </span>
                         </div>
-
-                        @if($book->download_type === 'file' && $book->download_file)
-                            <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="px-3 py-1.5 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] transition-all flex items-center gap-1.5 no-underline">
-                                Access
-                                <span class="material-symbols-outlined text-[14px]">open_in_new</span>
-                            </a>
-                        @elseif($book->download_type === 'link' && $book->download_link)
-                            <a href="{{ $book->download_link }}" target="_blank" class="px-3 py-1.5 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] transition-all flex items-center gap-1.5 no-underline">
-                                Access
-                                <span class="material-symbols-outlined text-[14px]">open_in_new</span>
-                            </a>
-                        @else
-                            <span class="px-3 py-1.5 bg-gray-50 text-slate-300 rounded-lg font-bold text-[10px] cursor-not-allowed">Soon</span>
-                        @endif
+                    </div>
+                    
+                    <div class="p-2 pt-1 md:p-3 md:pt-1 flex flex-col grow">
+                        <div class="flex items-center justify-between mb-3.0 md:mb-3">
+                            <span class="text-brand-teal text-[7px] md:text-xs font-semibold">Ejlals Repository</span>
+                            <div class="flex items-center gap-1">
+                                <span class="material-symbols-outlined text-brand-gold text-[12px]!" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="text-[8px] md:text-xs font-bold text-slate-500">4.9</span>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-[9px] md:text-sm font-bold text-slate-700 mb-1 line-clamp-2 leading-[1.2] group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
+                        
+                        <p class="text-[8px] md:text-[12px] text-slate-500/90 mb-1 line-clamp-2 leading-tight">
+                            {{ Str::limit(strip_tags($book->description), 80) ?: 'Explore this valuable scholarly resource within our digital library collection.' }}
+                        </p>
+                        
+                        <div class="mt-auto pt-1 border-t border-slate-200 flex items-center justify-between">
+                            <div class="flex flex-col">
+                                <span class="text-[7px] text-slate-400 uppercase font-semibold tracking-tight mb-0.5">Resource Type</span>
+                                <span class="text-[10px] font-semibold text-slate-700">
+                                    {{ $book->download_type === 'file' ? 'PDF eBook' : ($book->download_type === 'link' ? 'Guide' : 'Archive') }}
+                                </span>
+                            </div>
+                            
+                            @if($book->download_type === 'file' && $book->download_file)
+                                <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="px-2.5 py-1.5 md:px-4 md:py-2 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] md:text-[11px] transition-colors flex items-center gap-1 no-underline shadow-sm">
+                                    View
+                                    <span class="material-symbols-outlined text-[12px] md:text-[14px]">open_in_new</span>
+                                </a>
+                            @elseif($book->download_type === 'link' && $book->download_link)
+                                <a href="{{ $book->download_link }}" target="_blank" class="px-2.5 py-1.5 md:px-4 md:py-2 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] md:text-[11px] transition-colors flex items-center gap-1 no-underline shadow-sm">
+                                    View
+                                    <span class="material-symbols-outlined text-[12px] md:text-[14px]" style="font-size: 12px;">open_in_new</span>
+                                </a>
+                            @else
+                                <span class="px-4 py-2 bg-slate-50 text-slate-400 rounded-lg font-bold text-[11px] cursor-not-allowed">Soon</span>
+                            @endif
+                        </div>
                     </div>
                 </div>
-            </div>
             @empty
             <div class="col-span-full py-10 text-center bg-slate-50 rounded-3xl border-2 border-dashed border-slate-100">
                 <p class="text-slate-400 italic">Library updates in progress.</p>
