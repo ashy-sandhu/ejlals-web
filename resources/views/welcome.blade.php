@@ -330,36 +330,36 @@
                     
                     <div class="p-2 pt-1 md:p-3 md:pt-1 flex flex-col grow">
                         <div class="flex items-center justify-between mb-3.0 md:mb-3">
-                            <span class="text-brand-teal text-[7px] md:text-xs font-semibold">Ejlals Repository</span>
+                            <span class="text-brand-teal text-[7px] md:text-xs lg:text-[10px] font-semibold">Ejlals Repository</span>
                             <div class="flex items-center gap-1">
-                                <span class="material-symbols-outlined text-brand-gold text-[12px]!" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="text-[8px] md:text-xs font-bold text-slate-500">4.9</span>
+                                <span class="material-symbols-outlined text-brand-gold text-[12px]! lg:text-[11px]!" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="text-[8px] md:text-xs lg:text-[10px] font-bold text-slate-500">4.9</span>
                             </div>
                         </div>
                         
-                        <h3 class="text-[9px] md:text-sm font-bold text-slate-700 mb-1 line-clamp-2 leading-[1.2] group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
+                        <h3 class="text-[9px] md:text-sm lg:text-[13px] font-bold text-slate-700 mb-1 line-clamp-2 leading-[1.2] group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
                         
-                        <p class="text-[8px] md:text-[12px] text-slate-500/90 mb-1 line-clamp-2 leading-tight">
+                        <p class="text-[8px] md:text-[12px] lg:text-[11px] text-slate-500/90 mb-1 line-clamp-2 leading-tight">
                             {{ Str::limit(strip_tags($book->description), 80) ?: 'Explore this valuable scholarly resource within our digital library collection.' }}
                         </p>
                         
                         <div class="mt-auto pt-1 border-t border-slate-200 flex items-center justify-between">
                             <div class="flex flex-col">
                                 <span class="text-[7px] text-slate-400 uppercase font-semibold tracking-tight mb-0.5">Resource Type</span>
-                                <span class="text-[10px] font-semibold text-slate-700">
+                                <span class="text-[10px] lg:text-[9px] font-semibold text-slate-700">
                                     {{ $book->download_type === 'file' ? 'PDF eBook' : ($book->download_type === 'link' ? 'Guide' : 'Archive') }}
                                 </span>
                             </div>
                             
                             @if($book->download_type === 'file' && $book->download_file)
-                                <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="px-2.5 py-1.5 md:px-4 md:py-2 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] md:text-[11px] transition-colors flex items-center gap-1 no-underline shadow-sm">
+                                <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="px-2.5 py-1.5 md:px-4 md:py-2 lg:px-3.5 lg:py-1.5 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] md:text-[11px] lg:text-[10px] transition-colors flex items-center gap-1 no-underline shadow-sm">
                                     View
-                                    <span class="material-symbols-outlined text-[12px] md:text-[14px]">open_in_new</span>
+                                    <span class="material-symbols-outlined text-[12px] md:text-[14px] lg:text-base">open_in_new</span>
                                 </a>
                             @elseif($book->download_type === 'link' && $book->download_link)
-                                <a href="{{ $book->download_link }}" target="_blank" class="px-2.5 py-1.5 md:px-4 md:py-2 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] md:text-[11px] transition-colors flex items-center gap-1 no-underline shadow-sm">
+                                <a href="{{ $book->download_link }}" target="_blank" class="px-2.5 py-1.5 md:px-4 md:py-2 lg:px-3.5 lg:py-1.5 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] md:text-[11px] lg:text-[10px] transition-colors flex items-center gap-1 no-underline shadow-sm">
                                     View
-                                    <span class="material-symbols-outlined text-[12px] md:text-[14px]" style="font-size: 12px;">open_in_new</span>
+                                    <span class="material-symbols-outlined text-[12px] md:text-[14px] lg:text-base" style="font-size: 12px;">open_in_new</span>
                                 </a>
                             @else
                                 <span class="px-4 py-2 bg-slate-50 text-slate-400 rounded-lg font-bold text-[11px] cursor-not-allowed">Soon</span>
