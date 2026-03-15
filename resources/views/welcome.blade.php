@@ -173,16 +173,16 @@
 </section>
 
 <!-- Featured Courses Section (Modern Design) -->
-<section class="max-w-7xl mx-auto px-4 py-16" x-data="{ activeCategory: 'all' }">
+<section class="max-w-7xl mx-auto px-4 py-0 lg:py-8" x-data="{ activeCategory: 'all' }">
     <!-- Header Section -->
-    <div class="max-w-4xl mx-auto text-center mb-12">
+    <div class="max-w-4xl mx-auto text-center mb-4">
         <span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest text-brand-gold uppercase bg-brand-gold/10 rounded-full mb-3">
             Ready to Begin
         </span>
         <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-3 leading-tight tracking-tight">
             Explore Our <span class="text-brand-teal">Learning Paths</span>
         </h2>
-        <p class="text-[13px] md:text-sm text-slate-500 mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-[13px] md:text-sm text-slate-500 mb-4 max-w-2xl mx-auto leading-relaxed">
             The academy offers structured Islamic courses designed for beginners, intermediate learners, and students seeking deeper knowledge.
         </p>
 
@@ -261,7 +261,7 @@
     </div>
 
     <!-- Explore More Button & CTA -->
-    <div class="mt-12 flex justify-center pb-4">
+    <div class="mt-4 flex justify-center">
         <a href="{{ route('courses.index') }}" class="group inline-flex items-center gap-2 bg-brand-gold text-white px-8 py-3.5 rounded-lg text-sm font-bold shadow-lg shadow-brand-gold/20 hover:brightness-110 active:scale-[0.98] transition-all">
             Explore more courses
             <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
@@ -272,7 +272,7 @@
 <!-- Digital Library Preview -->
 <section class="bg-white py-10 px-6">
     <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div class="max-w-xl">
                 <span class="text-brand-teal font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Scholarly Resources</span>
                 <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight mb-4">Digital Library</h2>

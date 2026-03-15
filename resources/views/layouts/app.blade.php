@@ -81,7 +81,7 @@
             </div>
 
             <!-- Mobile Menu Drawer (Alpine.js) -->
-            <div x-show="mobileMenuOpen" class="md:hidden" style="display: none;" x-cloak>
+            <div x-show="mobileMenuOpen" class="md:hidden" x-cloak>
                 <!-- Backdrop -->
                 <div x-show="mobileMenuOpen" 
                     x-transition:enter="transition-opacity ease-linear duration-300" 
@@ -91,9 +91,9 @@
                     x-transition:leave-start="opacity-100" 
                     x-transition:leave-end="opacity-0" 
                     @click="mobileMenuOpen = false"
-                    class="fixed inset-0 z-[60] bg-slate-900/40 backdrop-blur-sm"></div>
+                    class="fixed inset-0 z-[90] bg-slate-900/40 backdrop-blur-sm"></div>
                 
-                <!-- Drawer -->
+                <!-- Drawer Container -->
                 <div x-show="mobileMenuOpen" 
                     x-transition:enter="transition ease-out duration-300 transform" 
                     x-transition:enter-start="translate-x-full" 
@@ -101,45 +101,46 @@
                     x-transition:leave="transition ease-in duration-300 transform" 
                     x-transition:leave-start="translate-x-0" 
                     x-transition:leave-end="translate-x-full" 
-                    class="fixed inset-y-0 right-0 z-[70] w-full max-w-[320px] bg-white shadow-2xl flex flex-col sm:ring-1 sm:ring-slate-900/10">
+                    class="fixed top-0 right-0 bottom-0 w-[300px] z-[100] bg-white shadow-2xl flex flex-col"
+                    style="background-color: white !important; opacity: 1 !important; visibility: visible !important;">
                     
                     <!-- Drawer Header -->
-                    <div class="px-6 py-5 flex items-center justify-between border-b border-slate-100">
+                    <div class="px-6 py-5 flex items-center justify-between border-b border-gray-100">
                         <img src="{{ asset('storage/ejlals-horizontal-v1.svg') }}" alt="Ejlals Logo" class="h-8 w-auto object-contain">
-                        <button @click="mobileMenuOpen = false" class="p-2 -mr-2 text-slate-400 hover:text-brand-teal hover:bg-brand-teal/5 rounded-full transition-colors bg-slate-50">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        <button @click="mobileMenuOpen = false" class="p-2 text-slate-400 hover:text-brand-teal hover:bg-slate-50 rounded-full transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                     </div>
 
-                    <!-- Drawer Nav Links -->
-                    <div class="px-6 py-6 overflow-y-auto flex-1">
-                        <div class="flex flex-col space-y-2">
-                            <a href="/" class="px-3 py-3 rounded-xl text-base font-bold transition-colors flex items-center justify-between group {{ request()->is('/') ? 'bg-brand-teal/5 text-brand-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-teal' }}">
+                    <!-- Navigation Links -->
+                    <div class="flex-1 px-6 py-8">
+                        <nav class="flex flex-col space-y-2">
+                            <a href="/" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-lg font-bold transition-all {{ request()->is('/') ? 'bg-brand-teal/5 text-brand-teal border-l-4 border-brand-teal pl-3' : 'text-slate-700 hover:bg-slate-50' }}">
                                 Home
-                                <svg class="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="w-5 h-5 {{ request()->is('/') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </a>
-                            <a href="{{ route('courses.index') }}" class="px-3 py-3 rounded-xl text-base font-bold transition-colors flex items-center justify-between group {{ request()->is('courses*') ? 'bg-brand-teal/5 text-brand-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-teal' }}">
+                            <a href="{{ route('courses.index') }}" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-lg font-bold transition-all {{ request()->is('courses*') ? 'bg-brand-teal/5 text-brand-teal border-l-4 border-brand-teal pl-3' : 'text-slate-700 hover:bg-slate-50' }}">
                                 Courses
-                                <svg class="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="w-5 h-5 {{ request()->is('courses*') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </a>
-                            <a href="{{ route('books.index') }}" class="px-3 py-3 rounded-xl text-base font-bold transition-colors flex items-center justify-between group {{ request()->is('books*') ? 'bg-brand-teal/5 text-brand-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-teal' }}">
+                            <a href="{{ route('books.index') }}" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-lg font-bold transition-all {{ request()->is('books*') ? 'bg-brand-teal/5 text-brand-teal border-l-4 border-brand-teal pl-3' : 'text-slate-700 hover:bg-slate-50' }}">
                                 Library
-                                <svg class="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="w-5 h-5 {{ request()->is('books*') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </a>
-                            <a href="{{ route('posts.index') }}" class="px-3 py-3 rounded-xl text-base font-bold transition-colors flex items-center justify-between group {{ request()->is('posts*') ? 'bg-brand-teal/5 text-brand-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-teal' }}">
+                            <a href="{{ route('posts.index') }}" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-lg font-bold transition-all {{ request()->is('posts*') ? 'bg-brand-teal/5 text-brand-teal border-l-4 border-brand-teal pl-3' : 'text-slate-700 hover:bg-slate-50' }}">
                                 Articles
-                                <svg class="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="w-5 h-5 {{ request()->is('posts*') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </a>
-                            <a href="{{ route('about') }}" class="px-3 py-3 rounded-xl text-base font-bold transition-colors flex items-center justify-between group {{ request()->is('about') ? 'bg-brand-teal/5 text-brand-teal' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-teal' }}">
+                            <a href="{{ route('about') }}" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-lg font-bold transition-all {{ request()->is('about') ? 'bg-brand-teal/5 text-brand-teal border-l-4 border-brand-teal pl-3' : 'text-slate-700 hover:bg-slate-50' }}">
                                 About Us
-                                <svg class="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                <svg class="w-5 h-5 {{ request()->is('about') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </a>
-                        </div>
+                        </nav>
                     </div>
 
-                    <!-- Drawer Footer Actions -->
-                    <div class="p-6 border-t border-slate-100 bg-slate-50/50">
-                        <a href="https://store.ejlals.com" class="block w-full text-center bg-brand-gold hover:bg-brand-gold/90 text-white px-5 py-3.5 rounded-xl text-sm font-bold transition-all shadow-sm mb-3">
+                    <!-- Footer Actions -->
+                    <div class="px-6 py-6 border-t border-gray-100 bg-gray-50/50 space-y-3">
+                        <a href="https://store.ejlals.com" class="block w-full text-center bg-brand-gold hover:bg-brand-gold/90 text-white px-5 py-4 rounded-xl text-base font-bold transition-all shadow-md">
                             Visit Our Store
                         </a>
                         
