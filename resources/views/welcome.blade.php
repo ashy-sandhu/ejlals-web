@@ -270,7 +270,17 @@
 </section>
 
 <!-- Digital Library Preview -->
-<section class="bg-white py-10 px-6">
+<section class="bg-white py-10 px-6" x-data="{ 
+    isOpen: false, 
+    selectedBook: {
+        title: '',
+        image: '',
+        description: '',
+        type: '',
+        link: '',
+        bgClass: ''
+    } 
+}">
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div class="max-w-xl">
@@ -300,6 +310,21 @@
             .book-bg-1 { background-color: #E6DFD3; } /* Beige */
             .book-bg-2 { background-color: #386A6B; } /* Teal */
             .book-bg-3 { background-color: #AED5C0; } /* Mint */
+            
+            .custom-scrollbar::-webkit-scrollbar {
+                width: 5px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 10px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb {
+                background: #cbd5e1;
+                border-radius: 10px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                background: #94a3b8;
+            }
         </style>
         <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6 mt-4">
             @forelse($featuredBooks as $index => $book)
@@ -309,7 +334,16 @@
                     $bgClass = $bgClasses[$index % 3];
                 @endphp
                 <div class="group card-hover transition-all duration-300 bg-white border border-slate-100 rounded-xl overflow-hidden flex flex-col shadow-sm">
-                    <div class="relative aspect-[4/3] overflow-hidden image-zoom {{ $bgClass }} flex items-center justify-center p-4">
+                    <div class="relative aspect-[4/3] overflow-hidden image-zoom {{ $bgClass }} flex items-center justify-center p-4 cursor-pointer group/canvas" 
+                        data-book="{{ json_encode([
+                            'title' => $book->title,
+                            'image' => $book->image ? Storage::url($book->image) : '',
+                            'description' => strip_tags($book->description),
+                            'type' => $book->download_type === 'file' ? 'PDF eBook' : ($book->download_type === 'link' ? 'Guide' : 'Archive'),
+                            'link' => $book->download_type === 'file' ? Storage::url($book->download_file) : $book->download_link,
+                            'bgClass' => $bgClass
+                        ]) }}"
+                        @click="isOpen = true; selectedBook = JSON.parse($el.dataset.book)">
                         @if($book->image)
                             <!-- Apply a deep drop shadow to the book image to give it the 3D book feel on the canvas -->
                             <img src="{{ Storage::url($book->image) }}" alt="{{ $book->title }}" class="w-[75%] max-h-full object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.4)] transition-transform duration-500">
@@ -321,7 +355,7 @@
                         
                         <!-- Overlay gradient on hover like the design -->
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
-                            <span class="text-white text-[13px] font-medium flex items-center gap-2">
+                            <span class="text-white text-[13px] font-medium flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                                 <span class="material-symbols-outlined text-sm">visibility</span>
                                 Quick Preview
                             </span>
@@ -373,6 +407,110 @@
             </div>
             @endforelse
         </div>
+
+        <!-- Quick View Modal -->
+        <template x-teleport="body">
+            <div 
+                x-show="isOpen" 
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0"
+                class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6"
+                x-cloak>
+                
+                <!-- Backdrop -->
+                <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" @click="isOpen = false"></div>
+
+                <!-- Modal Content -->
+                <div 
+                    x-show="isOpen"
+                    x-transition:enter="transition ease-out duration-300 delay-100"
+                    x-transition:enter-start="opacity-0 scale-95 translate-y-4"
+                    x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                    class="relative bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row border border-white/20"
+                    @click.away="isOpen = false">
+                    
+                    <!-- Left: Book Preview (3D feel) -->
+                    <div class="w-full md:w-1/2 aspect-square md:aspect-auto flex items-center justify-center p-8 relative overflow-hidden" :class="selectedBook.bgClass">
+                        <!-- Decorative background elements -->
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+                        
+                        <img :src="selectedBook.image" :alt="selectedBook.title" 
+                            x-show="selectedBook.image"
+                            class="relative z-10 w-[70%] max-h-full object-contain drop-shadow-[20px_25px_35px_rgba(0,0,0,0.5)] transform -rotate-2 hover:rotate-0 transition-transform duration-500">
+                        
+                        <div x-show="!selectedBook.image" class="relative z-10 w-[70%] aspect-[3/4] bg-white rounded-lg shadow-2xl flex items-center justify-center p-6 text-center border border-slate-100">
+                            <span class="text-slate-400 font-bold text-lg uppercase tracking-widest opacity-40" x-text="selectedBook.title"></span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Details -->
+                    <div class="w-full md:w-1/2 flex flex-col p-6 md:p-10 bg-white overflow-y-auto">
+                        <!-- Header & Close -->
+                        <div class="flex items-start justify-between mb-6">
+                            <div>
+                                <span class="inline-block px-3 py-1 bg-brand-teal/10 text-brand-teal text-[10px] font-bold uppercase tracking-widest rounded-full mb-2">Ejlals Repository</span>
+                                <div class="flex items-center gap-1 text-xs text-brand-gold">
+                                    <span class="material-symbols-outlined text-sm font-variation-fill-1">star</span>
+                                    <span class="material-symbols-outlined text-sm font-variation-fill-1">star</span>
+                                    <span class="material-symbols-outlined text-sm font-variation-fill-1">star</span>
+                                    <span class="material-symbols-outlined text-sm font-variation-fill-1">star</span>
+                                    <span class="material-symbols-outlined text-sm font-variation-fill-1">star_half</span>
+                                    <span class="text-slate-500 font-bold ml-1">4.9 / 5.0</span>
+                                </div>
+                            </div>
+                            <button @click="isOpen = false" class="size-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+
+                        <div class="flex-1 overflow-y-auto pr-2 custom-scrollbar">
+                            <!-- Book Info -->
+                            <h2 class="text-2xl md:text-3xl font-serif font-black text-slate-800 mb-4 leading-tight" x-text="selectedBook.title"></h2>
+                            
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="flex items-center gap-2">
+                                    <div class="size-8 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold">
+                                        <span class="material-symbols-outlined text-lg">menu_book</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Type</p>
+                                        <p class="text-[11px] font-bold text-slate-700" x-text="selectedBook.type"></p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="size-8 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal">
+                                        <span class="material-symbols-outlined text-lg">verified</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">Quality</p>
+                                        <p class="text-[11px] font-bold text-slate-700">Verified Original</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-slate-600 mb-8">
+                                <p class="leading-relaxed text-sm" x-text="selectedBook.description"></p>
+                            </div>
+                        </div>
+
+                        <!-- CTA -->
+                        <div class="mt-auto pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
+                            <a :href="selectedBook.link" target="_blank" class="flex-1 bg-brand-teal text-white px-6 py-3 rounded-xl font-bold text-sm text-center shadow-lg shadow-brand-teal/20 hover:brightness-110 transition-all flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-lg">download</span>
+                                Access Now
+                            </a>
+                            <button @click="isOpen = false" class="px-6 py-3 bg-slate-50 text-slate-600 rounded-xl font-bold text-sm hover:bg-slate-100 transition-colors">
+                                Close Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
     </div>
 </section>
 
