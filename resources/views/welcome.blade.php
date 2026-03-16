@@ -354,7 +354,7 @@
                             @if($book->download_type === 'file' && $book->download_file)
                                 <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="px-2.5 py-1.5 md:px-4 md:py-2 lg:px-3.5 lg:py-1.5 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] md:text-[11px] lg:text-[10px] transition-colors flex items-center gap-1 no-underline shadow-sm">
                                     View
-                                    <span class="material-symbols-outlined text-[12px] md:text-[14px] lg:text-base">open_in_new</span>
+                                    <span class="material-symbols-outlined text-[12px] md:text-[14px] lg:text-base" style="font-size: 12px;">open_in_new</span>
                                 </a>
                             @elseif($book->download_type === 'link' && $book->download_link)
                                 <a href="{{ $book->download_link }}" target="_blank" class="px-2.5 py-1.5 md:px-4 md:py-2 lg:px-3.5 lg:py-1.5 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] md:text-[11px] lg:text-[10px] transition-colors flex items-center gap-1 no-underline shadow-sm">
