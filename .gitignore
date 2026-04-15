@@ -44,3 +44,6 @@ yarn-error.log*
 /.fleet
 /.nova
 /.zed
+import-data.ps1
+site_assets.zip
+database_dump.sql
