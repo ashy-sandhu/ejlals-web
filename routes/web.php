@@ -8,6 +8,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ToolController;
 use Illuminate\Support\Facades\Artisan;
 
 // Temporary Bridge to Sync Database (Will be removed after fix)
@@ -63,9 +65,9 @@ Route::get('/debug-php', function () {
     return phpversion();
 });
 
-use App\Http\Controllers\PostController;
 
 Route::get('/posts', [PostController::class , 'index'])->name('posts.index');
+
 Route::get('/posts/{slug}', [PostController::class , 'show'])->name('posts.show');
 
 Route::get('/about', function () {
@@ -83,6 +85,9 @@ Route::get('/careers', function () {
 Route::get('/privacy-policy', function () {
     return view('legal.privacy');
 })->name('privacy');
+
+// Tools
+Route::get('/tools/dua-finder', [ToolController::class, 'duaFinder'])->name('tools.dua-finder');
 
 Route::get('/terms', function () {
     return view('legal.terms');

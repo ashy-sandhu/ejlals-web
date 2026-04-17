@@ -29,6 +29,7 @@
         <!-- Google Material Symbols -->
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -51,6 +52,30 @@
                     <a href="{{ route('books.index') }}" class="hover:text-brand-teal transition-colors {{ request()->is('books*') ? 'text-brand-teal' : '' }}">Library</a>
                     <a href="{{ route('posts.index') }}" class="hover:text-brand-teal transition-colors {{ request()->is('posts*') ? 'text-brand-teal' : '' }}">Articles</a>
                     <a href="{{ route('about') }}" class="hover:text-brand-teal transition-colors {{ request()->is('about') ? 'text-brand-teal' : '' }}">About Us</a>
+
+                    <!-- Tools Dropdown -->
+                    <div x-data="{ toolsOpen: false }" @mouseenter="toolsOpen = true" @mouseleave="toolsOpen = false" class="relative group">
+                        <button class="flex items-center gap-1 hover:text-brand-teal transition-colors {{ request()->is('tools*') ? 'text-brand-teal' : '' }}">
+                            Tools
+                            <svg class="w-4 h-4 transition-transform duration-200" :class="toolsOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="toolsOpen" 
+                             x-transition:enter="transition ease-out duration-100"
+                             x-transition:enter-start="opacity-0 scale-95"
+                             x-transition:enter-end="opacity-100 scale-100"
+                             x-transition:leave="transition ease-in duration-75"
+                             x-transition:leave-start="opacity-100 scale-100"
+                             x-transition:leave-end="opacity-0 scale-95"
+                             class="absolute left-0 mt-0 w-52 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-[100]"
+                             x-cloak>
+                            <a href="{{ route('tools.dua-finder') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-teal">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-lg">🤲</span>
+                                    Situational Dua Finder
+                                </span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Action Buttons -->
@@ -131,10 +156,19 @@
                                 Articles
                                 <svg class="w-5 h-5 {{ request()->is('posts*') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </a>
-                            <a href="{{ route('about') }}" class="flex items-center justify-between px-4 py-2 rounded-xl text-lg font-medium transition-all {{ request()->is('about') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
+                            <a href="{{ route('about') }}" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-lg font-bold transition-all {{ request()->is('about') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
                                 About Us
                                 <svg class="w-5 h-5 {{ request()->is('about') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </a>
+                            
+                            <!-- Mobile Tools Section -->
+                            <div class="pt-4 pb-2 px-4">
+                                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Academic Tools</p>
+                                <a href="{{ route('tools.dua-finder') }}" class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 text-slate-700 hover:bg-white hover:border-brand-teal/30 hover:text-brand-teal transition-all">
+                                    <span class="text-2xl">🤲</span>
+                                    <span class="font-bold">Situational Dua Finder</span>
+                                </a>
+                            </div>
                         </nav>
                     </div>
 
