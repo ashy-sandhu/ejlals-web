@@ -19,10 +19,40 @@
   font-family:'Inter',sans-serif;
   background:var(--ivory);
   color:var(--ink);
-  padding-bottom: 80px;
+  padding-bottom: 0;
+  position: relative;
+  overflow: hidden;
 }
-.dua-body-full .page{max-width:880px;margin:0 auto;padding:0 20px 100px}
-.dua-body-full .hero{text-align:center;padding:56px 16px 36px}
+.dua-body-full .page{max-width:880px;margin:0 auto;padding:0 20px 0;position:relative;z-index:10}
+
+/* Adjustable Background Watermarks */
+.watermark-bg {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden; pointer-events: none; z-index: 0;
+}
+.wm-img {
+  position: absolute;
+  /* Adjust this variable to make images lighter or darker (e.g. 0.03 to 0.15) */
+  opacity: var(--wm-opacity, 0.20);
+  mix-blend-mode: multiply;
+}
+.wm-1 {
+  top: var(--wm1-top, 2%);
+  left: var(--wm1-left, 2%);
+  width: var(--wm1-size, 400px);
+}
+.wm-2 {
+  top: var(--wm2-top, 35%);
+  right: var(--wm2-right, -12%);
+  width: var(--wm2-size, 650px);
+}
+.wm-3 {
+  bottom: var(--wm3-bottom, 5%);
+  left: var(--wm3-left, -5%);
+  width: var(--wm3-size, 500px);
+}
+
+.dua-body-full .hero{text-align:center;padding:56px 16px 36px; position: relative;}
 .dua-body-full .badge{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--g1),var(--g3));color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;border-radius:999px;margin-bottom:22px;box-shadow:0 4px 14px rgba(5,74,48,.25)}
 .dua-body-full .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5.5vw,3.2rem);font-weight:700;color:var(--g1);line-height:1.22;margin-bottom:14px}
 .dua-body-full .hero h1 em{font-style:italic;color:var(--gold)}
@@ -62,16 +92,13 @@
 .dua-body-full .act{background:transparent;border:1.5px solid var(--border);color:var(--muted);font-family:'Inter',sans-serif;font-size:.8rem;font-weight:500;padding:7px 15px;border-radius:999px;cursor:pointer;transition:var(--ease);display:flex;align-items:center;gap:5px}
 .dua-body-full .act:hover{border-color:var(--g4);color:var(--g2);background:rgba(16,185,129,.06)}
 .dua-body-full .act.ok{background:rgba(16,185,129,.1);border-color:var(--g4);color:var(--g2)}
-.dua-body-full .seo{margin-top:80px;padding-top:44px;border-top:1px solid var(--border)}
-.dua-body-full .seo h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--g1);margin-bottom:14px}
-.dua-body-full .seo h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--g2);margin:32px 0 11px}
-.dua-body-full .seo p{font-size:.95rem;color:var(--ink2);line-height:1.82;margin-bottom:13px}
-.dua-body-full .seo ul{list-style:none;padding:0;margin:0 0 18px}
-.dua-body-full .seo ul li{font-size:.93rem;color:var(--ink2);line-height:1.75;padding:4px 0 4px 20px;position:relative}
-.dua-body-full .seo ul li::before{content:'◆';position:absolute;left:0;color:var(--gold);font-size:.45rem;top:9px}
-.dua-body-full .faq{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;margin-bottom:11px;box-shadow:var(--sh1)}
-.dua-body-full .faq h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--g1);margin-bottom:8px}
-.dua-body-full .faq p{font-size:.88rem;color:var(--muted);line-height:1.72;margin:0}
+.dua-body-full .seo{margin-top:60px;padding-top:60px;border-top:1px solid var(--border);position:relative;z-index:10;}
+.dua-body-full .seo h2{font-family:'Playfair Display',serif;font-size:1.85rem;color:var(--g1);margin-bottom:20px;font-weight:700}
+.dua-body-full .seo h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--g2);margin:40px 0 16px;font-weight:700}
+.dua-body-full .seo p{font-size:.975rem;color:var(--ink2);line-height:1.85;margin-bottom:18px}
+.dua-body-full .seo ul{list-style:none;padding:0;margin:0 0 24px}
+.dua-body-full .seo ul li{font-size:.95rem;color:var(--ink2);line-height:1.8;padding:6px 0 6px 24px;position:relative}
+.dua-body-full .seo ul li::before{content:'◆';position:absolute;left:0;color:var(--gold);font-size:.5rem;top:10px}
 @media(max-width:520px){
   .dua-body-full .tab-row{gap:6px}.dua-body-full .tab{padding:9px 16px;font-size:.82rem}
   .dua-body-full .grid{grid-template-columns:1fr 1fr}
@@ -80,9 +107,19 @@
 </style>
 
 <div class="dua-body-full">
+
+<!-- Adjustable Background Watermarks -->
+<div class="watermark-bg">
+   <img src="{{ asset('images/illustrations/dua-2.svg') }}" class="wm-img wm-2" alt="" aria-hidden="true">
+   <img src="{{ asset('images/illustrations/dua-3.svg') }}" class="wm-img wm-3" alt="" aria-hidden="true">
+</div>
+
 <main class="page">
 
 <header class="hero">
+  <!-- Generated Hero Background Illustration -->
+  <img src="{{ asset('images/illustrations/hero_dua_bg.png') }}" alt="" class="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] max-w-[1000px] opacity-[0.80] mix-blend-multiply pointer-events-none" style="z-index: -1; mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 65%); -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 65%);" aria-hidden="true">
+
   <div class="badge">✦ Authentic Duas from Quran &amp; Sunnah</div>
   <h1>Find the Words<br><em>Your Heart Needs</em></h1>
   <p class="hero-sub">Select your emotion or situation to receive an authentic dua — Arabic text, transliteration, English meaning &amp; verified source.</p>
@@ -183,6 +220,10 @@
 </article>
 
 <section class="seo" aria-label="Guide to Islamic Duas">
+  <div class="flex items-center gap-3 mb-4">
+    <span class="w-8 h-[2px] bg-brand-gold rounded-full"></span>
+    <span class="text-brand-gold font-bold tracking-[0.4em] uppercase text-[10px]">Academic Guide</span>
+  </div>
   <h2>What is a Dua? The Complete Islamic Guide to Supplication</h2>
   <p>A <strong>dua</strong> (دُعَاء) is the most intimate form of Islamic worship — a direct conversation between a believer and Allah ﷻ. Unlike the structured ritual of salah, dua has no fixed time, place or language requirement. It is the voice of the heart raised to the Creator of the universe. The Prophet Muhammad ﷺ said: <em>"Dua is the essence of worship."</em> (Jami' at-Tirmidhi 3371)</p>
   <p>This tool collects specific duas the Prophet ﷺ himself taught — carefully sourced from Sahih al-Bukhari, Sahih Muslim, Sunan Abu Dawood, Jami' at-Tirmidhi, Sunan Ibn Majah and the Quran — so that every Muslim can find the right words for every emotion and situation in life.</p>
@@ -202,33 +243,59 @@
 
   <h3>Best Times for Dua to be Accepted</h3>
   <p>The Prophet ﷺ taught us that certain moments are particularly blessed: the last third of the night (during Tahajjud), in sujood (prostration), between the adhan and iqamah, when breaking fast (Iftar), on Fridays between Asr and Maghrib, during rain, when travelling, and when a parent makes dua for their child.</p>
+</section>
 
-  <h3>Frequently Asked Questions</h3>
+<!-- FAQ Section -->
+<section class="py-12 px-6 border-t border-[#e8e2d6] mt-8" style="position:relative; z-index:10;">
+    <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10">
+            <span class="text-[#c8973a] font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Clarifications</span>
+            <h2 class="text-2xl md:text-4xl font-serif font-bold text-[#054a30] tracking-tight">Frequently Asked Questions</h2>
+        </div>
 
-  <div class="faq" itemscope itemtype="https://schema.org/Question">
-    <h4 itemprop="name">What is the best dua for anxiety and stress?</h4>
-    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-      <p itemprop="text">The Prophet ﷺ regularly recited the comprehensive dua from Sahih al-Bukhari 6369, seeking refuge from anxiety, sorrow, weakness, laziness, miserliness, cowardice, debt and being overpowered. Select "Anxious / Stressed" in the Emotions tab above to read it in full.</p>
+        <div class="space-y-4">
+            <!-- FAQ 1 -->
+            <div class="bg-white rounded-2xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.04)] transition-all hover:border-[#10b981] hover:shadow-[0_8px_32px_rgba(5,74,48,0.08)]">
+                <button class="w-full p-6 text-left flex items-center justify-between group focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-bold text-[#1c1c1e]">What is the best dua for anxiety and stress?</span>
+                    <svg class="w-5 h-5 text-[#c8973a] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="p-6 pt-0 text-[#374151] hidden leading-relaxed">
+                    The Prophet ﷺ regularly recited the comprehensive dua from Sahih al-Bukhari 6369, seeking refuge from anxiety, sorrow, weakness, laziness, miserliness, cowardice, debt and being overpowered. Select "Anxious / Stressed" in the Emotions tab above to read it in full.
+                </div>
+            </div>
+            <!-- FAQ 2 -->
+            <div class="bg-white rounded-2xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.04)] transition-all hover:border-[#10b981] hover:shadow-[0_8px_32px_rgba(5,74,48,0.08)]">
+                <button class="w-full p-6 text-left flex items-center justify-between group focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-bold text-[#1c1c1e]">What is Dua-e-Yunus and when should I read it?</span>
+                    <svg class="w-5 h-5 text-[#c8973a] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="p-6 pt-0 text-[#374151] hidden leading-relaxed">
+                    Dua-e-Yunus (La ilaha illa anta subhanaka inni kuntu minaz-zalimin) was made by Prophet Yunus (AS) from inside the whale. Allah responded and saved him. It is recommended for extreme sadness, hopelessness, or any situation where you feel completely trapped with no way out.
+                </div>
+            </div>
+            <!-- FAQ 3 -->
+            <div class="bg-white rounded-2xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.04)] transition-all hover:border-[#10b981] hover:shadow-[0_8px_32px_rgba(5,74,48,0.08)]">
+                <button class="w-full p-6 text-left flex items-center justify-between group focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-bold text-[#1c1c1e]">Is there a dua for loneliness?</span>
+                    <svg class="w-5 h-5 text-[#c8973a] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="p-6 pt-0 text-[#374151] hidden leading-relaxed">
+                    Yes. The dua: Ya Hayyu ya Qayyum bi-rahmatika astaghith, aslih li sha'ni kullahu wa la takilni ila nafsi tarfata ayn — deeply recommended for feeling alone. The Prophet ﷺ recited it when facing overwhelming difficulties. Select "Lonely / Abandoned" to read it in full.
+                </div>
+            </div>
+            <!-- FAQ 4 -->
+            <div class="bg-white rounded-2xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.04)] transition-all hover:border-[#10b981] hover:shadow-[0_8px_32px_rgba(5,74,48,0.08)]">
+                <button class="w-full p-6 text-left flex items-center justify-between group focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-bold text-[#1c1c1e]">Can duas be read in English?</span>
+                    <svg class="w-5 h-5 text-[#c8973a] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="p-6 pt-0 text-[#374151] hidden leading-relaxed">
+                    Yes. Allah ﷻ hears and responds to all sincere supplications in any language. The Arabic duas from Quran and Sunnah carry their original blessing, but praying to Allah in your own language is fully valid. Many scholars recommend learning the Arabic alongside the meaning so you can supplicate with both understanding and the original blessed words.
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="faq" itemscope itemtype="https://schema.org/Question">
-    <h4 itemprop="name">What is Dua-e-Yunus and when should I read it?</h4>
-    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-      <p itemprop="text">Dua-e-Yunus (La ilaha illa anta subhanaka inni kuntu minaz-zalimin) was made by Prophet Yunus (AS) from inside the whale. Allah responded and saved him. It is recommended for extreme sadness, hopelessness, or any situation where you feel completely trapped with no way out.</p>
-    </div>
-  </div>
-  <div class="faq" itemscope itemtype="https://schema.org/Question">
-    <h4 itemprop="name">Is there a dua for loneliness?</h4>
-    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-      <p itemprop="text">Yes. The dua: Ya Hayyu ya Qayyum bi-rahmatika astaghith, aslih li sha'ni kullahu wa la takilni ila nafsi tarfata ayn — deeply recommended for feeling alone. The Prophet ﷺ recited it when facing overwhelming difficulties. Select "Lonely / Abandoned" to read it in full.</p>
-    </div>
-  </div>
-  <div class="faq" itemscope itemtype="https://schema.org/Question">
-    <h4 itemprop="name">Can duas be read in English?</h4>
-    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
-      <p itemprop="text">Yes. Allah ﷻ hears and responds to all sincere supplications in any language. The Arabic duas from Quran and Sunnah carry their original blessing, but praying to Allah in your own language is fully valid. Many scholars recommend learning the Arabic alongside the meaning so you can supplicate with both understanding and the original blessed words.</p>
-    </div>
-  </div>
 </section>
 </main>
 </div>
