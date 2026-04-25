@@ -345,11 +345,11 @@
                         ]) }}"
                         @click="isOpen = true; selectedBook = JSON.parse($el.dataset.book)">
                         @if($book->image)
-                            <!-- Apply a deep drop shadow to the book image to give it the 3D book feel on the canvas -->
-                            <img src="{{ Storage::url($book->image) }}" alt="{{ $book->title }}" class="w-[75%] max-h-full object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.4)] transition-transform duration-500">
+                            <!-- Apply a softer, elegant drop shadow to the book image -->
+                            <img src="{{ Storage::url($book->image) }}" alt="{{ $book->title }}" class="w-[75%] max-h-full object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.2)] transition-transform duration-500">
                         @else
-                            <div class="w-[75%] h-full bg-white flex items-center justify-center p-4 text-center drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)] transition-transform duration-500 border border-slate-200">
-                                <span class="text-slate-400 font-bold text-xs uppercase tracking-widest opacity-60">{{ $book->title }}</span>
+                            <div class="w-[75%] h-full bg-white/50 flex items-center justify-center p-4 text-center drop-shadow-[0_10px_15px_rgba(0,0,0,0.1)] transition-transform duration-500 border border-slate-200/50">
+                                <span class="text-slate-400 font-bold text-[10px] uppercase tracking-widest opacity-60">{{ $book->title }}</span>
                             </div>
                         @endif
                         
@@ -362,25 +362,25 @@
                         </div>
                     </div>
                     
-                    <div class="p-2 pt-1 md:p-3 md:pt-1 flex flex-col grow">
-                        <div class="flex items-center justify-between mb-3.0 md:mb-3">
-                            <span class="text-brand-teal text-[7px] md:text-xs lg:text-[10px] font-semibold">Ejlals Repository</span>
-                            <div class="flex items-center gap-1">
+                    <div class="p-2 pt-1.5 md:p-3 md:pt-2 flex flex-col grow">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-brand-teal text-[8px] md:text-xs lg:text-[10px] font-bold">Ejlals Repository</span>
+                            <div class="flex items-center gap-0.5">
                                 <span class="material-symbols-outlined text-brand-gold text-[12px]! lg:text-[11px]!" style="font-variation-settings: 'FILL' 1;">star</span>
-                                <span class="text-[8px] md:text-xs lg:text-[10px] font-bold text-slate-500">4.9</span>
+                                <span class="text-[9px] md:text-xs lg:text-[10px] font-black text-slate-500">4.9</span>
                             </div>
                         </div>
                         
-                        <h3 class="text-[9px] md:text-sm lg:text-[13px] font-bold text-slate-700 mb-1 line-clamp-2 leading-[1.2] group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
+                        <h3 class="text-[10px] md:text-sm lg:text-[14px] font-bold text-slate-800 mb-1 line-clamp-2 leading-[1.2] group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
                         
-                        <p class="text-[8px] md:text-[12px] lg:text-[11px] text-slate-500/90 mb-1 line-clamp-2 leading-tight">
+                        <p class="text-[9px] md:text-[12px] lg:text-[11px] text-slate-600 mb-2 line-clamp-2 leading-tight">
                             {{ Str::limit(strip_tags($book->description), 80) ?: 'Explore this valuable scholarly resource within our digital library collection.' }}
                         </p>
                         
-                        <div class="mt-auto pt-1 border-t border-slate-200 flex items-center justify-between">
-                            <div class="flex flex-col">
-                                <span class="text-[7px] text-slate-400 uppercase font-semibold tracking-tight mb-0.5">Resource Type</span>
-                                <span class="text-[10px] lg:text-[9px] font-semibold text-slate-700">
+                        <div class="mt-auto pt-1.5 border-t border-slate-100 flex items-center justify-between gap-1">
+                            <div class="flex flex-col min-w-0">
+                                <span class="text-[7px] text-slate-400 uppercase font-bold tracking-tight mb-0.5 truncate">Resource Type</span>
+                                <span class="text-[10px] lg:text-[9px] font-bold text-slate-700 truncate">
                                     {{ $book->download_type === 'file' ? 'PDF eBook' : ($book->download_type === 'link' ? 'Guide' : 'Archive') }}
                                 </span>
                             </div>

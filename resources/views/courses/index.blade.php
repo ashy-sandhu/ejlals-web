@@ -38,53 +38,140 @@
     </div>
 </section>
 
-<section class="bg-white py-20 px-6">
+<section class="bg-white p-6">
     <div class="max-w-7xl mx-auto">
-        <div class="flex items-center justify-between mb-16 pb-8 border-b border-gray-100">
+        <div class="flex items-center justify-between mb-6 pb-6 border-b border-gray-100">
             <div>
                 <h2 class="text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Academic Curriculum</h2>
                 <div class="h-1.5 w-8 bg-brand-gold rounded-full"></div>
             </div>
+
+            <!-- Sleek Category Filter -->
+            <div x-data="{ open: false }" class="relative">
+                <button @click="open = !open" 
+                        @click.away="open = false"
+                        class="flex items-center gap-2.5 px-4 py-2 bg-slate-50/50 border border-slate-200/50 rounded-full text-[11px] font-black text-slate-600 uppercase tracking-widest hover:bg-white hover:shadow-md transition-all duration-300">
+                    <span class="material-symbols-outlined text-lg text-brand-gold">filter_list</span>
+                    <span class="hidden md:inline">Sort:</span>
+                    <span class="text-slate-800">{{ $categories->firstWhere('slug', $selectedCategory)->name ?? 'All Courses' }}</span>
+                    <span class="material-symbols-outlined text-base transition-transform duration-300" :class="open ? 'rotate-180' : ''">expand_more</span>
+                </button>
+                
+                <div x-show="open" 
+                     x-cloak
+                     x-transition:enter="transition ease-out duration-200"
+                     x-transition:enter-start="opacity-0 translate-y-2 scale-95"
+                     x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                     x-transition:leave="transition ease-in duration-75"
+                     x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                     x-transition:leave-end="opacity-0 translate-y-2 scale-95"
+                     class="absolute right-0 mt-2 w-56 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-100 p-2 z-50 origin-top-right">
+                    
+                    <a href="{{ route('courses.index') }}" 
+                       class="flex items-center justify-between px-4 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all {{ !$selectedCategory ? 'bg-brand-teal/10 text-brand-teal' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800' }}">
+                        All Courses
+                        @if(!$selectedCategory)
+                            <span class="material-symbols-outlined text-sm">check_circle</span>
+                        @endif
+                    </a>
+
+                    <div class="my-1 h-px bg-slate-100 mx-2"></div>
+
+                    @foreach($categories as $category)
+                        <a href="{{ route('courses.index', ['category' => $category->slug]) }}" 
+                           class="flex items-center justify-between px-4 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all {{ $selectedCategory === $category->slug ? 'bg-brand-teal/10 text-brand-teal' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800' }}">
+                            {{ $category->name }}
+                            @if($selectedCategory === $category->slug)
+                                <span class="material-symbols-outlined text-sm">check_circle</span>
+                            @endif
+                        </a>
+                    @endforeach
+                </div>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-6">
             @forelse($courses as $course)
-                <div class="bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
-                    <div class="aspect-video bg-gray-100 relative overflow-hidden">
-                        @if($course->image)
-                            <img src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" class="w-full h-full object-cover">
-                        @else
-                            <div class="w-full h-full bg-gradient-to-br from-brand-teal/10 to-brand-gold/10 flex items-center justify-center">
-                                <span class="text-brand-teal font-bold uppercase tracking-widest text-xs opacity-50">Course Preview</span>
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-brand-teal/5 flex flex-col h-full">
+                    <a href="{{ route('courses.show', $course->slug) }}" class="flex flex-col h-full">
+                        <!-- Image Container -->
+                        <div class="relative h-40 w-full overflow-hidden bg-slate-100 shrink-0">
+                            @if($course->image)
+                                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" />
+                            @else
+                                <div class="w-full h-full bg-gradient-to-br from-brand-teal/10 to-brand-gold/10 flex items-center justify-center">
+                                    <span class="text-brand-teal font-bold uppercase tracking-widest text-[10px] opacity-20">Course Preview</span>
+                                </div>
+                            @endif
+                            
+                            <!-- Level Badge -->
+                            <div class="absolute top-3 left-3 bg-brand-teal/90 backdrop-blur-sm text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shadow-sm">
+                                {{ $course->level ?? 'All Levels' }}
                             </div>
-                        @endif
-                    </div>
-                    <div class="p-8">
-                        <div class="flex items-center gap-2 mb-4">
-                            <span class="bg-brand-teal/10 text-brand-teal text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Educational</span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-brand-teal transition-colors">{{ $course->title }}</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">{!! nl2br(e($course->summary ?? Str::limit(strip_tags($course->description), 150))) !!}</p>
-                        
-                        <div class="flex items-center justify-between pt-6 border-t border-gray-50">
-                            <span class="text-brand-gold font-bold">Free</span>
-                            <a href="{{ route('courses.show', $course->slug) }}" class="text-brand-teal font-bold text-sm inline-flex items-center gap-1 group/btn">
-                                Enrollment Info 
-                                <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                            </a>
+
+                        <!-- Content Container -->
+                        <div class="p-3 md:p-4 md:p-5 flex flex-col flex-1 pb-4 md:pb-6">
+                            <h3 class="text-[11px] md:text-[14px] font-bold text-slate-800 mb-1 group-hover:text-brand-teal transition-colors leading-snug">
+                                {{ $course->title }}
+                            </h3>
+                            <p class="text-slate-500 text-[10px] md:text-[11px] leading-relaxed mb-3 line-clamp-2 flex-1">
+                                {{ Str::limit(strip_tags($course->description), 80) ?: 'Begin your journey into authentic Islamic scholarship.' }}
+                            </p>
+                            
+                            <!-- Footer metadata -->
+                            <div class="flex items-center justify-between pt-4 border-t border-brand-teal/5 mt-auto">
+                                <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-[13px]">view_module</span>
+                                    {{ $course->modules_count ?? 0 }} Modules
+                                </span>
+                                <span class="material-symbols-outlined text-brand-teal transform group-hover:translate-x-1 transition-transform duration-300 text-base md:text-lg">arrow_forward</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @empty
-                <div class="col-span-full py-20 text-center">
+                <div class="col-span-full py-20 text-center bg-slate-50 rounded-3xl border-2 border-dashed border-slate-100">
                     <p class="text-slate-400 italic">No courses available at the moment. Please check back later!</p>
                 </div>
             @endforelse
         </div>
 
-        <div class="mt-16">
-            {{ $courses->links() }}
-        </div>
+        <!-- Custom Sleek Pagination -->
+        @if ($courses->hasPages())
+        <nav class="flex items-center justify-center gap-3 mt-8 mb-4">
+            {{-- Previous Page Link --}}
+            @if ($courses->onFirstPage())
+                <span class="size-11 rounded-full flex items-center justify-center text-slate-200 bg-slate-50/30 border border-slate-100 cursor-default">
+                    <span class="material-symbols-outlined text-xl">chevron_left</span>
+                </span>
+            @else
+                <a href="{{ $courses->previousPageUrl() }}" class="size-11 rounded-full flex items-center justify-center text-slate-600 bg-white border border-slate-200 hover:border-brand-teal hover:text-brand-teal hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                    <span class="material-symbols-outlined text-xl">chevron_left</span>
+                </a>
+            @endif
+
+            {{-- Page Counter Pill --}}
+            <div class="px-6 py-2.5 rounded-full bg-slate-50 border border-slate-100 shadow-inner flex items-center gap-2">
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Curriculum</span>
+                <div class="w-px h-3 bg-slate-200"></div>
+                <span class="text-[11px] font-bold text-slate-700">
+                    Page {{ $courses->currentPage() }} <span class="text-slate-400 font-medium">of</span> {{ $courses->lastPage() }}
+                </span>
+            </div>
+
+            {{-- Next Page Link --}}
+            @if ($courses->hasMorePages())
+                <a href="{{ $courses->nextPageUrl() }}" class="size-11 rounded-full flex items-center justify-center text-slate-600 bg-white border border-slate-200 hover:border-brand-teal hover:text-brand-teal hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                    <span class="material-symbols-outlined text-xl">chevron_right</span>
+                </a>
+            @else
+                <span class="size-11 rounded-full flex items-center justify-center text-slate-200 bg-slate-50/30 border border-slate-100 cursor-default">
+                    <span class="material-symbols-outlined text-xl">chevron_right</span>
+                </span>
+            @endif
+        </nav>
+        @endif
     </div>
 </section>
 @endsection

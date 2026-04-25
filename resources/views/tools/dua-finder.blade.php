@@ -43,35 +43,35 @@
 }
 .wm-2 {
   top: var(--wm2-top, 35%);
-  right: var(--wm2-right, -12%);
-  width: var(--wm2-size, 650px);
+  right: var(--wm2-right, 10%);
+  width: var(--wm2-size, 450px);
 }
 .wm-3 {
-  bottom: var(--wm3-bottom, 5%);
-  left: var(--wm3-left, -5%);
-  width: var(--wm3-size, 500px);
+  bottom: var(--wm3-bottom, 0%);
+  left: var(--wm3-left, 0%);
+  width: var(--wm3-size, 350px);
 }
 
 .dua-body-full .hero{text-align:center;padding:56px 16px 36px; position: relative;}
 .dua-body-full .badge{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--g1),var(--g3));color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;border-radius:999px;margin-bottom:22px;box-shadow:0 4px 14px rgba(5,74,48,.25)}
-.dua-body-full .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5.5vw,3.2rem);font-weight:700;color:var(--g1);line-height:1.22;margin-bottom:14px}
+.dua-body-full .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,5vw,3rem);font-weight:700;color:var(--g1);line-height:1.15;margin-bottom:12px}
 .dua-body-full .hero h1 em{font-style:italic;color:var(--gold)}
-.dua-body-full .hero-sub{font-size:1rem;color:var(--muted);max-width:500px;margin:0 auto 22px;line-height:1.75}
-.dua-body-full .bismillah{font-family:'Noto Naskh Arabic',serif;font-size:2rem;color:var(--g2);margin:14px 0 0;direction:rtl;letter-spacing:.02em;opacity:.65}
+.dua-body-full .hero-sub{font-size:clamp(0.875rem,2vw,1rem);color:var(--muted);max-width:500px;margin:0 auto 20px;line-height:1.6}
+.dua-body-full .bismillah{font-family:'Noto Naskh Arabic',serif;font-size:clamp(1.5rem,4vw,2rem);color:var(--g2);margin:12px 0 0;direction:rtl;letter-spacing:.02em;opacity:.65}
 .dua-body-full .tab-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:34px}
 .dua-body-full .tab{background:var(--parch);border:1.5px solid var(--border);border-radius:999px;padding:10px 22px;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:500;color:var(--muted);cursor:pointer;transition:var(--ease);white-space:nowrap}
 .dua-body-full .tab.on{background:linear-gradient(135deg,var(--g1),var(--g2));border-color:transparent;color:#fff;box-shadow:0 5px 18px rgba(5,74,48,.3)}
 .dua-body-full .tab:hover:not(.on){color:var(--g2);border-color:var(--g3);background:#fff}
 .dua-body-full .panel{display:none}.dua-body-full .panel.on{display:block}
 .dua-body-full .panel-label{text-align:center;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.dua-body-full .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:11px;margin-bottom:36px}
-.dua-body-full .btn{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:15px 16px;font-family:'Inter',sans-serif;font-size:.875rem;font-weight:500;color:var(--ink2);cursor:pointer;text-align:left;transition:var(--ease);display:flex;align-items:flex-start;gap:10px;box-shadow:var(--sh1);line-height:1.35}
+.dua-body-full .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%, 190px),1fr));gap:10px;margin-bottom:32px}
+.dua-body-full .btn{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:12px;font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:var(--ink2);cursor:pointer;text-align:left;transition:var(--ease);display:flex;align-items:flex-start;gap:10px;box-shadow:var(--sh1);line-height:1.3;hyphens:auto;word-break:break-word;overflow-wrap:anywhere}
 .dua-body-full .btn:hover{border-color:var(--g4);color:var(--g1);transform:translateY(-2px);box-shadow:var(--sh2)}
 .dua-body-full .btn.sel{border-color:var(--g2);background:linear-gradient(135deg,#f0fdf8 0%,#fff 100%);color:var(--g1);box-shadow:0 0 0 3px rgba(16,185,129,.18),var(--sh2)}
-.dua-body-full .btn-ic{font-size:1.25rem;flex-shrink:0;margin-top:1px}
-.dua-body-full .btn-txt{display:flex;flex-direction:column}
-.dua-body-full .btn-name{font-weight:600}
-.dua-body-full .btn-sub{font-size:.73rem;color:var(--muted);margin-top:2px;font-weight:400}
+.dua-body-full .btn-ic{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+.dua-body-full .btn-txt{display:flex;flex-direction:column;min-width:0}
+.dua-body-full .btn-name{font-weight:600;font-size:clamp(0.8rem, 2.5vw, 0.875rem)}
+.dua-body-full .btn-sub{font-size:clamp(0.65rem, 2vw, 0.73rem);color:var(--muted);margin-top:2px;font-weight:400;line-height:1.3}
 .dua-body-full .card{background:var(--cream);border-radius:22px;padding:clamp(24px,5vw,52px);box-shadow:var(--sh3);display:none;position:relative;overflow:hidden;border:1px solid rgba(200,151,58,.18);animation:cIn .42s cubic-bezier(.22,1,.36,1) forwards}
 .dua-body-full .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;background:linear-gradient(90deg,var(--g1),var(--gold),var(--g4),var(--gold),var(--g1));background-size:200% 100%;animation:shim 4s linear infinite}
 @keyframes shim{0%{background-position:200% 0}100%{background-position:-200% 0}}
@@ -81,9 +81,9 @@
 .dua-body-full .c-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--g1);margin-bottom:26px;line-height:1.35}
 .dua-body-full .arabic-box{background:linear-gradient(160deg,#f0fdf8 0%,var(--gold-pale) 100%);border:1px solid rgba(16,185,129,.15);border-radius:var(--r);padding:32px 22px;margin-bottom:22px;text-align:center;position:relative}
 .dua-body-full .arabic-box::before{content:'';position:absolute;top:10px;left:10px;right:10px;bottom:10px;border:1px dashed rgba(200,151,58,.2);border-radius:10px;pointer-events:none}
-.dua-body-full .arabic{font-family:'Noto Naskh Arabic',serif;font-size:clamp(1.75rem,3.8vw,2.55rem);color:var(--ink);line-height:2.05;direction:rtl;text-align:center}
-.dua-body-full .translit{font-family:'Playfair Display',serif;font-style:italic;color:var(--g2);font-size:.97rem;line-height:1.75;margin-bottom:16px;padding:0 2px}
-.dua-body-full .transl{font-size:1rem;font-weight:500;color:var(--ink2);line-height:1.8;margin-bottom:20px;padding:14px 18px;border-left:3px solid var(--gold);background:var(--gold-lt);border-radius:0 var(--rs) var(--rs) 0}
+.dua-body-full .arabic{font-family:'Noto Naskh Arabic',serif;font-size:clamp(1.5rem,4vw,2.4rem);color:var(--ink);line-height:2.1;direction:rtl;text-align:center}
+.dua-body-full .translit{font-family:'Playfair Display',serif;font-style:italic;color:var(--g2);font-size:clamp(0.85rem, 2.5vw, 0.97rem);line-height:1.6;margin-bottom:16px;padding:0 2px}
+.dua-body-full .transl{font-size:clamp(0.9rem, 2.5vw, 1rem);font-weight:500;color:var(--ink2);line-height:1.7;margin-bottom:20px;padding:14px 18px;border-left:3px solid var(--gold);background:var(--gold-lt);border-radius:0 var(--rs) var(--rs) 0}
 .dua-body-full .virtue{font-size:.88rem;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic;padding:10px 14px;background:var(--parch);border-radius:var(--rs)}
 .dua-body-full .virtue strong{color:var(--g2);font-style:normal}
 .dua-body-full .c-foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:8px;padding-top:18px;border-top:1px solid var(--border)}
@@ -92,17 +92,30 @@
 .dua-body-full .act{background:transparent;border:1.5px solid var(--border);color:var(--muted);font-family:'Inter',sans-serif;font-size:.8rem;font-weight:500;padding:7px 15px;border-radius:999px;cursor:pointer;transition:var(--ease);display:flex;align-items:center;gap:5px}
 .dua-body-full .act:hover{border-color:var(--g4);color:var(--g2);background:rgba(16,185,129,.06)}
 .dua-body-full .act.ok{background:rgba(16,185,129,.1);border-color:var(--g4);color:var(--g2)}
-.dua-body-full .seo{margin-top:60px;padding-top:60px;border-top:1px solid var(--border);position:relative;z-index:10;}
-.dua-body-full .seo h2{font-family:'Playfair Display',serif;font-size:1.85rem;color:var(--g1);margin-bottom:20px;font-weight:700}
-.dua-body-full .seo h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--g2);margin:40px 0 16px;font-weight:700}
-.dua-body-full .seo p{font-size:.975rem;color:var(--ink2);line-height:1.85;margin-bottom:18px}
-.dua-body-full .seo ul{list-style:none;padding:0;margin:0 0 24px}
-.dua-body-full .seo ul li{font-size:.95rem;color:var(--ink2);line-height:1.8;padding:6px 0 6px 24px;position:relative}
+.dua-body-full .seo{margin-top:50px;padding-top:50px;border-top:1px solid var(--border);position:relative;z-index:10;}
+.dua-body-full .seo h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem, 4vw, 1.85rem);color:var(--g1);margin-bottom:16px;font-weight:700}
+.dua-body-full .seo h3{font-family:'Playfair Display',serif;font-size:clamp(1.1rem, 3vw, 1.25rem);color:var(--g2);margin:32px 0 12px;font-weight:700}
+.dua-body-full .seo p{font-size:clamp(0.875rem, 2.5vw, 0.975rem);color:var(--ink2);line-height:1.75;margin-bottom:14px}
+.dua-body-full .seo ul{list-style:none;padding:0;margin:0 0 20px}
+.dua-body-full .seo ul li{font-size:clamp(0.85rem, 2.5vw, 0.95rem);color:var(--ink2);line-height:1.7;padding:5px 0 5px 24px;position:relative}
 .dua-body-full .seo ul li::before{content:'◆';position:absolute;left:0;color:var(--gold);font-size:.5rem;top:10px}
 @media(max-width:520px){
-  .dua-body-full .tab-row{gap:6px}.dua-body-full .tab{padding:9px 16px;font-size:.82rem}
-  .dua-body-full .grid{grid-template-columns:1fr 1fr}
-  .dua-body-full .c-foot{flex-direction:column;align-items:flex-start}
+  .dua-body-full .hero{padding:40px 12px 24px}
+  .dua-body-full .tab-row{gap:4px; margin-bottom: 24px}
+  .dua-body-full .tab{padding:8px 14px;font-size:.78rem}
+  .dua-body-full .grid{grid-template-columns:1fr 1fr; gap: 8px}
+  .dua-body-full .btn{padding: 10px 8px; gap: 6px}
+  .dua-body-full .btn-ic{font-size: 1.1rem}
+  .dua-body-full .card{padding: 24px 16px; border-radius: 16px}
+  .dua-body-full .c-title{font-size: 1.2rem; margin-bottom: 18px}
+  .dua-body-full .arabic-box{padding: 24px 14px; margin-bottom: 18px}
+  .dua-body-full .transl{padding: 12px 14px}
+  .dua-body-full .c-foot{flex-direction:column;align-items:flex-start; gap: 16px}
+  .dua-body-full .acts{width: 100%; justify-content: flex-start}
+}
+
+@media(min-width: 521px) and (max-width: 800px) {
+  .dua-body-full .grid{grid-template-columns: 1fr 1fr 1fr}
 }
 </style>
 
@@ -138,7 +151,7 @@
   <div class="grid">
     <button class="btn" onclick="show('anxiety',this)"><span class="btn-ic">😰</span><span class="btn-txt"><span class="btn-name">Anxious / Stressed</span><span class="btn-sub">Overwhelmed by worries</span></span></button>
     <button class="btn" onclick="show('sadness',this)"><span class="btn-ic">😢</span><span class="btn-txt"><span class="btn-name">Sad / Grieving</span><span class="btn-sub">Loss or deep sorrow</span></span></button>
-    <button class="btn" onclick="show('depression',this)"><span class="btn-ic">🌧️</span><span class="btn-txt"><span class="btn-name">Depressed / Hopeless</span><span class="btn-sub">Darkness within</span></span></button>
+    <button class="btn" onclick="show('depression',this)"><span class="btn-ic">🌧️</span><span class="btn-txt"><span class="btn-name">Depress / Hopeless</span><span class="btn-sub">Darkness within</span></span></button>
     <button class="btn" onclick="show('angry',this)"><span class="btn-ic">😠</span><span class="btn-txt"><span class="btn-name">Angry / Frustrated</span><span class="btn-sub">Rage or irritation</span></span></button>
     <button class="btn" onclick="show('lonely',this)"><span class="btn-ic">🕊️</span><span class="btn-txt"><span class="btn-name">Lonely / Abandoned</span><span class="btn-sub">Feeling all alone</span></span></button>
     <button class="btn" onclick="show('fear',this)"><span class="btn-ic">😨</span><span class="btn-txt"><span class="btn-name">Fearful / Scared</span><span class="btn-sub">Fear of the unknown</span></span></button>
@@ -250,47 +263,47 @@
     <div class="max-w-3xl mx-auto">
         <div class="text-center mb-10">
             <span class="text-[#c8973a] font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Clarifications</span>
-            <h2 class="text-2xl md:text-4xl font-serif font-bold text-[#054a30] tracking-tight">Frequently Asked Questions</h2>
+            <h2 class="text-2xl md:text-34 font-serif font-bold text-[#054a30] tracking-tight">Frequently Asked Questions</h2>
         </div>
 
-        <div class="space-y-4">
+        <div class="space-y-2.5">
             <!-- FAQ 1 -->
-            <div class="bg-white rounded-2xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.04)] transition-all hover:border-[#10b981] hover:shadow-[0_8px_32px_rgba(5,74,48,0.08)]">
-                <button class="w-full p-6 text-left flex items-center justify-between group focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-bold text-[#1c1c1e]">What is the best dua for anxiety and stress?</span>
-                    <svg class="w-5 h-5 text-[#c8973a] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div class="bg-white rounded-xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.02)] transition-all hover:border-[#10b981] group">
+                <button class="w-full px-5 py-4 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-medium text-slate-500 group-hover:text-slate-800 transition-colors text-[15px]">What is the best dua for anxiety and stress?</span>
+                    <svg class="w-4 h-4 text-[#c8973a]/60 group-hover:text-[#c8973a] transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="p-6 pt-0 text-[#374151] hidden leading-relaxed">
+                <div class="px-5 pb-4 text-slate-400 hidden text-[14px] leading-relaxed">
                     The Prophet ﷺ regularly recited the comprehensive dua from Sahih al-Bukhari 6369, seeking refuge from anxiety, sorrow, weakness, laziness, miserliness, cowardice, debt and being overpowered. Select "Anxious / Stressed" in the Emotions tab above to read it in full.
                 </div>
             </div>
             <!-- FAQ 2 -->
-            <div class="bg-white rounded-2xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.04)] transition-all hover:border-[#10b981] hover:shadow-[0_8px_32px_rgba(5,74,48,0.08)]">
-                <button class="w-full p-6 text-left flex items-center justify-between group focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-bold text-[#1c1c1e]">What is Dua-e-Yunus and when should I read it?</span>
-                    <svg class="w-5 h-5 text-[#c8973a] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div class="bg-white rounded-xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.02)] transition-all hover:border-[#10b981] group">
+                <button class="w-full px-5 py-4 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-medium text-slate-500 group-hover:text-slate-800 transition-colors text-[15px]">What is Dua-e-Yunus and when should I read it?</span>
+                    <svg class="w-4 h-4 text-[#c8973a]/60 group-hover:text-[#c8973a] transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="p-6 pt-0 text-[#374151] hidden leading-relaxed">
+                <div class="px-5 pb-4 text-slate-400 hidden text-[14px] leading-relaxed">
                     Dua-e-Yunus (La ilaha illa anta subhanaka inni kuntu minaz-zalimin) was made by Prophet Yunus (AS) from inside the whale. Allah responded and saved him. It is recommended for extreme sadness, hopelessness, or any situation where you feel completely trapped with no way out.
                 </div>
             </div>
             <!-- FAQ 3 -->
-            <div class="bg-white rounded-2xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.04)] transition-all hover:border-[#10b981] hover:shadow-[0_8px_32px_rgba(5,74,48,0.08)]">
-                <button class="w-full p-6 text-left flex items-center justify-between group focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-bold text-[#1c1c1e]">Is there a dua for loneliness?</span>
-                    <svg class="w-5 h-5 text-[#c8973a] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div class="bg-white rounded-xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.02)] transition-all hover:border-[#10b981] group">
+                <button class="w-full px-5 py-4 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-medium text-slate-500 group-hover:text-slate-800 transition-colors text-[15px]">Is there a dua for loneliness?</span>
+                    <svg class="w-4 h-4 text-[#c8973a]/60 group-hover:text-[#c8973a] transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="p-6 pt-0 text-[#374151] hidden leading-relaxed">
+                <div class="px-5 pb-4 text-slate-400 hidden text-[14px] leading-relaxed">
                     Yes. The dua: Ya Hayyu ya Qayyum bi-rahmatika astaghith, aslih li sha'ni kullahu wa la takilni ila nafsi tarfata ayn — deeply recommended for feeling alone. The Prophet ﷺ recited it when facing overwhelming difficulties. Select "Lonely / Abandoned" to read it in full.
                 </div>
             </div>
             <!-- FAQ 4 -->
-            <div class="bg-white rounded-2xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.04)] transition-all hover:border-[#10b981] hover:shadow-[0_8px_32px_rgba(5,74,48,0.08)]">
-                <button class="w-full p-6 text-left flex items-center justify-between group focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-bold text-[#1c1c1e]">Can duas be read in English?</span>
-                    <svg class="w-5 h-5 text-[#c8973a] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div class="bg-white rounded-xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.02)] transition-all hover:border-[#10b981] group">
+                <button class="w-full px-5 py-4 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-medium text-slate-500 group-hover:text-slate-800 transition-colors text-[15px]">Can duas be read in English?</span>
+                    <svg class="w-4 h-4 text-[#c8973a]/60 group-hover:text-[#c8973a] transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="p-6 pt-0 text-[#374151] hidden leading-relaxed">
+                <div class="px-5 pb-4 text-slate-400 hidden text-[14px] leading-relaxed">
                     Yes. Allah ﷻ hears and responds to all sincere supplications in any language. The Arabic duas from Quran and Sunnah carry their original blessing, but praying to Allah in your own language is fully valid. Many scholars recommend learning the Arabic alongside the meaning so you can supplicate with both understanding and the original blessed words.
                 </div>
             </div>

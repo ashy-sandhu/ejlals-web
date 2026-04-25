@@ -38,9 +38,9 @@
     </div>
 </section>
 
-<section class="bg-white py-20 px-6">
+<section class="bg-white p-6">
     <div class="max-w-7xl mx-auto">
-        <div class="flex items-center justify-between mb-16 pb-8 border-b border-gray-100">
+        <div class="flex items-center justify-between mb-6 pb-6 border-b border-gray-100">
             <div>
                 <h2 class="text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Available Collections</h2>
                 <div class="h-1.5 w-8 bg-brand-teal rounded-full"></div>
@@ -60,7 +60,7 @@
             .book-bg-2 { background-color: #386A6B; } /* Teal */
             .book-bg-3 { background-color: #AED5C0; } /* Mint */
         </style>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6 mt-4">
             @forelse ($books as $index => $book)
                 @php
                     // Assign a rotating background color class based on the index to mimic the design's colorful canvases
@@ -70,11 +70,11 @@
                 <div class="group card-hover transition-all duration-300 bg-white border border-slate-100 rounded-xl overflow-hidden flex flex-col shadow-sm">
                     <div class="relative aspect-[4/3] overflow-hidden image-zoom {{ $bgClass }} flex items-center justify-center p-4">
                         @if($book->image)
-                            <!-- Apply a deep drop shadow to the book image to give it the 3D book feel on the canvas -->
-                            <img src="{{ Storage::url($book->image) }}" alt="{{ $book->title }}" class="w-[75%] max-h-full object-contain drop-shadow-[0_15px_15px_rgba(0,0,0,0.4)] transition-transform duration-500">
+                            <!-- Apply a softer, elegant drop shadow to the book image -->
+                            <img src="{{ Storage::url($book->image) }}" alt="{{ $book->title }}" class="w-[75%] max-h-full object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.2)] transition-transform duration-500">
                         @else
-                            <div class="w-[75%] h-full bg-white flex items-center justify-center p-4 text-center drop-shadow-[0_15px_15px_rgba(0,0,0,0.15)] transition-transform duration-500 border border-slate-200">
-                                <span class="text-slate-400 font-bold text-xs uppercase tracking-widest opacity-60">{{ $book->title }}</span>
+                            <div class="w-[75%] h-full bg-white flex items-center justify-center p-4 text-center drop-shadow-[0_10px_15px_rgba(0,0,0,0.1)] transition-transform duration-500 border border-slate-200/50">
+                                <span class="text-slate-400 font-bold text-[10px] uppercase tracking-widest opacity-60">{{ $book->title }}</span>
                             </div>
                         @endif
                         
@@ -87,38 +87,38 @@
                         </div>
                     </div>
                     
-                    <div class="p-5 flex flex-col grow">
-                        <div class="flex items-center justify-between mb-2.5">
-                            <span class="text-brand-teal text-[10px] font-extrabold tracking-widest uppercase">Ejlals Repository</span>
-                            <div class="flex items-center gap-1">
-                                <span class="material-symbols-outlined text-brand-gold text-[15px]" style="font-variation-settings: 'FILL' 1">star</span>
-                                <span class="text-[11px] font-bold text-slate-500">4.9</span>
+                    <div class="p-2 pt-1.5 md:p-3 md:pt-2 flex flex-col grow">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-brand-teal text-[8px] md:text-xs lg:text-[10px] font-bold">Ejlals Repository</span>
+                            <div class="flex items-center gap-0.5">
+                                <span class="material-symbols-outlined text-brand-gold text-[12px]! lg:text-[11px]!" style="font-variation-settings: 'FILL' 1;">star</span>
+                                <span class="text-[9px] md:text-xs lg:text-[10px] font-black text-slate-500">4.9</span>
                             </div>
                         </div>
                         
-                        <h3 class="text-base font-bold text-slate-800 mb-2 line-clamp-2 leading-[1.3] group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
+                        <h3 class="text-[10px] md:text-sm lg:text-[14px] font-bold text-slate-800 mb-1 line-clamp-2 leading-[1.2] group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
                         
-                        <p class="text-[12px] text-slate-500/90 mb-6 line-clamp-2 leading-relaxed">
-                            {{ Str::limit(strip_tags($book->description), 90) ?: 'Explore this valuable scholarly resource within our digital library collection.' }}
+                        <p class="text-[9px] md:text-[12px] lg:text-[11px] text-slate-600 mb-2 line-clamp-2 leading-tight">
+                            {{ Str::limit(strip_tags($book->description), 80) ?: 'Explore this valuable scholarly resource within our digital library collection.' }}
                         </p>
                         
-                        <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <div class="flex flex-col">
-                                <span class="text-[9px] text-slate-400 uppercase font-black tracking-widest mb-0.5">Resource Type</span>
-                                <span class="text-[12px] font-bold text-slate-700">
+                        <div class="mt-auto pt-1.5 border-t border-slate-100 flex items-center justify-between gap-1">
+                            <div class="flex flex-col min-w-0">
+                                <span class="text-[7px] text-slate-400 uppercase font-bold tracking-tight mb-0.5 truncate">Resource Type</span>
+                                <span class="text-[10px] lg:text-[9px] font-bold text-slate-700 truncate">
                                     {{ $book->download_type === 'file' ? 'PDF eBook' : ($book->download_type === 'link' ? 'Guide' : 'Archive') }}
                                 </span>
                             </div>
                             
                             @if($book->download_type === 'file' && $book->download_file)
-                                <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="px-4 py-2 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[11px] transition-colors flex items-center gap-1.5 no-underline shadow-sm">
-                                    View Resource
-                                    <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                                <a href="{{ Storage::url($book->download_file) }}" target="_blank" class="px-2.5 py-1.5 md:px-4 md:py-2 lg:px-3.5 lg:py-1.5 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] md:text-[11px] lg:text-[10px] transition-colors flex items-center gap-1 no-underline shadow-sm">
+                                    View
+                                    <span class="material-symbols-outlined text-[12px] md:text-[14px] lg:text-base" style="font-size: 12px;">open_in_new</span>
                                 </a>
                             @elseif($book->download_type === 'link' && $book->download_link)
-                                <a href="{{ $book->download_link }}" target="_blank" class="px-4 py-2 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[11px] transition-colors flex items-center gap-1.5 no-underline shadow-sm">
-                                    View Resource
-                                    <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                                <a href="{{ $book->download_link }}" target="_blank" class="px-2.5 py-1.5 md:px-4 md:py-2 lg:px-3.5 lg:py-1.5 bg-brand-teal/10 text-brand-teal hover:bg-brand-teal hover:text-white rounded-lg font-bold text-[10px] md:text-[11px] lg:text-[10px] transition-colors flex items-center gap-1 no-underline shadow-sm">
+                                    View
+                                    <span class="material-symbols-outlined text-[12px] md:text-[14px] lg:text-base" style="font-size: 12px;">open_in_new</span>
                                 </a>
                             @else
                                 <span class="px-4 py-2 bg-slate-50 text-slate-400 rounded-lg font-bold text-[11px] cursor-not-allowed">Soon</span>
@@ -133,9 +133,41 @@
             @endforelse
         </div>
 
-        <div class="mt-16">
-            {{ $books->links() }}
-        </div>
+        <!-- Custom Sleek Pagination -->
+        @if ($books->hasPages())
+        <nav class="flex items-center justify-center gap-3 mt-8 mb-4">
+            {{-- Previous Page Link --}}
+            @if ($books->onFirstPage())
+                <span class="size-11 rounded-full flex items-center justify-center text-slate-200 bg-slate-50/30 border border-slate-100 cursor-default">
+                    <span class="material-symbols-outlined text-xl">chevron_left</span>
+                </span>
+            @else
+                <a href="{{ $books->previousPageUrl() }}" class="size-11 rounded-full flex items-center justify-center text-slate-600 bg-white border border-slate-200 hover:border-brand-teal hover:text-brand-teal hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                    <span class="material-symbols-outlined text-xl">chevron_left</span>
+                </a>
+            @endif
+
+            {{-- Page Counter Pill --}}
+            <div class="px-6 py-2.5 rounded-full bg-slate-50 border border-slate-100 shadow-inner flex items-center gap-2">
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Archives</span>
+                <div class="w-px h-3 bg-slate-200"></div>
+                <span class="text-[11px] font-bold text-slate-700">
+                    Page {{ $books->currentPage() }} <span class="text-slate-400 font-medium">of</span> {{ $books->lastPage() }}
+                </span>
+            </div>
+
+            {{-- Next Page Link --}}
+            @if ($books->hasMorePages())
+                <a href="{{ $books->nextPageUrl() }}" class="size-11 rounded-full flex items-center justify-center text-slate-600 bg-white border border-slate-200 hover:border-brand-teal hover:text-brand-teal hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                    <span class="material-symbols-outlined text-xl">chevron_right</span>
+                </a>
+            @else
+                <span class="size-11 rounded-full flex items-center justify-center text-slate-200 bg-slate-50/30 border border-slate-100 cursor-default">
+                    <span class="material-symbols-outlined text-xl">chevron_right</span>
+                </span>
+            @endif
+        </nav>
+        @endif
     </div>
 </section>
 @endsection

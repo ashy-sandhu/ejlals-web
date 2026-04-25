@@ -74,6 +74,12 @@
                                     Situational Dua Finder
                                 </span>
                             </a>
+                            <a href="{{ route('tools.wirasat') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-teal">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-lg">⚖️</span>
+                                    Wirasat Visualizer
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -168,6 +174,10 @@
                                     <span class="text-2xl">🤲</span>
                                     <span class="font-bold">Situational Dua Finder</span>
                                 </a>
+                                <a href="{{ route('tools.wirasat') }}" class="flex items-center gap-3 p-3 mt-2 rounded-xl bg-slate-50 border border-slate-100 text-slate-700 hover:bg-white hover:border-brand-teal/30 hover:text-brand-teal transition-all">
+                                    <span class="text-2xl">⚖️</span>
+                                    <span class="font-bold">Wirasat Visualizer</span>
+                                </a>
                             </div>
                         </nav>
                     </div>
@@ -200,12 +210,13 @@
 
         <!-- Footer (Stitch Design) -->
         <footer class="bg-[#f0f9f9] dark:bg-[#0a1818] border-t border-brand-teal/5">
-            <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-7xl mx-auto p-6">
+                @if(!request()->is('tools*'))
                 <!-- Newsletter Section (Elevated) -->
-                <div class="-mt-12 relative overflow-hidden bg-brand-teal rounded-3xl p-6 md:p-10 mb-12 shadow-xl shadow-brand-teal/20 islamic-pattern z-10">
+                <div class="-mt-12 relative overflow-hidden bg-brand-teal rounded-3xl p-6 md:p-8 shadow-xl shadow-brand-teal/20 islamic-pattern z-10">
                     <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
                         <div class="max-w-xl text-center md:text-left">
-                            <h3 class="text-white text-2xl md:text-3xl font-extrabold mb-2 leading-tight">Enlighten Your Journey With Ejlals Academy</h3>
+                            <h3 class="text-white text-xl md:text-2xl font-bold mb-2 leading-tight">Enlighten Your Journey With Ejlals Academy</h3>
                             <p class="text-white/80 text-sm md:text-base">Join our community receiving weekly insights on Islamic studies and spiritual growth.</p>
                         </div>
                         <div class="w-full max-w-md">
@@ -220,12 +231,13 @@
                     <!-- Decorative element -->
                     <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl"></div>
                 </div>
+                @endif
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-6 pt-6">
                     <!-- Brand Section -->
                     <div class="flex flex-col gap-4">
                         <div class="flex items-center gap-2 mb-2">
-                            <img src="{{ asset('storage/ejlals-horizontal-v1.svg') }}" alt="Ejlals Logo" class="h-10 w-auto object-contain">
+                            <img src="{{ asset('storage/ejlals-horizontal-v1.svg') }}" alt="Ejlals Logo" class="h-12 w-auto object-contain">
                         </div>
                         <p class="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
                             A premier digital sanctuary for Islamic learning, combining traditional wisdom with modern pedagogical excellence for the global Ummah.

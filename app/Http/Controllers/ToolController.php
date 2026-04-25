@@ -13,4 +13,12 @@ class ToolController extends Controller
     {
         return view('tools.dua-finder');
     }
+
+    /**
+     * Display the Wirasat Visualizer tool.
+     */
+    public function wirasat()
+    {
+        return view('tools.wirasat-visualizer');
+    }
 }

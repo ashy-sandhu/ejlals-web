@@ -57,7 +57,7 @@ Route::get('/courses/{slug}', [CourseController::class , 'show'])->name('courses
 
 Route::get('/books', function () {
     // Debug: echo phpversion(); exit;
-    $books = Book::latest()->paginate(12);
+    $books = Book::latest()->paginate(4);
     return view('books.index', compact('books'));
 })->name('books.index');
 
@@ -88,6 +88,7 @@ Route::get('/privacy-policy', function () {
 
 // Tools
 Route::get('/tools/dua-finder', [ToolController::class, 'duaFinder'])->name('tools.dua-finder');
+Route::get('/tools/wirasat-visualizer', [ToolController::class, 'wirasat'])->name('tools.wirasat');
 
 Route::get('/terms', function () {
     return view('legal.terms');
