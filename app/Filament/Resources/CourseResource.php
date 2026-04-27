@@ -79,6 +79,7 @@ class CourseResource extends Resource
                                         Forms\Components\FileUpload::make('image')
                                             ->label(false)
                                             ->image()
+                                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                                             ->directory('courses/covers'),
                                     ]),
 
@@ -87,6 +88,7 @@ class CourseResource extends Resource
                                         Forms\Components\FileUpload::make('gallery')
                                             ->label(false)
                                             ->image()
+                                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                                             ->multiple()
                                             ->reorderable()
                                             ->directory('courses/gallery'),

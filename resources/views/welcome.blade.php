@@ -269,6 +269,94 @@
     </div>
 </section>
 
+<!-- Process Section (3 Simple Steps) -->
+<section class="bg-[#FDFDFC] py-10 px-6 border-t border-gray-50 overflow-hidden relative">
+    <div class="absolute inset-0 islamic-pattern pointer-events-none opacity-50"></div>
+    <div class="max-w-7xl mx-auto relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-12 space-y-2">
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-white/50 backdrop-blur-md border border-brand-gold/10 shadow-sm hover:shadow-md hover:shadow-brand-gold/5 hover:-translate-y-0.5 transition-all duration-500 cursor-default mb-4 group/badge">
+                <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em]">Our Process</span>
+            </div>
+            <h2 class="text-2xl md:text-4xl font-black text-slate-900 tracking-tight">
+                Start Learning <span class="text-brand-teal">Quran</span> in <span class="text-brand-gold">3 Easy Steps</span>
+            </h2>
+            <p class="max-w-xl mx-auto text-[13px] text-slate-500 leading-relaxed pt-2">
+                Simple registration, free trial class, and smooth enrollment for students worldwide.
+            </p>
+        </div>
+
+        <!-- Process Flow Layout -->
+        <div class="relative">
+            <!-- Connecting Line (Desktop) -->
+            <div class="hidden md:block absolute top-[80px] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-transparent via-brand-teal/20 to-transparent"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
+                <!-- Step 1 -->
+                <div class="relative flex flex-col items-center text-center group">
+                    <span class="absolute -top-16 left-1/2 -translate-x-1/2 text-[100px] font-black text-brand-teal/5 leading-none select-none z-0 transition-transform group-hover:-translate-y-2 duration-500">01</span>
+                    <div class="relative z-10 w-[75%] aspect-[3/2] max-w-[300px] mb-5 flex items-center justify-center bg-white border border-slate-100 rounded-2xl group-hover:border-brand-teal/30 group-hover:shadow-lg group-hover:shadow-brand-teal/10 transition-all duration-500">
+                        <img alt="Registration Form" class="w-[90%] h-[90%] object-contain group-hover:scale-110 transition-transform duration-500" src="{{ asset('images/onboarding/step_1.png') }}"/>
+                        <div class="absolute -bottom-2.5 right-2 md:right-4 bg-brand-teal text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm">Step One</div>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-base md:text-lg font-bold text-slate-800 mb-2 group-hover:text-brand-teal transition-colors">Registration Form</h3>
+                        <p class="text-[12px] md:text-[13px] text-slate-500 leading-relaxed px-4 text-center text-balance mx-auto">
+                            Complete a simple registration form to share your learning goals and preferred course so we can connect you with the right teacher.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative flex flex-col items-center text-center group">
+                    <span class="absolute -top-16 left-1/2 -translate-x-1/2 text-[100px] font-black text-brand-gold/5 leading-none select-none z-0 transition-transform group-hover:-translate-y-2 duration-500">02</span>
+                    <div class="relative z-10 w-[75%] aspect-[3/2] max-w-[300px] mb-5 flex items-center justify-center bg-white border border-slate-100 rounded-2xl group-hover:border-brand-gold/30 group-hover:shadow-lg group-hover:shadow-brand-gold/10 transition-all duration-500">
+                        <img alt="Free Demo Class" class="w-[90%] h-[90%] object-contain group-hover:scale-110 transition-transform duration-500" src="{{ asset('images/onboarding/step_2.png') }}"/>
+                        <div class="absolute -bottom-2.5 right-2 md:right-4 bg-brand-gold text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm">Step Two</div>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-base md:text-lg font-bold text-slate-800 mb-2 group-hover:text-brand-gold transition-colors">Free Demo Class</h3>
+                        <p class="text-[12px] md:text-[13px] text-slate-500 leading-relaxed px-4 text-center text-balance mx-auto">
+                            Attend a free one-on-one demo session with your selected tutor and experience the teaching style before making your final decision.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative flex flex-col items-center text-center group">
+                    <span class="absolute -top-16 left-1/2 -translate-x-1/2 text-[100px] font-black text-brand-teal/5 leading-none select-none z-0 transition-transform group-hover:-translate-y-2 duration-500">03</span>
+                    <div class="relative z-10 w-[75%] aspect-[3/2] max-w-[300px] mb-5 flex items-center justify-center bg-white border border-slate-100 rounded-2xl group-hover:border-brand-teal/30 group-hover:shadow-lg group-hover:shadow-brand-teal/10 transition-all duration-500">
+                        <img alt="Course Enrollment" class="w-[90%] h-[90%] object-contain group-hover:scale-110 transition-transform duration-500" src="{{ asset('images/onboarding/step_3.png') }}"/>
+                        <div class="absolute -bottom-2.5 right-2 md:right-4 bg-brand-teal text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm">Step Three</div>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-base md:text-lg font-bold text-slate-800 mb-2 group-hover:text-brand-teal transition-colors">Course Enrollment</h3>
+                        <p class="text-[12px] md:text-[13px] text-slate-500 leading-relaxed px-4 text-center text-balance mx-auto">
+                            Once you are satisfied, complete your enrollment and begin your personalized Quran and Islamic learning journey with confidence.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subtle CTA -->
+        <div class="mt-12 text-center flex flex-col items-center">
+            <a href="#" class="group inline-flex items-center gap-2 bg-brand-gold text-white px-8 py-3.5 rounded-lg text-sm font-bold shadow-lg shadow-brand-gold/20 hover:brightness-110 active:scale-[0.98] transition-all">
+                Book Your Free Demo
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+            <p class="mt-4 text-slate-500 text-[11px] font-medium flex items-center justify-center gap-2">
+                <span class="flex -space-x-1.5">
+                    <span class="w-5 h-5 rounded-full bg-brand-teal/20 border border-white"></span>
+                    <span class="w-5 h-5 rounded-full bg-brand-gold/20 border border-white"></span>
+                    <span class="w-5 h-5 rounded-full bg-slate-200 border border-white"></span>
+                </span>
+                Join over 1,500+ students worldwide
+            </p>
+        </div>
+    </div>
+</section>
+
 <!-- Digital Library Preview -->
 <section class="bg-white py-10 px-6" x-data="{ 
     isOpen: false, 

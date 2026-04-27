@@ -77,6 +77,7 @@ class PostResource extends Resource
                                         Forms\Components\FileUpload::make('image')
                                             ->label(false)
                                             ->image()
+                                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                                             ->directory('posts/featured'),
                                     ]),
 
@@ -85,6 +86,7 @@ class PostResource extends Resource
                                         Forms\Components\FileUpload::make('gallery')
                                             ->label(false)
                                             ->image()
+                                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                                             ->multiple()
                                             ->reorderable()
                                             ->directory('posts/gallery'),
