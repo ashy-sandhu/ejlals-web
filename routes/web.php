@@ -31,7 +31,7 @@ Route::get('/', function () {
     $featuredCategories = $featuredCourses->pluck('category')->unique('id')->values();
 
     $featuredBooks = Book::where('is_featured', true)->orderBy('created_at', 'desc')->take(4)->get();
-    $featuredPosts = Post::where('is_featured', true)->latest()->take(3)->get();
+    $featuredPosts = Post::where('is_featured', true)->latest()->take(4)->get();
     $featuredIds = $featuredPosts->pluck('id');
     $latestPosts = Post::whereNotIn('id', $featuredIds)->latest()->take(3)->get();
 
