@@ -33,10 +33,14 @@ class PostResource extends Resource
                                         Forms\Components\TextInput::make('title')
                                             ->label('Headline')
                                             ->required()
-                                            ->maxLength(255),
+                                            ->maxLength(255)
+                                            ->live(onBlur: true)
+                                            ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', \Illuminate\Support\Str::slug($state))),
                                         Forms\Components\TextInput::make('slug')
                                             ->label('Permalink')
                                             ->required()
+                                            ->unique(ignoreRecord: true)
+                                            ->rules(['alpha_dash'])
                                             ->maxLength(255),
                                         Forms\Components\RichEditor::make('content')
                                             ->required()
@@ -77,6 +81,7 @@ class PostResource extends Resource
                                         Forms\Components\FileUpload::make('image')
                                             ->label(false)
                                             ->image()
+                                            ->maxSize(2048)
                                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                                             ->directory('posts/featured'),
                                     ]),
@@ -86,6 +91,7 @@ class PostResource extends Resource
                                         Forms\Components\FileUpload::make('gallery')
                                             ->label(false)
                                             ->image()
+                                            ->maxSize(2048)
                                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                                             ->multiple()
                                             ->reorderable()

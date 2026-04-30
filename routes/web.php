@@ -35,8 +35,11 @@ Route::get('/', function () {
     $featuredIds = $featuredPosts->pluck('id');
     $latestPosts = Post::whereNotIn('id', $featuredIds)->latest()->take(3)->get();
 
-    return view('welcome', compact('featuredCourses', 'featuredCategories', 'featuredBooks', 'featuredPosts', 'latestPosts'));
-});
+    // Fetch featured scholars
+    $featuredScholars = \App\Models\Scholar::where('is_featured', true)->take(4)->get();
+
+    return view('welcome', compact('featuredCourses', 'featuredCategories', 'featuredBooks', 'featuredPosts', 'latestPosts', 'featuredScholars'));
+})->name('home');
 
 // Authentication Routes
 Route::middleware('guest')->group(function () {
@@ -93,3 +96,7 @@ Route::get('/tools/wirasat-visualizer', [ToolController::class, 'wirasat'])->nam
 Route::get('/terms', function () {
     return view('legal.terms');
 })->name('terms');
+
+// Scholars Directory
+Route::get('/scholars', [App\Http\Controllers\ScholarController::class, 'index'])->name('scholars.index');
+Route::get('/scholar/{slug}', [App\Http\Controllers\ScholarController::class, 'show'])->name('scholars.show');
