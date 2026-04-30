@@ -406,7 +406,7 @@
         </div>
 
         <!-- Scholars Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
             @forelse($featuredScholars as $scholar)
                 <x-scholar-card :scholar="$scholar" />
             @empty
