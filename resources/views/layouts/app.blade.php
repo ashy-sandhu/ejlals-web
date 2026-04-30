@@ -46,17 +46,35 @@
                 </a>
 
                 <!-- Nav Links -->
-                <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                    <a href="/" class="hover:text-brand-teal transition-colors {{ request()->is('/') ? 'text-brand-teal' : '' }}">Home</a>
-                    <a href="{{ route('courses.index') }}" class="hover:text-brand-teal transition-colors {{ request()->is('courses*') ? 'text-brand-teal' : '' }}">Courses</a>
-                    <a href="{{ route('books.index') }}" class="hover:text-brand-teal transition-colors {{ request()->is('books*') ? 'text-brand-teal' : '' }}">Library</a>
-                    <a href="{{ route('posts.index') }}" class="hover:text-brand-teal transition-colors {{ request()->is('posts*') ? 'text-brand-teal' : '' }}">Articles</a>
-                    <a href="{{ route('about') }}" class="hover:text-brand-teal transition-colors {{ request()->is('about') ? 'text-brand-teal' : '' }}">About Us</a>
+                <div class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium">
+                    <a href="/" class="group flex items-center gap-1.5 hover:text-brand-teal transition-colors {{ request()->is('/') ? 'text-brand-teal' : '' }}">
+                        <svg class="w-[18px] h-[18px] {{ request()->is('/') ? 'text-brand-teal' : 'text-slate-400 group-hover:text-brand-teal' }} transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>
+                        Home
+                    </a>
+                    <a href="{{ route('courses.index') }}" class="group flex items-center gap-1.5 hover:text-brand-teal transition-colors {{ request()->is('courses*') ? 'text-brand-teal' : '' }}">
+                        <svg class="w-[18px] h-[18px] {{ request()->is('courses*') ? 'text-brand-teal' : 'text-slate-400 group-hover:text-brand-teal' }} transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"></path></svg>
+                        Courses
+                    </a>
+                    <a href="{{ route('books.index') }}" class="group flex items-center gap-1.5 hover:text-brand-teal transition-colors {{ request()->is('books*') ? 'text-brand-teal' : '' }}">
+                        <svg class="w-[18px] h-[18px] {{ request()->is('books*') ? 'text-brand-teal' : 'text-slate-400 group-hover:text-brand-teal' }} transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path></svg>
+                        Library
+                    </a>
+                    <a href="{{ route('posts.index') }}" class="group flex items-center gap-1.5 hover:text-brand-teal transition-colors {{ request()->is('posts*') ? 'text-brand-teal' : '' }}">
+                        <svg class="w-[18px] h-[18px] {{ request()->is('posts*') ? 'text-brand-teal' : 'text-slate-400 group-hover:text-brand-teal' }} transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"></path></svg>
+                        Articles
+                    </a>
+                    <a href="{{ route('about') }}" class="group flex items-center gap-1.5 hover:text-brand-teal transition-colors {{ request()->is('about') ? 'text-brand-teal' : '' }}">
+                        <svg class="w-[18px] h-[18px] {{ request()->is('about') ? 'text-brand-teal' : 'text-slate-400 group-hover:text-brand-teal' }} transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"></path></svg>
+                        About Us
+                    </a>
 
                     <!-- Tools Dropdown -->
                     <div x-data="{ toolsOpen: false }" @mouseenter="toolsOpen = true" @mouseleave="toolsOpen = false" class="relative group">
                         <button class="flex items-center gap-1 hover:text-brand-teal transition-colors {{ request()->is('tools*') ? 'text-brand-teal' : '' }}">
-                            Tools
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-[18px] h-[18px] {{ request()->is('tools*') ? 'text-brand-teal' : 'text-slate-400 group-hover:text-brand-teal' }} transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.315-2.315L14.25 6l1.176-.335a3.375 3.375 0 002.315-2.315L18 2.25l.259 1.035a3.375 3.375 0 002.315 2.315L21.75 6l-1.176.335a3.375 3.375 0 00-2.315 2.315zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"></path></svg>
+                                Tools
+                            </div>
                             <svg class="w-4 h-4 transition-transform duration-200" :class="toolsOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div x-show="toolsOpen" 
@@ -66,17 +84,17 @@
                              x-transition:leave="transition ease-in duration-75"
                              x-transition:leave-start="opacity-100 scale-100"
                              x-transition:leave-end="opacity-0 scale-95"
-                             class="absolute left-0 mt-0 w-52 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-[100]"
+                             class="absolute left-0 mt-0 w-60 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-[100]"
                              x-cloak>
-                            <a href="{{ route('tools.dua-finder') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-teal">
+                            <a href="{{ route('tools.dua-finder') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-teal group">
                                 <span class="flex items-center gap-2">
-                                    <span class="text-lg">🤲</span>
+                                    <svg class="w-[18px] h-[18px] text-slate-400 group-hover:text-brand-teal transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.05 4.575a1.575 1.575 0 10-3.15 0v3m3.15-3v-1.5a1.575 1.575 0 013.15 0v1.5m-3.15 0l.075 5.925m3.075-7.425v4.5m1.5-3a1.575 1.575 0 013.15 0v5.625a7.125 7.125 0 01-12.7 3.958 1.575 1.575 0 01-.235-.295 1.5 1.5 0 01-.061-.153L3.375 15.6a1.575 1.575 0 012.35-2.025l1.125 1.125v-8.175a1.575 1.575 0 113.15 0v4.5m0-4.5v-1.5a1.575 1.575 0 013.15 0v1.5m-3.15 0v4.5m0-4.5a1.575 1.575 0 013.15 0v4.5m-3.15 0a1.575 1.575 0 013.15 0v4.5m-3.15 0V15a1.575 1.575 0 013.15 0v.75m0-6.75a1.575 1.575 0 013.15 0v6.75"></path></svg>
                                     Situational Dua Finder
                                 </span>
                             </a>
-                            <a href="{{ route('tools.wirasat') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-teal">
+                            <a href="{{ route('tools.wirasat') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-teal group">
                                 <span class="flex items-center gap-2">
-                                    <span class="text-lg">⚖️</span>
+                                    <svg class="w-[18px] h-[18px] text-slate-400 group-hover:text-brand-teal transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971z"></path></svg>
                                     Wirasat Visualizer
                                 </span>
                             </a>
@@ -146,38 +164,72 @@
                     <!-- Navigation Links - Scrollable -->
                     <div class="flex-1 overflow-y-auto px-6 py-2">
                         <nav class="flex flex-col space-y-1">
-                            <a href="/" class="flex items-center justify-between px-4 py-2 rounded-xl text-lg font-medium transition-all {{ request()->is('/') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
-                                Home
-                                <svg class="w-5 h-5 {{ request()->is('/') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            <a href="/" class="flex items-center justify-between px-4 py-2.5 rounded-xl text-base font-medium transition-all {{ request()->is('/') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-[18px] h-[18px] {{ request()->is('/') ? 'text-brand-teal' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>
+                                    Home
+                                </div>
+                                <svg class="w-4 h-4 {{ request()->is('/') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </a>
-                            <a href="{{ route('courses.index') }}" class="flex items-center justify-between px-4 py-2 rounded-xl text-lg font-medium transition-all {{ request()->is('courses*') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
-                                Courses
-                                <svg class="w-5 h-5 {{ request()->is('courses*') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            <a href="{{ route('courses.index') }}" class="flex items-center justify-between px-4 py-2.5 rounded-xl text-base font-medium transition-all {{ request()->is('courses*') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-[18px] h-[18px] {{ request()->is('courses*') ? 'text-brand-teal' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"></path></svg>
+                                    Courses
+                                </div>
+                                <svg class="w-4 h-4 {{ request()->is('courses*') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </a>
-                            <a href="{{ route('books.index') }}" class="flex items-center justify-between px-4 py-2 rounded-xl text-lg font-medium transition-all {{ request()->is('books*') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
-                                Library
-                                <svg class="w-5 h-5 {{ request()->is('books*') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            <a href="{{ route('books.index') }}" class="flex items-center justify-between px-4 py-2.5 rounded-xl text-base font-medium transition-all {{ request()->is('books*') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-[18px] h-[18px] {{ request()->is('books*') ? 'text-brand-teal' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path></svg>
+                                    Library
+                                </div>
+                                <svg class="w-4 h-4 {{ request()->is('books*') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </a>
-                            <a href="{{ route('posts.index') }}" class="flex items-center justify-between px-4 py-2 rounded-xl text-lg font-medium transition-all {{ request()->is('posts*') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
-                                Articles
-                                <svg class="w-5 h-5 {{ request()->is('posts*') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            <a href="{{ route('posts.index') }}" class="flex items-center justify-between px-4 py-2.5 rounded-xl text-base font-medium transition-all {{ request()->is('posts*') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-[18px] h-[18px] {{ request()->is('posts*') ? 'text-brand-teal' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"></path></svg>
+                                    Articles
+                                </div>
+                                <svg class="w-4 h-4 {{ request()->is('posts*') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </a>
-                            <a href="{{ route('about') }}" class="flex items-center justify-between px-4 py-3.5 rounded-xl text-lg font-bold transition-all {{ request()->is('about') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
-                                About Us
-                                <svg class="w-5 h-5 {{ request()->is('about') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            <a href="{{ route('about') }}" class="flex items-center justify-between px-4 py-2.5 rounded-xl text-base font-medium transition-all {{ request()->is('about') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-[18px] h-[18px] {{ request()->is('about') ? 'text-brand-teal' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"></path></svg>
+                                    About Us
+                                </div>
+                                <svg class="w-4 h-4 {{ request()->is('about') ? 'text-brand-teal' : 'text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </a>
                             
-                            <!-- Mobile Tools Section -->
-                            <div class="pt-4 pb-2 px-4">
-                                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Academic Tools</p>
-                                <a href="{{ route('tools.dua-finder') }}" class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 text-slate-700 hover:bg-white hover:border-brand-teal/30 hover:text-brand-teal transition-all">
-                                    <span class="text-2xl">🤲</span>
-                                    <span class="font-bold">Situational Dua Finder</span>
-                                </a>
-                                <a href="{{ route('tools.wirasat') }}" class="flex items-center gap-3 p-3 mt-2 rounded-xl bg-slate-50 border border-slate-100 text-slate-700 hover:bg-white hover:border-brand-teal/30 hover:text-brand-teal transition-all">
-                                    <span class="text-2xl">⚖️</span>
-                                    <span class="font-bold">Wirasat Visualizer</span>
-                                </a>
+                            <!-- Tools Accordion -->
+                            <div x-data="{ mobileToolsOpen: {{ request()->is('tools*') ? 'true' : 'false' }} }" class="flex flex-col">
+                                <button type="button" @click="mobileToolsOpen = !mobileToolsOpen" class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-base font-medium transition-all focus:outline-none {{ request()->is('tools*') ? 'bg-white/80 text-brand-teal shadow-sm border border-white/50' : 'text-slate-700 hover:bg-white/50' }}">
+                                    <div class="flex items-center gap-3">
+                                        <svg class="w-[18px] h-[18px] {{ request()->is('tools*') ? 'text-brand-teal' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.315-2.315L14.25 6l1.176-.335a3.375 3.375 0 002.315-2.315L18 2.25l.259 1.035a3.375 3.375 0 002.315 2.315L21.75 6l-1.176.335a3.375 3.375 0 00-2.315 2.315zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"></path></svg>
+                                        Tools
+                                    </div>
+                                    <span class="transition-transform duration-300 flex items-center justify-center w-4 h-4" :class="mobileToolsOpen ? 'rotate-180 text-brand-teal' : 'text-slate-400'">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    </span>
+                                </button>
+                                
+                                <div x-show="mobileToolsOpen" 
+                                     x-transition:enter="transition ease-out duration-200"
+                                     x-transition:enter-start="opacity-0 -translate-y-2"
+                                     x-transition:enter-end="opacity-100 translate-y-0"
+                                     x-transition:leave="transition ease-in duration-150"
+                                     x-transition:leave-start="opacity-100 translate-y-0"
+                                     x-transition:leave-end="opacity-0 -translate-y-2"
+                                     class="mt-2 mx-4 bg-white rounded-xl shadow-sm border border-gray-100 p-1.5 space-y-1"
+                                     x-cloak>
+                                    <a href="{{ route('tools.dua-finder') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all {{ request()->routeIs('tools.dua-finder') ? 'text-brand-teal bg-slate-50' : 'text-slate-600 hover:text-brand-teal hover:bg-slate-50' }}">
+                                        <svg class="w-[18px] h-[18px] {{ request()->routeIs('tools.dua-finder') ? 'text-brand-teal' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.05 4.575a1.575 1.575 0 10-3.15 0v3m3.15-3v-1.5a1.575 1.575 0 013.15 0v1.5m-3.15 0l.075 5.925m3.075-7.425v4.5m1.5-3a1.575 1.575 0 013.15 0v5.625a7.125 7.125 0 01-12.7 3.958 1.575 1.575 0 01-.235-.295 1.5 1.5 0 01-.061-.153L3.375 15.6a1.575 1.575 0 012.35-2.025l1.125 1.125v-8.175a1.575 1.575 0 113.15 0v4.5m0-4.5v-1.5a1.575 1.575 0 013.15 0v1.5m-3.15 0v4.5m0-4.5a1.575 1.575 0 013.15 0v4.5m-3.15 0a1.575 1.575 0 013.15 0v4.5m-3.15 0V15a1.575 1.575 0 013.15 0v.75m0-6.75a1.575 1.575 0 013.15 0v6.75"></path></svg>
+                                        Situational Dua Finder
+                                    </a>
+                                    <a href="{{ route('tools.wirasat') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all {{ request()->routeIs('tools.wirasat') ? 'text-brand-teal bg-slate-50' : 'text-slate-600 hover:text-brand-teal hover:bg-slate-50' }}">
+                                        <svg class="w-[18px] h-[18px] {{ request()->routeIs('tools.wirasat') ? 'text-brand-teal' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971z"></path></svg>
+                                        Wirasat Visualizer
+                                    </a>
+                                </div>
                             </div>
                         </nav>
                     </div>
