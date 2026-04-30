@@ -172,100 +172,117 @@
     </div>
 </section>
 
-<!-- Featured Courses Section (Modern Design) -->
-<section class="max-w-7xl mx-auto px-4 py-0 lg:py-8" x-data="{ activeCategory: 'all' }">
-    <!-- Header Section -->
-    <div class="max-w-4xl mx-auto text-center mb-4">
-        <span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest text-brand-gold uppercase bg-brand-gold/10 rounded-full mb-3">
-            Ready to Begin
-        </span>
-        <h2 class="text-2xl md:text-4xl font-black text-slate-900 mb-3 leading-tight tracking-tight">
-            Explore Our <span class="text-brand-teal">Learning Paths</span>
-        </h2>
-        <p class="text-[13px] md:text-sm text-slate-500 mb-4 max-w-2xl mx-auto leading-relaxed">
-            The academy offers structured Islamic courses designed for beginners, intermediate learners, and students seeking deeper knowledge.
-        </p>
-
-        <!-- Horizontal Category List -->
-        <div class="flex flex-wrap md:flex-nowrap md:overflow-x-auto no-scrollbar gap-2 md:gap-3 pb-2 justify-center items-center">
-            <button 
-                @click="activeCategory = 'all'"
-                :class="activeCategory === 'all' ? 'border-b-2 border-brand-teal bg-brand-teal/10 text-brand-teal font-bold' : 'border-b-2 border-transparent text-slate-500 hover:text-brand-teal hover:bg-brand-teal/5 font-semibold'"
-                class="whitespace-nowrap px-4 py-2 md:px-5 md:py-2.5 rounded-full text-[11px] md:text-xs transition-all duration-300 w-auto flex-shrink-0">
-                All Courses
-            </button>
-            @foreach($featuredCategories as $category)
-                <button 
-                    @click="activeCategory = '{{ $category->id }}'"
-                    :class="activeCategory === '{{ $category->id }}' ? 'border-b-2 border-brand-teal bg-brand-teal/10 text-brand-teal font-bold' : 'border-b-2 border-transparent text-slate-500 hover:text-brand-teal hover:bg-brand-teal/5 font-semibold'"
-                    class="whitespace-nowrap px-4 py-2 md:px-5 md:py-2.5 rounded-full text-[11px] md:text-xs transition-all duration-300 w-auto flex-shrink-0">
-                    {{ $category->name }}
-                </button>
-            @endforeach
+<!-- Course Categories Section (Modernized & Aligned) -->
+<section class="relative py-8 bg-[#FCF9F2] overflow-hidden border-t border-brand-gold/5">
+    <!-- Animated Islamic Pattern Background -->
+    <div class="absolute inset-0 opacity-[0.04] pointer-events-none overflow-hidden">
+        <svg class="absolute w-full h-full animate-[spin_120s_linear_infinite]" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+                <pattern id="islamic-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M10 0l2.5 7.5H20l-6 4.5 2.5 7.5-6.5-4.5-6.5 4.5 2.5-7.5-6-4.5h7.5z" fill="currentColor" class="text-brand-gold"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#islamic-grid)"/>
+        </svg>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-4 space-y-3">
+            <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-brand-gold/20 shadow-sm mb-4">
+                <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em]">Academic Excellence</span>
+            </div>
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                Quran Courses at <span class="text-brand-teal">Ejlals</span><span class="text-brand-gold">.com</span>
+            </h2>
+            <div class="h-1 w-20 bg-gradient-to-r from-brand-teal to-brand-gold mx-auto rounded-full mt-2"></div>
+            <p class="text-[14px] text-slate-500 leading-relaxed pt-4 text-balance font-medium">
+                Structured Islamic curriculum designed to bridge classical wisdom with modern practical application.
+            </p>
         </div>
-    </div>
 
-    <!-- Course Grid Section -->
-    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-6">
-        @forelse($featuredCourses as $course)
-            <div 
-                x-show="activeCategory === 'all' || activeCategory === '{{ $course->category_id }}'"
-                x-transition:enter="transition ease-out duration-500"
-                x-transition:enter-start="opacity-0 scale-95 translate-y-4"
-                x-transition:enter-end="opacity-100 scale-100 translate-y-0"
-                class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-brand-teal/5 flex flex-col h-full">
-                
-                <a href="{{ route('courses.show', $course->slug) }}" class="flex flex-col h-full">
-                    <!-- Image Container -->
-                    <div class="relative h-40 w-full overflow-hidden bg-slate-100 shrink-0">
-                        @if($course->image)
-                            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" />
-                        @else
-                            <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5 flex items-center justify-center">
-                                <span class="material-symbols-outlined text-4xl text-brand-teal/20">school</span>
-                            </div>
-                        @endif
-                        
-                        <!-- Level Badge (Optional fallback if level is null) -->
-                        <div class="absolute top-3 left-3 bg-brand-teal/90 backdrop-blur-sm text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shadow-sm">
-                            {{ $course->level ?? 'All Levels' }}
-                        </div>
+        <!-- Course Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <!-- Card 1: Tajweed Course -->
+            <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-brand-teal/10 border border-slate-100 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2">
+                <div class="relative h-48 overflow-hidden bg-slate-50">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVr6PzF6RqgD_AdFs_RZZdF82npziHHo8Bm8vbR4wN-qYn-59c4DjE25gkrxw3tTEG8ylM6ffRGIWbt5XvTqFVgYiZxQYH99YEgxGrqTK9Pz0EBCYCyYizdVUt3e27C3G1dIYdd1dLdw8VbF6cDUe65Ye1uZaRkBygNJCYX47EtAVexwk6rJCOMoCsewQ6a97S094caaPvLEV0_NSJT2d-7OdlQN-HH1QtkRPscXNJo6rhSZtbCNmaxLYYEqnPIASipN-oPvt54Ws" alt="Tajweed Course"/>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-white/95 backdrop-blur-md text-brand-teal font-black text-[9px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm border border-brand-teal/10">All Levels</span>
                     </div>
+                </div>
+                <div class="px-6 py-3 flex flex-col flex-grow text-center items-center">
+                    <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-brand-teal transition-colors">Tajweed Course</h3>
+                    <p class="text-[12px] text-slate-500 leading-relaxed mb-6 flex-grow text-balance">Master the correct pronunciation and beautiful recitation of the Holy Quran with expert guidance.</p>
+                    <a href="#" class="inline-flex items-center bg-brand-teal/5 text-brand-teal px-5 py-2 rounded-xl font-bold text-[11px] gap-2 group/link hover:bg-brand-teal hover:text-white transition-all duration-300 shadow-sm uppercase tracking-wider">
+                        Explore Course 
+                        <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
 
-                    <!-- Content Container -->
-                    <div class="p-3 md:p-4 md:p-5 flex flex-col flex-1 pb-4 md:pb-6 md:pb-8">
-                        <h3 class="text-[11px] md:text-[14px] font-bold text-slate-800 mb-1 group-hover:text-brand-teal transition-colors leading-snug">
-                            {{ $course->title }}
-                        </h3>
-                        <p class="text-slate-500 text-[10px] md:text-[11px] leading-relaxed mb-3 line-clamp-2 flex-1">
-                            {{ Str::limit(strip_tags($course->description), 80) ?: 'Begin your journey into authentic Islamic scholarship.' }}
-                        </p>
-                        
-                        <!-- Footer metadata -->
-                        <div class="flex items-center justify-between pt-4 border-t border-brand-teal/5 mt-auto">
-                            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-[13px]">view_module</span>
-                                {{ $course->modules_count ?? 0 }} Modules
-                            </span>
-                            <span class="material-symbols-outlined text-brand-teal transform group-hover:translate-x-1 transition-transform duration-300 text-base md:text-lg">arrow_forward</span>
-                        </div>
+            <!-- Card 2: Noorani Qaida -->
+            <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-brand-gold/10 border border-slate-100 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2">
+                <div class="relative h-48 overflow-hidden bg-slate-50">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ asset('images/courses/noorani_qaida.png') }}" alt="Noorani Qaida"/>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-brand-gold text-white font-black text-[9px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">Beginners</span>
                     </div>
-                </a>
+                </div>
+                <div class="px-6 py-3 flex flex-col flex-grow text-center items-center">
+                    <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-brand-gold transition-colors">Noorani Qaida</h3>
+                    <p class="text-[12px] text-slate-500 leading-relaxed mb-6 flex-grow text-balance">Build strong Quran reading foundations with step-by-step learning for beginners and children.</p>
+                    <a href="#" class="inline-flex items-center bg-brand-gold/5 text-brand-gold px-5 py-2 rounded-xl font-bold text-[11px] gap-2 group/link hover:bg-brand-gold hover:text-white transition-all duration-300 shadow-sm uppercase tracking-wider">
+                        Explore Course 
+                        <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+                    </a>
+                </div>
             </div>
-        @empty
-            <div class="col-span-full py-16 text-center bg-slate-50 rounded-3xl border border-dashed border-slate-200">
-                <span class="material-symbols-outlined text-4xl text-slate-300 mb-3 block">menu_book</span>
-                <p class="text-slate-400 font-medium text-sm">Coming Soon: Curated Islamic Education</p>
-            </div>
-        @endforelse
-    </div>
 
-    <!-- Explore More Button & CTA -->
-    <div class="mt-4 flex justify-center">
-        <a href="{{ route('courses.index') }}" class="group inline-flex items-center gap-2 bg-brand-gold text-white px-8 py-3.5 rounded-lg text-sm font-bold shadow-lg shadow-brand-gold/20 hover:brightness-110 active:scale-[0.98] transition-all">
-            Explore more courses
-            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-        </a>
+            <!-- Card 3: Arabic Course -->
+            <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-brand-teal/10 border border-slate-100 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2">
+                <div class="relative h-48 overflow-hidden bg-slate-50">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKmBtMoVofP0Dl8qzuXubvx254VcBh6VrjoItaTlJA22BvOzSdCU1Q_vHNiY7yhHl-FSwRd5OnFkSlmIdBR6oU1cLwSTpakszocphMkCUjmoSAqMm_i4tuHI89m7NiH1i2qTxIGk2IgTW2_ktlVaDQOSgDQyejOVcQmmU5fC9EGTX41tYW-KKFbgfjBEnTkv_QklVdonPPebWtFzLjtgSa-uCPyCfXltao1D1Je5T5Gaj-oyCnxsL-5vQ8BmmXJnhy6F1LoclO3zQ" alt="Arabic Course"/>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-white/95 backdrop-blur-md text-brand-teal font-black text-[9px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm border border-brand-teal/10">All Levels</span>
+                    </div>
+                </div>
+                <div class="px-6 py-3 flex flex-col flex-grow text-center items-center">
+                    <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-brand-teal transition-colors">Arabic Course</h3>
+                    <p class="text-[12px] text-slate-500 leading-relaxed mb-6 flex-grow text-balance">Master the Arabic language to understand the Quran and classical Islamic texts in their original form.</p>
+                    <a href="#" class="inline-flex items-center bg-brand-teal/5 text-brand-teal px-5 py-2 rounded-xl font-bold text-[11px] gap-2 group/link hover:bg-brand-teal hover:text-white transition-all duration-300 shadow-sm uppercase tracking-wider">
+                        Explore Course 
+                        <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 4: Hifz ul Quran -->
+            <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-brand-gold/10 border border-slate-100 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2">
+                <div class="relative h-48 overflow-hidden bg-slate-50">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ asset('images/courses/hifz_course.png') }}" alt="Hifz ul Quran"/>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-brand-gold text-white font-black text-[9px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">Memorization</span>
+                    </div>
+                </div>
+                <div class="px-6 py-3 flex flex-col flex-grow text-center items-center">
+                    <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-brand-gold transition-colors">Hifz ul Quran</h3>
+                    <p class="text-[12px] text-slate-500 leading-relaxed mb-6 flex-grow text-balance">Memorize the Holy Quran with proper technique and systematic revision under expert guidance.</p>
+                    <a href="#" class="inline-flex items-center bg-brand-gold/5 text-brand-gold px-5 py-2 rounded-xl font-bold text-[11px] gap-2 group/link hover:bg-brand-gold hover:text-white transition-all duration-300 shadow-sm uppercase tracking-wider">
+                        Explore Course 
+                        <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Explore More CTA -->
+        <div class="mt-8 text-center">
+            <a href="{{ route('courses.index') }}" class="group inline-flex items-center gap-3 bg-brand-gold text-white px-10 py-4 rounded-xl font-bold text-sm shadow-xl shadow-brand-gold/20 hover:brightness-110 hover:-translate-y-1 active:scale-[0.98] transition-all">
+                View Detailed Curriculum
+                <span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+        </div>
     </div>
 </section>
 
@@ -345,14 +362,130 @@
                 Book Your Free Demo
                 <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </a>
-            <p class="mt-4 text-slate-500 text-[11px] font-medium flex items-center justify-center gap-2">
-                <span class="flex -space-x-1.5">
-                    <span class="w-5 h-5 rounded-full bg-brand-teal/20 border border-white"></span>
-                    <span class="w-5 h-5 rounded-full bg-brand-gold/20 border border-white"></span>
-                    <span class="w-5 h-5 rounded-full bg-slate-200 border border-white"></span>
-                </span>
-                Join over 1,500+ students worldwide
-            </p>
+            <!-- Social Proof Line (Fixed Layout) -->
+            <div class="mt-6 flex items-center justify-center gap-3 bg-white/50 py-2 px-4 rounded-full border border-slate-100/50 shadow-sm">
+                <div class="flex -space-x-3.5 overflow-hidden shrink-0">
+                    <img class="inline-block size-5 md:size-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&q=80&w=100" alt="Student 1">
+                    <img class="inline-block size-5 md:size-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1491013516836-7ad643ee175a?auto=format&fit=crop&q=80&w=100" alt="Student 2">
+                    <img class="inline-block size-5 md:size-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&q=80&w=100" alt="Student 3">
+                    <img class="inline-block size-5 md:size-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1544717297-fa95b3ee51f8?auto=format&fit=crop&q=80&w=100" alt="Student 4">
+                    <img class="inline-block size-5 md:size-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=100" alt="Student 5">
+                    <img class="inline-block size-5 md:size-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&q=80&w=100" alt="Student 6">
+                    <img class="inline-block size-5 md:size-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?auto=format&fit=crop&q=80&w=100" alt="Student 7">
+                    <img class="inline-block size-5 md:size-6 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&q=80&w=100" alt="Student 8">
+                    <div class="flex items-center justify-center size-5 md:size-6 rounded-full ring-2 ring-white bg-brand-teal text-white text-[7px] md:text-[8px] font-black shrink-0">+99</div>
+                </div>
+                <p class="text-slate-600 text-[10px] md:text-[11px] font-bold whitespace-nowrap">
+                    Join over <span class="text-brand-teal">1,500+</span> students worldwide
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Meet Our Expert Scholars Section (New) -->
+<section class="relative py-12 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div class="max-w-xl">
+                <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-teal/5 border border-brand-teal/10 shadow-sm mb-4">
+                    <span class="text-brand-teal font-bold text-[10px] uppercase tracking-[0.4em]">Qualified Faculty</span>
+                </div>
+                <h2 class="text-2xl md:text-4xl font-serif font-bold text-slate-900 tracking-tight leading-tight">
+                    Meet Our Expert <span class="text-brand-gold">Scholars</span>
+                </h2>
+                <p class="text-[13px] text-slate-500 leading-relaxed pt-2 font-medium">
+                    Learn from verified experts with years of experience in Islamic education and academic excellence.
+                </p>
+            </div>
+            <a href="{{ route('scholars.index') }}" class="group inline-flex items-center gap-2 text-brand-teal font-bold text-xs hover:text-brand-gold transition-colors">
+                View All Tutors
+                <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Scholars Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            @forelse($featuredScholars as $scholar)
+            <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+                <!-- Image Section -->
+                <a href="{{ route('scholars.show', $scholar->slug) }}" class="relative h-48 w-full bg-slate-100 block overflow-hidden">
+                    @if($scholar->image)
+                        <img src="{{ asset('storage/' . $scholar->image) }}" alt="{{ $scholar->name }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    @else
+                        <div class="w-full h-full flex items-center justify-center bg-slate-200">
+                            <span class="material-symbols-outlined text-slate-400 text-5xl">person</span>
+                        </div>
+                    @endif
+                    
+                    <!-- Online Badge -->
+                    <div class="absolute top-3 left-3 bg-slate-900/60 backdrop-blur-sm text-white text-[10px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_4px_rgba(34,197,94,0.8)]"></span> Online
+                    </div>
+                    
+                    <!-- Favorite Icon -->
+                    <button class="absolute top-3 right-3 size-8 bg-slate-900/40 hover:bg-slate-900/60 transition-colors backdrop-blur-sm rounded-full flex items-center justify-center text-white z-10" onclick="event.preventDefault();">
+                        <span class="material-symbols-outlined text-[16px]">favorite_border</span>
+                    </button>
+                </a>
+                
+                <!-- Content Section -->
+                <div class="p-5 flex flex-col flex-grow">
+                    <!-- Name & Verified -->
+                    <div class="flex items-center gap-1.5 mb-0.5">
+                        <a href="{{ route('scholars.show', $scholar->slug) }}" class="text-[17px] font-bold text-slate-900 hover:text-brand-teal transition-colors line-clamp-1">
+                            {{ $scholar->name }}
+                        </a>
+                        @if($scholar->is_verified)
+                            <span class="material-symbols-outlined text-blue-500 text-[18px]" style="font-variation-settings: 'FILL' 1;" title="Verified Expert">verified</span>
+                        @endif
+                    </div>
+                    
+                    <!-- Subject/Title -->
+                    <p class="text-slate-600 text-[13px] mb-2.5 line-clamp-1">{{ $scholar->title }}</p>
+                    
+                    <!-- Location -->
+                    <div class="flex items-center gap-1 text-slate-500 text-xs mb-4">
+                        <span class="material-symbols-outlined text-[14px]">location_on</span>
+                        <span class="truncate">{{ $scholar->location ?? 'Global Online' }}</span>
+                    </div>
+                    
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        @php
+                            $tagColors = [
+                                'bg-purple-50 text-purple-600',
+                                'bg-blue-50 text-blue-600',
+                                'bg-emerald-50 text-emerald-600',
+                                'bg-amber-50 text-amber-600',
+                                'bg-rose-50 text-rose-600',
+                            ];
+                        @endphp
+                        @foreach(array_slice($scholar->subjects_taught ?? [], 0, 3) as $index => $subject)
+                            <span class="px-2.5 py-1 {{ $tagColors[$index % count($tagColors)] }} rounded-md text-[11px] font-medium">{{ $subject }}</span>
+                        @endforeach
+                        @if(count($scholar->subjects_taught ?? []) > 3)
+                            <span class="px-2.5 py-1 bg-slate-50 text-slate-500 rounded-md text-[11px] font-medium border border-slate-100">+{{ count($scholar->subjects_taught) - 3 }}</span>
+                        @endif
+                    </div>
+                    
+                    <!-- Footer Info -->
+                    <div class="mt-auto pt-4 border-t border-slate-50 flex items-center gap-3 text-[13px] font-medium text-slate-700">
+                        <div class="flex items-center gap-1">
+                            <span class="material-symbols-outlined text-amber-400 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                            <span>{{ $scholar->rating }}</span>
+                        </div>
+                        <span class="text-slate-300">•</span>
+                        <span class="text-slate-500 truncate">{{ $scholar->teaching_experience }} Exp</span>
+                    </div>
+                </div>
+            </div>
+            @empty
+            <div class="col-span-full py-12 text-center">
+                <p class="text-slate-400 italic">Our directory is being updated with new scholar profiles.</p>
+            </div>
+            @endforelse
         </div>
     </div>
 </section>
