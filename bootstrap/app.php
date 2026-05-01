@@ -14,9 +14,5 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append(\App\Http\Middleware\NoIndexMiddleware::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        $exceptions->render(function (\Illuminate\Database\QueryException $e, \Illuminate\Http\Request $request) {
-            if ($e->getCode() === '23000' && $request->is('admin*')) {
-                return back()->withErrors(['error' => 'Database error: Possible duplicate entry or integrity issue.']);
-            }
-        });
+        // Handled at the resource level for better stability
     })->create();

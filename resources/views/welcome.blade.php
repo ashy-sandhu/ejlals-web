@@ -35,6 +35,46 @@
 .layered-shadow {
     box-shadow: 0 10px 30px -10px rgba(19, 140, 144, 0.15), 0 4px 10px -5px rgba(234, 127, 38, 0.1);
 }
+.dashed-connector {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    width: 80%;
+    height: 4px;
+    background: linear-gradient(90deg, #138c90 0%, #ea7f26 100%);
+    border-radius: 2px;
+    z-index: 0;
+    transform: translateY(-50%);
+}
+
+.hero-gradient-overlay {
+    background: linear-gradient(90deg, rgba(253, 251, 247, 1) 0%, rgba(253, 251, 247, 0.8) 30%, rgba(253, 251, 247, 0) 60%);
+}
+.step-circle {
+    width: 96px;
+    height: 96px;
+    border-radius: 9999px;
+    border: 2px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 10;
+}
+.step-circle-teal { border-color: rgba(19, 140, 144, 0.15); }
+.step-circle-gold { border-color: rgba(234, 127, 38, 0.15); }
+
+.icon-thin {
+    font-variation-settings: 'wght' 200, 'opsz' 24;
+}
+.pattern-float {
+    animation: float-pattern 45s ease-in-out infinite;
+}
+.pattern-float-alt {
+    animation: float-pattern-alt 60s ease-in-out infinite;
+}
 </style>
 
 <script>
@@ -383,8 +423,10 @@
     </div>
 </section>
 
-<!-- Meet Our Expert Scholars Section (New) -->
-<section class="relative py-12 bg-white overflow-hidden">
+<!-- Meet Our Expert Scholars Section (Refined) -->
+<section class="relative py-16 bg-[#FDFBF7] overflow-hidden border-y border-brand-gold/5">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <!-- Section Header -->
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
@@ -414,6 +456,225 @@
                 <p class="text-slate-400 italic">Our directory is being updated with new scholar profiles.</p>
             </div>
             @endforelse
+        </div>
+    </div>
+</section>
+
+    </div>
+</section>
+
+<!-- Become a Tutor Section (Reference-Matched Design) -->
+<section class="relative overflow-hidden min-h-[500px] flex items-center bg-[#FDFBF7]">
+    <!-- Background Image with Blending -->
+    <div class="absolute inset-0 z-0 flex justify-end">
+        <img src="{{ asset('images/tutor-hero.png') }}" alt="" class="h-full w-auto object-cover">
+        <div class="absolute inset-0 hero-gradient-overlay"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full py-16">
+        <div class="max-w-2xl">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="p-1 rounded-full border border-brand-teal/30 text-brand-teal">
+                    <span class="material-symbols-outlined text-sm">stars</span>
+                </span>
+                <span class="text-[10px] font-black text-brand-teal uppercase tracking-[0.4em]">Join our teaching community</span>
+            </div>
+            
+            <h2 class="text-4xl md:text-6xl font-serif font-bold text-slate-900 mb-4 leading-tight">
+                Share Knowledge.<br/>
+                <span class="text-brand-teal italic">Inspire</span> <span class="text-brand-gold">Generations.</span>
+            </h2>
+            
+            <p class="text-slate-600 text-sm md:text-base mb-10 max-w-lg font-medium leading-relaxed">
+                Ejlals Academy welcomes passionate Islamic scholars and qualified teachers to join our mission of spreading authentic knowledge worldwide.
+            </p>
+            
+            <!-- Horizontal Stats Bar -->
+            <div class="flex flex-wrap gap-8 md:gap-12 pt-8 border-t border-slate-200/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal shrink-0">
+                        <span class="material-symbols-outlined">groups</span>
+                    </div>
+                    <div>
+                        <div class="font-black text-xl text-slate-800 leading-none">150+</div>
+                        <div class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Expert Tutors</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal shrink-0">
+                        <span class="material-symbols-outlined">public</span>
+                    </div>
+                    <div>
+                        <div class="font-black text-xl text-slate-800 leading-none">30+</div>
+                        <div class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Countries</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0">
+                        <span class="material-symbols-outlined">stars</span>
+                    </div>
+                    <div>
+                        <div class="font-black text-xl text-slate-800 leading-none">15K+</div>
+                        <div class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Students</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section (Wavy Journey - Realigned) -->
+<section class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-6 relative">
+        <div class="text-center mb-24">
+            <span class="text-brand-teal font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">THE JOURNEY TO BECOME A VERIFIED TUTOR</span>
+            <h2 class="text-3xl md:text-5xl font-serif font-black text-slate-900 tracking-tight">Our Simple 4-Step Process</h2>
+        </div>
+        
+        <div class="relative">
+            <!-- Wavy Gradient Line SVG (Centered between Step 1 and Step 4) -->
+            <div class="absolute left-[12.5%] w-[75%] h-24 -z-0 hidden lg:block opacity-30">
+                <svg class="w-full h-full" viewBox="0 0 1000 100" fill="none" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="step-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#138C90" />
+                            <stop offset="100%" stop-color="#EA7F26" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M0,50 C150,0 350,100 500,50 C650,0 850,100 1000,50" 
+                          stroke="url(#step-gradient)" stroke-width="10" stroke-linecap="round" fill="none" />
+                </svg>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-16 relative z-10">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center text-center relative group">
+                    <div class="relative mb-10">
+                        <div class="step-circle step-circle-teal group-hover:shadow-xl transition-all duration-500">
+                            <span class="material-symbols-outlined text-6xl text-brand-teal icon-thin">edit_note</span>
+                        </div>
+                    </div>
+                    <span class="text-brand-teal font-black text-sm mb-1 tracking-widest uppercase">Step 01</span>
+                    <h3 class="font-serif font-black text-slate-900 text-2xl mb-3">Apply Online</h3>
+                    <p class="text-[13px] text-slate-500 px-12 leading-relaxed font-medium">Fill out the application form with your academic and teaching information.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center text-center relative group">
+                    <div class="relative mb-10">
+                        <div class="step-circle step-circle-gold group-hover:shadow-xl transition-all duration-500">
+                            <span class="material-symbols-outlined text-6xl text-brand-gold icon-thin">forum</span>
+                        </div>
+                    </div>
+                    <span class="text-brand-gold font-black text-sm mb-1 tracking-widest uppercase">Step 02</span>
+                    <h3 class="font-serif font-black text-slate-900 text-2xl mb-3">Interview & Review</h3>
+                    <p class="text-[13px] text-slate-500 px-12 leading-relaxed font-medium">Our academic team will review your profile and conduct an interview.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center text-center relative group">
+                    <div class="relative mb-10">
+                        <div class="step-circle step-circle-teal group-hover:shadow-xl transition-all duration-500">
+                            <span class="material-symbols-outlined text-6xl text-brand-teal icon-thin">verified_user</span>
+                        </div>
+                    </div>
+                    <span class="text-brand-teal font-black text-sm mb-1 tracking-widest uppercase">Step 03</span>
+                    <h3 class="font-serif font-black text-slate-900 text-2xl mb-3">Verification</h3>
+                    <p class="text-[13px] text-slate-500 px-12 leading-relaxed font-medium">Upon successful evaluation, you'll be verified as an Ejlals Tutor.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex flex-col items-center text-center relative group">
+                    <div class="relative mb-10">
+                        <div class="step-circle step-circle-gold group-hover:shadow-xl transition-all duration-500">
+                            <span class="material-symbols-outlined text-6xl text-brand-gold icon-thin">workspace_premium</span>
+                        </div>
+                    </div>
+                    <span class="text-brand-gold font-black text-sm mb-1 tracking-widest uppercase">Step 04</span>
+                    <h3 class="font-serif font-black text-slate-900 text-2xl mb-3">Start Teaching</h3>
+                    <p class="text-[13px] text-slate-500 px-12 leading-relaxed font-medium">Create your tutor profile, set your schedule, and start inspiring students.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA Box (Keeping your preferred Dark Design) -->
+
+<!-- Final CTA Box (Keeping your preferred Dark Design) -->
+<section class="pb-20">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 lg:p-16 relative overflow-hidden shadow-2xl">
+            <!-- Decorative Background Star -->
+            <div class="absolute -top-20 -right-20 opacity-10 text-white pointer-events-none">
+                <svg class="w-96 h-96" viewBox="0 0 100 100" fill="currentColor">
+                    <path d="M50 0 L64.6 35.4 L100 50 L64.6 64.6 L50 100 L35.4 64.6 L0 50 L35.4 35.4 Z" />
+                </svg>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center relative z-10">
+                <div class="lg:col-span-3">
+                    <h2 class="text-2xl md:text-4xl font-serif font-bold text-white mb-8">Why Teach with Ejlals Academy?</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <!-- Benefit 1 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-brand-gold shrink-0">
+                                <span class="material-symbols-outlined">public</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm mb-1">Global Exposure</h4>
+                                <p class="text-[11px] text-slate-400 leading-relaxed">Teach students from over 30 countries worldwide.</p>
+                            </div>
+                        </div>
+                        <!-- Benefit 2 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-brand-teal shrink-0">
+                                <span class="material-symbols-outlined">schedule</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm mb-1">Flexible Schedule</h4>
+                                <p class="text-[11px] text-slate-400 leading-relaxed">You decide your own teaching hours and availability.</p>
+                            </div>
+                        </div>
+                        <!-- Benefit 3 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-brand-gold shrink-0">
+                                <span class="material-symbols-outlined">payments</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm mb-1">Fair Earnings</h4>
+                                <p class="text-[11px] text-slate-400 leading-relaxed">Competitive pay with secure and timely payments.</p>
+                            </div>
+                        </div>
+                        <!-- Benefit 4 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-brand-teal shrink-0">
+                                <span class="material-symbols-outlined">auto_graph</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm mb-1">Grow & Impact</h4>
+                                <p class="text-[11px] text-slate-400 leading-relaxed">Build your reputation and inspire students daily.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-2 bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl text-center">
+                    <h3 class="text-xl font-bold text-white mb-2">Ready to make a difference?</h3>
+                    <p class="text-slate-400 text-xs mb-8">Join our network of dedicated educators today.</p>
+                    <a href="#" class="group block bg-brand-teal text-white py-4 rounded-xl font-black text-sm shadow-xl shadow-brand-teal/20 hover:scale-105 active:scale-95 transition-all mb-4">
+                        Apply Now to Join
+                    </a>
+                    <div class="flex items-center justify-center gap-4 text-[10px] text-slate-500 font-black uppercase tracking-widest">
+                        <span class="flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-xs">lock</span>
+                            Secure
+                        </span>
+                        <span class="w-1.5 h-1.5 bg-slate-700 rounded-full"></span>
+                        <span>Takes < 10 min</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

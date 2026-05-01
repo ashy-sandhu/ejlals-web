@@ -47,6 +47,12 @@ class ScholarResource extends Resource
                             ->maxLength(255),
                         Forms\Components\TextInput::make('location')
                             ->maxLength(255),
+                        Forms\Components\TextInput::make('rating')
+                            ->numeric()
+                            ->step(0.1)
+                            ->minValue(1)
+                            ->maxValue(5)
+                            ->default(5.0),
                     ])->columns(2),
 
                     Forms\Components\Section::make('About & Experience')->schema([
@@ -64,6 +70,9 @@ class ScholarResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->label('Profile Photo')
                             ->image()
+                            ->imageEditor()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                            ->maxSize(2048) // 2MB limit to prevent server crashes
                             ->disk('public')
                             ->directory('scholars')
                             ->visibility('public'),

@@ -98,6 +98,7 @@ class BookResource extends Resource
                                         Forms\Components\FileUpload::make('image')
                                             ->label(false)
                                             ->image()
+                                            ->imageEditor()
                                             ->maxSize(2048)
                                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                                             ->directory('books/covers'),
