@@ -135,7 +135,7 @@
                         </div>
                         <div>
                             <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Experience</p>
-                            <p class="text-sm font-black text-slate-800 leading-none">10+ Years</p>
+                            <p class="text-sm font-black text-slate-800 leading-none">8+ Years</p>
                         </div>
                     </div>
 
@@ -146,20 +146,34 @@
             </div>
 
             <!-- Right Side: Content -->
-            <div class="flex flex-col justify-center order-2 lg:order-2 lg:pl-4">
-                <!-- Header Component -->
-                <div class="text-center lg:text-left mb-4 lg:mb-6">
-                    <div class="flex items-center justify-center lg:justify-start gap-3 mb-1.5 lg:mb-2">
-                        <span class="w-6 h-[2px] bg-brand-gold rounded-full"></span>
-                        <span class="text-brand-gold font-bold tracking-[0.4em] uppercase text-[9px] md:text-[10px]">Our Legacy</span>
+                <div class="flex flex-col justify-center order-2 lg:order-2 lg:pl-4">
+                    <!-- Header Component -->
+                    <div class="text-center lg:text-left mb-3">
+                        <div class="flex items-center justify-center lg:justify-start gap-3 mb-3">
+                            <span class="w-8 h-[2px] bg-brand-gold rounded-full"></span>
+                            <span class="text-brand-gold font-bold tracking-[0.4em] uppercase text-[10px]">Our Identity</span>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="relative group mb-3">
+                                <!-- Elegant Vertical Accent (Visible on LG) -->
+                                <div class="hidden lg:block absolute -left-6 top-2 bottom-2 w-1 bg-gradient-to-b from-brand-teal via-brand-gold to-transparent rounded-full opacity-20"></div>
+                                
+                                <p class="text-lg md:text-xl text-slate-800 font-medium leading-relaxed">
+                                    <span class="text-brand-teal font-serif italic font-black text-3xl md:text-4xl block mb-2 tracking-tight leading-none">
+                                        Ejlals Islamic Horizon
+                                    </span>
+                                    <span class="text-brand-gold font-bold uppercase tracking-[0.2em] text-[10px] block mb-3 opacity-80">Established 2016 • Global Learning Platform</span>
+                                    
+                                    has evolved from a dedicated social media community into a <span class="text-slate-900 font-bold underline decoration-brand-teal/30 underline-offset-8">premier global platform</span> for authentic Islamic education.
+                                </p>
+                            </div>
+
+                            <p class="text-[13px] md:text-sm text-slate-500 leading-relaxed font-medium max-w-xl border-t border-slate-100 pt-3 mx-auto lg:mx-0">
+                                With over 8 years of experience, we specialize in bridging the linguistic gap for millions of Muslims who connect most deeply with their Deen in <span class="text-brand-teal font-bold italic">Urdu, Punjabi, or English</span>. Unlike conventional platforms, we offer personalized, live one-on-one online Quran classes tailored for children, adults, women, and new Muslims anywhere in the world.
+                            </p>
+                        </div>
                     </div>
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-slate-900 leading-[1.1] tracking-tight">
-                        Who We Are
-                    </h2>
-                    <p class="mt-2 lg:mt-4 text-[13px] md:text-sm text-slate-600 leading-relaxed font-medium max-w-xl mx-auto lg:mx-0">
-                        <span class="text-brand-teal font-bold">Ejlals Academy</span> is a sanctuary of knowledge where traditional spiritual wisdom meets modern academic rigor. We are dedicated to nurturing a generation of leaders who are intellectually capable, deeply rooted in faith, and prepared to illuminate the global community with purposeful action.
-                    </p>
-                </div>
 
                 <!-- Square Feature Cards Container -->
                 <div class="flex flex-col flex-1 justify-center mb-6 w-full">
