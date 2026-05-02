@@ -259,51 +259,51 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="py-12 px-6 border-t border-[#e8e2d6] mt-8" style="position:relative; z-index:10;">
-    <div class="max-w-3xl mx-auto">
+<section class="py-16 px-6 border-t border-[#e8e2d6] mt-8" style="position:relative; z-index:10;">
+    <div class="max-w-2xl mx-auto">
         <div class="text-center mb-10">
-            <span class="text-[#c8973a] font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Clarifications</span>
-            <h2 class="text-2xl md:text-34 font-serif font-bold text-[#054a30] tracking-tight">Frequently Asked Questions</h2>
+            <span class="text-brand-teal font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Clarifications</span>
+            <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight">Frequently Asked Questions</h2>
         </div>
 
-        <div class="space-y-2.5">
+        <div class="space-y-3">
             <!-- FAQ 1 -->
-            <div class="bg-white rounded-xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.02)] transition-all hover:border-[#10b981] group">
-                <button class="w-full px-5 py-4 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-medium text-slate-500 group-hover:text-slate-800 transition-colors text-[15px]">What is the best dua for anxiety and stress?</span>
-                    <svg class="w-4 h-4 text-[#c8973a]/60 group-hover:text-[#c8973a] transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden text-left transition-all duration-300 hover:border-brand-teal/40 hover:shadow-lg hover:shadow-brand-teal/5 group">
+                <button class="w-full py-4 px-6 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-bold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px]">What is the best dua for anxiety and stress?</span>
+                    <svg class="w-5 h-5 text-slate-400 transition-all duration-300 group-hover:text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="px-5 pb-4 text-slate-400 hidden text-[14px] leading-relaxed">
+                <div class="px-6 pb-5 text-slate-500 hidden leading-relaxed text-sm">
                     The Prophet ﷺ regularly recited the comprehensive dua from Sahih al-Bukhari 6369, seeking refuge from anxiety, sorrow, weakness, laziness, miserliness, cowardice, debt and being overpowered. Select "Anxious / Stressed" in the Emotions tab above to read it in full.
                 </div>
             </div>
             <!-- FAQ 2 -->
-            <div class="bg-white rounded-xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.02)] transition-all hover:border-[#10b981] group">
-                <button class="w-full px-5 py-4 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-medium text-slate-500 group-hover:text-slate-800 transition-colors text-[15px]">What is Dua-e-Yunus and when should I read it?</span>
-                    <svg class="w-4 h-4 text-[#c8973a]/60 group-hover:text-[#c8973a] transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden text-left transition-all duration-300 hover:border-brand-teal/40 hover:shadow-lg hover:shadow-brand-teal/5 group">
+                <button class="w-full py-4 px-6 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-bold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px]">What is Dua-e-Yunus and when should I read it?</span>
+                    <svg class="w-5 h-5 text-slate-400 transition-all duration-300 group-hover:text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="px-5 pb-4 text-slate-400 hidden text-[14px] leading-relaxed">
+                <div class="px-6 pb-5 text-slate-500 hidden leading-relaxed text-sm">
                     Dua-e-Yunus (La ilaha illa anta subhanaka inni kuntu minaz-zalimin) was made by Prophet Yunus (AS) from inside the whale. Allah responded and saved him. It is recommended for extreme sadness, hopelessness, or any situation where you feel completely trapped with no way out.
                 </div>
             </div>
             <!-- FAQ 3 -->
-            <div class="bg-white rounded-xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.02)] transition-all hover:border-[#10b981] group">
-                <button class="w-full px-5 py-4 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-medium text-slate-500 group-hover:text-slate-800 transition-colors text-[15px]">Is there a dua for loneliness?</span>
-                    <svg class="w-4 h-4 text-[#c8973a]/60 group-hover:text-[#c8973a] transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden text-left transition-all duration-300 hover:border-brand-teal/40 hover:shadow-lg hover:shadow-brand-teal/5 group">
+                <button class="w-full py-4 px-6 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-bold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px]">Is there a dua for loneliness?</span>
+                    <svg class="w-5 h-5 text-slate-400 transition-all duration-300 group-hover:text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="px-5 pb-4 text-slate-400 hidden text-[14px] leading-relaxed">
+                <div class="px-6 pb-5 text-slate-500 hidden leading-relaxed text-sm">
                     Yes. The dua: Ya Hayyu ya Qayyum bi-rahmatika astaghith, aslih li sha'ni kullahu wa la takilni ila nafsi tarfata ayn — deeply recommended for feeling alone. The Prophet ﷺ recited it when facing overwhelming difficulties. Select "Lonely / Abandoned" to read it in full.
                 </div>
             </div>
             <!-- FAQ 4 -->
-            <div class="bg-white rounded-xl border border-[#e8e2d6] overflow-hidden text-left shadow-[0_2px_10px_rgba(5,74,48,0.02)] transition-all hover:border-[#10b981] group">
-                <button class="w-full px-5 py-4 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-medium text-slate-500 group-hover:text-slate-800 transition-colors text-[15px]">Can duas be read in English?</span>
-                    <svg class="w-4 h-4 text-[#c8973a]/60 group-hover:text-[#c8973a] transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden text-left transition-all duration-300 hover:border-brand-teal/40 hover:shadow-lg hover:shadow-brand-teal/5 group">
+                <button class="w-full py-4 px-6 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-bold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px]">Can duas be read in English?</span>
+                    <svg class="w-5 h-5 text-slate-400 transition-all duration-300 group-hover:text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="px-5 pb-4 text-slate-400 hidden text-[14px] leading-relaxed">
+                <div class="px-6 pb-5 text-slate-500 hidden leading-relaxed text-sm">
                     Yes. Allah ﷻ hears and responds to all sincere supplications in any language. The Arabic duas from Quran and Sunnah carry their original blessing, but praying to Allah in your own language is fully valid. Many scholars recommend learning the Arabic alongside the meaning so you can supplicate with both understanding and the original blessed words.
                 </div>
             </div>

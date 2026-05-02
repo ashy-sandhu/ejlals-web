@@ -440,8 +440,6 @@
 <!-- Meet Our Expert Scholars Section (Refined) -->
 <section class="relative py-16 bg-[#FDFBF7] overflow-hidden border-y border-brand-gold/5">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
         <!-- Section Header -->
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div class="max-w-xl">
@@ -471,9 +469,67 @@
             </div>
             @endforelse
         </div>
+        </div>
     </div>
 </section>
 
+<!-- Our Teaching Languages Section -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Playfair+Display:ital@1&display=swap');
+</style>
+<section class="bg-[#f7f9f6] py-[80px] px-[24px]">
+    <div class="max-w-[900px] mx-auto text-center">
+        <!-- Header Block -->
+        <div class="inline-block border border-[#2d6a4f] rounded-full px-[18px] py-[6px] bg-white text-[#2d6a4f] text-[11px] tracking-[1.5px] font-bold uppercase mb-[20px]">
+            Our Teaching Languages
+        </div>
+        
+        <h2 class="text-[38px] font-bold text-[#1a2e1f] mb-[14px] leading-tight">
+            We Teach Islam in Your Language
+        </h2>
+        
+        <p class="text-[15px] text-[#5a6e5f] max-w-[520px] mx-auto leading-[1.7] mb-[52px]">
+            Unlike most online Islamic academies, Ejlals teaches Quran and Islamic studies in Urdu, Punjabi and English — so you learn in the language your heart understands.
+        </p>
+
+        <!-- 3-Column Card Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[20px]">
+            <!-- Card 1: Urdu -->
+            <div class="bg-white border border-[#d4e6da] border-t-[3px] border-t-[#2d6a4f] rounded-[16px] pt-[36px] px-[24px] pb-[32px] text-center transition-all duration-300 hover:border-[#2d6a4f] hover:-translate-y-[3px]">
+                <div class="font-['Noto_Nastaliq_Urdu'] text-[38px] text-[#2d6a4f] leading-snug mb-2">
+                    اردو
+                </div>
+                <div class="w-[36px] h-[2px] bg-[#c9a84c] mx-auto mt-[12px] mb-[16px]"></div>
+                <h3 class="text-[15px] font-bold text-[#1a2e1f] mb-[12px]">Urdu Medium</h3>
+                <p class="text-[13px] text-[#6b7f70] leading-[1.65]">
+                    All courses available in Urdu. Perfect for Pakistani, Indian and diaspora Muslim communities worldwide.
+                </p>
+            </div>
+
+            <!-- Card 2: Punjabi -->
+            <div class="bg-white border border-[#d4e6da] border-t-[3px] border-t-[#c9a84c] rounded-[16px] pt-[36px] px-[24px] pb-[32px] text-center transition-all duration-300 hover:border-[#2d6a4f] hover:-translate-y-[3px]">
+                <div class="font-['Noto_Nastaliq_Urdu'] text-[38px] text-[#2d6a4f] leading-snug mb-2">
+                    پنجابی
+                </div>
+                <div class="w-[36px] h-[2px] bg-[#c9a84c] mx-auto mt-[12px] mb-[16px]"></div>
+                <h3 class="text-[15px] font-bold text-[#1a2e1f] mb-[12px]">Punjabi Medium</h3>
+                <p class="text-[13px] text-[#6b7f70] leading-[1.65]">
+                    Learn Islam in Punjabi — one of the very few online Islamic academies to offer full Punjabi-medium teaching.
+                </p>
+            </div>
+
+            <!-- Card 3: English -->
+            <div class="bg-white border border-[#d4e6da] border-t-[3px] border-t-[#2d6a4f] rounded-[16px] pt-[36px] px-[24px] pb-[32px] text-center transition-all duration-300 hover:border-[#2d6a4f] hover:-translate-y-[3px]">
+                <div class="font-['Playfair_Display'] italic text-[38px] text-[#c9a84c] leading-snug mb-2">
+                    English
+                </div>
+                <div class="w-[36px] h-[2px] bg-[#c9a84c] mx-auto mt-[12px] mb-[16px]"></div>
+                <h3 class="text-[15px] font-bold text-[#1a2e1f] mb-[12px]">English Medium</h3>
+                <p class="text-[13px] text-[#6b7f70] leading-[1.65]">
+                    All courses also available in English — ideal for new Muslims or those who prefer English instruction.
+                </p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -546,17 +602,19 @@
         </div>
         
         <div class="relative">
-            <!-- Wavy Gradient Line SVG (Centered between Step 1 and Step 4) -->
-            <div class="absolute left-[12.5%] w-[75%] h-24 -z-0 hidden lg:block opacity-30">
+            <!-- Wavy Dashed Line SVG (Centered between Step 1 and Step 4) -->
+            <div class="absolute top-12 left-[12.5%] w-[75%] h-16 z-0 hidden lg:block opacity-50">
                 <svg class="w-full h-full" viewBox="0 0 1000 100" fill="none" preserveAspectRatio="none">
                     <defs>
-                        <linearGradient id="step-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <linearGradient id="step-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stop-color="#138C90" />
+                            <stop offset="33%" stop-color="#EA7F26" />
+                            <stop offset="66%" stop-color="#138C90" />
                             <stop offset="100%" stop-color="#EA7F26" />
                         </linearGradient>
                     </defs>
-                    <path d="M0,50 C150,0 350,100 500,50 C650,0 850,100 1000,50" 
-                          stroke="url(#step-gradient)" stroke-width="10" stroke-linecap="round" fill="none" />
+                    <path d="M0,50 C100,0 230,100 333,50 C433,0 566,100 666,50 C766,0 900,100 1000,50" 
+                          stroke="url(#step-gradient)" stroke-width="2" stroke-dasharray="6 6" stroke-linecap="round" fill="none" />
                 </svg>
             </div>
             
@@ -564,11 +622,11 @@
                 <!-- Step 1 -->
                 <div class="flex flex-col items-center text-center relative group">
                     <div class="relative mb-10">
-                        <div class="step-circle step-circle-teal group-hover:shadow-xl transition-all duration-500">
-                            <span class="material-symbols-outlined text-6xl text-brand-teal icon-thin">edit_note</span>
+                        <div class="w-[88px] h-[88px] bg-white rounded-full flex items-center justify-center border border-slate-100 shadow-[0_8px_24px_rgba(0,0,0,0.04)] mx-auto relative z-10 group-hover:-translate-y-1 group-hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-500">
+                            <span class="material-symbols-outlined text-[28px] text-brand-teal">edit_note</span>
                         </div>
                     </div>
-                    <span class="text-brand-teal font-black text-sm mb-1 tracking-widest uppercase">Step 01</span>
+                    <span class="text-brand-teal font-bold text-[10px] mb-2 tracking-[0.3em] uppercase">Step 01</span>
                     <h3 class="font-serif font-black text-slate-900 text-2xl mb-3">Apply Online</h3>
                     <p class="text-[13px] text-slate-500 px-12 leading-relaxed font-medium">Fill out the application form with your academic and teaching information.</p>
                 </div>
@@ -576,11 +634,11 @@
                 <!-- Step 2 -->
                 <div class="flex flex-col items-center text-center relative group">
                     <div class="relative mb-10">
-                        <div class="step-circle step-circle-gold group-hover:shadow-xl transition-all duration-500">
-                            <span class="material-symbols-outlined text-6xl text-brand-gold icon-thin">forum</span>
+                        <div class="w-[88px] h-[88px] bg-white rounded-full flex items-center justify-center border border-slate-100 shadow-[0_8px_24px_rgba(0,0,0,0.04)] mx-auto relative z-10 group-hover:-translate-y-1 group-hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-500">
+                            <span class="material-symbols-outlined text-[28px] text-brand-gold">forum</span>
                         </div>
                     </div>
-                    <span class="text-brand-gold font-black text-sm mb-1 tracking-widest uppercase">Step 02</span>
+                    <span class="text-brand-gold font-bold text-[10px] mb-2 tracking-[0.3em] uppercase">Step 02</span>
                     <h3 class="font-serif font-black text-slate-900 text-2xl mb-3">Interview & Review</h3>
                     <p class="text-[13px] text-slate-500 px-12 leading-relaxed font-medium">Our academic team will review your profile and conduct an interview.</p>
                 </div>
@@ -588,11 +646,11 @@
                 <!-- Step 3 -->
                 <div class="flex flex-col items-center text-center relative group">
                     <div class="relative mb-10">
-                        <div class="step-circle step-circle-teal group-hover:shadow-xl transition-all duration-500">
-                            <span class="material-symbols-outlined text-6xl text-brand-teal icon-thin">verified_user</span>
+                        <div class="w-[88px] h-[88px] bg-white rounded-full flex items-center justify-center border border-slate-100 shadow-[0_8px_24px_rgba(0,0,0,0.04)] mx-auto relative z-10 group-hover:-translate-y-1 group-hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-500">
+                            <span class="material-symbols-outlined text-[28px] text-brand-teal">verified_user</span>
                         </div>
                     </div>
-                    <span class="text-brand-teal font-black text-sm mb-1 tracking-widest uppercase">Step 03</span>
+                    <span class="text-brand-teal font-bold text-[10px] mb-2 tracking-[0.3em] uppercase">Step 03</span>
                     <h3 class="font-serif font-black text-slate-900 text-2xl mb-3">Verification</h3>
                     <p class="text-[13px] text-slate-500 px-12 leading-relaxed font-medium">Upon successful evaluation, you'll be verified as an Ejlals Tutor.</p>
                 </div>
@@ -600,11 +658,11 @@
                 <!-- Step 4 -->
                 <div class="flex flex-col items-center text-center relative group">
                     <div class="relative mb-10">
-                        <div class="step-circle step-circle-gold group-hover:shadow-xl transition-all duration-500">
-                            <span class="material-symbols-outlined text-6xl text-brand-gold icon-thin">workspace_premium</span>
+                        <div class="w-[88px] h-[88px] bg-white rounded-full flex items-center justify-center border border-slate-100 shadow-[0_8px_24px_rgba(0,0,0,0.04)] mx-auto relative z-10 group-hover:-translate-y-1 group-hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-500">
+                            <span class="material-symbols-outlined text-[28px] text-brand-gold">workspace_premium</span>
                         </div>
                     </div>
-                    <span class="text-brand-gold font-black text-sm mb-1 tracking-widest uppercase">Step 04</span>
+                    <span class="text-brand-gold font-bold text-[10px] mb-2 tracking-[0.3em] uppercase">Step 04</span>
                     <h3 class="font-serif font-black text-slate-900 text-2xl mb-3">Start Teaching</h3>
                     <p class="text-[13px] text-slate-500 px-12 leading-relaxed font-medium">Create your tutor profile, set your schedule, and start inspiring students.</p>
                 </div>
@@ -1123,44 +1181,45 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="bg-[#FDFDFC] py-10 px-6">
-    <div class="max-w-3xl mx-auto">
-        <div class="text-center mb-8">
-            <span class="text-brand-teal font-bold text-[10px] uppercase tracking-[0.4em] mb-1 block">Clarifications</span>
+<section class="bg-[#FDFDFC] py-16 px-6">
+    <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-10">
+            <span class="text-brand-teal font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Clarifications</span>
             <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight">Frequently Asked Questions</h2>
         </div>
 
-        <div class="space-y-4">
+        <div class="space-y-3">
             <!-- FAQ 1 -->
-            <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden text-left">
-                <button class="w-full p-6 text-left flex items-center justify-between group focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-bold text-slate-800">How do the 1-on-1 sessions work?</span>
-                    <svg class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden text-left transition-all duration-300 hover:border-brand-teal/40 hover:shadow-lg hover:shadow-brand-teal/5 group">
+                <button class="w-full py-4 px-6 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-bold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px]">How do the 1-on-1 sessions work?</span>
+                    <svg class="w-5 h-5 text-slate-400 transition-all duration-300 group-hover:text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="p-6 pt-0 text-slate-500 hidden leading-relaxed">
+                <div class="px-6 pb-5 text-slate-500 hidden leading-relaxed text-sm">
                     Our 1-on-1 sessions are conducted via our interactive platform. Each student is assigned a dedicated scholar who fits their specific learning goals and pace.
                 </div>
             </div>
             <!-- FAQ 2 -->
-            <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden text-left">
-                <button class="w-full p-6 text-left flex items-center justify-between group focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-bold text-slate-800">Are the teachers verified scholars?</span>
-                    <svg class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden text-left transition-all duration-300 hover:border-brand-teal/40 hover:shadow-lg hover:shadow-brand-teal/5 group">
+                <button class="w-full py-4 px-6 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-bold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px]">Are the teachers verified scholars?</span>
+                    <svg class="w-5 h-5 text-slate-400 transition-all duration-300 group-hover:text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="p-6 pt-0 text-slate-500 hidden leading-relaxed">
+                <div class="px-6 pb-5 text-slate-500 hidden leading-relaxed text-sm">
                     Absolutely. Every instructor at Ejlals Academy undergoes a rigorous background check and verification of their scholarly credentials to ensure the highest quality of education.
                 </div>
             </div>
             <!-- FAQ 3 -->
-            <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden text-left">
-                <button class="w-full p-6 text-left flex items-center justify-between group focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-bold text-slate-800">Can I choose my lesson timings?</span>
-                    <svg class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden text-left transition-all duration-300 hover:border-brand-teal/40 hover:shadow-lg hover:shadow-brand-teal/5 group">
+                <button class="w-full py-4 px-6 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    <span class="font-bold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px]">Can I choose my lesson timings?</span>
+                    <svg class="w-5 h-5 text-slate-400 transition-all duration-300 group-hover:text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="p-6 pt-0 text-slate-500 hidden leading-relaxed">
+                <div class="px-6 pb-5 text-slate-500 hidden leading-relaxed text-sm">
                     Yes, flexibility is one of our key features. You can schedule your sessions at times that are most convenient for you and your family.
                 </div>
             </div>
         </div>
     </div>
+</section>
 @endsection
