@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Terms of Use - Ejlals Academy')
+@section('title', 'Terms of Service - Ejlals Academy')
+
+@section('json_ld')
+    {!! \App\Traits\HasSeoSchema::renderJsonLd(\App\Traits\HasSeoSchema::generateBreadcrumbs([
+        ['name' => 'Terms of Service', 'url' => route('terms')]
+    ])) !!}
+@endsection
 
 @section('content')
 <section class="bg-gray-50 py-20 px-6">

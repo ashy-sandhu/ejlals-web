@@ -2,6 +2,21 @@
 
 @section('title', 'Contact Us - Ejlals Academy')
 
+@section('json_ld')
+    @php
+        $contactSchema = [
+            "@context" => "https://schema.org",
+            "@type" => "ContactPage",
+            "mainEntity" => \App\Traits\HasSeoSchema::getOrganizationSchema()
+        ];
+        $breadcrumbSchema = \App\Traits\HasSeoSchema::generateBreadcrumbs([
+            ['name' => 'Contact Us', 'url' => route('contact')]
+        ]);
+    @endphp
+    {!! \App\Traits\HasSeoSchema::renderJsonLd($contactSchema) !!}
+    {!! \App\Traits\HasSeoSchema::renderJsonLd($breadcrumbSchema) !!}
+@endsection
+
 @section('content')
 <section class="bg-gray-50 py-20 px-6">
     <div class="max-w-7xl mx-auto">

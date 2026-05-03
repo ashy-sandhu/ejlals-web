@@ -3,6 +3,34 @@
 @section('title', 'Wirasat Visualizer - ' . config('app.name'))
 @section('meta_description', 'An advanced Islamic inheritance calculator for all four Sunni madhabs — Hanafi, Maliki, Shafi\'i, Hanbali.')
 
+@section('json_ld')
+    @php
+        // WebApplication Schema Data
+        $appSchema = [
+            "@context" => "https://schema.org",
+            "@type" => "WebApplication",
+            "name" => "Ejlal's Wirasat Visualizer",
+            "url" => route('tools.wirasat'),
+            "applicationCategory" => "FinanceApplication",
+            "operatingSystem" => "All",
+            "abstract" => "An advanced Islamic inheritance calculator for all four Sunni madhabs — Hanafi, Maliki, Shafi'i, Hanbali.",
+            "offers" => [
+                "@type" => "Offer",
+                "price" => "0",
+                "priceCurrency" => "USD"
+            ]
+        ];
+
+        // Breadcrumb Schema
+        $breadcrumbSchema = \App\Traits\HasSeoSchema::generateBreadcrumbs([
+            ['name' => 'Wirasat Visualizer', 'url' => route('tools.wirasat')]
+        ]);
+    @endphp
+
+    {!! \App\Traits\HasSeoSchema::renderJsonLd($appSchema) !!}
+    {!! \App\Traits\HasSeoSchema::renderJsonLd($breadcrumbSchema) !!}
+@endsection
+
 @section('content')
 <div class="fixed inset-0 pointer-events-none overflow-hidden" style="z-index: 0;">
     <div class="absolute top-[-20%] left-[-20%] w-[70%] h-[70%] rounded-full bg-emerald-500/15 blur-[120px] animate-glow-1"></div>

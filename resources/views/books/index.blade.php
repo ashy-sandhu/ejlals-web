@@ -2,6 +2,12 @@
 
 @section('title', 'Library - Ejlals Academy')
 
+@section('json_ld')
+    {!! \App\Traits\HasSeoSchema::renderJsonLd(\App\Traits\HasSeoSchema::generateBreadcrumbs([
+        ['name' => 'Library', 'url' => route('books.index')]
+    ])) !!}
+@endsection
+
 @section('content')
 <section class="relative bg-slate-900 overflow-hidden pt-32 pb-24 px-6 border-b border-white/5">
     <!-- Cinematic Background Image -->

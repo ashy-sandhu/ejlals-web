@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Careers - Ejlals Academy')
+@section('title', 'Join Our Team - Careers at Ejlals Academy')
+
+@section('json_ld')
+    {!! \App\Traits\HasSeoSchema::renderJsonLd(\App\Traits\HasSeoSchema::generateBreadcrumbs([
+        ['name' => 'Careers', 'url' => route('careers')]
+    ])) !!}
+@endsection
 
 @section('content')
 <section class="bg-white py-20 px-6">

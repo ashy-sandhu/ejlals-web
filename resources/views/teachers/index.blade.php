@@ -2,6 +2,12 @@
 
 @section('title', 'Scholars Directory - Ejlals Academy')
 
+@section('json_ld')
+    {!! \App\Traits\HasSeoSchema::renderJsonLd(\App\Traits\HasSeoSchema::generateBreadcrumbs([
+        ['name' => 'Scholars', 'url' => route('scholars.index')]
+    ])) !!}
+@endsection
+
 @section('content')
 <div class="bg-slate-50 min-h-screen py-8 lg:py-12">
     <div class="max-w-7xl mx-auto px-6">

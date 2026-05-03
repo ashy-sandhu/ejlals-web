@@ -71,9 +71,20 @@ class Course extends Model
         'seo_meta' => 'json',
     ];
 
+    use \App\Traits\HasSmartLinks;
+    use \App\Traits\HasSeoSchema;
+
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * SEO Smart Filtered Description
+     */
+    public function getRenderedDescriptionAttribute()
+    {
+        return $this->processLinks($this->description);
     }
 
     public function timeSlots()
@@ -89,5 +100,20 @@ class Course extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    /**
+     * Professional Course Schema
+     */
+    public function generateSchema(): array
+    {
+        return [
+            "@context" => "https://schema.org",
+            "@type" => "Course",
+            "name" => $this->title,
+            "description" => $this->summary ?? strip_tags(substr($this->description, 0, 160)),
+            "provider" => self::getOrganizationSchema(),
+            "image" => $this->image ? asset('storage/' . $this->image) : asset('storage/ejlals-horizontal-v1.svg')
+        ];
     }
 }

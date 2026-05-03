@@ -2,6 +2,19 @@
 
 @section('title', 'All Courses - Ejlals Academy')
 
+@section('json_ld')
+    @php
+        $breadcrumbItems = [['name' => 'Courses', 'url' => route('courses.index')]];
+        if(isset($selectedCategory) && $selectedCategory && $categories->firstWhere('slug', $selectedCategory)) {
+            $breadcrumbItems[] = [
+                'name' => $categories->firstWhere('slug', $selectedCategory)->name, 
+                'url' => route('courses.index', ['category' => $selectedCategory])
+            ];
+        }
+    @endphp
+    {!! \App\Traits\HasSeoSchema::renderJsonLd(\App\Traits\HasSeoSchema::generateBreadcrumbs($breadcrumbItems)) !!}
+@endsection
+
 @section('content')
 <section class="relative bg-slate-900 overflow-hidden pt-32 pb-24 px-6 border-b border-white/5">
     <!-- Cinematic Background Image -->
@@ -42,9 +55,22 @@
     <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between mb-6 pb-6 border-b border-gray-100">
             <div>
-                <h2 class="text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Academic Curriculum</h2>
+                <h2 class="text-sm font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">
+                    @if(isset($searchTerm) && $searchTerm)
+                        Search Results for: <span class="text-brand-teal">"{{ $searchTerm }}"</span>
+                    @else
+                        Academic Curriculum
+                    @endif
+                </h2>
                 <div class="h-1.5 w-8 bg-brand-gold rounded-full"></div>
             </div>
+            
+            @if(isset($searchTerm) && $searchTerm)
+                <a href="{{ route('courses.index') }}" class="text-xs font-bold text-slate-400 hover:text-brand-teal flex items-center gap-1 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    Clear Search
+                </a>
+            @endif
 
             <!-- Sleek Category Filter -->
             <div x-data="{ open: false }" class="relative">
@@ -131,8 +157,15 @@
                     </a>
                 </div>
             @empty
-                <div class="col-span-full py-20 text-center bg-slate-50 rounded-3xl border-2 border-dashed border-slate-100">
-                    <p class="text-slate-400 italic">No courses available at the moment. Please check back later!</p>
+                <div class="col-span-full py-20 text-center bg-slate-50 rounded-3xl border-2 border-dashed border-slate-100 animate-in fade-in zoom-in duration-500">
+                    <div class="flex flex-col items-center max-w-md mx-auto">
+                        <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center text-slate-300 mb-4">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <h3 class="text-slate-800 font-bold mb-2">No results found</h3>
+                        <p class="text-slate-500 text-sm mb-6">We couldn't find any courses matching <span class="text-brand-teal">"{{ $searchTerm ?? '' }}"</span>. Try checking your spelling or using more general keywords.</p>
+                        <a href="{{ route('courses.index') }}" class="bg-brand-teal text-white px-6 py-2 rounded-lg text-sm font-bold shadow-sm hover:shadow-lg transition-all">Explore All Courses</a>
+                    </div>
                 </div>
             @endforelse
         </div>

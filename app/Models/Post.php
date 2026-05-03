@@ -57,6 +57,9 @@ class Post extends Model
         'seo_meta' => 'json',
     ];
 
+    use \App\Traits\HasSmartLinks;
+    use \App\Traits\HasSeoSchema;
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -65,5 +68,33 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    /**
+     * SEO Smart Filtered Content
+     */
+    public function getRenderedContentAttribute()
+    {
+        return $this->processLinks($this->content);
+    }
+
+    /**
+     * Professional Article Schema
+     */
+    public function generateSchema(): array
+    {
+        return [
+            "@context" => "https://schema.org",
+            "@type" => "BlogPosting",
+            "headline" => $this->title,
+            "description" => $this->description ?? strip_tags(substr($this->content, 0, 160)),
+            "image" => $this->image ? asset('storage/' . $this->image) : asset('storage/ejlals-horizontal-v1.svg'),
+            "datePublished" => $this->created_at?->toIso8601String(),
+            "author" => [
+                "@type" => "Organization",
+                "name" => "Ejlals Editorial Team"
+            ],
+            "publisher" => self::getOrganizationSchema()
+        ];
     }
 }

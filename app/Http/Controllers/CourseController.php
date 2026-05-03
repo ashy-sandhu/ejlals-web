@@ -13,6 +13,7 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         $selectedCategory = $request->category;
+        $searchTerm = $request->search;
         
         $courses = Course::with('category')
             ->when($selectedCategory, function($query, $selectedCategory) {
@@ -20,13 +21,19 @@ class CourseController extends Controller
                     $q->where('slug', $selectedCategory);
                 });
             })
+            ->when($searchTerm, function($query, $searchTerm) {
+                return $query->where(function($q) use ($searchTerm) {
+                    $q->where('title', 'like', '%' . $searchTerm . '%')
+                      ->orWhere('description', 'like', '%' . $searchTerm . '%');
+                });
+            })
             ->latest()
-            ->paginate(4)
+            ->paginate(12)
             ->withQueryString();
 
         $categories = \App\Models\Category::whereHas('courses')->get();
 
-        return view('courses.index', compact('courses', 'categories', 'selectedCategory'));
+        return view('courses.index', compact('courses', 'categories', 'selectedCategory', 'searchTerm'));
     }
 
     /**

@@ -35,8 +35,58 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        <!-- Professional SEO Structured Data -->
+        {!! \App\Traits\HasSeoSchema::renderJsonLd(\App\Traits\HasSeoSchema::getOrganizationSchema()) !!}
+        @yield('json_ld')
     </head>
-    <body x-data="{ mobileMenuOpen: false }" class="bg-[#FDFDFC] text-[#1b1b18] antialiased">
+    <body x-data="{ mobileMenuOpen: false, searchOpen: false }" class="bg-[#FDFDFC] text-[#1b1b18] antialiased" @keydown.escape="searchOpen = false">
+        <!-- Search Overlay -->
+        <div x-show="searchOpen" 
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             class="fixed inset-0 z-[1000] bg-white/95 backdrop-blur-xl flex flex-col items-center justify-center p-6"
+             x-cloak>
+            
+            <button @click="searchOpen = false" class="absolute top-8 right-8 p-3 text-slate-400 hover:text-brand-teal transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div class="text-center mb-10">
+                    <img src="{{ asset('storage/ejlals-horizontal-v1.svg') }}" alt="Ejlals Logo" class="h-16 md:h-20 w-auto mx-auto mb-6 opacity-90">
+                    <span class="text-brand-teal font-bold text-xs uppercase tracking-[0.4em] mb-3 block">Premium Islamic Education</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-800 tracking-tight leading-snug">
+                        Discover Wisdom <br class="hidden md:block"> Across Our Academy
+                    </h2>
+                </div>
+
+                <form action="{{ route('search') }}" method="GET" class="relative group">
+                    <input type="text" 
+                           name="search" 
+                           placeholder="Search courses, scholars, or articles..." 
+                           class="w-full bg-transparent border-b-2 border-slate-200 py-6 text-2xl font-medium focus:outline-none focus:border-brand-teal transition-all placeholder:text-slate-300"
+                           x-ref="searchInput"
+                           autocomplete="off">
+                    
+                    <button type="submit" class="absolute right-0 top-1/2 -translate-y-1/2 p-4 text-slate-400 group-focus-within:text-brand-teal transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
+                </form>
+
+                <div class="mt-10 flex flex-wrap justify-center gap-3">
+                    <span class="text-slate-400 text-sm font-medium mr-2 self-center">Quick Links:</span>
+                    <a href="{{ route('search', ['search' => 'Quran']) }}" class="px-5 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-[11px] font-bold uppercase tracking-wider hover:border-brand-teal hover:text-brand-teal hover:bg-white transition-all">Quranic Studies</a>
+                    <a href="{{ route('search', ['search' => 'Hilal']) }}" class="px-5 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-[11px] font-bold uppercase tracking-wider hover:border-brand-teal hover:text-brand-teal hover:bg-white transition-all">Hilal Al-Quran</a>
+                    <a href="{{ route('scholars.index') }}" class="px-5 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-[11px] font-bold uppercase tracking-wider hover:border-brand-teal hover:text-brand-teal hover:bg-white transition-all">Our Scholars</a>
+                </div>
+            </div>
+        </div>
+
         <!-- Standard Navbar -->
         <nav id="main-navbar" class="relative z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-2">
             <div class="max-w-7xl mx-auto flex items-center justify-between">
@@ -100,6 +150,11 @@
                             </a>
                         </div>
                     </div>
+
+                    <!-- Unified Search Button -->
+                    <button @click="searchOpen = true; $nextTick(() => $refs.searchInput.focus())" class="ml-4 p-2 text-slate-400 hover:text-brand-teal hover:bg-slate-50 rounded-lg transition-all group" title="Search Everything">
+                        <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
                 </div>
 
                 <!-- Action Buttons -->
@@ -123,6 +178,10 @@
                         </div>
                     @endif
                     
+                    <button @click="searchOpen = true; $nextTick(() => $refs.searchInput.focus())" class="md:hidden p-2 text-slate-600 hover:text-brand-teal hover:bg-slate-50 rounded-lg transition-colors" aria-label="Open Search">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
+
                     <button @click="mobileMenuOpen = true" class="md:hidden p-2 -mr-2 text-slate-600 hover:text-brand-teal hover:bg-slate-50 rounded-lg transition-colors" aria-label="Toggle Mobile Menu">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
@@ -164,6 +223,13 @@
                     <!-- Navigation Links - Scrollable -->
                     <div class="flex-1 overflow-y-auto px-6 py-2">
                         <nav class="flex flex-col space-y-1.5">
+                            <a @click="mobileMenuOpen = false; searchOpen = true; $nextTick(() => $refs.searchInput.focus())" class="flex items-center justify-between px-4 py-2.5 rounded-lg text-[15px] font-medium transition-all text-slate-900 hover:bg-brand-teal/5 cursor-pointer">
+                                <div class="flex items-center gap-3">
+                                    <svg class="w-[18px] h-[18px] text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                    Search
+                                </div>
+                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </a>
                             <a href="/" class="flex items-center justify-between px-4 py-2.5 rounded-lg text-[15px] font-medium transition-all {{ request()->is('/') ? 'bg-brand-gold/10 text-brand-gold' : 'text-slate-900 hover:bg-brand-teal/5' }}">
                                 <div class="flex items-center gap-3">
                                     <svg class="w-[18px] h-[18px] {{ request()->is('/') ? 'text-brand-gold' : 'text-brand-teal' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg>

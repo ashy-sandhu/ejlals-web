@@ -97,6 +97,9 @@ Route::get('/terms', function () {
     return view('legal.terms');
 })->name('terms');
 
+// Global Search
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'index'])->name('search');
+
 // Scholars Directory
 Route::get('/scholars', [App\Http\Controllers\ScholarController::class, 'index'])->name('scholars.index');
 Route::get('/scholar/{slug}', [App\Http\Controllers\ScholarController::class, 'show'])->name('scholars.show');

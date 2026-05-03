@@ -2,6 +2,75 @@
 
 @section('title', 'Situational Dua Finder – Authentic Islamic Duas for Every Moment | Ejlals')
 
+@section('json_ld')
+    @php
+        // FAQ Schema Data
+        $faqSchema = [
+            "@context" => "https://schema.org",
+            "@type" => "FAQPage",
+            "mainEntity" => [
+                [
+                    "@type" => "Question",
+                    "name" => "What is the best dua for anxiety and stress?",
+                    "acceptedAnswer" => [
+                        "@type" => "Answer",
+                        "text" => "The Prophet ﷺ regularly recited the comprehensive dua from Sahih al-Bukhari 6369, seeking refuge from anxiety, sorrow, weakness, laziness, miserliness, cowardice, debt and being overpowered."
+                    ]
+                ],
+                [
+                    "@type" => "Question",
+                    "name" => "What is Dua-e-Yunus and when should I read it?",
+                    "acceptedAnswer" => [
+                        "@type" => "Answer",
+                        "text" => "Dua-e-Yunus (La ilaha illa anta subhanaka inni kuntu minaz-zalimin) was made by Prophet Yunus (AS) from inside the whale. It is recommended for extreme sadness, hopelessness, or any situation where you feel completely trapped."
+                    ]
+                ],
+                [
+                    "@type" => "Question",
+                    "name" => "Is there a dua for loneliness?",
+                    "acceptedAnswer" => [
+                        "@type" => "Answer",
+                        "text" => "Yes. The dua: Ya Hayyu ya Qayyum bi-rahmatika astaghith, aslih li sha'ni kullahu wa la takilni ila nafsi tarfata ayn is deeply recommended for feeling alone or overwhelmed."
+                    ]
+                ],
+                [
+                    "@type" => "Question",
+                    "name" => "Can duas be read in English?",
+                    "acceptedAnswer" => [
+                        "@type" => "Answer",
+                        "text" => "Yes. Allah ﷻ hears and responds to all sincere supplications in any language. The Arabic duas from Quran and Sunnah carry original blessing, but praying in your own language is fully valid."
+                    ]
+                ]
+            ]
+        ];
+
+        // WebApplication Schema Data
+        $appSchema = [
+            "@context" => "https://schema.org",
+            "@type" => "WebApplication",
+            "name" => "Situational Dua Finder",
+            "url" => route('tools.dua-finder'),
+            "applicationCategory" => "EducationalApplication",
+            "operatingSystem" => "All",
+            "abstract" => "Find authentic duas from Quran and Sunnah based on your current emotion or situation.",
+            "offers" => [
+                "@type" => "Offer",
+                "price" => "0",
+                "priceCurrency" => "USD"
+            ]
+        ];
+
+        // Breadcrumb Schema
+        $breadcrumbSchema = \App\Traits\HasSeoSchema::generateBreadcrumbs([
+            ['name' => 'Situational Dua Finder', 'url' => route('tools.dua-finder')]
+        ]);
+    @endphp
+
+    {!! \App\Traits\HasSeoSchema::renderJsonLd($faqSchema) !!}
+    {!! \App\Traits\HasSeoSchema::renderJsonLd($appSchema) !!}
+    {!! \App\Traits\HasSeoSchema::renderJsonLd($breadcrumbSchema) !!}
+@endsection
+
 @section('content')
 <!-- START OF EXACT DATA FROM situational Dua_Tool.html -->
 <style>
@@ -134,7 +203,7 @@
   <img src="{{ asset('images/illustrations/hero_dua_bg.png') }}" alt="" class="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] max-w-[1000px] opacity-[0.80] mix-blend-multiply pointer-events-none" style="z-index: -1; mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 65%); -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 65%);" aria-hidden="true">
 
   <div class="badge">✦ Authentic Duas from Quran &amp; Sunnah</div>
-  <h1>Find the Words<br><em>Your Heart Needs</em></h1>
+  <h1>Find the Duas<br><em>Your Heart Needs</em></h1>
   <p class="hero-sub">Select your emotion or situation to receive an authentic dua — Arabic text, transliteration, English meaning &amp; verified source.</p>
 </header>
 

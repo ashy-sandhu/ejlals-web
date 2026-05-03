@@ -2,6 +2,24 @@
 
 @section('title', 'Ejlals Academy - Learn, Grow & Build Knowledge')
 
+@section('json_ld')
+    @php
+        $websiteSchema = [
+            "@context" => "https://schema.org",
+            "@type" => "WebSite",
+            "name" => "Ejlals Academy",
+            "url" => url('/'),
+            "potentialAction" => [
+                "@type" => "SearchAction",
+                "target" => url('/courses') . "?search={search_term_string}",
+                "query-input" => "required name=search_term_string"
+            ],
+            "description" => "A premier digital sanctuary for Islamic learning, combining traditional wisdom with modern pedagogical excellence for the global Ummah."
+        ];
+    @endphp
+    {!! \App\Traits\HasSeoSchema::renderJsonLd($websiteSchema) !!}
+@endsection
+
 @section('content')
 <!-- Hero Carousel Section (Stitch Integration) -->
 <x-hero-carousel />

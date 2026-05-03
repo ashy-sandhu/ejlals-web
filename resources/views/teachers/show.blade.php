@@ -2,6 +2,14 @@
 
 @section('title', $scholar->name . ' - Expert Scholar Profile')
 
+@section('json_ld')
+    {!! $scholar->renderJsonLd($scholar->generateSchema()) !!}
+    {!! $scholar->renderJsonLd($scholar->generateBreadcrumbs([
+        ['name' => 'Scholars', 'url' => route('scholars.index')],
+        ['name' => $scholar->name, 'url' => route('scholars.show', $scholar->slug)]
+    ])) !!}
+@endsection
+
 @section('content')
 <div class="bg-slate-50 min-h-screen pt-4 pb-8 lg:pb-12 lg:pt-6">
     <div class="max-w-7xl mx-auto px-6">
@@ -131,7 +139,7 @@
                                 About Me
                             </h2>
                             <div class="prose prose-slate prose-sm max-w-none text-slate-600 leading-relaxed">
-                                {!! $scholar->about_me !!}
+                                {!! $scholar->rendered_about !!}
                             </div>
                         </div>
                         
@@ -143,7 +151,7 @@
                                 Experience Details
                             </h2>
                             <div class="prose prose-slate prose-sm max-w-none text-slate-600 leading-relaxed">
-                                {!! $scholar->experience_details !!}
+                                {!! $scholar->rendered_experience !!}
                             </div>
                         </div>
                     </div>

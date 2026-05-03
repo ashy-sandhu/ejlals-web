@@ -2,6 +2,22 @@
 
 @section('title', 'Academy Press - Repository of Wisdom')
 
+@section('json_ld')
+    @php
+        $breadcrumbItems = [['name' => 'Articles', 'url' => route('posts.index')]];
+        if(isset($selectedCategory) && $selectedCategory) {
+            $categoryModel = \App\Models\Category::where('slug', $selectedCategory)->first();
+            if($categoryModel) {
+                $breadcrumbItems[] = [
+                    'name' => $categoryModel->name, 
+                    'url' => route('posts.index', ['category' => $selectedCategory])
+                ];
+            }
+        }
+    @endphp
+    {!! \App\Traits\HasSeoSchema::renderJsonLd(\App\Traits\HasSeoSchema::generateBreadcrumbs($breadcrumbItems)) !!}
+@endsection
+
 @section('content')
 <div class="bg-slate-50 min-h-screen">
 <section class="relative bg-slate-900 overflow-hidden pt-32 pb-24 px-6 border-b border-white/5">
@@ -41,6 +57,24 @@
 
     <!-- Articles Grid -->
     <div class="max-w-7xl mx-auto px-6 py-20 pb-32">
+        @if(isset($selectedCategory) && $selectedCategory)
+            <div class="flex items-center justify-between mb-12 pb-6 border-b border-slate-200">
+                <div class="flex items-center gap-4">
+                    <div class="w-2 h-10 bg-brand-teal rounded-full"></div>
+                    <div>
+                        <h2 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Subject Area</h2>
+                        <h3 class="text-2xl font-serif font-bold text-slate-800 italic">
+                            "{{ \App\Models\Category::where('slug', $selectedCategory)->first()->name ?? $selectedCategory }}"
+                        </h3>
+                    </div>
+                </div>
+                <a href="{{ route('posts.index') }}" class="text-xs font-bold text-slate-400 hover:text-brand-teal flex items-center gap-1.5 transition-colors group">
+                    <svg class="w-4 h-4 group-hover:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    Clear Filter
+                </a>
+            </div>
+        @endif
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             @forelse($posts as $post)
             <div class="group bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-700 overflow-hidden flex flex-col h-full bg-slate-50/30">

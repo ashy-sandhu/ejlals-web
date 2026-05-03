@@ -2,6 +2,12 @@
 
 @section('title', 'Privacy Policy - Ejlals Academy')
 
+@section('json_ld')
+    {!! \App\Traits\HasSeoSchema::renderJsonLd(\App\Traits\HasSeoSchema::generateBreadcrumbs([
+        ['name' => 'Privacy Policy', 'url' => route('privacy')]
+    ])) !!}
+@endsection
+
 @section('content')
 <section class="bg-gray-50 py-20 px-6">
     <div class="max-w-4xl mx-auto">

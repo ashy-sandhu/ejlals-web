@@ -10,10 +10,21 @@ class PostController extends Controller
     /**
      * Display a listing of the posts.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with('category')->latest()->paginate(12);
-        return view('posts.index', compact('posts'));
+        $selectedCategory = $request->category;
+
+        $posts = Post::with('category')
+            ->when($selectedCategory, function($query, $selectedCategory) {
+                return $query->whereHas('category', function($q) use ($selectedCategory) {
+                    $q->where('slug', $selectedCategory);
+                });
+            })
+            ->latest()
+            ->paginate(12)
+            ->withQueryString();
+
+        return view('posts.index', compact('posts', 'selectedCategory'));
     }
 
     /**

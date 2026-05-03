@@ -2,6 +2,14 @@
 
 @section('title', $course->title . ' - Ejlals Academy')
 
+@section('json_ld')
+    {!! $course->renderJsonLd($course->generateSchema()) !!}
+    {!! $course->renderJsonLd($course->generateBreadcrumbs([
+        ['name' => 'Courses', 'url' => route('courses.index')],
+        ['name' => $course->title, 'url' => route('courses.show', $course->slug)]
+    ])) !!}
+@endsection
+
 @section('content')
 <div class="bg-[#FDFDFC] pt-12 pb-24 px-6">
     <div class="max-w-7xl mx-auto">
@@ -50,7 +58,7 @@
 
                 <div class="prose prose-slate prose-lg max-w-none mb-12">
                     <h3 class="text-2xl font-bold text-slate-800 mb-4">About the Course</h3>
-                    {!! $course->description !!}
+                    {!! $course->rendered_description !!}
                 </div>
 
                 @if($course->tags->count() > 0)

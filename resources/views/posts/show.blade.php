@@ -6,6 +6,14 @@
     @section('meta_image', Storage::url($post->image))
 @endif
 
+@section('json_ld')
+    {!! $post->renderJsonLd($post->generateSchema()) !!}
+    {!! $post->renderJsonLd($post->generateBreadcrumbs([
+        ['name' => 'Articles', 'url' => route('posts.index')],
+        ['name' => $post->title, 'url' => route('posts.show', $post->slug)]
+    ])) !!}
+@endsection
+
 @section('content')
 <div class="bg-slate-50 min-h-screen">
     <!-- Sophisticated, Compact Header -->
@@ -57,7 +65,7 @@
                         prose-p:text-slate-600 prose-p:leading-[1.8] prose-p:mb-6 prose-p:text-[1.05rem]
                         prose-a:text-brand-teal prose-a:font-bold prose-strong:text-slate-900 prose-strong:font-bold
                         prose-blockquote:border-l-4 prose-blockquote:border-brand-gold prose-blockquote:bg-slate-50 prose-blockquote:p-8 prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:text-slate-700">
-                        {!! $post->content !!}
+                        {!! $post->rendered_content !!}
                     </article>
 
                     @if($post->gallery && count($post->gallery) > 0)
@@ -122,7 +130,7 @@
                     <h5 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-6">Subject Area</h5>
                     <div class="flex flex-col gap-2">
                         @foreach($categories as $category)
-                        <a href="#" class="flex items-center justify-between px-4 py-3 rounded-lg bg-slate-50 hover:bg-brand-teal group transition-all">
+                        <a href="{{ route('posts.index', ['category' => $category->slug]) }}" class="flex items-center justify-between px-4 py-3 rounded-lg bg-slate-50 hover:bg-brand-teal group transition-all">
                             <span class="text-[11px] font-bold text-slate-500 group-hover:text-white">{{ $category->name }}</span>
                             <span class="text-[9px] font-bold text-slate-300 group-hover:text-white/40">{{ $category->posts_count }}</span>
                         </a>
