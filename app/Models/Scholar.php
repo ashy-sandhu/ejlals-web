@@ -23,6 +23,9 @@ class Scholar extends Model
         'rating',
         'is_verified',
         'is_featured',
+        'seo_title',
+        'seo_description',
+        'image_alt'
     ];
 
     protected $casts = [

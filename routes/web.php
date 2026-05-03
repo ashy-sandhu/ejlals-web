@@ -90,7 +90,7 @@ Route::get('/privacy-policy', function () {
 })->name('privacy');
 
 // Tools
-Route::get('/tools/dua-finder', [ToolController::class, 'duaFinder'])->name('tools.dua-finder');
+Route::get('/tools/dua-finder/{category?}', [App\Http\Controllers\ToolController::class, 'duaFinder'])->name('tools.dua-finder');
 Route::get('/tools/wirasat-visualizer', [ToolController::class, 'wirasat'])->name('tools.wirasat');
 
 Route::get('/terms', function () {

@@ -48,7 +48,10 @@ class Post extends Model
         'description',
         'category_id',
         'is_featured',
-        'seo_meta'
+        'seo_meta',
+        'seo_title',
+        'seo_description',
+        'image_alt'
     ];
 
     protected $casts = [

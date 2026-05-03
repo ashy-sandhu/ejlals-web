@@ -9,9 +9,9 @@ class ToolController extends Controller
     /**
      * Display the Situational Dua Finder tool.
      */
-    public function duaFinder()
+    public function duaFinder($category = null)
     {
-        return view('tools.dua-finder');
+        return view('tools.dua-finder', compact('category'));
     }
 
     /**

@@ -121,13 +121,13 @@
   width: var(--wm3-size, 350px);
 }
 
-.dua-body-full .hero{text-align:center;padding:16px; position: relative;}
-.dua-body-full .badge{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--g1),var(--g3));color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;border-radius:999px;margin-bottom:22px;box-shadow:0 4px 14px rgba(5,74,48,.25)}
-.dua-body-full .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,5vw,3rem);font-weight:700;color:var(--g1);line-height:1.15;margin-bottom:12px}
+.dua-body-full .hero{text-align:center;padding:8px; position: relative;}
+.dua-body-full .badge{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--g1),var(--g3));color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;border-radius:999px;margin-bottom:12px;box-shadow:0 4px 14px rgba(5,74,48,.25)}
+.dua-body-full .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,5vw,2.5rem);font-weight:700;color:var(--g1);line-height:1.15;margin-bottom:8px}
 .dua-body-full .hero h1 em{font-style:italic;color:var(--gold)}
-.dua-body-full .hero-sub{font-size:clamp(0.875rem,2vw,1rem);color:var(--muted);max-width:500px;margin:0 auto 1  0px;line-height:1.6}
-.dua-body-full .bismillah{font-family:'Noto Naskh Arabic',serif;font-size:clamp(1.5rem,4vw,2rem);color:var(--g2);margin:12px 0 0;direction:rtl;letter-spacing:.02em;opacity:.65}
-.dua-body-full .tab-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:24px}
+.dua-body-full .hero-sub{font-size:clamp(0.875rem,2vw,1rem);color:var(--muted);max-width:500px;margin:0 auto 16px;line-height:1.5}
+.dua-body-full .bismillah{display:none;}
+.dua-body-full .tab-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:20px}
 .dua-body-full .tab{background:var(--parch);border:1.5px solid var(--border);border-radius:999px;padding:10px 22px;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:500;color:var(--muted);cursor:pointer;transition:var(--ease);white-space:nowrap}
 .dua-body-full .tab.on{background:linear-gradient(135deg,var(--g1),var(--g2));border-color:transparent;color:#fff;box-shadow:0 5px 18px rgba(5,74,48,.3)}
 .dua-body-full .tab:hover:not(.on){color:var(--g2);border-color:var(--g3);background:#fff}
@@ -205,6 +205,11 @@
   <div class="badge">✦ Authentic Duas from Quran &amp; Sunnah</div>
   <h1>Find the Duas<br><em>Your Heart Needs</em></h1>
   <p class="hero-sub">Select your emotion or situation to receive an authentic dua — Arabic text, transliteration, English meaning &amp; verified source.</p>
+  
+  <div style="max-width: 480px; margin: 0 auto 20px; position: relative; z-index: 20;">
+      <span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">search</span>
+      <input type="text" id="dua-search" placeholder="Search for anxiety, forgiveness, rain..." onkeyup="searchDuas(this.value)" class="w-full pl-12 pr-5 py-3.5 rounded-full border-2 border-slate-100 bg-white shadow-lg shadow-brand-teal/5 focus:outline-none focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 text-sm transition-all" style="font-family: 'Inter', sans-serif;">
+  </div>
 </header>
 
 <nav class="tab-row" role="tablist">
@@ -474,14 +479,40 @@ tawbah:{title:"Dua of Adam (AS) — For Complete Repentance",arabic:"رَبَّ�
 
 let cur=null;
 
-function swTab(name,el){
+const slugMap = {
+    'emotions': 'emotional-duas',
+    'situations': 'situational-duas',
+    'daily': 'daily-prayers',
+    'special': 'special-duas'
+};
+
+function swTab(name, el, updateUrl = true){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
   el.classList.add('on');
   document.getElementById('panel-'+name).classList.add('on');
   document.getElementById('dua-card').style.display='none';
   document.querySelectorAll('.btn').forEach(b=>b.classList.remove('sel'));
+
+  if(updateUrl && slugMap[name]) {
+      const newUrl = "{{ route('tools.dua-finder') }}/" + slugMap[name];
+      window.history.pushState(null, '', newUrl);
+  }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const currentCategory = "{{ $category ?? '' }}";
+    let initialTab = 'emotions';
+    
+    if (currentCategory === 'situational-duas') initialTab = 'situations';
+    else if (currentCategory === 'daily-prayers') initialTab = 'daily';
+    else if (currentCategory === 'special-duas') initialTab = 'special';
+
+    const tabButton = document.querySelector(`.tab[onclick*="swTab('${initialTab}'"]`);
+    if (tabButton) {
+        swTab(initialTab, tabButton, false);
+    }
+});
 
 function show(id,el){
   const d=db[id];if(!d)return;cur=d;
@@ -513,6 +544,40 @@ function shareDua(){
   const t=`${cur.title}\n\n${cur.arabic}\n\n"${cur.transl}"\n\nSource: ${cur.ref}\n\nMore authentic duas → ejlals.com/dua-finder/`;
   if(navigator.share){navigator.share({title:cur.title,text:t})}
   else{navigator.clipboard.writeText(t).then(()=>alert('Dua copied to clipboard for sharing!'))}
+}
+
+function searchDuas(query) {
+    query = query.toLowerCase().trim();
+    const isSearching = query.length > 0;
+    
+    if (isSearching) {
+        document.querySelector('.tab-row').style.display = 'none';
+        document.querySelectorAll('.panel').forEach(p => {
+            p.style.display = 'block';
+            if(p.querySelector('.panel-label')) p.querySelector('.panel-label').style.display = 'none';
+        });
+        
+        document.querySelectorAll('.btn').forEach(btn => {
+            const title = btn.querySelector('.btn-name').textContent.toLowerCase();
+            const sub = btn.querySelector('.btn-sub').textContent.toLowerCase();
+            if (title.includes(query) || sub.includes(query)) {
+                btn.style.display = 'flex';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+    } else {
+        document.querySelector('.tab-row').style.display = 'flex';
+        document.querySelectorAll('.panel').forEach(p => {
+            p.style.display = '';
+            if(p.querySelector('.panel-label')) p.querySelector('.panel-label').style.display = 'block';
+        });
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.style.display = 'flex';
+        });
+        const activeTab = document.querySelector('.tab.on');
+        if(activeTab) activeTab.click();
+    }
 }
 </script>
 @endsection

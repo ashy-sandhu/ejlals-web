@@ -16,10 +16,13 @@ class Book extends Model
         'category_id',
         'is_featured',
         'image',
+        'image_alt',
         'download_type',
         'download_file',
         'download_link',
-        'seo_meta'
+        'seo_meta',
+        'seo_title',
+        'seo_description'
     ];
 
     protected $casts = [

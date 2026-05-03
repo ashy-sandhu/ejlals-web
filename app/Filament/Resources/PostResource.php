@@ -54,10 +54,45 @@ class PostResource extends Resource
                                             ->columnSpanFull(),
                                     ])->columns(2),
 
-                                Forms\Components\Section::make('SEO Analysis')
+                                Forms\Components\Section::make('Search Engine Optimization (SEO)')
+                                    ->description('Manage how this article appears on Google and Social Media.')
                                     ->schema([
-                                        Forms\Components\KeyValue::make('seo_meta')
-                                            ->label('Meta Tags'),
+                                        Forms\Components\Grid::make(2)
+                                            ->schema([
+                                                Forms\Components\TextInput::make('seo_title')
+                                                    ->label('Meta Title')
+                                                    ->helperText('Ideal: 50-60 chars.')
+                                                    ->maxLength(100),
+                                                Forms\Components\Textarea::make('seo_description')
+                                                    ->label('Meta Description')
+                                                    ->helperText('Ideal: 150-160 chars.')
+                                                    ->rows(3)
+                                                    ->maxLength(200),
+                                            ]),
+
+                                        Forms\Components\Tabs::make('Social Visibility')
+                                            ->tabs([
+                                                Forms\Components\Tabs\Tab::make('Facebook (Open Graph)')
+                                                    ->icon('heroicon-o-share')
+                                                    ->schema([
+                                                        Forms\Components\TextInput::make('seo_meta.og_title')->label('OG Title'),
+                                                        Forms\Components\Textarea::make('seo_meta.og_description')->label('OG Description')->rows(2),
+                                                        Forms\Components\FileUpload::make('seo_meta.og_image')
+                                                            ->label('OG Image')
+                                                            ->image()
+                                                            ->directory('seo/og'),
+                                                    ]),
+                                                Forms\Components\Tabs\Tab::make('Twitter (X)')
+                                                    ->icon('heroicon-o-hashtag')
+                                                    ->schema([
+                                                        Forms\Components\TextInput::make('seo_meta.twitter_title')->label('Twitter Title'),
+                                                        Forms\Components\Textarea::make('seo_meta.twitter_description')->label('Twitter Description')->rows(2),
+                                                        Forms\Components\FileUpload::make('seo_meta.twitter_image')
+                                                            ->label('Twitter Image')
+                                                            ->image()
+                                                            ->directory('seo/twitter'),
+                                                    ]),
+                                            ])->columnSpanFull(),
                                     ])->collapsible()->collapsed(),
                             ])->columnSpan(8),
 
@@ -85,6 +120,10 @@ class PostResource extends Resource
                                             ->maxSize(2048)
                                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                                             ->directory('posts/featured'),
+                                        Forms\Components\TextInput::make('image_alt')
+                                            ->label('Image Alt Text')
+                                            ->placeholder('Describe this image for SEO')
+                                            ->maxLength(255),
                                     ]),
 
                                 Forms\Components\Section::make('Gallery')

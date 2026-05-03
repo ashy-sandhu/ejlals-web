@@ -77,40 +77,43 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             @forelse($posts as $post)
-            <div class="group bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-700 overflow-hidden flex flex-col h-full bg-slate-50/30">
-                <!-- Image Container -->
-                <div class="relative aspect-[16/10] overflow-hidden bg-slate-100">
+            <div class="group relative bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-700 overflow-hidden flex flex-col h-full bg-slate-50/30">
+                <a href="{{ route('posts.show', $post->slug) }}" class="absolute inset-0 z-10" aria-label="Read {{ $post->title }}"></a>
+                
+                <!-- Card Content -->
+                <div class="relative h-64 overflow-hidden">
                     @if($post->image)
-                        <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                        <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     @else
-                        <div class="w-full h-full bg-slate-900 flex items-center justify-center">
-                            <span class="text-brand-gold/20 font-bold uppercase tracking-widest">Ejlals Press</span>
+                        <div class="w-full h-full bg-slate-200 flex items-center justify-center">
+                            <span class="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Ejlals Wisdom</span>
                         </div>
                     @endif
-                    <div class="absolute top-6 left-6">
-                        <span class="bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-slate-100 shadow-sm">
-                            {{ $post->category->name ?? 'Article' }}
+                    <div class="absolute top-6 left-6 z-20">
+                        <span class="px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[9px] font-black text-brand-teal uppercase tracking-widest shadow-sm">
+                            {{ $post->category->name ?? 'Islamic Posts' }}
                         </span>
                     </div>
                 </div>
 
-                <!-- Content -->
-                <div class="p-10 flex-1 flex flex-col">
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="text-brand-gold text-[10px] font-bold uppercase tracking-widest">{{ $post->created_at->format('M d, Y') }}</span>
-                        <span class="text-slate-200">|</span>
-                        <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Read</span>
+                <div class="p-6 md:p-7 flex flex-col flex-1">
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">{{ $post->created_at->format('M d, Y') }}</span>
+                        <span class="h-1 w-1 rounded-full bg-slate-300"></span>
+                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em]">5 Min Read</span>
                     </div>
-                    <h3 class="text-xl font-extrabold text-slate-800 group-hover:text-brand-teal transition-colors mb-4 leading-tight line-clamp-2">{{ $post->title }}</h3>
-                    <p class="text-slate-500 text-sm mb-10 line-clamp-3 leading-relaxed">
+                    
+                    <h2 class="text-lg md:text-xl font-bold text-slate-800 mb-3 group-hover:text-brand-teal transition-colors leading-tight line-clamp-1">
+                        {{ $post->title }}
+                    </h2>
+                    
+                    <p class="text-slate-500 text-xs leading-relaxed mb-5 line-clamp-2">
                         {{ Str::limit(strip_tags($post->content), 120) }}
                     </p>
-                    
-                    <div class="mt-auto pt-8 border-t border-slate-50 flex items-center justify-between">
-                        <a href="{{ route('posts.show', $post->slug) }}" class="flex items-center gap-2 text-brand-teal font-extrabold text-xs uppercase tracking-widest group/btn">
-                            Full Article
-                            <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
+
+                    <div class="mt-auto pt-5 border-t border-slate-100 flex items-center justify-between">
+                        <span class="text-[9px] font-black text-brand-teal uppercase tracking-[0.2em] group-hover:tracking-[0.3em] transition-all">Full Article</span>
+                        <svg class="w-4 h-4 text-brand-teal transform group-hover:translate-x-2 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </div>
                 </div>
             </div>

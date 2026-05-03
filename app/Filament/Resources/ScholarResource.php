@@ -76,6 +76,10 @@ class ScholarResource extends Resource
                             ->disk('public')
                             ->directory('scholars')
                             ->visibility('public'),
+                        Forms\Components\TextInput::make('image_alt')
+                            ->label('Photo Alt Text')
+                            ->placeholder('e.g. Portrait of Hafiza Faryal Zahra')
+                            ->maxLength(255),
                         Forms\Components\Toggle::make('is_verified')
                             ->label('Verified Scholar')
                             ->default(false),
@@ -83,6 +87,30 @@ class ScholarResource extends Resource
                             ->label('Featured on Homepage')
                             ->default(false),
                     ]),
+
+                    Forms\Components\Section::make('Search Engine Optimization (SEO)')
+                        ->schema([
+                            Forms\Components\TextInput::make('seo_title')
+                                ->label('Meta Title')
+                                ->maxLength(100),
+                            Forms\Components\Textarea::make('seo_description')
+                                ->label('Meta Description')
+                                ->rows(3)
+                                ->maxLength(200),
+                            Forms\Components\Tabs::make('Social Cards')
+                                ->tabs([
+                                    Forms\Components\Tabs\Tab::make('Facebook')
+                                        ->schema([
+                                            Forms\Components\TextInput::make('seo_meta.og_title')->label('OG Title'),
+                                            Forms\Components\Textarea::make('seo_meta.og_description')->label('OG Description')->rows(2),
+                                        ]),
+                                    Forms\Components\Tabs\Tab::make('Twitter')
+                                        ->schema([
+                                            Forms\Components\TextInput::make('seo_meta.twitter_title')->label('Twitter Title'),
+                                            Forms\Components\Textarea::make('seo_meta.twitter_description')->label('Twitter Description')->rows(2),
+                                        ]),
+                                ])->columnSpanFull(),
+                        ])->collapsible()->collapsed(),
 
                     Forms\Components\Section::make('Teaching Details')->schema([
                         Forms\Components\TextInput::make('teaching_experience')

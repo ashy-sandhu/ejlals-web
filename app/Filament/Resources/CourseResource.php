@@ -87,6 +87,10 @@ class CourseResource extends Resource
                                             ->maxSize(2048)
                                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
                                             ->directory('courses/covers'),
+                                        Forms\Components\TextInput::make('image_alt')
+                                            ->label('Cover Alt Text')
+                                            ->placeholder('e.g. Students learning Quran online')
+                                            ->maxLength(255),
                                     ]),
 
                                 Forms\Components\Section::make('Gallery/Assets')
@@ -102,10 +106,28 @@ class CourseResource extends Resource
                                             ->directory('courses/gallery'),
                                     ]),
 
-                                Forms\Components\Section::make('SEO Analysis')
+                                Forms\Components\Section::make('Search Engine Optimization (SEO)')
                                     ->schema([
-                                        Forms\Components\KeyValue::make('seo_meta')
-                                            ->label('Meta Tags'),
+                                        Forms\Components\TextInput::make('seo_title')
+                                            ->label('Meta Title')
+                                            ->maxLength(100),
+                                        Forms\Components\Textarea::make('seo_description')
+                                            ->label('Meta Description')
+                                            ->rows(3)
+                                            ->maxLength(200),
+                                        Forms\Components\Tabs::make('Social Cards')
+                                            ->tabs([
+                                                Forms\Components\Tabs\Tab::make('Facebook')
+                                                    ->schema([
+                                                        Forms\Components\TextInput::make('seo_meta.og_title')->label('OG Title'),
+                                                        Forms\Components\Textarea::make('seo_meta.og_description')->label('OG Description')->rows(2),
+                                                    ]),
+                                                Forms\Components\Tabs\Tab::make('Twitter')
+                                                    ->schema([
+                                                        Forms\Components\TextInput::make('seo_meta.twitter_title')->label('Twitter Title'),
+                                                        Forms\Components\Textarea::make('seo_meta.twitter_description')->label('Twitter Description')->rows(2),
+                                                    ]),
+                                            ])->columnSpanFull(),
                                     ])->collapsible()->collapsed(),
                             ])->columnSpan(4),
                     ]),

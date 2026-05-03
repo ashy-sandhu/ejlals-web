@@ -61,8 +61,11 @@ class Course extends Model
         'is_featured',
         'instructor_name',
         'image',
+        'image_alt',
         'gallery',
-        'seo_meta'
+        'seo_meta',
+        'seo_title',
+        'seo_description'
     ];
 
     protected $casts = [
