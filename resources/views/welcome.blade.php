@@ -1181,44 +1181,158 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="bg-[#FDFDFC] py-16 px-6">
-    <div class="max-w-2xl mx-auto">
-        <div class="text-center mb-10">
-            <span class="text-brand-teal font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Clarifications</span>
-            <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight">Frequently Asked Questions</h2>
+<section class="bg-[#FDFDFC] py-24 px-6 relative overflow-hidden" x-data="{ activeFaq: null }">
+    <!-- Subtle Background Decor -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-teal/5 rounded-full -mr-48 -mt-48 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-gold/5 rounded-full -ml-48 -mb-48 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 mb-4">
+                <span class="material-symbols-outlined text-brand-gold text-sm">quiz</span>
+                <span class="text-[10px] font-bold text-brand-gold uppercase tracking-[0.3em]">Common Inquiries</span>
+            </div>
+            <h2 class="text-3xl md:text-5xl font-serif font-black text-slate-900 tracking-tight mb-4">Frequently Asked Questions</h2>
+            <p class="text-slate-500 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+                Everything you need to know about our online Islamic academy and how we help students grow in faith and character.
+            </p>
         </div>
 
-        <div class="space-y-3">
-            <!-- FAQ 1 -->
-            <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden text-left transition-all duration-300 hover:border-brand-teal/40 hover:shadow-lg hover:shadow-brand-teal/5 group">
-                <button class="w-full py-4 px-6 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-bold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px]">How do the 1-on-1 sessions work?</span>
-                    <svg class="w-5 h-5 text-slate-400 transition-all duration-300 group-hover:text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div class="px-6 pb-5 text-slate-500 hidden leading-relaxed text-sm">
-                    Our 1-on-1 sessions are conducted via our interactive platform. Each student is assigned a dedicated scholar who fits their specific learning goals and pace.
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 items-start">
+            <!-- Column 1 -->
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-2xl border transition-all duration-300 group"
+                     :class="activeFaq === 1 ? 'border-brand-teal/40 shadow-xl shadow-brand-teal/5' : 'border-slate-100'">
+                    <button class="w-full py-5 px-7 text-left flex items-center justify-between focus:outline-none" @click="activeFaq = (activeFaq === 1 ? null : 1)">
+                        <span class="font-semibold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px] md:text-[16px]">Do you teach Quran and Islamic studies in Urdu online?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-all duration-300" :class="activeFaq === 1 ? 'rotate-180 text-brand-teal' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="grid transition-all duration-300 ease-in-out" :class="activeFaq === 1 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                        <div class="overflow-hidden">
+                            <div class="px-7 pb-6 text-slate-500 leading-relaxed text-sm">
+                                Yes, all our courses at Ejlals Islamic Horizon are available in Urdu. This includes Quran recitation, Tajweed, Islamic studies, women's masail, Arabic language and daily adhkar. We also teach in Punjabi and English. This makes us one of the very few online Islamic academies offering full Urdu and Punjabi medium instruction.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-2xl border transition-all duration-300 group"
+                     :class="activeFaq === 2 ? 'border-brand-teal/40 shadow-xl shadow-brand-teal/5' : 'border-slate-100'">
+                    <button class="w-full py-5 px-7 text-left flex items-center justify-between focus:outline-none" @click="activeFaq = (activeFaq === 2 ? null : 2)">
+                        <span class="font-semibold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px] md:text-[16px]">Can my child learn Quran online with you?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-all duration-300" :class="activeFaq === 2 ? 'rotate-180 text-brand-teal' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="grid transition-all duration-300 ease-in-out" :class="activeFaq === 2 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                        <div class="overflow-hidden">
+                            <div class="px-7 pb-6 text-slate-500 leading-relaxed text-sm">
+                                Absolutely. We offer online Quran classes for kids starting from age 5. Our children's program begins with Noorani Qaida and progresses to full Quran recitation with Tajweed. All children's classes are one-on-one, patient, and available in Urdu, Punjabi or English.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-2xl border transition-all duration-300 group"
+                     :class="activeFaq === 3 ? 'border-brand-teal/40 shadow-xl shadow-brand-teal/5' : 'border-slate-100'">
+                    <button class="w-full py-5 px-7 text-left flex items-center justify-between focus:outline-none" @click="activeFaq = (activeFaq === 3 ? null : 3)">
+                        <span class="font-semibold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px] md:text-[16px]">I am a new Muslim. Do you have classes for me?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-all duration-300" :class="activeFaq === 3 ? 'rotate-180 text-brand-teal' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="grid transition-all duration-300 ease-in-out" :class="activeFaq === 3 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                        <div class="overflow-hidden">
+                            <div class="px-7 pb-6 text-slate-500 leading-relaxed text-sm">
+                                Yes, we have a dedicated program for new Muslims. It covers the basics of Islamic belief, how to perform salah (prayer), Quran reading from scratch, and everyday Islamic knowledge. Classes are available in English with Urdu support if needed. Our teachers are welcoming, patient and experienced in teaching new Muslims.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-white rounded-2xl border transition-all duration-300 group"
+                     :class="activeFaq === 4 ? 'border-brand-teal/40 shadow-xl shadow-brand-teal/5' : 'border-slate-100'">
+                    <button class="w-full py-5 px-7 text-left flex items-center justify-between focus:outline-none" @click="activeFaq = (activeFaq === 4 ? null : 4)">
+                        <span class="font-semibold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px] md:text-[16px]">Do you offer Islamic classes specifically for women?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-all duration-300" :class="activeFaq === 4 ? 'rotate-180 text-brand-teal' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="grid transition-all duration-300 ease-in-out" :class="activeFaq === 4 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                        <div class="overflow-hidden">
+                            <div class="px-7 pb-6 text-slate-500 leading-relaxed text-sm">
+                                Yes. We have a dedicated women's Islamic studies program that covers women's masail (personal and religious questions), purification, prayer rulings, and Islamic knowledge relevant to sisters. Classes are taught by qualified female teachers, privately and comfortably, in Urdu or English.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- FAQ 2 -->
-            <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden text-left transition-all duration-300 hover:border-brand-teal/40 hover:shadow-lg hover:shadow-brand-teal/5 group">
-                <button class="w-full py-4 px-6 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-bold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px]">Are the teachers verified scholars?</span>
-                    <svg class="w-5 h-5 text-slate-400 transition-all duration-300 group-hover:text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div class="px-6 pb-5 text-slate-500 hidden leading-relaxed text-sm">
-                    Absolutely. Every instructor at Ejlals Academy undergoes a rigorous background check and verification of their scholarly credentials to ensure the highest quality of education.
+
+            <!-- Column 2 -->
+            <div class="space-y-4">
+                <!-- FAQ 5 -->
+                <div class="bg-white rounded-2xl border transition-all duration-300 group"
+                     :class="activeFaq === 5 ? 'border-brand-teal/40 shadow-xl shadow-brand-teal/5' : 'border-slate-100'">
+                    <button class="w-full py-5 px-7 text-left flex items-center justify-between focus:outline-none" @click="activeFaq = (activeFaq === 5 ? null : 5)">
+                        <span class="font-semibold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px] md:text-[16px]">How does the free trial class work?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-all duration-300" :class="activeFaq === 5 ? 'rotate-180 text-brand-teal' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="grid transition-all duration-300 ease-in-out" :class="activeFaq === 5 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                        <div class="overflow-hidden">
+                            <div class="px-7 pb-6 text-slate-500 leading-relaxed text-sm">
+                                Your first three classes are completely free with no obligation. Simply contact us, tell us what course you want and your preferred language, and we will schedule a one-on-one trial class via Zoom, Skype or WhatsApp. After the trial, if you are happy, we set up a regular schedule and payment plan. There is no pressure.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="bg-white rounded-2xl border transition-all duration-300 group"
+                     :class="activeFaq === 6 ? 'border-brand-teal/40 shadow-xl shadow-brand-teal/5' : 'border-slate-100'">
+                    <button class="w-full py-5 px-7 text-left flex items-center justify-between focus:outline-none" @click="activeFaq = (activeFaq === 6 ? null : 6)">
+                        <span class="font-semibold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px] md:text-[16px]">What countries do you teach in?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-all duration-300" :class="activeFaq === 6 ? 'rotate-180 text-brand-teal' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="grid transition-all duration-300 ease-in-out" :class="activeFaq === 6 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                        <div class="overflow-hidden">
+                            <div class="px-7 pb-6 text-slate-500 leading-relaxed text-sm">
+                                We teach students worldwide. Our students are based in the UK, USA, Canada, Australia, New Zealand, Pakistan, Saudi Arabia and beyond. Because all classes are online and one-on-one, we work around your timezone and schedule wherever you are in the world.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="bg-white rounded-2xl border transition-all duration-300 group"
+                     :class="activeFaq === 7 ? 'border-brand-teal/40 shadow-xl shadow-brand-teal/5' : 'border-slate-100'">
+                    <button class="w-full py-5 px-7 text-left flex items-center justify-between focus:outline-none" @click="activeFaq = (activeFaq === 7 ? null : 7)">
+                        <span class="font-semibold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px] md:text-[16px]">I want to learn Quran online — where do I start?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-all duration-300" :class="activeFaq === 7 ? 'rotate-180 text-brand-teal' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="grid transition-all duration-300 ease-in-out" :class="activeFaq === 7 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                        <div class="overflow-hidden">
+                            <div class="px-7 pb-6 text-slate-500 leading-relaxed text-sm">
+                                The best place to start is our free trial class. Whether you are a complete beginner who wants to learn Quran online from scratch, or an intermediate student wanting to improve Tajweed. We assess your current level in your first session and create a personalised learning plan from there.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 8 -->
+                <div class="bg-white rounded-2xl border transition-all duration-300 group"
+                     :class="activeFaq === 8 ? 'border-brand-teal/40 shadow-xl shadow-brand-teal/5' : 'border-slate-100'">
+                    <button class="w-full py-5 px-7 text-left flex items-center justify-between focus:outline-none" @click="activeFaq = (activeFaq === 8 ? null : 8)">
+                        <span class="font-semibold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px] md:text-[16px]">Are your teachers qualified?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-all duration-300" :class="activeFaq === 8 ? 'rotate-180 text-brand-teal' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="grid transition-all duration-300 ease-in-out" :class="activeFaq === 8 ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
+                        <div class="overflow-hidden">
+                            <div class="px-7 pb-6 text-slate-500 leading-relaxed text-sm">
+                                Yes. All our teachers at Ejlals Online Islamic Horizon hold formal Islamic qualifications in Quran, Tajweed, Islamic studies or fiqh. Female courses are taught by qualified female teachers. Our teachers are experienced in online teaching and are patient, supportive educators.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- FAQ 3 -->
-            <div class="bg-white rounded-2xl border border-slate-100 overflow-hidden text-left transition-all duration-300 hover:border-brand-teal/40 hover:shadow-lg hover:shadow-brand-teal/5 group">
-                <button class="w-full py-4 px-6 text-left flex items-center justify-between focus:outline-none" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
-                    <span class="font-bold text-slate-800 group-hover:text-brand-gold transition-colors duration-300 text-[15px]">Can I choose my lesson timings?</span>
-                    <svg class="w-5 h-5 text-slate-400 transition-all duration-300 group-hover:text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div class="px-6 pb-5 text-slate-500 hidden leading-relaxed text-sm">
-                    Yes, flexibility is one of our key features. You can schedule your sessions at times that are most convenient for you and your family.
-                </div>
-            </div>
+        </div>
         </div>
     </div>
 </section>
