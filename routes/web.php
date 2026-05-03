@@ -69,9 +69,9 @@ Route::get('/debug-php', function () {
 });
 
 
-Route::get('/posts', [PostController::class , 'index'])->name('posts.index');
+Route::get('/learn', [PostController::class , 'index'])->name('posts.index');
 
-Route::get('/posts/{slug}', [PostController::class , 'show'])->name('posts.show');
+Route::get('/learn/{slug}', [PostController::class , 'show'])->name('posts.show');
 
 Route::get('/about', function () {
     return view('about');

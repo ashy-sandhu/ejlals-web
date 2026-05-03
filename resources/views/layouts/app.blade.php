@@ -265,7 +265,7 @@
             <div class="max-w-7xl mx-auto p-6">
                 @if(!request()->is('tools*'))
                 <!-- Newsletter Section (Elevated) -->
-                <div class="-mt-12 relative overflow-hidden bg-brand-teal rounded-3xl p-6 md:p-8 shadow-xl shadow-brand-teal/20 islamic-pattern z-10">
+                <div class="-mt-24 relative overflow-hidden bg-brand-teal rounded-3xl p-6 md:p-8 shadow-xl shadow-brand-teal/20 islamic-pattern z-10">
                     <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
                         <div class="max-w-xl text-center md:text-left">
                             <h3 class="text-white text-xl md:text-2xl font-bold mb-2 leading-tight">Enlighten Your Journey With Ejlals Academy</h3>

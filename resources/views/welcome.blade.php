@@ -473,137 +473,290 @@
     </div>
 </section>
 
-<!-- Our Teaching Languages Section -->
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Playfair+Display:ital@1&display=swap');
-</style>
-<section class="bg-[#f7f9f6] py-[80px] px-[24px]">
-    <div class="max-w-[900px] mx-auto text-center">
-        <!-- Header Block -->
-        <div class="inline-block border border-[#2d6a4f] rounded-full px-[18px] py-[6px] bg-white text-[#2d6a4f] text-[11px] tracking-[1.5px] font-bold uppercase mb-[20px]">
-            Our Teaching Languages
-        </div>
-        
-        <h2 class="text-[38px] font-bold text-[#1a2e1f] mb-[14px] leading-tight">
-            We Teach Islam in Your Language
-        </h2>
-        
-        <p class="text-[15px] text-[#5a6e5f] max-w-[520px] mx-auto leading-[1.7] mb-[52px]">
-            Unlike most online Islamic academies, Ejlals teaches Quran and Islamic studies in Urdu, Punjabi and English — so you learn in the language your heart understands.
-        </p>
+<!-- GSAP Animation Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
 
-        <!-- 3-Column Card Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[20px]">
-            <!-- Card 1: Urdu -->
-            <div class="bg-white border border-[#d4e6da] border-t-[3px] border-t-[#2d6a4f] rounded-[16px] pt-[36px] px-[24px] pb-[32px] text-center transition-all duration-300 hover:border-[#2d6a4f] hover:-translate-y-[3px]">
-                <div class="font-['Noto_Nastaliq_Urdu'] text-[38px] text-[#2d6a4f] leading-snug mb-2">
-                    اردو
+<!-- Our Teaching Languages Section -->
+<section class="relative py-8 px-6 border-y border-slate-100 bg-[#FCFDFD] overflow-hidden" id="languages-section">
+    <div class="max-w-6xl mx-auto relative z-10">
+        <!-- Header Block -->
+        <div class="flex flex-col items-center text-center mb-12 scroll-reveal-header">
+            <!-- Centered Premium Multilingual Badge (Forced to new line) -->
+            <div class="w-full flex justify-center mb-6">
+                <div class="inline-flex items-center gap-3 p-3 rounded-full bg-white border border-brand-teal/20 shadow-sm">
+                    <div class="w-10 h-10 flex items-center justify-center bg-brand-teal/5 rounded-full text-brand-teal shrink-0 relative overflow-hidden">
+                        <!-- Creative Custom SVG for Multilingualism -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 relative z-10">
+                            <path d="M2 5h12M7 2h1M5 8l6 6M4 14l6-6"/>
+                            <path d="M15.5 22L18 17l2.5 5M17 21h2" stroke="currentColor" stroke-width="2.5" class="text-brand-gold"/>
+                        </svg>
+                        <!-- Background decorative circles -->
+                        <div class="absolute inset-0 bg-brand-gold/5 blur-sm rounded-full translate-x-3 translate-y-3"></div>
+                    </div>
+                    <div class="flex flex-col items-start leading-none">
+                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">Global Academy</span>
+                        <span class="text-[11px] font-bold text-slate-700 uppercase tracking-[0.1em]">Multilingual <span class="text-brand-teal">Excellence</span></span>
+                    </div>
                 </div>
-                <div class="w-[36px] h-[2px] bg-[#c9a84c] mx-auto mt-[12px] mb-[16px]"></div>
-                <h3 class="text-[15px] font-bold text-[#1a2e1f] mb-[12px]">Urdu Medium</h3>
-                <p class="text-[13px] text-[#6b7f70] leading-[1.65]">
-                    All courses available in Urdu. Perfect for Pakistani, Indian and diaspora Muslim communities worldwide.
-                </p>
+            </div>
+            
+            <div class="relative inline-block mb-8">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-slate-900 tracking-tight leading-tight">
+                    Learn in Your <br class="md:hidden"/>
+                    <span id="typewriter-text" class="text-brand-teal italic"></span>
+                    <span id="typewriter-cursor" class="inline-block w-[3px] h-[0.8em] bg-brand-gold ml-1 translate-y-1"></span>
+                </h2>
+                <!-- Decorative brand accent -->
+                <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                    <div class="w-8 h-[1px] bg-brand-teal/30"></div>
+                    <div class="w-2 h-2 rounded-full border border-brand-gold/40"></div>
+                    <div class="w-8 h-[1px] bg-brand-teal/30"></div>
+                </div>
+            </div>
+            
+            <p class="text-slate-500 text-sm md:text-base max-w-xl mx-auto leading-relaxed font-medium">
+                We remove the language barrier from your spiritual journey. Learn Quranic and Islamic wisdom in the language that resonates with your heart.
+            </p>
+        </div>
+
+        <!-- Language Card Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch relative">
+            <!-- Card 1: Urdu -->
+            <div class="language-card group perspective-1000 h-full">
+                <div class="card-inner h-full bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-500 relative overflow-hidden flex flex-col items-center text-center">
+                    <!-- Top Accent -->
+                    <div class="absolute top-0 left-0 w-full h-1 bg-brand-teal transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    
+                    <!-- SVG Icon (Urdu) -->
+                    <div class="w-16 h-16 mb-6 relative">
+                        <div class="absolute inset-0 bg-brand-teal/5 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
+                        <svg viewBox="0 0 100 100" class="w-full h-full text-brand-teal relative z-10">
+                            <text x="50" y="65" font-family="'Noto Nastaliq Urdu'" font-size="40" text-anchor="middle" fill="currentColor">اردو</text>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">Urdu Medium</h3>
+                    <p class="text-[13px] text-slate-500 leading-relaxed font-medium mb-6">
+                        Complete Islamic courses in Urdu for the global South Asian community.
+                    </p>
+                    
+                    <div class="mt-auto">
+                        <span class="text-[11px] font-bold text-brand-teal uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                            Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </span>
+                    </div>
+                </div>
             </div>
 
             <!-- Card 2: Punjabi -->
-            <div class="bg-white border border-[#d4e6da] border-t-[3px] border-t-[#c9a84c] rounded-[16px] pt-[36px] px-[24px] pb-[32px] text-center transition-all duration-300 hover:border-[#2d6a4f] hover:-translate-y-[3px]">
-                <div class="font-['Noto_Nastaliq_Urdu'] text-[38px] text-[#2d6a4f] leading-snug mb-2">
-                    پنجابی
+            <div class="language-card group perspective-1000 h-full">
+                <div class="card-inner h-full bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-500 relative overflow-hidden flex flex-col items-center text-center">
+                    <!-- Top Accent -->
+                    <div class="absolute top-0 left-0 w-full h-1 bg-brand-gold transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    
+                    <!-- SVG Icon (Punjabi) -->
+                    <div class="w-16 h-16 mb-6 relative">
+                        <div class="absolute inset-0 bg-brand-gold/5 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
+                        <svg viewBox="0 0 100 100" class="w-full h-full text-brand-gold relative z-10">
+                            <text x="50" y="65" font-family="'Noto Nastaliq Urdu'" font-size="40" text-anchor="middle" fill="currentColor">پنجابی</text>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">Punjabi Medium</h3>
+                    <p class="text-[13px] text-slate-500 leading-relaxed font-medium mb-6">
+                        Unique Islamic instruction available in the Punjabi language.
+                    </p>
+                    
+                    <div class="mt-auto">
+                        <span class="text-[11px] font-bold text-brand-gold uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                            Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </span>
+                    </div>
                 </div>
-                <div class="w-[36px] h-[2px] bg-[#c9a84c] mx-auto mt-[12px] mb-[16px]"></div>
-                <h3 class="text-[15px] font-bold text-[#1a2e1f] mb-[12px]">Punjabi Medium</h3>
-                <p class="text-[13px] text-[#6b7f70] leading-[1.65]">
-                    Learn Islam in Punjabi — one of the very few online Islamic academies to offer full Punjabi-medium teaching.
-                </p>
             </div>
 
             <!-- Card 3: English -->
-            <div class="bg-white border border-[#d4e6da] border-t-[3px] border-t-[#2d6a4f] rounded-[16px] pt-[36px] px-[24px] pb-[32px] text-center transition-all duration-300 hover:border-[#2d6a4f] hover:-translate-y-[3px]">
-                <div class="font-['Playfair_Display'] italic text-[38px] text-[#c9a84c] leading-snug mb-2">
-                    English
+            <div class="language-card group perspective-1000 h-full">
+                <div class="card-inner h-full bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-500 relative overflow-hidden flex flex-col items-center text-center">
+                    <!-- Top Accent -->
+                    <div class="absolute top-0 left-0 w-full h-1 bg-brand-teal transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    
+                    <!-- SVG Icon (English) -->
+                    <div class="w-16 h-16 mb-6 relative flex items-center justify-center">
+                        <div class="absolute inset-0 bg-brand-teal/5 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
+                        <svg viewBox="0 0 100 100" class="w-full h-full text-brand-teal relative z-10">
+                            <text x="50" y="62" font-family="'Playfair Display'" font-style="italic" font-size="30" text-anchor="middle" fill="currentColor">English</text>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-slate-800 mb-3">English Medium</h3>
+                    <p class="text-[13px] text-slate-500 leading-relaxed font-medium mb-6">
+                        Modern courses designed for English-speaking students worldwide.
+                    </p>
+                    
+                    <div class="mt-auto">
+                        <span class="text-[11px] font-bold text-brand-teal uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                            Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </span>
+                    </div>
                 </div>
-                <div class="w-[36px] h-[2px] bg-[#c9a84c] mx-auto mt-[12px] mb-[16px]"></div>
-                <h3 class="text-[15px] font-bold text-[#1a2e1f] mb-[12px]">English Medium</h3>
-                <p class="text-[13px] text-[#6b7f70] leading-[1.65]">
-                    All courses also available in English — ideal for new Muslims or those who prefer English instruction.
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+    // Typewriter Entrance Animation
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#languages-section",
+            start: "top 80%",
+        }
+    });
+
+    tl.from(".scroll-reveal-header", {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    })
+    .to("#typewriter-text", {
+        duration: 2,
+        text: "Language",
+        ease: "none"
+    })
+    .to("#typewriter-cursor", {
+        opacity: 0,
+        duration: 0.5,
+        repeat: -1,
+        yoyo: true
+    }, 0);
+
+    // Hide cursor after typing
+    tl.to("#typewriter-cursor", {
+        display: "none",
+        duration: 0.1
+    });
+
+    // Cards staggered reveal
+    gsap.from(".language-card", {
+        y: 60,
+        opacity: 0,
+        scale: 0.95,
+        stagger: 0.15,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: "#languages-section",
+            start: "top 75%",
+        }
+    });
+});
+</script>
+
+<!-- Become a Tutor Section (Refined Framed Design) -->
+<section class="relative py-6 px-6 bg-[#FCFDFD]" id="tutor-section">
+    <div class="max-w-7xl mx-auto relative z-10">
+        <!-- Main Container (Subtle Card Surface) -->
+        <div class="flex flex-col lg:flex-row gap-3 items-stretch overflow-hidden relative">
+            
+            <!-- Left Column: Content (Flat Surface) -->
+            <div class="w-full flex flex-col justify-center px-6 py-8 relative z-10">
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="w-8 h-8 rounded-full bg-brand-teal/5 flex items-center justify-center text-brand-teal">
+                        <span class="material-symbols-outlined text-sm">stars</span>
+                    </span>
+                    <span class="text-[10px] font-black text-brand-teal uppercase tracking-[0.4em]">Join our teaching community</span>
+                </div>
+                
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-slate-900 mb-6 leading-[1.1]">
+                    Share Knowledge.<br/>
+                    <span class="text-brand-teal italic">Inspire</span> <span class="text-brand-gold">Generations.</span>
+                </h2>
+                
+                <p class="text-slate-500 text-sm md:text-base mb-3 max-w-lg font-medium leading-relaxed">
+                    Ejlals Academy welcomes passionate Islamic scholars and qualified teachers to join our mission of spreading authentic knowledge worldwide.
                 </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Become a Tutor Section (Reference-Matched Design) -->
-<section class="relative overflow-hidden min-h-[500px] flex items-center bg-[#FDFBF7]">
-    <!-- Background Image with Blending -->
-    <div class="absolute inset-0 z-0 flex justify-end">
-        <img src="{{ asset('images/tutor-hero.png') }}" alt="" class="h-full w-auto object-cover">
-        <div class="absolute inset-0 hero-gradient-overlay"></div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full py-16">
-        <div class="max-w-2xl">
-            <div class="flex items-center gap-2 mb-4">
-                <span class="p-1 rounded-full border border-brand-teal/30 text-brand-teal">
-                    <span class="material-symbols-outlined text-sm">stars</span>
-                </span>
-                <span class="text-[10px] font-black text-brand-teal uppercase tracking-[0.4em]">Join our teaching community</span>
-            </div>
-            
-            <h2 class="text-4xl md:text-6xl font-serif font-bold text-slate-900 mb-4 leading-tight">
-                Share Knowledge.<br/>
-                <span class="text-brand-teal italic">Inspire</span> <span class="text-brand-gold">Generations.</span>
-            </h2>
-            
-            <p class="text-slate-600 text-sm md:text-base mb-10 max-w-lg font-medium leading-relaxed">
-                Ejlals Academy welcomes passionate Islamic scholars and qualified teachers to join our mission of spreading authentic knowledge worldwide.
-            </p>
-            
-            <!-- Horizontal Stats Bar -->
-            <div class="flex flex-wrap gap-8 md:gap-12 pt-8 border-t border-slate-200/50">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal shrink-0">
-                        <span class="material-symbols-outlined">groups</span>
+                
+                <!-- Refined Horizontal Stats Bar -->
+                <div class="flex flex-wrap gap-8 pt-6 border-t border-slate-200/40">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-brand-teal shadow-sm border border-slate-100">
+                            <span class="material-symbols-outlined text-lg">groups</span>
+                        </div>
+                        <div>
+                            <div class="font-black text-lg text-slate-800 leading-none">150+</div>
+                            <div class="text-[8px] text-slate-400 font-bold uppercase tracking-widest mt-1.5">Expert Tutors</div>
+                        </div>
                     </div>
-                    <div>
-                        <div class="font-black text-xl text-slate-800 leading-none">150+</div>
-                        <div class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Expert Tutors</div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-cyan-600 shadow-sm border border-slate-100">
+                            <span class="material-symbols-outlined text-lg">public</span>
+                        </div>
+                        <div>
+                            <div class="font-black text-lg text-slate-800 leading-none">30+</div>
+                            <div class="text-[8px] text-slate-400 font-bold uppercase tracking-widest mt-1.5">Countries</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-brand-gold shadow-sm border border-slate-100">
+                            <span class="material-symbols-outlined text-lg">workspace_premium</span>
+                        </div>
+                        <div>
+                            <div class="font-black text-lg text-slate-800 leading-none">15K+</div>
+                            <div class="text-[8px] text-slate-400 font-bold uppercase tracking-widest mt-1.5">Students</div>
+                        </div>
                     </div>
                 </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal shrink-0">
-                        <span class="material-symbols-outlined">public</span>
-                    </div>
-                    <div>
-                        <div class="font-black text-xl text-slate-800 leading-none">30+</div>
-                        <div class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Countries</div>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0">
-                        <span class="material-symbols-outlined">stars</span>
-                    </div>
-                    <div>
-                        <div class="font-black text-xl text-slate-800 leading-none">15K+</div>
-                        <div class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Students</div>
+            </div>
+
+            <!-- Right Column: Image in a distinct Premium Frame -->
+            <div class="w-full flex py-4">
+                <div class="w-full bg-white p-4 rounded-[3rem] border border-white flex overflow-hidden group">
+                    <div class="w-full h-full rounded-[2.2rem] overflow-hidden relative">
+                        <img src="{{ asset('images/tutor-hero.png') }}" alt="Tutor Community" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                        <!-- Subtle overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-brand-teal/10 to-transparent pointer-events-none"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // tutor section animation
+    gsap.from(".tutor-card", {
+        y: 80,
+        opacity: 0,
+        scale: 0.98,
+        duration: 1.5,
+        ease: "power4.out",
+        scrollTrigger: {
+            trigger: "#tutor-section",
+            start: "top 80%",
+        }
+    });
+});
+</script>
 
 <!-- Process Section (Wavy Journey - Realigned) -->
-<section class="py-24 bg-white relative">
+<section class="py-8 bg-white relative">
     <div class="max-w-7xl mx-auto px-6 relative">
-        <div class="text-center mb-24">
+        <div class="text-center mb-12">
             <span class="text-brand-teal font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">THE JOURNEY TO BECOME A VERIFIED TUTOR</span>
             <h2 class="text-3xl md:text-5xl font-serif font-black text-slate-900 tracking-tight">Our Simple 4-Step Process</h2>
         </div>
         
         <div class="relative">
             <!-- Wavy Dashed Line SVG (Centered between Step 1 and Step 4) -->
-            <div class="absolute top-12 left-[12.5%] w-[75%] h-16 z-0 hidden lg:block opacity-50">
+            <div class="absolute top-2 left-[12.5%] w-[75%] h-16 z-0 hidden lg:block opacity-50">
                 <svg class="w-full h-full" viewBox="0 0 1000 100" fill="none" preserveAspectRatio="none">
                     <defs>
                         <linearGradient id="step-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -853,7 +1006,7 @@
                             </div>
                         </div>
                         
-                        <h3 class="text-[10px] md:text-sm lg:text-[14px] font-bold text-slate-800 mb-1 line-clamp-2 leading-[1.2] group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
+                        <h3 class="text-[10px] md:text-sm lg:text-[14px] font-bold text-slate-800 mb-1 truncate leading-[1.2] group-hover:text-brand-teal transition-colors">{{ $book->title }}</h3>
                         
                         <p class="text-[9px] md:text-[12px] lg:text-[11px] text-slate-600 mb-2 line-clamp-2 leading-tight">
                             {{ Str::limit(strip_tags($book->description), 80) ?: 'Explore this valuable scholarly resource within our digital library collection.' }}
@@ -1181,7 +1334,7 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="bg-[#FDFDFC] py-24 px-6 relative overflow-hidden" x-data="{ activeFaq: null }">
+<section class="bg-[#FDFDFC] pt-8 pb-24 px-6 relative overflow-hidden" x-data="{ activeFaq: null }">
     <!-- Subtle Background Decor -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-brand-teal/5 rounded-full -mr-48 -mt-48 blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-gold/5 rounded-full -ml-48 -mb-48 blur-3xl pointer-events-none"></div>

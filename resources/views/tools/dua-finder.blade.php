@@ -52,13 +52,13 @@
   width: var(--wm3-size, 350px);
 }
 
-.dua-body-full .hero{text-align:center;padding:56px 16px 36px; position: relative;}
+.dua-body-full .hero{text-align:center;padding:16px; position: relative;}
 .dua-body-full .badge{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--g1),var(--g3));color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;border-radius:999px;margin-bottom:22px;box-shadow:0 4px 14px rgba(5,74,48,.25)}
 .dua-body-full .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.75rem,5vw,3rem);font-weight:700;color:var(--g1);line-height:1.15;margin-bottom:12px}
 .dua-body-full .hero h1 em{font-style:italic;color:var(--gold)}
-.dua-body-full .hero-sub{font-size:clamp(0.875rem,2vw,1rem);color:var(--muted);max-width:500px;margin:0 auto 20px;line-height:1.6}
+.dua-body-full .hero-sub{font-size:clamp(0.875rem,2vw,1rem);color:var(--muted);max-width:500px;margin:0 auto 1  0px;line-height:1.6}
 .dua-body-full .bismillah{font-family:'Noto Naskh Arabic',serif;font-size:clamp(1.5rem,4vw,2rem);color:var(--g2);margin:12px 0 0;direction:rtl;letter-spacing:.02em;opacity:.65}
-.dua-body-full .tab-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:34px}
+.dua-body-full .tab-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:24px}
 .dua-body-full .tab{background:var(--parch);border:1.5px solid var(--border);border-radius:999px;padding:10px 22px;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:500;color:var(--muted);cursor:pointer;transition:var(--ease);white-space:nowrap}
 .dua-body-full .tab.on{background:linear-gradient(135deg,var(--g1),var(--g2));border-color:transparent;color:#fff;box-shadow:0 5px 18px rgba(5,74,48,.3)}
 .dua-body-full .tab:hover:not(.on){color:var(--g2);border-color:var(--g3);background:#fff}
@@ -92,7 +92,7 @@
 .dua-body-full .act{background:transparent;border:1.5px solid var(--border);color:var(--muted);font-family:'Inter',sans-serif;font-size:.8rem;font-weight:500;padding:7px 15px;border-radius:999px;cursor:pointer;transition:var(--ease);display:flex;align-items:center;gap:5px}
 .dua-body-full .act:hover{border-color:var(--g4);color:var(--g2);background:rgba(16,185,129,.06)}
 .dua-body-full .act.ok{background:rgba(16,185,129,.1);border-color:var(--g4);color:var(--g2)}
-.dua-body-full .seo{margin-top:50px;padding-top:50px;border-top:1px solid var(--border);position:relative;z-index:10;}
+.dua-body-full .seo{margin-top:24px;padding-top:12px;border-top:1px solid var(--border);position:relative;z-index:10;}
 .dua-body-full .seo h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem, 4vw, 1.85rem);color:var(--g1);margin-bottom:16px;font-weight:700}
 .dua-body-full .seo h3{font-family:'Playfair Display',serif;font-size:clamp(1.1rem, 3vw, 1.25rem);color:var(--g2);margin:32px 0 12px;font-weight:700}
 .dua-body-full .seo p{font-size:clamp(0.875rem, 2.5vw, 0.975rem);color:var(--ink2);line-height:1.75;margin-bottom:14px}
@@ -136,7 +136,6 @@
   <div class="badge">✦ Authentic Duas from Quran &amp; Sunnah</div>
   <h1>Find the Words<br><em>Your Heart Needs</em></h1>
   <p class="hero-sub">Select your emotion or situation to receive an authentic dua — Arabic text, transliteration, English meaning &amp; verified source.</p>
-  <div class="bismillah" aria-label="Bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
 </header>
 
 <nav class="tab-row" role="tablist">
@@ -233,7 +232,7 @@
 </article>
 
 <section class="seo" aria-label="Guide to Islamic Duas">
-  <div class="flex items-center gap-3 mb-4">
+  <div class="flex items-center gap-3">
     <span class="w-8 h-[2px] bg-brand-gold rounded-full"></span>
     <span class="text-brand-gold font-bold tracking-[0.4em] uppercase text-[10px]">Academic Guide</span>
   </div>
