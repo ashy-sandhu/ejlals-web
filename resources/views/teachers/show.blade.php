@@ -32,7 +32,7 @@
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                         <div class="aspect-[4/5] bg-slate-50 relative group">
                             @if($scholar->image)
-                                <img src="{{ asset('storage/' . $scholar->image) }}" alt="{{ $scholar->name }}" class="w-full h-full object-cover">
+                                <img src="{{ asset('storage/' . $scholar->image) }}" alt="{{ $scholar->image_alt ?? $scholar->name }}" class="w-full h-full object-cover">
                             @else
                                 <div class="w-full h-full flex items-center justify-center">
                                     <span class="material-symbols-outlined text-slate-200 text-5xl">person</span>

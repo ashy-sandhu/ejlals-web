@@ -83,7 +83,7 @@
                 <!-- Card Content -->
                 <div class="relative h-64 overflow-hidden">
                     @if($post->image)
-                        <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="{{ Storage::url($post->image) }}" alt="{{ $post->image_alt ?? $post->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     @else
                         <div class="w-full h-full bg-slate-200 flex items-center justify-center">
                             <span class="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Ejlals Wisdom</span>

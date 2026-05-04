@@ -53,7 +53,7 @@
                 @if($post->image)
                 <div class="rounded-[2.5rem] overflow-hidden shadow-sm border border-slate-100 bg-white p-2">
                     <div class="rounded-[2.2rem] overflow-hidden aspect-[21/9] max-h-[450px]">
-                        <img src="{{ Storage::url($post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover">
+                        <img src="{{ Storage::url($post->image) }}" alt="{{ $post->image_alt ?? $post->title }}" class="w-full h-full object-cover">
                     </div>
                 </div>
                 @endif

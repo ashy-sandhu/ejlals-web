@@ -81,7 +81,7 @@
                         @foreach($scholars as $scholar)
                             <a href="{{ route('scholars.show', $scholar->slug) }}" class="group bg-white p-5 rounded-2xl border border-gray-100 hover:border-brand-teal/20 hover:shadow-xl transition-all duration-300 flex items-center gap-4">
                                 <div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 border-2 border-slate-50">
-                                    <img src="{{ $scholar->image ? Storage::url($scholar->image) : asset('images/default-avatar.jpg') }}" alt="{{ $scholar->name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                    <img src="{{ $scholar->image ? Storage::url($scholar->image) : asset('images/default-avatar.jpg') }}" alt="{{ $scholar->image_alt ?? $scholar->name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-slate-800 group-hover:text-brand-teal transition-colors">{{ $scholar->name }}</h4>
@@ -109,7 +109,7 @@
                                 <a href="{{ route('courses.show', $course->slug) }}" class="flex flex-col h-full">
                                     <div class="relative h-32 w-full overflow-hidden">
                                         @if($course->image)
-                                            <img src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                                            <img src="{{ Storage::url($course->image) }}" alt="{{ $course->image_alt ?? $course->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
                                         @else
                                             <div class="w-full h-full bg-slate-100 flex items-center justify-center">
                                                 <span class="text-[10px] text-slate-300 font-bold uppercase tracking-widest">Ejlals Academy</span>
@@ -146,7 +146,7 @@
                                 <div class="flex flex-col h-full p-4">
                                     <div class="relative h-40 w-full overflow-hidden rounded-lg mb-4 bg-slate-50 shadow-inner">
                                         @if($book->image)
-                                            <img src="{{ Storage::url($book->image) }}" alt="{{ $book->title }}" class="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform">
+                                            <img src="{{ Storage::url($book->image) }}" alt="{{ $book->image_alt ?? $book->title }}" class="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform">
                                         @else
                                             <div class="w-full h-full flex flex-col items-center justify-center opacity-20">
                                                 <svg class="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>

@@ -25,7 +25,7 @@
             <div class="lg:col-span-2">
                 <div class="relative aspect-video rounded-[2.5rem] overflow-hidden bg-gray-100 mb-10 shadow-sm border border-gray-100">
                     @if($course->image)
-                        <img src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" class="w-full h-full object-cover">
+                        <img src="{{ Storage::url($course->image) }}" alt="{{ $course->image_alt ?? $course->title }}" class="w-full h-full object-cover">
                     @else
                         <div class="w-full h-full bg-gradient-to-br from-brand-teal/10 to-brand-gold/10 flex items-center justify-center">
                             <span class="text-brand-teal font-bold uppercase tracking-widest opacity-50">Course Illustration</span>

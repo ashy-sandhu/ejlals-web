@@ -123,7 +123,7 @@
                         <!-- Image Container -->
                         <div class="relative h-40 w-full overflow-hidden bg-slate-100 shrink-0">
                             @if($course->image)
-                                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="{{ Storage::url($course->image) }}" alt="{{ $course->title }}" />
+                                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="{{ Storage::url($course->image) }}" alt="{{ $course->image_alt ?? $course->title }}" />
                             @else
                                 <div class="w-full h-full bg-gradient-to-br from-brand-teal/10 to-brand-gold/10 flex items-center justify-center">
                                     <span class="text-brand-teal font-bold uppercase tracking-widest text-[10px] opacity-20">Course Preview</span>
