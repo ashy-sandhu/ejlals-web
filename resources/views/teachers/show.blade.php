@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', $scholar->name . ' - Expert Scholar Profile')
+@section('title', $scholar->seo_title ?? $scholar->name . ' - Expert Scholar Profile')
+@section('meta_description', $scholar->seo_description ?? 'Learn from ' . $scholar->name . ' at Ejlals Academy. ' . Str::limit(strip_tags($scholar->about_me), 150))
+
 
 @section('json_ld')
     {!! $scholar->renderJsonLd($scholar->generateSchema()) !!}

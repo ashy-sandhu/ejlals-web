@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', $course->title . ' - Ejlals Academy')
+@section('title', $course->seo_title ?? $course->title . ' - Ejlals Academy')
+@section('meta_description', $course->seo_description ?? 'Enroll in ' . $course->title . ' at Ejlals Academy. ' . Str::limit(strip_tags($course->description), 150))
+
 
 @section('json_ld')
     {!! $course->renderJsonLd($course->generateSchema()) !!}
