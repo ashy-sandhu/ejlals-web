@@ -27,8 +27,13 @@ Route::get('/', function () {
     // Fetch all featured courses
     $featuredCourses = Course::where('is_featured', true)->with('category')->latest()->get();
 
-    // Extract unique categories from featured courses
-    $featuredCategories = $featuredCourses->pluck('category')->unique('id')->values();
+    // Fetch categories by type for section headers
+    $courseCategory = \App\Models\Category::where('type', 'course')->first();
+    $bookCategory = \App\Models\Category::where('type', 'book')->first();
+    $postCategory = \App\Models\Category::where('type', 'post')->first();
+
+    // Fetch all course categories for the cards
+    $courseCategories = \App\Models\Category::where('type', 'course')->get();
 
     $featuredBooks = Book::where('is_featured', true)->orderBy('created_at', 'desc')->take(4)->get();
     $featuredPosts = Post::where('is_featured', true)->latest()->take(4)->get();
@@ -38,7 +43,17 @@ Route::get('/', function () {
     // Fetch featured scholars
     $featuredScholars = \App\Models\Scholar::where('is_featured', true)->take(4)->get();
 
-    return view('welcome', compact('featuredCourses', 'featuredCategories', 'featuredBooks', 'featuredPosts', 'latestPosts', 'featuredScholars'));
+    return view('welcome', compact(
+        'featuredCourses', 
+        'courseCategory', 
+        'bookCategory', 
+        'postCategory', 
+        'courseCategories', 
+        'featuredBooks', 
+        'featuredPosts', 
+        'latestPosts', 
+        'featuredScholars'
+    ));
 })->name('home');
 
 // Authentication Routes

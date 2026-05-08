@@ -23,24 +23,60 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', \Illuminate\Support\Str::slug($state))),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->unique(ignoreRecord: true)
-                    ->rules(['alpha_dash'])
-                    ->maxLength(255),
-                Forms\Components\Select::make('type')
-                    ->options([
-                        'course' => 'Course',
-                        'book' => 'Book',
-                        'post' => 'Post',
-                    ])
-                    ->required()
-                    ->native(false),
+                Forms\Components\Grid::make(12)
+                    ->schema([
+                        // Left: Main Content (8 Columns)
+                        Forms\Components\Group::make()
+                            ->schema([
+                                Forms\Components\Section::make()
+                                    ->schema([
+                                        Forms\Components\TextInput::make('name')
+                                            ->required()
+                                            ->maxLength(255)
+                                            ->live(onBlur: true)
+                                            ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', \Illuminate\Support\Str::slug($state))),
+                                        Forms\Components\TextInput::make('slug')
+                                            ->required()
+                                            ->unique(ignoreRecord: true)
+                                            ->rules(['alpha_dash'])
+                                            ->maxLength(255),
+                                        Forms\Components\Textarea::make('description')
+                                            ->columnSpanFull()
+                                            ->rows(4),
+                                    ])->columns(2),
+                            ])->columnSpan(8),
+
+                        // Right: Sidebar (4 Columns)
+                        Forms\Components\Group::make()
+                            ->schema([
+                                Forms\Components\Section::make('Settings')
+                                    ->schema([
+                                        Forms\Components\Select::make('type')
+                                            ->options([
+                                                'course' => 'Course',
+                                                'book' => 'Book',
+                                                'post' => 'Post',
+                                            ])
+                                            ->required()
+                                            ->native(false),
+                                    ]),
+
+                                Forms\Components\Section::make('Category Image')
+                                    ->schema([
+                                        Forms\Components\FileUpload::make('image')
+                                            ->label(false)
+                                            ->image()
+                                            ->imageEditor()
+                                            ->directory('categories')
+                                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/gif'])
+                                            ->maxSize(2048),
+                                        Forms\Components\TextInput::make('image_alt')
+                                            ->label('Cover Alt Text')
+                                            ->placeholder('e.g. Students learning Quran online')
+                                            ->maxLength(255),
+                                    ]),
+                            ])->columnSpan(4),
+                    ]),
             ]);
     }
 
@@ -48,6 +84,8 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('image')
+                    ->circular(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')

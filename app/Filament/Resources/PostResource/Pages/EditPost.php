@@ -16,7 +16,18 @@ class EditPost extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            $this->getCancelFormAction(),
+            $this->getSaveFormAction(),
+            Actions\ActionGroup::make([
+                Actions\DeleteAction::make(),
+            ])
+            ->icon('heroicon-m-ellipsis-vertical')
+            ->tooltip('More actions'),
         ];
+    }
+
+    protected function getFormActions(): array
+    {
+        return [];
     }
 }
