@@ -35,6 +35,7 @@ fix-mobile.py
 *.temp
 *.md
 
+
 # Debug logs
 npm-debug.log*
 yarn-debug.log*
