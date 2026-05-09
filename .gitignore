@@ -33,6 +33,8 @@ fix-mobile.py
 *.bak
 *.tmp
 *.temp
+*.md
+
 
 # Debug logs
 npm-debug.log*
