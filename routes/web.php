@@ -27,8 +27,13 @@ Route::get('/', function () {
     // Fetch all featured courses
     $featuredCourses = Course::where('is_featured', true)->with('category')->latest()->get();
 
-    // Extract unique categories from featured courses
-    $featuredCategories = $featuredCourses->pluck('category')->unique('id')->values();
+    // Fetch categories by type for section headers
+    $courseCategory = \App\Models\Category::where('type', 'course')->first();
+    $bookCategory = \App\Models\Category::where('type', 'book')->first();
+    $postCategory = \App\Models\Category::where('type', 'post')->first();
+
+    // Fetch all course categories for the cards
+    $courseCategories = \App\Models\Category::where('type', 'course')->get();
 
     $featuredBooks = Book::where('is_featured', true)->orderBy('created_at', 'desc')->take(4)->get();
     $featuredPosts = Post::where('is_featured', true)->latest()->take(4)->get();
@@ -38,7 +43,17 @@ Route::get('/', function () {
     // Fetch featured scholars
     $featuredScholars = \App\Models\Scholar::where('is_featured', true)->take(4)->get();
 
-    return view('welcome', compact('featuredCourses', 'featuredCategories', 'featuredBooks', 'featuredPosts', 'latestPosts', 'featuredScholars'));
+    return view('welcome', compact(
+        'featuredCourses', 
+        'courseCategory', 
+        'bookCategory', 
+        'postCategory', 
+        'courseCategories', 
+        'featuredBooks', 
+        'featuredPosts', 
+        'latestPosts', 
+        'featuredScholars'
+    ));
 })->name('home');
 
 // Authentication Routes
@@ -49,9 +64,22 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [AuthController::class , 'register']);
 });
 
-Route::middleware('auth')->group(function () {
+// OTP Verification Routes (Must be outside 'guest' so logged-in users can verify)
+Route::get('/verify-otp', [AuthController::class, 'showVerifyOtp'])->name('verification.notice');
+Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->name('otp.submit');
+Route::post('/resend-otp', [AuthController::class, 'resendOtp'])->name('otp.resend');
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class , 'index'])->name('dashboard');
+    Route::get('/my-courses', [DashboardController::class , 'myCourses'])->name('my-courses');
     Route::post('/enroll', [EnrollmentController::class , 'store'])->name('enroll.store');
+    
+    // Profile Management
+    Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+});
+
+Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class , 'logout'])->name('logout');
 });
 

@@ -77,7 +77,7 @@
                     <div class="relative aspect-[4/3] overflow-hidden image-zoom {{ $bgClass }} flex items-center justify-center p-4">
                         @if($book->image)
                             <!-- Apply a softer, elegant drop shadow to the book image -->
-                            <img src="{{ Storage::url($book->image) }}" alt="{{ $book->title }}" class="w-[75%] max-h-full object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.2)] transition-transform duration-500">
+                            <img src="{{ Storage::url($book->image) }}" alt="{{ $book->image_alt ?? $book->title }}" class="w-[75%] max-h-full object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.2)] transition-transform duration-500">
                         @else
                             <div class="w-[75%] h-full bg-white flex items-center justify-center p-4 text-center drop-shadow-[0_10px_15px_rgba(0,0,0,0.1)] transition-transform duration-500 border border-slate-200/50">
                                 <span class="text-slate-400 font-bold text-[10px] uppercase tracking-widest opacity-60">{{ $book->title }}</span>

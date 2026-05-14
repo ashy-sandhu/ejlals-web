@@ -16,4 +16,17 @@ class ListCategories extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    public function getTabs(): array
+    {
+        return [
+            'all' => \Filament\Resources\Components\Tab::make('All'),
+            'course' => \Filament\Resources\Components\Tab::make('Course')
+                ->modifyQueryUsing(fn (\Illuminate\Database\Eloquent\Builder $query) => $query->where('type', 'course')),
+            'book' => \Filament\Resources\Components\Tab::make('Book')
+                ->modifyQueryUsing(fn (\Illuminate\Database\Eloquent\Builder $query) => $query->where('type', 'book')),
+            'post' => \Filament\Resources\Components\Tab::make('Post')
+                ->modifyQueryUsing(fn (\Illuminate\Database\Eloquent\Builder $query) => $query->where('type', 'post')),
+        ];
+    }
 }

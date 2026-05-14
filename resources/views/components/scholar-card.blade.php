@@ -4,7 +4,7 @@
     <!-- Image Section -->
     <a href="{{ route('scholars.show', $scholar->slug) }}" class="relative h-[200px] w-full block shrink-0 overflow-hidden">
         @if($scholar->image)
-            <img src="{{ asset('storage/' . $scholar->image) }}" alt="{{ $scholar->name }}" class="w-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <img src="{{ asset('storage/' . $scholar->image) }}" alt="{{ $scholar->image_alt ?? $scholar->name }}" class="w-full object-cover transition-transform duration-700 group-hover:scale-110">
         @else
             <div class="w-full h-full flex items-center justify-center bg-slate-50">
                 <span class="material-symbols-outlined text-slate-200 text-6xl">person</span>

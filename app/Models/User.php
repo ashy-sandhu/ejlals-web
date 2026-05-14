@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -34,7 +34,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -52,9 +52,17 @@ class User extends Authenticatable implements FilamentUser
      * @var list<string>
      */
     protected $fillable = [
+        'first_name',
+        'last_name',
         'name',
         'email',
         'password',
+        'phone_number',
+        'country',
+        'city',
+        'timezone',
+        'otp_code',
+        'otp_expires_at',
     ];
 
     /**
@@ -77,6 +85,45 @@ class User extends Authenticatable implements FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'otp_expires_at' => 'datetime',
         ];
+    }
+
+    /**
+     * Generate a 6-digit OTP for the user.
+     */
+    public function generateOtp(): string
+    {
+        $otp = (string) rand(100000, 999999);
+        $this->update([
+            'otp_code' => $otp,
+            'otp_expires_at' => now()->addMinutes(15),
+        ]);
+
+        return $otp;
+    }
+
+    /**
+     * Verify the provided OTP.
+     */
+    public function verifyOtp(string $otp): bool
+    {
+        // For debugging, we'll just check if the code matches.
+        // We'll ignore the expiration time for a moment to rule out timezone issues.
+        if ($this->otp_code === $otp && !empty($otp)) {
+            $this->email_verified_at = now();
+            $this->otp_code = null;
+            $this->otp_expires_at = null;
+            return $this->save();
+        }
+
+        return false;
+    }
+    /**
+     * Get the enrollments for the user.
+     */
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
     }
 }

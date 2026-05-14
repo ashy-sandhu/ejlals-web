@@ -1,93 +1,264 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
-@section('title', 'My Horizon - Student Dashboard')
+@section('title', 'Student Dashboard')
 
 @section('content')
-<div class="bg-slate-50 min-h-screen pt-12 pb-24 px-6 font-sans">
-    <div class="max-w-7xl mx-auto">
-        <!-- Header Section -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div>
-                <h1 class="text-4xl font-extrabold text-slate-900 mb-2">My Horizon</h1>
-                <p class="text-slate-500 font-medium">Welcome back, <span class="text-brand-teal capitalize">{{ $user->name }}</span>. Ready to continue your journey?</p>
+<!-- Top Bar -->
+<header class="flex justify-between items-center mb-6 md:mb-8">
+    <div class="flex items-center gap-3">
+        <!-- Mobile Burger Menu -->
+        <button @click="mobileSidebarOpen = true" class="lg:hidden p-2 -ml-2 text-gray-500 hover:text-ejlals-teal transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+        <!-- Branding Logo (Mobile Only) -->
+        <img src="{{ asset('storage/ejlals-horizontal-v1.svg') }}" alt="Ejlals Academy" class="h-8 w-auto md:hidden">
+        
+        <!-- Desktop/Tablet Greeting -->
+        <div class="hidden md:block">
+            <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest leading-none">Assalamu Alaikum,</p>
+            <h1 class="text-xl md:text-2xl font-bold text-[#191c1e] mt-1">{{ $user->first_name ?: $user->name }}</h1>
+            <p class="text-gray-400 text-[10px] md:text-xs mt-0.5 font-medium">Keep learning, keep growing! 🌱</p>
+        </div>
+    </div>
+    <div class="flex items-center gap-3 md:gap-4">
+        <button class="w-9 h-9 rounded-xl bg-white border border-gray-100 flex items-center justify-center text-gray-400 hover:text-ejlals-teal transition-all shadow-sm">
+            <span class="material-symbols-outlined text-lg">notifications</span>
+        </button>
+        <div class="flex items-center gap-2 p-1 pr-2 md:pr-3 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all cursor-pointer group">
+            <div class="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-ejlals-teal/10 flex items-center justify-center text-ejlals-teal font-bold overflow-hidden text-[10px]">
+                @if($user->profile_photo_url ?? false)
+                    <img src="{{ $user->profile_photo_url }}" alt="Profile" class="w-full h-full object-cover">
+                @else
+                    {{ substr($user->first_name ?: $user->name, 0, 1) }}
+                @endif
             </div>
-            <div class="flex items-center gap-4 bg-white p-2 rounded-2xl border border-slate-100 shadow-sm">
-                <div class="w-12 h-12 rounded-xl bg-brand-teal/10 flex items-center justify-center text-brand-teal">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            <div class="hidden sm:block">
+                <p class="text-[10px] font-bold text-gray-900 leading-none">{{ $user->first_name ?: $user->name }}</p>
+            </div>
+            <span class="material-symbols-outlined text-gray-300 text-xs group-hover:text-ejlals-teal transition-colors">expand_more</span>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Branded Greeting Section -->
+<div class="mb-6 md:hidden px-1">
+    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none">Assalamu Alaikum,</p>
+    <h1 class="text-xl font-bold text-[#191c1e] mt-1.5">{{ $user->first_name ?: $user->name }}</h1>
+    <p class="text-gray-400 text-[10px] mt-1 font-medium">Keep learning, keep growing! 🌱</p>
+</div>
+
+<!-- Metrics Row (Optimized Grid for Mobile) -->
+<section class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
+    <div class="bg-white p-2.5 md:p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-2 group">
+        <div class="w-7 h-7 md:w-10 md:h-10 rounded-lg bg-teal-50 flex items-center justify-center text-ejlals-teal group-hover:bg-teal-500 group-hover:text-white transition-all flex-shrink-0">
+            <span class="material-symbols-outlined text-sm md:text-xl">book</span>
+        </div>
+        <div class="flex items-baseline gap-1.5 min-w-0">
+            <h3 class="text-sm md:text-xl font-bold text-[#191c1e] leading-none">{{ $enrollments->count() }}</h3>
+            <p class="text-gray-400 text-[7px] md:text-[9px] font-bold uppercase tracking-wider truncate">Enrolled</p>
+        </div>
+    </div>
+
+    <div class="bg-white p-2.5 md:p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-2 group">
+        <div class="w-7 h-7 md:w-10 md:h-10 rounded-lg bg-orange-50 flex items-center justify-center text-[#8d4f11] group-hover:bg-orange-500 group-hover:text-white transition-all flex-shrink-0">
+            <span class="material-symbols-outlined text-sm md:text-xl fill-icon">assignment</span>
+        </div>
+        <div class="flex items-baseline gap-1.5 min-w-0">
+            <h3 class="text-sm md:text-xl font-bold text-[#191c1e] leading-none">{{ $enrollments->where('status', 'approved')->count() }}</h3>
+            <p class="text-gray-400 text-[7px] md:text-[9px] font-bold uppercase tracking-wider truncate">Active</p>
+        </div>
+    </div>
+
+    <div class="bg-white p-2.5 md:p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-2 group">
+        <div class="w-7 h-7 md:w-10 md:h-10 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-500 group-hover:text-white transition-all flex-shrink-0">
+            <span class="material-symbols-outlined text-sm md:text-xl fill-icon">check_circle</span>
+        </div>
+        <div class="flex items-baseline gap-1.5 min-w-0">
+            <h3 class="text-sm md:text-xl font-bold text-[#191c1e] leading-none">0</h3>
+            <p class="text-gray-400 text-[7px] md:text-[9px] font-bold uppercase tracking-wider truncate">Done</p>
+        </div>
+    </div>
+
+    <div class="bg-white p-2.5 md:p-4 rounded-2xl border border-gray-100 shadow-sm flex items-center gap-2 group">
+        <div class="w-7 h-7 md:w-10 md:h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-500 group-hover:text-white transition-all flex-shrink-0">
+            <span class="material-symbols-outlined text-sm md:text-xl">workspace_premium</span>
+        </div>
+        <div class="flex items-baseline gap-1.5 min-w-0">
+            <h3 class="text-sm md:text-xl font-bold text-[#191c1e] leading-none">0</h3>
+            <p class="text-gray-400 text-[7px] md:text-[9px] font-bold uppercase tracking-wider truncate">Badges</p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Workspace -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <!-- Left Column -->
+    <div class="lg:col-span-8 flex flex-col gap-6">
+        
+        <!-- Mobile-Compact Progress Card -->
+        <div class="bg-[#2d3133] rounded-[2rem] p-4 md:p-6 text-white relative overflow-hidden shadow-lg">
+            <div class="relative z-10 flex flex-row justify-between items-center gap-4">
+                <div class="flex-1 min-w-0">
+                    <h2 class="text-base md:text-xl font-bold mb-0.5 md:mb-1.5 leading-tight">Your Progress <span class="text-ejlals-teal">Summary</span></h2>
+                    <p class="text-gray-400 text-[8px] md:text-xs mb-3 md:mb-4 max-w-xs line-clamp-1 md:line-clamp-none">You've completed 12 lessons this week. Great pace!</p>
+                    <button class="px-3 md:px-5 py-1.5 md:py-2 bg-ejlals-teal hover:bg-teal-600 text-white rounded-lg md:rounded-xl text-[8px] md:text-xs font-bold transition-all shadow-md">
+                        Resume Learning
+                    </button>
                 </div>
-                <div class="pr-4">
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Active Courses</p>
-                    <p class="text-xl font-extrabold text-slate-800">{{ $enrollments->count() }}</p>
+                
+                <div class="relative w-14 h-14 md:w-24 md:h-24 flex-shrink-0">
+                    <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-white/5" stroke-width="3"></circle>
+                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-ejlals-teal" stroke-width="3" stroke-dasharray="68, 100" stroke-linecap="round"></circle>
+                    </svg>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <span class="text-xs md:text-2xl font-black">68%</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        @if($enrollments->count() > 0)
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach($enrollments as $enrollment)
-                    <div class="bg-white rounded-[2.5rem] border border-slate-100 shadow-sm overflow-hidden flex flex-col group hover:shadow-xl transition-all duration-500">
-                        <!-- Card Header (Course Image/Icon) -->
-                        <div class="h-40 bg-slate-100 relative overflow-hidden">
-                            @if($enrollment->course->image)
-                                <img src="{{ Storage::url($enrollment->course->image) }}" alt="{{ $enrollment->course->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            @else
-                                <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-gold/5 flex items-center justify-center">
-                                    <svg class="w-12 h-12 text-brand-teal/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+        <!-- Active Courses -->
+        <div>
+            <div class="flex justify-between items-center mb-3 md:mb-4 px-1">
+                <h2 class="text-base md:text-lg font-bold text-[#191c1e]">Active Courses</h2>
+                <a href="{{ route('my-courses') }}" class="text-[9px] md:text-[10px] font-bold text-ejlals-teal hover:underline uppercase tracking-widest">View All</a>
+            </div>
+
+            @if($enrollments->isEmpty())
+                <div class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-100 text-center">
+                    <p class="text-gray-400 text-[10px] md:text-xs mb-3">No courses enrolled yet.</p>
+                    <a href="{{ route('courses.index') }}" class="inline-flex items-center gap-2 px-5 py-1.5 bg-ejlals-teal text-white rounded-xl text-[10px] font-bold shadow-md hover:bg-teal-600 transition-all">
+                        Explore Courses
+                    </a>
+                </div>
+            @else
+                <div class="grid grid-cols-2 gap-3 md:gap-4">
+                    @foreach($enrollments as $enrollment)
+                        <div class="bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all group flex flex-col">
+                            <div class="relative h-20 md:h-28 w-full overflow-hidden">
+                                @if($enrollment->course->image)
+                                    <img src="{{ asset('storage/' . $enrollment->course->image) }}" alt="{{ $enrollment->course->title }}" class="w-full h-full object-cover">
+                                @else
+                                    <div class="w-full h-full bg-teal-50 flex items-center justify-center text-ejlals-teal">
+                                        <span class="material-symbols-outlined text-lg md:text-2xl opacity-20">library_books</span>
+                                    </div>
+                                @endif
+                                <div class="absolute top-2 left-2">
+                                    <span class="px-1.5 py-0.5 rounded bg-black/50 backdrop-blur-md text-white text-[6px] md:text-[8px] font-bold uppercase tracking-widest">{{ $enrollment->status }}</span>
                                 </div>
-                            @endif
-                            <div class="absolute top-6 left-6">
-                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm @if($enrollment->status == 'active') bg-emerald-500 text-white @else bg-slate-900 text-white @endif">
-                                    {{ $enrollment->status }}
-                                </span>
+                            </div>
+                            <div class="p-2.5 md:p-4 flex-1 flex flex-col">
+                                <h4 class="text-[10px] md:text-sm font-bold text-[#191c1e] mb-1 md:mb-1.5 line-clamp-1 group-hover:text-ejlals-teal transition-colors">{{ $enrollment->course->title }}</h4>
+                                
+                                <div class="flex items-center gap-2 md:gap-3 text-gray-400 mb-2 md:mb-4">
+                                    <div class="flex items-center gap-0.5 md:gap-1">
+                                        <span class="material-symbols-outlined text-[8px] md:text-xs">calendar_today</span>
+                                        <span class="text-[6px] md:text-[9px] font-bold">{{ $enrollment->timeSlot ? substr($enrollment->timeSlot->day_of_week, 0, 3) : 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex items-center gap-0.5 md:gap-1">
+                                        <span class="material-symbols-outlined text-[8px] md:text-xs">schedule</span>
+                                        <span class="text-[6px] md:text-[9px] font-bold">{{ $enrollment->timeSlot ? \Carbon\Carbon::parse($enrollment->timeSlot->start_time)->format('h:i') : 'N/A' }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-auto">
+                                    <div class="w-full h-0.5 md:h-1 bg-gray-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-ejlals-teal rounded-full" style="width: 0%"></div>
+                                    </div>
+                                    <button class="w-full mt-2 md:mt-3 py-1 md:py-1.5 border border-teal-500/10 rounded-lg md:rounded-xl text-ejlals-teal font-bold text-[8px] md:text-[10px] hover:bg-ejlals-teal hover:text-white transition-all">
+                                        Continue
+                                    </button>
+                                </div>
                             </div>
                         </div>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+    </div>
 
-                        <!-- Card Body -->
-                        <div class="p-8 flex-1 flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-800 mb-4 line-clamp-1 h-8 group-hover:text-brand-teal transition-colors">
-                                {{ $enrollment->course->title }}
-                            </h3>
-                            
-                            <!-- Schedule Info -->
-                            <div class="space-y-4 mb-8">
-                                <div class="flex items-center gap-3 text-sm text-slate-500 font-medium">
-                                    <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg>
-                                    </div>
-                                    <span>Class Day: <b class="text-slate-800">{{ $enrollment->timeSlot->day ?? 'TBD' }}</b></span>
-                                </div>
-                                <div class="flex items-center gap-3 text-sm text-slate-500 font-medium">
-                                    <div class="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    </div>
-                                    <span>Start Time: <b class="text-slate-800">{{ $enrollment->timeSlot ? date('h:i A', strtotime($enrollment->timeSlot->time)) : 'TBD' }}</b></span>
-                                </div>
-                            </div>
+    <!-- Right Column -->
+    <div class="lg:col-span-4 flex flex-col gap-6">
+        <div class="grid grid-cols-5 gap-3 lg:contents">
+            <!-- Compact Calendar -->
+            <div class="col-span-3 lg:col-span-full bg-white p-3 md:p-5 rounded-[2rem] border border-gray-100 shadow-sm flex flex-col justify-center">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-[8px] md:text-[10px] font-bold text-[#191c1e] uppercase tracking-widest">Calendar</h3>
+                    <div class="flex gap-1">
+                        <button class="w-4 h-4 md:w-6 md:h-6 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-[8px] md:text-xs">chevron_left</span></button>
+                        <button class="w-4 h-4 md:w-6 md:h-6 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-[8px] md:text-xs">chevron_right</span></button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h4 class="text-[9px] md:text-xs font-bold text-[#191c1e] mb-1.5 md:mb-3">{{ now()->format('F Y') }}</h4>
+                    <div class="grid grid-cols-7 gap-0.5 mb-1 md:mb-1.5">
+                        @foreach(['S', 'M', 'T', 'W', 'T', 'F', 'S'] as $day)
+                            <span class="text-[6px] md:text-[8px] font-black text-gray-300">{{ $day }}</span>
+                        @endforeach
+                    </div>
+                    <div class="grid grid-cols-7 gap-0.5">
+                        @php $today = now()->day; @endphp
+                        @for($i = 1; $i <= 31; $i++)
+                            <span class="w-4 h-4 md:w-6 md:h-6 flex items-center justify-center text-[7px] md:text-[9px] font-bold rounded-lg transition-all {{ $i == $today ? 'bg-ejlals-teal text-white shadow-sm shadow-teal-900/20' : 'text-gray-400 hover:bg-teal-50 hover:text-ejlals-teal cursor-pointer' }}">
+                                {{ $i }}
+                            </span>
+                        @endfor
+                    </div>
+                </div>
+            </div>
 
-                            <!-- CTA -->
-                            <div class="mt-auto">
-                                <a href="{{ route('courses.show', $enrollment->course->slug) }}" class="inline-flex w-full items-center justify-center gap-2 bg-slate-50 hover:bg-brand-teal hover:text-white text-slate-600 font-bold py-3 rounded-2xl transition-all duration-300 group/btn">
-                                    Go to Course
-                                    <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                                </a>
-                            </div>
+            <!-- Recent Achievements -->
+            <div class="col-span-2 lg:col-span-full bg-white p-3 md:p-5 rounded-[2rem] border border-gray-100 shadow-sm flex flex-col">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-[8px] md:text-[10px] font-bold text-[#191c1e] uppercase tracking-widest">Badges</h3>
+                    <span class="material-symbols-outlined text-xs text-ejlals-teal">workspace_premium</span>
+                </div>
+                <div class="flex flex-col gap-2.5 md:space-y-3">
+                    <div class="flex items-center gap-2 group">
+                        <div class="w-7 h-7 md:w-8 md:h-8 rounded-lg md:rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-500 group-hover:text-white transition-all flex-shrink-0">
+                            <span class="material-symbols-outlined text-xs md:text-sm fill-icon">stars</span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="text-[8px] md:text-[10px] font-bold text-gray-900 leading-tight truncate">First Enrolled</p>
+                            <p class="text-[6px] md:text-[8px] text-gray-400 mt-0.5">Today</p>
                         </div>
                     </div>
-                @endforeach
-            </div>
-        @else
-            <!-- Empty State -->
-            <div class="bg-white rounded-[3rem] p-16 text-center border border-slate-100 shadow-sm max-w-3xl mx-auto">
-                <div class="w-24 h-24 bg-brand-teal/5 rounded-full flex items-center justify-center mx-auto mb-8">
-                    <svg class="w-12 h-12 text-brand-teal/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    <div class="flex items-center gap-2 group">
+                        <div class="w-7 h-7 md:w-8 md:h-8 rounded-lg md:rounded-xl bg-orange-50 flex items-center justify-center text-orange-600 group-hover:bg-orange-500 group-hover:text-white transition-all flex-shrink-0">
+                            <span class="material-symbols-outlined text-xs md:text-sm fill-icon">bolt</span>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="text-[8px] md:text-[10px] font-bold text-gray-900 leading-tight truncate">Quick Learner</p>
+                            <p class="text-[6px] md:text-[8px] text-gray-400 mt-0.5">Level 1</p>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="text-2xl font-bold text-slate-800 mb-4">Your Horizon is Empty</h3>
-                <p class="text-slate-500 mb-10 leading-relaxed max-w-md mx-auto">You haven't joined any courses yet. Explore our catalog to find knowledge that matters to you.</p>
-                <a href="{{ route('courses.index') }}" class="bg-brand-gold text-white px-10 py-4 rounded-2xl font-extrabold shadow-lg shadow-brand-gold/20 hover:scale-[1.02] transition-all inline-block">
-                    Browse Courses
-                </a>
             </div>
-        @endif
+        </div>
+
+        <!-- Compact Schedule -->
+        <div class="bg-white p-4 md:p-5 rounded-[2rem] border border-gray-100 shadow-sm border-b-4 border-b-ejlals-teal">
+            <h3 class="text-[10px] font-bold text-[#191c1e] mb-3 uppercase tracking-widest">Next Class</h3>
+            @if($enrollments->isNotEmpty() && $enrollments->first()->timeSlot)
+                <div class="flex items-center gap-3 p-2.5 rounded-2xl bg-gray-50 border border-gray-100">
+                    <div class="text-center flex-shrink-0">
+                        <p class="text-[8px] font-black text-gray-400 uppercase tracking-widest leading-none">{{ now()->format('M') }}</p>
+                        <p class="text-base font-black text-[#191c1e] leading-none mt-0.5">{{ now()->format('d') }}</p>
+                    </div>
+                    <div class="w-px h-5 bg-gray-200"></div>
+                    <div class="min-w-0">
+                        <p class="text-[10px] font-bold text-gray-900 leading-tight truncate">{{ $enrollments->first()->course->title }}</p>
+                        <p class="text-[8px] text-gray-400 mt-0.5">{{ $enrollments->first()->timeSlot->day_of_week }} • {{ \Carbon\Carbon::parse($enrollments->first()->timeSlot->start_time)->format('h:i A') }}</p>
+                    </div>
+                </div>
+                <button class="w-full mt-3.5 py-1.5 bg-ejlals-teal hover:bg-teal-600 text-white rounded-xl font-bold text-[9px] transition-all">
+                    Join Now
+                </button>
+            @else
+                <p class="text-[10px] text-gray-400 text-center py-1">No classes today.</p>
+            @endif
+        </div>
     </div>
 </div>
 @endsection

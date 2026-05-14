@@ -265,87 +265,42 @@
                 <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em]">Academic Excellence</span>
             </div>
             <h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-                Quran Courses at <span class="text-brand-teal">Ejlals</span><span class="text-brand-gold">.com</span>
+                {{ $courseCategory->name ?? 'Quran Courses' }} at <span class="text-brand-teal">Ejlals</span><span class="text-brand-gold">.com</span>
             </h2>
             <div class="h-1 w-20 bg-gradient-to-r from-brand-teal to-brand-gold mx-auto rounded-full mt-2"></div>
             <p class="text-[14px] text-slate-500 leading-relaxed pt-4 text-balance font-medium">
-                Structured Islamic curriculum designed to bridge classical wisdom with modern practical application.
+                {{ $courseCategory->description ?? 'Structured Islamic curriculum designed to bridge classical wisdom with modern practical application.' }}
             </p>
         </div>
 
         <!-- Course Cards Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            <!-- Card 1: Tajweed Course -->
+            @foreach($courseCategories as $category)
             <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-brand-teal/10 border border-slate-100 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2">
                 <div class="relative h-48 overflow-hidden bg-slate-50">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVr6PzF6RqgD_AdFs_RZZdF82npziHHo8Bm8vbR4wN-qYn-59c4DjE25gkrxw3tTEG8ylM6ffRGIWbt5XvTqFVgYiZxQYH99YEgxGrqTK9Pz0EBCYCyYizdVUt3e27C3G1dIYdd1dLdw8VbF6cDUe65Ye1uZaRkBygNJCYX47EtAVexwk6rJCOMoCsewQ6a97S094caaPvLEV0_NSJT2d-7OdlQN-HH1QtkRPscXNJo6rhSZtbCNmaxLYYEqnPIASipN-oPvt54Ws" alt="Tajweed Course"/>
+                    @if($category->image)
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ Storage::url($category->image) }}" alt="{{ $category->image_alt ?? $category->name }}"/>
+                    @else
+                        <div class="w-full h-full bg-slate-100 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-slate-300 text-5xl">category</span>
+                        </div>
+                    @endif
                     <div class="absolute top-4 left-4">
-                        <span class="bg-white/95 backdrop-blur-md text-brand-teal font-black text-[9px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm border border-brand-teal/10">All Levels</span>
+                        <span class="bg-white/95 backdrop-blur-md text-brand-teal font-black text-[9px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm border border-brand-teal/10">Explore</span>
                     </div>
                 </div>
                 <div class="px-6 py-3 flex flex-col flex-grow text-center items-center">
-                    <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-brand-teal transition-colors">Tajweed Course</h3>
-                    <p class="text-[12px] text-slate-500 leading-relaxed mb-6 flex-grow text-balance">Master the correct pronunciation and beautiful recitation of the Holy Quran with expert guidance.</p>
-                    <a href="#" class="inline-flex items-center bg-brand-teal/5 text-brand-teal px-5 py-2 rounded-xl font-bold text-[11px] gap-2 group/link hover:bg-brand-teal hover:text-white transition-all duration-300 shadow-sm uppercase tracking-wider">
-                        Explore Course 
+                    <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-brand-teal transition-colors">{{ $category->name }}</h3>
+                    <p class="text-[12px] text-slate-500 leading-relaxed mb-6 flex-grow text-balance">
+                        {{ Str::limit($category->description, 100) ?? 'Master the correct pronunciation and beautiful recitation with expert guidance.' }}
+                    </p>
+                    <a href="{{ route('courses.index', ['category' => $category->slug]) }}" class="inline-flex items-center bg-brand-teal/5 text-brand-teal px-5 py-2 rounded-xl font-bold text-[11px] gap-2 group/link hover:bg-brand-teal hover:text-white transition-all duration-300 shadow-sm uppercase tracking-wider">
+                        Explore Courses 
                         <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-1">arrow_forward</span>
                     </a>
                 </div>
             </div>
-
-            <!-- Card 2: Noorani Qaida -->
-            <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-brand-gold/10 border border-slate-100 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2">
-                <div class="relative h-48 overflow-hidden bg-slate-50">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ asset('images/courses/noorani_qaida.png') }}" alt="Noorani Qaida"/>
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-brand-gold text-white font-black text-[9px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">Beginners</span>
-                    </div>
-                </div>
-                <div class="px-6 py-3 flex flex-col flex-grow text-center items-center">
-                    <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-brand-gold transition-colors">Noorani Qaida</h3>
-                    <p class="text-[12px] text-slate-500 leading-relaxed mb-6 flex-grow text-balance">Build strong Quran reading foundations with step-by-step learning for beginners and children.</p>
-                    <a href="#" class="inline-flex items-center bg-brand-gold/5 text-brand-gold px-5 py-2 rounded-xl font-bold text-[11px] gap-2 group/link hover:bg-brand-gold hover:text-white transition-all duration-300 shadow-sm uppercase tracking-wider">
-                        Explore Course 
-                        <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-1">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Card 3: Arabic Course -->
-            <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-brand-teal/10 border border-slate-100 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2">
-                <div class="relative h-48 overflow-hidden bg-slate-50">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKmBtMoVofP0Dl8qzuXubvx254VcBh6VrjoItaTlJA22BvOzSdCU1Q_vHNiY7yhHl-FSwRd5OnFkSlmIdBR6oU1cLwSTpakszocphMkCUjmoSAqMm_i4tuHI89m7NiH1i2qTxIGk2IgTW2_ktlVaDQOSgDQyejOVcQmmU5fC9EGTX41tYW-KKFbgfjBEnTkv_QklVdonPPebWtFzLjtgSa-uCPyCfXltao1D1Je5T5Gaj-oyCnxsL-5vQ8BmmXJnhy6F1LoclO3zQ" alt="Arabic Course"/>
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-white/95 backdrop-blur-md text-brand-teal font-black text-[9px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm border border-brand-teal/10">All Levels</span>
-                    </div>
-                </div>
-                <div class="px-6 py-3 flex flex-col flex-grow text-center items-center">
-                    <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-brand-teal transition-colors">Arabic Course</h3>
-                    <p class="text-[12px] text-slate-500 leading-relaxed mb-6 flex-grow text-balance">Master the Arabic language to understand the Quran and classical Islamic texts in their original form.</p>
-                    <a href="#" class="inline-flex items-center bg-brand-teal/5 text-brand-teal px-5 py-2 rounded-xl font-bold text-[11px] gap-2 group/link hover:bg-brand-teal hover:text-white transition-all duration-300 shadow-sm uppercase tracking-wider">
-                        Explore Course 
-                        <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-1">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Card 4: Hifz ul Quran -->
-            <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-brand-gold/10 border border-slate-100 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2">
-                <div class="relative h-48 overflow-hidden bg-slate-50">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ asset('images/courses/hifz_course.png') }}" alt="Hifz ul Quran"/>
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-brand-gold text-white font-black text-[9px] uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">Memorization</span>
-                    </div>
-                </div>
-                <div class="px-6 py-3 flex flex-col flex-grow text-center items-center">
-                    <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-brand-gold transition-colors">Hifz ul Quran</h3>
-                    <p class="text-[12px] text-slate-500 leading-relaxed mb-6 flex-grow text-balance">Memorize the Holy Quran with proper technique and systematic revision under expert guidance.</p>
-                    <a href="#" class="inline-flex items-center bg-brand-gold/5 text-brand-gold px-5 py-2 rounded-xl font-bold text-[11px] gap-2 group/link hover:bg-brand-gold hover:text-white transition-all duration-300 shadow-sm uppercase tracking-wider">
-                        Explore Course 
-                        <span class="material-symbols-outlined text-[16px] transition-transform group-hover/link:translate-x-1">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
+            @endforeach
         </div>
 
         <!-- Explore More CTA -->
@@ -938,9 +893,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div class="max-w-xl">
                 <span class="text-brand-teal font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">Scholarly Resources</span>
-                <h2 class="text-xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight mb-4">Digital Library</h2>
+                <h2 class="text-xl md:text-3xl font-serif font-bold text-slate-800 tracking-tight mb-4">{{ $bookCategory->name ?? 'Digital Library' }}</h2>
                 <p class="text-slate-500 text-sm leading-relaxed max-w-md">
-                    Access our premium collection of Islamic texts, study guides, and supplementary materials designed to support your lifelong learning.
+                    {{ $bookCategory->description ?? 'Access our premium collection of Islamic texts, study guides, and supplementary materials designed to support your lifelong learning.' }}
                 </p>
             </div>
             <a href="{{ route('books.index') }}" class="group inline-flex items-center gap-3 bg-white border border-slate-200 px-6 py-3 rounded-xl text-slate-600 font-medium text-xs hover:bg-slate-50 hover:text-brand-teal hover:border-brand-teal/30 transition-all shadow-sm">
@@ -999,7 +954,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         @click="isOpen = true; selectedBook = JSON.parse($el.dataset.book)">
                         @if($book->image)
                             <!-- Apply a softer, elegant drop shadow to the book image -->
-                            <img src="{{ Storage::url($book->image) }}" alt="{{ $book->title }}" class="w-[75%] max-h-full object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.2)] transition-transform duration-500">
+                            <img src="{{ Storage::url($book->image) }}" alt="{{ $book->image_alt ?? $book->title }}" class="w-[75%] max-h-full object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.2)] transition-transform duration-500">
                         @else
                             <div class="w-[75%] h-full bg-white/50 flex items-center justify-center p-4 text-center drop-shadow-[0_10px_15px_rgba(0,0,0,0.1)] transition-transform duration-500 border border-slate-200/50">
                                 <span class="text-slate-400 font-bold text-[10px] uppercase tracking-widest opacity-60">{{ $book->title }}</span>
@@ -1178,10 +1133,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="text-brand-gold font-bold tracking-[0.2em] text-[10px] uppercase">The Academy Press</span>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-serif font-black text-slate-900 mb-3 tracking-tight">
-                    Scholarly <span class="text-brand-teal italic font-serif">Insights</span>
+                    {{ $postCategory->name ?? 'Scholarly Insights' }}
                 </h2>
                 <p class="text-slate-500 text-sm leading-relaxed max-w-xl">
-                    Deep dives into Islamic sciences, pedagogy, and modern leadership. Bridging traditional wisdom with contemporary excellence.
+                    {{ $postCategory->description ?? 'Deep dives into Islamic sciences, pedagogy, and modern leadership. Bridging traditional wisdom with contemporary excellence.' }}
                 </p>
             </div>
             <div class="flex items-center">
@@ -1202,7 +1157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="relative aspect-[16/8] sm:aspect-[16/7] lg:aspect-[21/9] overflow-hidden bg-slate-100">
                         <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10"></div>
                         @if($mainPost->image)
-                            <img alt="{{ $mainPost->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="{{ Storage::url($mainPost->image) }}"/>
+                            <img alt="{{ $mainPost->image_alt ?? $mainPost->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="{{ Storage::url($mainPost->image) }}"/>
                         @else
                             <div class="w-full h-full bg-gradient-to-br from-brand-teal/5 to-brand-teal/10 flex items-center justify-center">
                                 <svg class="w-12 h-12 text-brand-teal/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg>
@@ -1255,7 +1210,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <article class="group relative bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-slate-100 flex gap-4 transition-all hover:shadow-md hover:border-brand-teal/20 items-center">
                     <div class="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden shrink-0 bg-slate-100 relative">
                         @if($post->image)
-                            <img alt="{{ $post->title }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ Storage::url($post->image) }}"/>
+                            <img alt="{{ $post->image_alt ?? $post->title }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="{{ Storage::url($post->image) }}"/>
                         @else
                             <div class="w-full h-full flex items-center justify-center text-brand-teal/10"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 00-2 2z"></path></svg></div>
                         @endif
