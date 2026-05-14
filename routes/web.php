@@ -64,9 +64,21 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [AuthController::class , 'register']);
 });
 
-Route::middleware('auth')->group(function () {
+// OTP Verification Routes (Must be outside 'guest' so logged-in users can verify)
+Route::get('/verify-otp', [AuthController::class, 'showVerifyOtp'])->name('verification.notice');
+Route::post('/verify-otp', [AuthController::class, 'verifyOtp'])->name('otp.submit');
+Route::post('/resend-otp', [AuthController::class, 'resendOtp'])->name('otp.resend');
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class , 'index'])->name('dashboard');
     Route::post('/enroll', [EnrollmentController::class , 'store'])->name('enroll.store');
+    
+    // Profile Management
+    Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+});
+
+Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class , 'logout'])->name('logout');
 });
 
