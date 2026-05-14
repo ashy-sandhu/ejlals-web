@@ -23,4 +23,18 @@ class DashboardController extends Controller
 
         return view('dashboard', compact('enrollments', 'user'));
     }
+
+    /**
+     * Display the student's enrolled courses.
+     */
+    public function myCourses()
+    {
+        $user = Auth::user();
+        $enrollments = Enrollment::with(['course', 'timeSlot'])
+            ->where('user_id', $user->id)
+            ->latest()
+            ->get();
+
+        return view('my-courses', compact('enrollments', 'user'));
+    }
 }

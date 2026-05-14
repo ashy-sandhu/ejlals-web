@@ -71,6 +71,7 @@ Route::post('/resend-otp', [AuthController::class, 'resendOtp'])->name('otp.rese
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class , 'index'])->name('dashboard');
+    Route::get('/my-courses', [DashboardController::class , 'myCourses'])->name('my-courses');
     Route::post('/enroll', [EnrollmentController::class , 'store'])->name('enroll.store');
     
     // Profile Management

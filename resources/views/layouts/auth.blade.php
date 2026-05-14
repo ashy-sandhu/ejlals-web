@@ -84,13 +84,25 @@
         <section class="relative hidden md:flex md:w-1/2 lg:w-[45%] bg-ejlals-dark text-white p-8 lg:p-16 flex-col justify-between overflow-hidden">
             <!-- Background Elements -->
             <div class="absolute inset-0 z-0">
-                <div class="absolute top-1/2 -right-20 transform -translate-y-1/2 w-[600px] h-[600px] opacity-40">
+                <div class="absolute top-1/2 -right-32 transform -translate-y-1/2 w-[700px] h-[700px] opacity-60">
+                    <!-- Rotating Circles & Stars -->
                     <div class="animate-slow-rotate w-full h-full relative">
-                        <div class="absolute inset-0 rounded-full border border-teal-500/30 animate-pulse"></div>
-                        <div class="absolute inset-10 rounded-full border border-teal-500/20"></div>
-                        <div class="absolute inset-20 rounded-full border border-teal-500/10"></div>
+                        <!-- Outer Circle -->
+                        <div class="absolute inset-0 rounded-full border border-teal-500/20"></div>
+                        <div class="absolute top-1/2 -left-1.5 w-3 h-3 rounded-full bg-teal-400 shadow-[0_0_15px_rgba(45,212,191,0.8)]"></div>
+                        
+                        <!-- Middle Circle -->
+                        <div class="absolute inset-16 rounded-full border border-teal-500/15"></div>
+                        <div class="absolute top-16 left-1/2 -ml-1 w-2 h-2 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]"></div>
+                        
+                        <!-- Inner Circle -->
+                        <div class="absolute inset-32 rounded-full border border-teal-500/10"></div>
+                        <div class="absolute bottom-32 right-1/2 -mr-1 w-1.5 h-1.5 rounded-full bg-teal-300 shadow-[0_0_10px_rgba(45,212,191,0.6)]"></div>
                     </div>
-                    <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-teal-400 blur-[80px] animate-breathing"></div>
+
+                    <!-- Ambient Glows -->
+                    <div class="absolute top-1/4 left-1/4 w-80 h-80 bg-teal-500/20 blur-[120px] animate-breathing"></div>
+                    <div class="absolute bottom-1/4 right-1/3 w-64 h-64 bg-orange-500/15 blur-[100px] animate-breathing" style="animation-delay: -4s"></div>
                 </div>
             </div>
 
@@ -99,7 +111,7 @@
                 <!-- Logo -->
                 <div class="mb-12">
                     <a href="/" class="flex items-center gap-3">
-                        <img src="{{ asset('storage/ejlals-horizontal-v1.svg') }}" alt="Ejlals Logo" class="h-12 w-auto brightness-0 invert">
+                        <img src="{{ asset('storage/ejlals-horizontal-v1.svg') }}" alt="Ejlals Logo" class="h-16 w-auto">
                     </a>
                 </div>
 
