@@ -45,24 +45,7 @@ class AuthController extends Controller
     public function showRegister()
     {
         $timezoneIdentifiers = \DateTimeZone::listIdentifiers();
-        $timezones = [];
-        $now = new \DateTime('now', new \DateTimeZone('UTC'));
-
-        foreach ($timezoneIdentifiers as $identifier) {
-            $tz = new \DateTimeZone($identifier);
-            $offset = $tz->getOffset($now);
-            $offsetPrefix = $offset >= 0 ? '+' : '-';
-            $offsetFormatted = gmdate('H:i', abs($offset));
-            
-            $timezones[] = [
-                'id' => $identifier,
-                'name' => "(GMT{$offsetPrefix}{$offsetFormatted}) " . str_replace('_', ' ', $identifier),
-                'offset' => $offset
-            ];
-        }
-
-        // Sort by offset
-        usort($timezones, fn($a, $b) => $a['offset'] <=> $b['offset']);
+        $timezones = array_map(fn($tz) => ['id' => $tz, 'name' => $tz], $timezoneIdentifiers);
 
         return view('auth.register', compact('timezones'));
     }

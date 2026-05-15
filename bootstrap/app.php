@@ -14,8 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append(\App\Http\Middleware\NoIndexMiddleware::class);
     })
     ->withSchedule(function ($schedule) {
-        // Automatically process the queue every minute in the background
-        $schedule->command('queue:work --stop-when-empty')->everyMinute();
+        // Empty for now to debug timeout
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         // Handled at the resource level for better stability
