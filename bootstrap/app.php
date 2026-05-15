@@ -13,6 +13,10 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->append(\App\Http\Middleware\NoIndexMiddleware::class);
     })
+    ->withSchedule(function ($schedule) {
+        // Automatically process the queue every minute in the background
+        $schedule->command('queue:work --stop-when-empty')->everyMinute();
+    })
     ->withExceptions(function (Exceptions $exceptions): void {
         // Handled at the resource level for better stability
     })->create();

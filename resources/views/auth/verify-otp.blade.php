@@ -5,7 +5,10 @@
 @section('content')
 <div class="mb-10 text-center md:text-left">
     <h2 class="text-3xl font-bold text-gray-900 mb-2">Check Your Inbox</h2>
-    <p class="text-gray-500">We've sent a 6-digit verification code to your email address.</p>
+    <p class="text-gray-500 leading-relaxed">
+        We've sent a 6-digit verification code to <br class="hidden md:block">
+        <span class="font-bold text-ejlals-teal">{{ auth()->user()?->email ?? 'your email' }}</span>.
+    </p>
 </div>
 
 @if (session('status'))
@@ -52,12 +55,18 @@
 </div>
 
 <!-- Resend Section -->
-<div class="text-center md:text-left space-y-4">
-    <p class="text-sm text-gray-500">Please check your spam folder if you don't see it.</p>
+<div class="flex flex-col md:flex-row items-center justify-between gap-4">
     <form action="{{ route('otp.resend') }}" method="POST">
         @csrf
         <button type="submit" class="text-sm font-bold text-ejlals-teal hover:text-teal-700 transition-colors underline decoration-2 underline-offset-4">
             Resend Verification Email
+        </button>
+    </form>
+
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit" class="text-sm font-medium text-gray-400 hover:text-rose-600 transition-colors">
+            Sign Out
         </button>
     </form>
 </div>
