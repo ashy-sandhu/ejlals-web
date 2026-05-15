@@ -125,6 +125,12 @@ class AuthController extends Controller
      */
     public function verifyOtp(Request $request)
     {
+        // Rate limit: 5 attempts per minute per IP
+        if (\RateLimiter::tooManyAttempts('verify-otp:'.$request->ip(), 5)) {
+            $seconds = \RateLimiter::availableIn('verify-otp:'.$request->ip());
+            return back()->withErrors(['otp' => "Too many attempts. Please try again in {$seconds} seconds."]);
+        }
+
         $request->validate([
             'otp' => ['required', 'array', 'size:6'],
             'otp.*' => ['required', 'numeric', 'digits:1'],
@@ -140,6 +146,7 @@ class AuthController extends Controller
         $user = User::findOrFail($userId);
 
         if ($user->verifyOtp($otp)) {
+            \RateLimiter::clear('verify-otp:'.$request->ip());
             // Re-fetch the user to ensure we have the absolute latest DB state
             $freshUser = User::find($user->id);
             
@@ -150,14 +157,21 @@ class AuthController extends Controller
             return redirect()->intended(route('dashboard'));
         }
 
+        \RateLimiter::hit('verify-otp:'.$request->ip());
         return back()->withErrors(['otp' => 'The provided code is invalid or has expired.']);
     }
 
     /**
      * Resend the OTP verification code.
      */
-    public function resendOtp()
+    public function resendOtp(Request $request)
     {
+        // Rate limit resending: 3 times per 5 minutes per IP
+        if (\RateLimiter::tooManyAttempts('resend-otp:'.$request->ip(), 3)) {
+            $seconds = \RateLimiter::availableIn('resend-otp:'.$request->ip());
+            return back()->withErrors(['otp' => "Please wait {$seconds} seconds before requesting a new code."]);
+        }
+
         $userId = session('verify_user_id');
 
         if (!$userId) {
@@ -167,6 +181,8 @@ class AuthController extends Controller
         $user = User::findOrFail($userId);
         $otp = $user->generateOtp();
         $user->notify(new OtpNotification($otp));
+
+        \RateLimiter::hit('resend-otp:'.$request->ip(), 300); // 5 minute lockout
 
         return back()->with('status', 'A new verification code has been sent to your email.');
     }
