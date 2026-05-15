@@ -50,6 +50,14 @@ Ejlals Academy Team');
     }
 
     /**
+     * Handle a job failure.
+     */
+    public function failed(\Throwable $exception): void
+    {
+        \Log::error('OTP Notification failed for user: ' . $exception->getMessage());
+    }
+
+    /**
      * Get the array representation of the notification.
      *
      * @return array<string, mixed>
