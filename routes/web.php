@@ -24,36 +24,21 @@ Route::get('/bridge-sync-db-7739', function () {
 });
 
 Route::get('/', function () {
-    // Fetch all featured courses
-    $featuredCourses = Course::where('is_featured', true)->with('category')->latest()->get();
+    $data = \Illuminate\Support\Facades\Cache::remember('home_page_data_v1', 3600, function () {
+        return [
+            'featuredCourses' => Course::where('is_featured', true)->with('category')->latest()->get(),
+            'courseCategory' => \App\Models\Category::where('type', 'course')->first(),
+            'bookCategory' => \App\Models\Category::where('type', 'book')->first(),
+            'postCategory' => \App\Models\Category::where('type', 'post')->first(),
+            'courseCategories' => \App\Models\Category::where('type', 'course')->get(),
+            'featuredBooks' => Book::where('is_featured', true)->orderBy('created_at', 'desc')->take(4)->get(),
+            'featuredPosts' => Post::where('is_featured', true)->latest()->take(4)->get(),
+            'latestPosts' => Post::whereNotIn('id', Post::where('is_featured', true)->latest()->take(4)->pluck('id'))->latest()->take(3)->get(),
+            'featuredScholars' => \App\Models\Scholar::where('is_featured', true)->take(4)->get(),
+        ];
+    });
 
-    // Fetch categories by type for section headers
-    $courseCategory = \App\Models\Category::where('type', 'course')->first();
-    $bookCategory = \App\Models\Category::where('type', 'book')->first();
-    $postCategory = \App\Models\Category::where('type', 'post')->first();
-
-    // Fetch all course categories for the cards
-    $courseCategories = \App\Models\Category::where('type', 'course')->get();
-
-    $featuredBooks = Book::where('is_featured', true)->orderBy('created_at', 'desc')->take(4)->get();
-    $featuredPosts = Post::where('is_featured', true)->latest()->take(4)->get();
-    $featuredIds = $featuredPosts->pluck('id');
-    $latestPosts = Post::whereNotIn('id', $featuredIds)->latest()->take(3)->get();
-
-    // Fetch featured scholars
-    $featuredScholars = \App\Models\Scholar::where('is_featured', true)->take(4)->get();
-
-    return view('welcome', compact(
-        'featuredCourses', 
-        'courseCategory', 
-        'bookCategory', 
-        'postCategory', 
-        'courseCategories', 
-        'featuredBooks', 
-        'featuredPosts', 
-        'latestPosts', 
-        'featuredScholars'
-    ));
+    return view('welcome', $data);
 })->name('home');
 
 // Authentication Routes
