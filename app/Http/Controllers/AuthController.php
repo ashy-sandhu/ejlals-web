@@ -55,6 +55,7 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
+        \Log::info('Register: Start');
         $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
@@ -65,6 +66,7 @@ class AuthController extends Controller
             'city' => ['required', 'string'],
             'timezone' => ['required', 'string'],
         ]);
+        \Log::info('Register: Validation Passed');
 
         $user = User::create([
             'first_name' => $request->first_name,
@@ -77,11 +79,16 @@ class AuthController extends Controller
             'city' => $request->city,
             'timezone' => $request->timezone,
         ]);
+        \Log::info('Register: User Created');
 
         $otp = $user->generateOtp();
+        \Log::info('Register: OTP Generated');
+        
         $user->notify(new OtpNotification($otp));
+        \Log::info('Register: Notification Queued');
 
         session(['verify_user_id' => $user->id]);
+        \Log::info('Register: Session Set');
 
         return redirect()->route('verification.notice');
     }
