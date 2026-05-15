@@ -265,7 +265,7 @@
                 <span class="text-brand-gold font-bold text-[10px] uppercase tracking-[0.4em]">Academic Excellence</span>
             </div>
             <h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-                {{ $courseCategory->name ?? 'Quran Courses' }} at <span class="text-brand-teal">Ejlals</span><span class="text-brand-gold">.com</span>
+                {{ $courseCategory->name ?? 'Our Courses' }} at <span class="text-brand-teal">Ejlals</span><span class="text-brand-gold">.com</span>
             </h2>
             <div class="h-1 w-20 bg-gradient-to-r from-brand-teal to-brand-gold mx-auto rounded-full mt-2"></div>
             <p class="text-[14px] text-slate-500 leading-relaxed pt-4 text-balance font-medium">
@@ -278,8 +278,8 @@
             @foreach($courseCategories as $category)
             <div class="group bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-brand-teal/10 border border-slate-100 overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-2">
                 <div class="relative h-48 overflow-hidden bg-slate-50">
-                    @if($category->image)
-                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ Storage::url($category->image) }}" alt="{{ $category->image_alt ?? $category->name }}"/>
+                    @if(isset($category->image) && $category->image)
+                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="{{ Storage::url($category->image) }}" alt="{{ $category->image_alt ?? $category->name ?? 'Category' }}"/>
                     @else
                         <div class="w-full h-full bg-slate-100 flex items-center justify-center">
                             <span class="material-symbols-outlined text-slate-300 text-5xl">category</span>
@@ -290,9 +290,9 @@
                     </div>
                 </div>
                 <div class="px-6 py-3 flex flex-col flex-grow text-center items-center">
-                    <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-brand-teal transition-colors">{{ $category->name }}</h3>
+                    <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-brand-teal transition-colors">{{ $category->name ?? 'Untitled Category' }}</h3>
                     <p class="text-[12px] text-slate-500 leading-relaxed mb-6 flex-grow text-balance">
-                        {{ Str::limit($category->description, 100) ?? 'Master the correct pronunciation and beautiful recitation with expert guidance.' }}
+                        {{ isset($category->description) ? Str::limit($category->description, 100) : 'Master the correct pronunciation and beautiful recitation with expert guidance.' }}
                     </p>
                     <a href="{{ route('courses.index', ['category' => $category->slug]) }}" class="inline-flex items-center bg-brand-teal/5 text-brand-teal px-5 py-2 rounded-xl font-bold text-[11px] gap-2 group/link hover:bg-brand-teal hover:text-white transition-all duration-300 shadow-sm uppercase tracking-wider">
                         Explore Courses 
