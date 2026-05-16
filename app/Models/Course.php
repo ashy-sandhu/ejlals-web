@@ -58,8 +58,13 @@ class Course extends Model
         'description',
         'summary',
         'category_id',
+        'scholar_id',
         'is_featured',
         'instructor_name',
+        'duration',
+        'level',
+        'language',
+        'enrolled_display',
         'image',
         'image_alt',
         'gallery',
@@ -88,6 +93,16 @@ class Course extends Model
     public function getRenderedDescriptionAttribute()
     {
         return $this->processLinks($this->description);
+    }
+
+    public function scholar()
+    {
+        return $this->belongsTo(Scholar::class);
+    }
+
+    public function modules()
+    {
+        return $this->hasMany(CourseModule::class)->orderBy('sort_order');
     }
 
     public function timeSlots()

@@ -32,3 +32,6 @@ php artisan migrate --force
 # 7. Final Health Check
 echo "✅ Deployment Successful!"
 php artisan uptime || echo "⚠️  Note: Load is still high, but site is optimized."
+
+# crons job link for the hostinger
+/usr/bin/php /home/u303380656/domains/staging.ejlals.com/laravel/artisan queue:work --stop-when-empty >> /dev/null 2>&1

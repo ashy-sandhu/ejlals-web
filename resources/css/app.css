@@ -59,4 +59,10 @@
     --color-brand-gold-light: #F2994A;
     --color-brand-gold-dark: #C7681C;
     --color-brand-green: #4E9D15;
+
+    /* New Course View Design Colors */
+    --color-ejlals-dark: #0a192f;
+    --color-ejlals-accent: #f59e0b;
+    --color-ejlals-orange: #f38d31;
+    --color-ejlals-bg: #f8fafc;
 }

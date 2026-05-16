@@ -54,12 +54,43 @@ class CourseResource extends Resource
                                             ->columnSpanFull(),
                                     ])->columns(2),
 
-                                Forms\Components\Section::make('Instruction & Details')
+                                Forms\Components\Section::make('Curriculum Builder')
+                                    ->description('Break down your course into modules and lessons.')
                                     ->schema([
-                                        Forms\Components\TextInput::make('instructor_name')
-                                            ->label('Instructor/Scholar Name')
-                                            ->placeholder('e.g. Sheikh Abu Bakr')
-                                            ->maxLength(255),
+                                        Forms\Components\Repeater::make('modules')
+                                            ->relationship('modules')
+                                            ->schema([
+                                                Forms\Components\TextInput::make('title')
+                                                    ->label('Module Title')
+                                                    ->placeholder('e.g. Week 1: Foundations')
+                                                    ->required()
+                                                    ->columnSpanFull(),
+                                                Forms\Components\Repeater::make('lessons')
+                                                    ->relationship('lessons')
+                                                    ->schema([
+                                                        Forms\Components\Grid::make(2)
+                                                            ->schema([
+                                                                Forms\Components\TextInput::make('title')
+                                                                    ->label('Lesson Title')
+                                                                    ->placeholder('e.g. Lesson 1: Introduction')
+                                                                    ->required(),
+                                                                Forms\Components\TextInput::make('duration')
+                                                                    ->label('Estimated Time')
+                                                                    ->placeholder('e.g. 15 mins'),
+                                                            ]),
+                                                    ])
+                                                    ->orderColumn('sort_order')
+                                                    ->defaultItems(0)
+                                                    ->reorderableWithButtons()
+                                                    ->collapsible()
+                                                    ->itemLabel(fn (array $state): ?string => $state['title'] ?? null),
+                                            ])
+                                            ->orderColumn('sort_order')
+                                            ->defaultItems(0)
+                                            ->reorderableWithButtons()
+                                            ->collapsible()
+                                            ->itemLabel(fn (array $state): ?string => $state['title'] ?? null)
+                                            ->columnSpanFull(),
                                     ]),
                             ])->columnSpan(8),
 
@@ -106,6 +137,38 @@ class CourseResource extends Resource
                                             ->directory('courses/gallery'),
                                     ]),
 
+                                Forms\Components\Section::make('Instruction & Details')
+                                    ->schema([
+                                        Forms\Components\Select::make('scholar_id')
+                                            ->label('Instructor / Scholar')
+                                            ->relationship('scholar', 'name')
+                                            ->searchable()
+                                            ->preload()
+                                            ->required()
+                                            ->native(false),
+                                        Forms\Components\TextInput::make('duration')
+                                            ->label('Course Duration')
+                                            ->numeric()
+                                            ->step(1)
+                                            ->minValue(1)
+                                            ->suffix('Weeks')
+                                            ->placeholder('e.g. 12')
+                                            ->helperText('Number of weeks the course lasts.'),
+                                        Forms\Components\TextInput::make('level')
+                                            ->label('Course Level')
+                                            ->placeholder('e.g. Beginner to Advanced')
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('language')
+                                            ->label('Course Language')
+                                            ->placeholder('e.g. English & Urdu')
+                                            ->maxLength(255),
+                                        Forms\Components\TextInput::make('enrolled_display')
+                                            ->label('Enrolled Display Text')
+                                            ->placeholder('e.g. 1.2K+')
+                                            ->helperText('Custom text to show for enrolled students count. Leave blank to show actual count.')
+                                            ->maxLength(255),
+                                    ]),
+
                                 Forms\Components\Section::make('Search Engine Optimization (SEO)')
                                     ->schema([
                                         Forms\Components\TextInput::make('seo_title')
@@ -147,7 +210,8 @@ class CourseResource extends Resource
                     ->color('gray'),
                 Tables\Columns\IconColumn::make('is_featured')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('instructor_name')
+                Tables\Columns\TextColumn::make('scholar.name')
+                    ->label('Instructor')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()
