@@ -210,7 +210,7 @@
     </section>
 
     <!-- Timeline Section -->
-    <section class="bg-[#F4F9F9] border-y border-surface-container py-xl">
+    <section class="bg-[#F4F9F9] border-y border-surface-container pt-[2rem] pb-[3rem]">
         <h3 class="font-headline-lg text-headline-lg text-center mb-xl text-on-background">Our Journey Since <span class="text-secondary">2016</span></h3>
         <div class="relative max-w-4xl mx-auto px-margin">
             <!-- Central Vertical Line -->
@@ -436,7 +436,7 @@
     </section>
 
     <!-- Faculty Highlight -->
-    <section class="py-xl bg-surface border-y border-surface-container">
+    <section class="pt-[2px] pb-xl bg-surface border-y border-surface-container">
         <div class="max-w-max-width mx-auto px-margin text-center">
             <h2 class="font-headline-lg text-headline-lg text-on-background mb-xl">Guided by <span class="text-secondary">Wisdom</span></h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-lg">
@@ -504,7 +504,7 @@
         <div class="absolute inset-0 opacity-[0.03] islamic-pattern"></div>
         <div class="max-w-3xl mx-auto px-margin text-center relative z-10">
             <span class="material-symbols-outlined text-secondary text-5xl mb-md">format_quote</span>
-            <p class="font-headline-md text-headline-md text-on-surface italic mb-lg">
+            <p class="font-headline-md  text-[21px] font-[500] text-on-surface italic mb-lg">
                 "With over 8 years of experience in providing online education, I realized that the future of our Ummah lies in making authentic knowledge safe, accessible, and easy to understand. Ejlals Islamic Horizon is my humble contribution to ensuring that no Muslim - regardless of their location, age, or language - is left behind in their spiritual journey."
             </p>
             <div class="flex flex-col items-center">
