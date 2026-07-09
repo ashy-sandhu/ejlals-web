@@ -56,7 +56,7 @@
 </section>
 
     <!-- Articles Grid -->
-    <div class="max-w-7xl mx-auto px-6 py-20 pb-32">
+    <div class="max-w-7xl mx-auto p-20 pt-6">
         @if(isset($selectedCategory) && $selectedCategory)
             <div class="flex items-center justify-between mb-12 pb-6 border-b border-slate-200">
                 <div class="flex items-center gap-4">
