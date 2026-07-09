@@ -530,7 +530,7 @@
     </section>
 
     <!-- Final CTA -->
-    <section class="py-xl px-margin bg-white relative overflow-hidden">
+    <section class="pb-20 pt-6 px-margin bg-white relative overflow-hidden">
         <div class="absolute right-0 bottom-0 w-96 h-96 bg-primary/5 rounded-full -mr-48 -mb-48 blur-3xl"></div>
         <div class="max-w-max-width mx-auto bg-[#FCF9F2] rounded-3xl py-xl px-xl flex flex-col md:flex-row justify-between items-center gap-lg text-center md:text-left border border-secondary/10 shadow-sm relative z-10">
             <div>

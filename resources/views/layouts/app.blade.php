@@ -337,13 +337,15 @@
                             <h3 class="text-white text-xl md:text-2xl font-bold mb-2 leading-tight">Enlighten Your Journey With Ejlals Academy</h3>
                             <p class="text-white/80 text-sm md:text-base">Join our community receiving weekly insights on Islamic studies and spiritual growth.</p>
                         </div>
-                        <div class="w-full max-w-md">
-                            <form class="flex flex-col sm:flex-row gap-2">
-                                <input class="flex-grow h-12 px-4 rounded-xl border-none bg-white/10 backdrop-blur-md text-white placeholder:text-white/60 focus:ring-2 focus:ring-brand-gold outline-none transition-all text-sm" placeholder="Your email address" type="email"/>
-                                <button class="h-12 px-6 rounded-xl bg-brand-gold text-white font-bold hover:bg-white hover:text-slate-900 transition-all shadow-md whitespace-nowrap text-sm">
+                        <div class="w-full max-w-md flex flex-col gap-2">
+                            <form id="newsletter-form" action="{{ route('newsletter.subscribe') }}" method="POST" class="flex flex-col sm:flex-row gap-2">
+                                @csrf
+                                <input name="email" id="newsletter-email" class="flex-grow h-12 px-4 rounded-xl border-none bg-white/10 backdrop-blur-md text-white placeholder:text-white/60 focus:ring-2 focus:ring-brand-gold outline-none transition-all text-sm" placeholder="Your email address" type="email" required/>
+                                <button id="newsletter-btn" type="submit" class="h-12 px-6 rounded-xl bg-brand-gold text-white font-bold hover:bg-white hover:text-slate-900 transition-all shadow-md whitespace-nowrap text-sm flex items-center justify-center gap-2">
                                     Subscribe
                                 </button>
                             </form>
+                            <div id="newsletter-message" class="hidden text-xs font-semibold px-2 transition-all duration-300"></div>
                         </div>
                     </div>
                     <!-- Decorative element -->
@@ -432,6 +434,76 @@
                 </div>
             </div>
         </footer>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const form = document.getElementById('newsletter-form');
+                if (!form) return;
+
+                const emailInput = document.getElementById('newsletter-email');
+                const submitBtn = document.getElementById('newsletter-btn');
+                const messageBox = document.getElementById('newsletter-message');
+
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Clear previous messages and formatting
+                    messageBox.classList.add('hidden');
+                    messageBox.textContent = '';
+                    messageBox.className = 'text-xs font-semibold px-2 transition-all duration-300';
+
+                    // Set loading state on button
+                    const originalBtnText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = `
+                        <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Subscribing...
+                    `;
+
+                    const email = emailInput.value;
+                    const token = form.querySelector('input[name="_token"]').value;
+
+                    fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': token,
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({ email: email })
+                    })
+                    .then(response => {
+                        return response.json().then(data => {
+                            if (!response.ok) {
+                                throw new Error(data.message || 'Something went wrong.');
+                            }
+                            return data;
+                        });
+                    })
+                    .then(data => {
+                        // Success state
+                        emailInput.value = '';
+                        messageBox.textContent = data.message;
+                        messageBox.classList.add('text-emerald-300'); // v4 Tailwind color
+                        messageBox.classList.remove('hidden');
+                    })
+                    .catch(error => {
+                        // Error state
+                        messageBox.textContent = error.message;
+                        messageBox.classList.add('text-amber-300'); // v4 Tailwind color
+                        messageBox.classList.remove('hidden');
+                    })
+                    .finally(() => {
+                        // Restore button state
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                    });
+                });
+            });
+        </script>
 
     </body>
 </html>

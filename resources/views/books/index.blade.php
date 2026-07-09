@@ -44,7 +44,7 @@
     </div>
 </section>
 
-<section class="bg-white p-6">
+<section class="bg-white p-20 pt-6">
     <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between mb-6 pb-6 border-b border-gray-100">
             <div>

@@ -116,3 +116,7 @@ Route::get('/search', [App\Http\Controllers\SearchController::class, 'index'])->
 // Scholars Directory
 Route::get('/scholars', [App\Http\Controllers\ScholarController::class, 'index'])->name('scholars.index');
 Route::get('/scholar/{slug}', [App\Http\Controllers\ScholarController::class, 'show'])->name('scholars.show');
+
+// Newsletter Subscription
+Route::post('/newsletter/subscribe', [App\Http\Controllers\NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+
