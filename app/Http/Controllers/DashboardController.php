@@ -17,6 +17,7 @@ class DashboardController extends Controller
         
         // Fetch enrollments with eager loaded courses and time slots
         $enrollments = Enrollment::with(['course', 'timeSlot'])
+            ->whereHas('course')
             ->where('user_id', $user->id)
             ->latest()
             ->get();
@@ -31,6 +32,7 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         $enrollments = Enrollment::with(['course', 'timeSlot'])
+            ->whereHas('course')
             ->where('user_id', $user->id)
             ->latest()
             ->get();
