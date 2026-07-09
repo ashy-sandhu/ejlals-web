@@ -210,7 +210,7 @@
     </section>
 
     <!-- Timeline Section -->
-    <section class="bg-[#F4F9F9] border-y border-surface-container py-xl">
+    <section class="bg-[#F4F9F9] border-y border-surface-container pt-[2rem] pb-[3rem]">
         <h3 class="font-headline-lg text-headline-lg text-center mb-xl text-on-background">Our Journey Since <span class="text-secondary">2016</span></h3>
         <div class="relative max-w-4xl mx-auto px-margin">
             <!-- Central Vertical Line -->
@@ -319,25 +319,40 @@
                 <h2 class="font-headline-lg text-headline-lg text-on-background">Core Tenets of Our <span class="text-secondary">Mission</span></h2>
                 <p class="text-on-surface-variant font-label-md">Faith Without Borders</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
-                <div class="group p-md rounded-xl hover:bg-white hover:shadow-md transition-all duration-300 border border-transparent hover:border-secondary/10">
-                    <span class="material-symbols-outlined text-primary/40 text-4xl mb-sm group-hover:text-secondary group-hover:scale-110 transition-all duration-300">public</span>
-                    <h4 class="font-bold text-lg mb-xs transition-colors duration-300 group-hover:text-secondary">Global Access</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+                <!-- Global Access -->
+                <div class="group p-lg rounded-2xl bg-white/60 backdrop-blur-sm hover:bg-white border border-outline-variant/20 hover:border-secondary/20 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col items-start relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center mb-md transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-secondary/10 group-hover:border-secondary/20 group-hover:shadow-[0_4px_20px_rgba(234,127,38,0.15)]">
+                        <span class="material-symbols-outlined text-primary group-hover:text-secondary text-2xl transition-colors duration-500" translate="no">explore</span>
+                    </div>
+                    <h4 class="font-bold text-lg text-on-background mb-xs transition-colors duration-500 group-hover:text-secondary">Global Access</h4>
                     <p class="text-sm text-on-surface-variant leading-relaxed">Connecting students to qualified scholars worldwide regardless of geographic location.</p>
                 </div>
-                <div class="group p-md rounded-xl hover:bg-white hover:shadow-md transition-all duration-300 border border-transparent hover:border-secondary/10">
-                    <span class="material-symbols-outlined text-primary/40 text-4xl mb-sm group-hover:text-secondary group-hover:scale-110 transition-all duration-300">school</span>
-                    <h4 class="font-bold text-lg mb-xs transition-colors duration-300 group-hover:text-secondary">Empower Learners</h4>
+
+                <!-- Empower Learners -->
+                <div class="group p-lg rounded-2xl bg-white/60 backdrop-blur-sm hover:bg-white border border-outline-variant/20 hover:border-secondary/20 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col items-start relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center mb-md transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-secondary/10 group-hover:border-secondary/20 group-hover:shadow-[0_4px_20px_rgba(234,127,38,0.15)]">
+                        <span class="material-symbols-outlined text-primary group-hover:text-secondary text-2xl transition-colors duration-500" translate="no">menu_book</span>
+                    </div>
+                    <h4 class="font-bold text-lg text-on-background mb-xs transition-colors duration-500 group-hover:text-secondary">Empower Learners</h4>
                     <p class="text-sm text-on-surface-variant leading-relaxed">A private, judgment-free environment designed for all ages, from toddlers to seniors.</p>
                 </div>
-                <div class="group p-md rounded-xl hover:bg-white hover:shadow-md transition-all duration-300 border border-transparent hover:border-secondary/10">
-                    <span class="material-symbols-outlined text-primary/40 text-4xl mb-sm group-hover:text-secondary group-hover:scale-110 transition-all duration-300">groups_3</span>
-                    <h4 class="font-bold text-lg mb-xs transition-colors duration-300 group-hover:text-secondary">Promote Unity</h4>
+
+                <!-- Promote Unity -->
+                <div class="group p-lg rounded-2xl bg-white/60 backdrop-blur-sm hover:bg-white border border-outline-variant/20 hover:border-secondary/20 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col items-start relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center mb-md transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-secondary/10 group-hover:border-secondary/20 group-hover:shadow-[0_4px_20px_rgba(234,127,38,0.15)]">
+                        <span class="material-symbols-outlined text-primary group-hover:text-secondary text-2xl transition-colors duration-500" translate="no">diversity_3</span>
+                    </div>
+                    <h4 class="font-bold text-lg text-on-background mb-xs transition-colors duration-500 group-hover:text-secondary">Promote Unity</h4>
                     <p class="text-sm text-on-surface-variant leading-relaxed">Quran and Sahih Hadith education that transcends sectarian divides and cultural barriers.</p>
                 </div>
-                <div class="group p-md rounded-xl hover:bg-white hover:shadow-md transition-all duration-300 border border-transparent hover:border-secondary/10">
-                    <span class="material-symbols-outlined text-primary/40 text-4xl mb-sm group-hover:text-secondary group-hover:scale-110 transition-all duration-300">translate</span>
-                    <h4 class="font-bold text-lg mb-xs transition-colors duration-300 group-hover:text-secondary">Multi-language</h4>
+
+                <!-- Multi-language -->
+                <div class="group p-lg rounded-2xl bg-white/60 backdrop-blur-sm hover:bg-white border border-outline-variant/20 hover:border-secondary/20 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col items-start relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center mb-md transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-secondary/10 group-hover:border-secondary/20 group-hover:shadow-[0_4px_20px_rgba(234,127,38,0.15)]">
+                        <span class="material-symbols-outlined text-primary group-hover:text-secondary text-2xl transition-colors duration-500" translate="no">language</span>
+                    </div>
+                    <h4 class="font-bold text-lg text-on-background mb-xs transition-colors duration-500 group-hover:text-secondary">Multi-language</h4>
                     <p class="text-sm text-on-surface-variant leading-relaxed">Courses available in Urdu, Punjabi, Saraiki, and English for inclusive understanding.</p>
                 </div>
             </div>
@@ -436,7 +451,7 @@
     </section>
 
     <!-- Faculty Highlight -->
-    <section class="py-xl bg-surface border-y border-surface-container">
+    <section class="pt-[2px] pb-xl bg-surface border-y border-surface-container">
         <div class="max-w-max-width mx-auto px-margin text-center">
             <h2 class="font-headline-lg text-headline-lg text-on-background mb-xl">Guided by <span class="text-secondary">Wisdom</span></h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-lg">
@@ -504,7 +519,7 @@
         <div class="absolute inset-0 opacity-[0.03] islamic-pattern"></div>
         <div class="max-w-3xl mx-auto px-margin text-center relative z-10">
             <span class="material-symbols-outlined text-secondary text-5xl mb-md">format_quote</span>
-            <p class="font-headline-md text-headline-md text-on-surface italic mb-lg">
+            <p class="font-headline-md  text-[21px] font-[500] text-on-surface italic mb-lg">
                 "With over 8 years of experience in providing online education, I realized that the future of our Ummah lies in making authentic knowledge safe, accessible, and easy to understand. Ejlals Islamic Horizon is my humble contribution to ensuring that no Muslim - regardless of their location, age, or language - is left behind in their spiritual journey."
             </p>
             <div class="flex flex-col items-center">
