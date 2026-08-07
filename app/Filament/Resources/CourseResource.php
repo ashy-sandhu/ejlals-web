@@ -113,6 +113,7 @@ class CourseResource extends Resource
                                     ->schema([
                                         Forms\Components\FileUpload::make('image')
                                             ->label(false)
+                                            ->disk('public')
                                             ->image()
                                             ->imageEditor()
                                             ->maxSize(2048)
@@ -128,6 +129,7 @@ class CourseResource extends Resource
                                     ->schema([
                                         Forms\Components\FileUpload::make('gallery')
                                             ->label(false)
+                                            ->disk('public')
                                             ->image()
                                             ->imageEditor()
                                             ->maxSize(2048)

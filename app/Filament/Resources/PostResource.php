@@ -79,6 +79,7 @@ class PostResource extends Resource
                                                         Forms\Components\Textarea::make('seo_meta.og_description')->label('OG Description')->rows(2),
                                                         Forms\Components\FileUpload::make('seo_meta.og_image')
                                                             ->label('OG Image')
+                                                            ->disk('public')
                                                             ->image()
                                                             ->directory('seo/og'),
                                                     ]),
@@ -89,6 +90,7 @@ class PostResource extends Resource
                                                         Forms\Components\Textarea::make('seo_meta.twitter_description')->label('Twitter Description')->rows(2),
                                                         Forms\Components\FileUpload::make('seo_meta.twitter_image')
                                                             ->label('Twitter Image')
+                                                            ->disk('public')
                                                             ->image()
                                                             ->directory('seo/twitter'),
                                                     ]),
@@ -115,6 +117,7 @@ class PostResource extends Resource
                                     ->schema([
                                         Forms\Components\FileUpload::make('image')
                                             ->label(false)
+                                            ->disk('public')
                                             ->image()
                                             ->imageEditor()
                                             ->maxSize(2048)
@@ -130,6 +133,7 @@ class PostResource extends Resource
                                     ->schema([
                                         Forms\Components\FileUpload::make('gallery')
                                             ->label(false)
+                                            ->disk('public')
                                             ->image()
                                             ->imageEditor()
                                             ->maxSize(2048)
