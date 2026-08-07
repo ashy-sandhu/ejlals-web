@@ -17,8 +17,8 @@ class CreateTag extends CreateRecord
     {
         return [
             $this->getCancelFormAction(),
-            $this->getCreateFormAction(),
-            ...(method_exists($this, 'getCreateAnotherFormAction') ? [$this->getCreateAnotherFormAction()] : []),
+            $this->getCreateFormAction()->formId('form'),
+            ...(method_exists($this, 'getCreateAnotherFormAction') ? [$this->getCreateAnotherFormAction()->formId('form')] : []),
         ];
     }
 

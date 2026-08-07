@@ -65,6 +65,7 @@ class CategoryResource extends Resource
                                     ->schema([
                                         Forms\Components\FileUpload::make('image')
                                             ->label(false)
+                                            ->disk('public')
                                             ->image()
                                             ->imageEditor()
                                             ->directory('categories')

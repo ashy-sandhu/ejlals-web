@@ -63,6 +63,7 @@ class BookResource extends Resource
 
                                         Forms\Components\FileUpload::make('download_file')
                                             ->label('Select File')
+                                            ->disk('public')
                                             ->directory('books/files')
                                             ->maxSize(102400)
                                             ->preserveFilenames()
@@ -97,6 +98,7 @@ class BookResource extends Resource
                                     ->schema([
                                         Forms\Components\FileUpload::make('image')
                                             ->label(false)
+                                            ->disk('public')
                                             ->image()
                                             ->imageEditor()
                                             ->maxSize(2048)

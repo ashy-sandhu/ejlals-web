@@ -17,7 +17,7 @@ class EditBook extends EditRecord
     {
         return [
             $this->getCancelFormAction(),
-            $this->getSaveFormAction(),
+            $this->getSaveFormAction()->formId('form'),
             Actions\ActionGroup::make([
                 Actions\DeleteAction::make(),
             ])
