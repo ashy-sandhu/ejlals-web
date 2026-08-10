@@ -498,7 +498,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch relative">
             <!-- Card 1: Urdu -->
             <div class="language-card group perspective-1000 h-full">
-                <div class="card-inner h-full bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-500 relative overflow-hidden flex flex-col items-center text-center">
+                <a href="{{ route('courses.index', ['language' => 'urdu']) }}" class="card-inner h-full bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-500 relative overflow-hidden flex flex-col items-center text-center">
                     <!-- Top Accent -->
                     <div class="absolute top-0 left-0 w-full h-1 bg-brand-teal transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                     
@@ -520,12 +520,12 @@
                             Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
                         </span>
                     </div>
-                </div>
+                </a>
             </div>
 
             <!-- Card 2: Punjabi -->
             <div class="language-card group perspective-1000 h-full">
-                <div class="card-inner h-full bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-500 relative overflow-hidden flex flex-col items-center text-center">
+                <a href="{{ route('courses.index', ['language' => 'punjabi']) }}" class="card-inner h-full bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-500 relative overflow-hidden flex flex-col items-center text-center">
                     <!-- Top Accent -->
                     <div class="absolute top-0 left-0 w-full h-1 bg-brand-gold transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                     
@@ -547,12 +547,12 @@
                             Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
                         </span>
                     </div>
-                </div>
+                </a>
             </div>
 
             <!-- Card 3: English -->
             <div class="language-card group perspective-1000 h-full">
-                <div class="card-inner h-full bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-500 relative overflow-hidden flex flex-col items-center text-center">
+                <a href="{{ route('courses.index', ['language' => 'english']) }}" class="card-inner h-full bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-500 relative overflow-hidden flex flex-col items-center text-center">
                     <!-- Top Accent -->
                     <div class="absolute top-0 left-0 w-full h-1 bg-brand-teal transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                     
@@ -574,7 +574,7 @@
                             Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
                         </span>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
