@@ -17,7 +17,9 @@ class EnrollmentResource extends Resource
 {
     protected static ?string $model = Enrollment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationGroup = 'Enrollment Management';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -34,19 +36,29 @@ class EnrollmentResource extends Resource
                     ->searchable()
                     ->native(false),
                 Forms\Components\Select::make('time_slot_id')
-                    ->relationship('timeSlot', 'day') // Or use a custom label
+                    ->relationship('timeSlot', 'day') 
                     ->label('Selected Time Slot')
+                    ->native(false),
+                Forms\Components\Select::make('assigned_scholar_id')
+                    ->relationship('assignedScholar', 'name')
+                    ->label('Assigned Teacher')
+                    ->searchable()
                     ->native(false),
                 Forms\Components\Select::make('status')
                     ->options([
-                        'pending' => 'Pending',
+                        'under_review' => 'Under Review',
+                        'trial' => 'Trial Active',
+                        'trial_expired' => 'Trial Expired',
                         'active' => 'Active',
                         'completed' => 'Completed',
-                        'cancelled' => 'Cancelled',
+                        'rejected' => 'Rejected',
                     ])
-                    ->default('pending')
+                    ->default('under_review')
                     ->required()
                     ->native(false),
+                
+                Forms\Components\DateTimePicker::make('trial_started_at'),
+                Forms\Components\DateTimePicker::make('trial_ends_at'),
 
                 Forms\Components\Textarea::make('message')
                     ->columnSpanFull(),
@@ -57,37 +69,64 @@ class EnrollmentResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('course_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('time_slot_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('Student')
+                    ->searchable()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                    ->weight('bold'),
+                Tables\Columns\TextColumn::make('course.title')
+                    ->label('Course')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('assignedScholar.name')
+                    ->label('Teacher')
+                    ->searchable(),
+                Tables\Columns\BadgeColumn::make('status')
+                    ->colors([
+                        'warning' => 'under_review',
+                        'primary' => 'trial',
+                        'danger' => ['trial_expired', 'rejected'],
+                        'success' => ['active', 'completed'],
+                    ]),
+                Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('status')
+                    ->options([
+                        'under_review' => 'Under Review',
+                        'trial' => 'Trial Active',
+                        'trial_expired' => 'Trial Expired',
+                        'active' => 'Active',
+                        'completed' => 'Completed',
+                        'rejected' => 'Rejected',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+
+                Tables\Actions\Action::make('Activate')
+                    ->icon('heroicon-o-check-circle')
+                    ->color('success')
+                    ->requiresConfirmation()
+                    ->visible(fn (Enrollment $record) => in_array($record->status, ['trial', 'trial_expired']))
+                    ->action(fn (Enrollment $record) => $record->update(['status' => 'active'])),
+
+                Tables\Actions\Action::make('Complete')
+                    ->icon('heroicon-o-academic-cap')
+                    ->color('success')
+                    ->requiresConfirmation()
+                    ->visible(fn (Enrollment $record) => $record->status === 'active')
+                    ->action(fn (Enrollment $record) => $record->update(['status' => 'completed'])),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getRelations(): array

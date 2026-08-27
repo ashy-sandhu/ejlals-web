@@ -62,7 +62,18 @@
                         </div>
                     @endif
                     <div class="absolute top-2 left-2">
-                        <span class="px-1.5 py-0.5 rounded-lg bg-black/50 backdrop-blur-md text-white text-[6px] md:text-[9px] font-bold uppercase tracking-widest">{{ $enrollment->status }}</span>
+                        @php
+                            $badgeColor = 'bg-black/50';
+                            $badgeText = strtoupper(str_replace('_', ' ', $enrollment->status));
+                            
+                            if ($enrollment->isUnderReview()) { $badgeColor = 'bg-amber-500/90'; $badgeText = 'UNDER REVIEW'; }
+                            elseif ($enrollment->isOnTrial()) { $badgeColor = 'bg-teal-500/90 animate-pulse'; $badgeText = 'TRIAL ACTIVE'; }
+                            elseif ($enrollment->status === 'trial_expired') { $badgeColor = 'bg-orange-500/90'; $badgeText = 'TRIAL ENDED'; }
+                            elseif ($enrollment->isActive()) { $badgeColor = 'bg-green-500/90'; $badgeText = 'ACTIVE'; }
+                            elseif ($enrollment->isCompleted()) { $badgeColor = 'bg-emerald-600/90'; $badgeText = 'COMPLETED ✓'; }
+                            elseif ($enrollment->isRejected()) { $badgeColor = 'bg-gray-500/90'; $badgeText = 'NOT CONTINUED'; }
+                        @endphp
+                        <span class="px-1.5 py-0.5 rounded-lg {{ $badgeColor }} backdrop-blur-md text-white text-[6px] md:text-[9px] font-bold tracking-widest">{{ $badgeText }}</span>
                     </div>
                 </div>
 
@@ -73,25 +84,43 @@
                     <div class="space-y-1 md:space-y-2 mb-3 md:mb-6">
                         <div class="flex items-center gap-1.5 md:gap-2 text-gray-500">
                             <span class="material-symbols-outlined text-[8px] md:text-xs">calendar_today</span>
-                            <span class="text-[7px] md:text-[10px] font-bold uppercase tracking-wider">{{ $enrollment->timeSlot ? substr($enrollment->timeSlot->day_of_week, 0, 3) : 'N/A' }}</span>
+                            <span class="text-[7px] md:text-[10px] font-bold uppercase tracking-wider">{{ $enrollment->timeSlot ? substr($enrollment->timeSlot->day, 0, 3) : 'N/A' }}</span>
                         </div>
                         <div class="flex items-center gap-1.5 md:gap-2 text-gray-500">
                             <span class="material-symbols-outlined text-[8px] md:text-xs">schedule</span>
-                            <span class="text-[7px] md:text-[10px] font-bold uppercase tracking-wider">{{ $enrollment->timeSlot ? \Carbon\Carbon::parse($enrollment->timeSlot->start_time)->format('h:i A') : 'N/A' }}</span>
+                            <span class="text-[7px] md:text-[10px] font-bold uppercase tracking-wider">{{ $enrollment->timeSlot ? \Carbon\Carbon::parse($enrollment->timeSlot->time)->format('h:i A') : 'N/A' }}</span>
                         </div>
+                        
+                        @if($enrollment->isOnTrial())
+                        <div class="flex items-center gap-1.5 md:gap-2 text-teal-600 mt-2">
+                            <span class="material-symbols-outlined text-[8px] md:text-xs">hourglass_empty</span>
+                            <span class="text-[7px] md:text-[10px] font-bold uppercase tracking-wider">{{ $enrollment->trialCountdownLabel() }}</span>
+                        </div>
+                        @elseif($enrollment->status === 'trial_expired')
+                        <div class="flex items-center gap-1.5 md:gap-2 text-orange-600 mt-2">
+                            <span class="material-symbols-outlined text-[8px] md:text-xs">pending_actions</span>
+                            <span class="text-[7px] md:text-[10px] font-bold uppercase tracking-wider">Awaiting Admin Review</span>
+                        </div>
+                        @endif
                     </div>
 
                     <div class="mt-auto pt-2.5 md:pt-4 border-t border-gray-50">
-                        <div class="flex justify-between items-center mb-1 md:mb-2">
-                            <span class="text-[7px] md:text-[9px] font-black text-gray-300 uppercase tracking-widest">Progress</span>
-                            <span class="text-[7px] md:text-[9px] font-black text-ejlals-teal uppercase tracking-widest">0%</span>
-                        </div>
-                        <div class="w-full h-0.5 md:h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2.5 md:mb-4">
-                            <div class="h-full bg-ejlals-teal rounded-full" style="width: 0%"></div>
-                        </div>
-                        <button class="w-full py-1.5 md:py-2 bg-gray-50 border border-gray-100 rounded-lg md:rounded-xl text-ejlals-teal font-bold text-[8px] md:text-[11px] hover:bg-ejlals-teal hover:text-white transition-all">
-                            Enter Course
-                        </button>
+                        @if($enrollment->isOnTrial() || $enrollment->isActive() || $enrollment->isCompleted())
+                            <div class="flex justify-between items-center mb-1 md:mb-2">
+                                <span class="text-[7px] md:text-[9px] font-black text-gray-300 uppercase tracking-widest">Progress</span>
+                                <span class="text-[7px] md:text-[9px] font-black text-ejlals-teal uppercase tracking-widest">0%</span>
+                            </div>
+                            <div class="w-full h-0.5 md:h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2.5 md:mb-4">
+                                <div class="h-full bg-ejlals-teal rounded-full" style="width: 0%"></div>
+                            </div>
+                            <button class="w-full py-1.5 md:py-2 bg-gray-50 border border-gray-100 rounded-lg md:rounded-xl text-ejlals-teal font-bold text-[8px] md:text-[11px] hover:bg-ejlals-teal hover:text-white transition-all">
+                                Enter Course
+                            </button>
+                        @elseif($enrollment->isUnderReview())
+                            <div class="text-center py-2">
+                                <span class="text-[8px] md:text-[11px] font-bold text-amber-600">Application Under Review</span>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

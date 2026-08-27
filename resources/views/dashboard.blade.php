@@ -54,7 +54,7 @@
             <span class="material-symbols-outlined text-sm md:text-xl">book</span>
         </div>
         <div class="flex items-baseline gap-1.5 min-w-0">
-            <h3 class="text-sm md:text-xl font-bold text-[#191c1e] leading-none">{{ $enrollments->count() }}</h3>
+            <h3 class="text-sm md:text-xl font-bold text-[#191c1e] leading-none">{{ $enrollments->where('status', '!=', 'rejected')->count() }}</h3>
             <p class="text-gray-400 text-[7px] md:text-[9px] font-bold uppercase tracking-wider truncate">Enrolled</p>
         </div>
     </div>
@@ -64,7 +64,7 @@
             <span class="material-symbols-outlined text-sm md:text-xl fill-icon">assignment</span>
         </div>
         <div class="flex items-baseline gap-1.5 min-w-0">
-            <h3 class="text-sm md:text-xl font-bold text-[#191c1e] leading-none">{{ $enrollments->where('status', 'approved')->count() }}</h3>
+            <h3 class="text-sm md:text-xl font-bold text-[#191c1e] leading-none">{{ $enrollments->whereIn('status', ['trial', 'active'])->count() }}</h3>
             <p class="text-gray-400 text-[7px] md:text-[9px] font-bold uppercase tracking-wider truncate">Active</p>
         </div>
     </div>
@@ -74,7 +74,7 @@
             <span class="material-symbols-outlined text-sm md:text-xl fill-icon">check_circle</span>
         </div>
         <div class="flex items-baseline gap-1.5 min-w-0">
-            <h3 class="text-sm md:text-xl font-bold text-[#191c1e] leading-none">0</h3>
+            <h3 class="text-sm md:text-xl font-bold text-[#191c1e] leading-none">{{ $enrollments->where('status', 'completed')->count() }}</h3>
             <p class="text-gray-400 text-[7px] md:text-[9px] font-bold uppercase tracking-wider truncate">Done</p>
         </div>
     </div>

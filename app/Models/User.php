@@ -41,9 +41,8 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 
     public function canAccessPanel(Panel $panel): bool
     {
-        // Allow all users to access the panel for now. 
-        // You can restrict this to specific emails later if needed.
-        return true; 
+        // Only users with is_admin = true can access the Filament admin panel
+        return (bool) $this->is_admin;
     }
 
     /**
@@ -61,6 +60,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'country',
         'city',
         'timezone',
+        'is_admin',
         'otp_code',
         'otp_expires_at',
     ];
