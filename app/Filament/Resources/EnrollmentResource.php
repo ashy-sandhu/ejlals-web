@@ -88,6 +88,11 @@ class EnrollmentResource extends Resource
                         'danger' => ['trial_expired', 'rejected'],
                         'success' => ['active', 'completed'],
                     ]),
+                Tables\Columns\TextColumn::make('progress')
+                    ->label('Progress')
+                    ->getStateUsing(fn (Enrollment $record) => $record->getProgressPercentage() . '%')
+                    ->badge()
+                    ->color(fn (Enrollment $record) => $record->getProgressPercentage() >= 100 ? 'success' : 'primary'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -106,6 +111,11 @@ class EnrollmentResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                
+                Tables\Actions\Action::make('Track Progress')
+                    ->icon('heroicon-o-chart-bar')
+                    ->color('info')
+                    ->url(fn (Enrollment $record): string => Pages\ManageEnrollmentProgress::getUrl(['record' => $record])),
 
                 Tables\Actions\Action::make('Activate')
                     ->icon('heroicon-o-check-circle')
@@ -142,6 +152,7 @@ class EnrollmentResource extends Resource
             'index' => Pages\ListEnrollments::route('/'),
             'create' => Pages\CreateEnrollment::route('/create'),
             'edit' => Pages\EditEnrollment::route('/{record}/edit'),
+            'manage-progress' => Pages\ManageEnrollmentProgress::route('/{record}/progress'),
         ];
     }
 }

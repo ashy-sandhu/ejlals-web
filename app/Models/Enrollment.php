@@ -61,6 +61,41 @@ class Enrollment extends Model
         return $this->hasOne(Lead::class);
     }
 
+    /**
+     * Attendance records for this enrollment.
+     */
+    public function attendances(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(EnrollmentAttendance::class);
+    }
+
+    // ─── Progress Helpers ─────────────────────────────────────────────────────
+
+    /**
+     * Calculates the progress percentage based on attended classes vs total course classes.
+     */
+    public function getProgressPercentage(): int
+    {
+        if (!$this->course) {
+            return 0;
+        }
+
+        // Get total lessons in the course (by counting all lessons in all its modules)
+        $totalLessons = $this->course->modules->sum(function ($module) {
+            return $module->lessons->count();
+        });
+
+        if ($totalLessons === 0) {
+            return 0;
+        }
+
+        $attendedLessons = $this->attendances()->count();
+
+        $percentage = ($attendedLessons / $totalLessons) * 100;
+        
+        return min(100, max(0, (int) round($percentage)));
+    }
+
     // ─── Trial Helpers ────────────────────────────────────────────────────────
 
     /**
