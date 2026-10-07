@@ -8,6 +8,7 @@ use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @property int $id
@@ -37,13 +38,12 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     public function canAccessPanel(Panel $panel): bool
     {
-        // Allow all users to access the panel for now. 
-        // You can restrict this to specific emails later if needed.
-        return true; 
+        // Only users with is_admin = true can access the Filament admin panel
+        return (bool) $this->is_admin;
     }
 
     /**
@@ -61,6 +61,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
         'country',
         'city',
         'timezone',
+        'is_admin',
         'otp_code',
         'otp_expires_at',
     ];

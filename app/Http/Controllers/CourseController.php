@@ -14,12 +14,16 @@ class CourseController extends Controller
     {
         $selectedCategory = $request->category;
         $searchTerm = $request->search;
+        $selectedLanguage = $request->language;
         
         $courses = Course::with('category')
             ->when($selectedCategory, function($query, $selectedCategory) {
                 return $query->whereHas('category', function($q) use ($selectedCategory) {
                     $q->where('slug', $selectedCategory);
                 });
+            })
+            ->when($selectedLanguage, function($query, $selectedLanguage) {
+                return $query->where('language', 'like', '%' . $selectedLanguage . '%');
             })
             ->when($searchTerm, function($query, $searchTerm) {
                 return $query->where(function($q) use ($searchTerm) {
@@ -33,7 +37,7 @@ class CourseController extends Controller
 
         $categories = \App\Models\Category::whereHas('courses')->get();
 
-        return view('courses.index', compact('courses', 'categories', 'selectedCategory', 'searchTerm'));
+        return view('courses.index', compact('courses', 'categories', 'selectedCategory', 'searchTerm', 'selectedLanguage'));
     }
 
     /**
