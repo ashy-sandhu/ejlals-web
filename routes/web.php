@@ -10,18 +10,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ToolController;
-use Illuminate\Support\Facades\Artisan;
-
-// Temporary Bridge to Sync Database (Will be removed after fix)
-Route::get('/bridge-sync-db-7739', function () {
-    try {
-        Artisan::call('migrate', ['--force' => true]);
-        return "Database Synced Successfully!<br><pre>" . Artisan::output() . "</pre>";
-    }
-    catch (\Exception $e) {
-        return "Sync Failed: " . $e->getMessage();
-    }
-});
 
 Route::get('/', function () {
     $data = \Illuminate\Support\Facades\Cache::remember('home_page_data_v1', 3600, function () {
@@ -77,9 +65,6 @@ Route::get('/books', function () {
     return view('books.index', compact('books'));
 })->name('books.index');
 
-Route::get('/debug-php', function () {
-    return phpversion();
-});
 
 
 Route::get('/learn', [PostController::class , 'index'])->name('posts.index');
